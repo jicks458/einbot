@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개인정보처리방침 — 아인</title>
+<meta name="description" content="아인(나만의 치지직 채팅봇) 개인정보처리방침">
+<link rel="icon" href="favicon.ico" sizes="any">
+<style>
+  :root { --green:#00FFA3; --bg:#0B1220; --card:#131C2C; --line:#223049; --text:#E7ECF3; --muted:#8B94A5; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text);
+    font-family:"Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif; line-height:1.75; font-size:16px; }
+  a { color:var(--green); }
+  .wrap { max-width:760px; margin:0 auto; padding:0 20px 80px; }
+  header { padding:28px 0 10px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:18px; }
+  .brand a { color:var(--text); text-decoration:none; }
+  h1 { font-size:28px; margin:30px 0 6px; letter-spacing:-0.3px; }
+  .updated { color:var(--muted); font-size:13.5px; margin:0 0 30px; }
+  h2 { font-size:19px; margin:34px 0 10px; }
+  p, li { color:#D2D9E4; }
+  ul { padding-left:20px; }
+  li { margin:5px 0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin:14px 0; }
+  .muted { color:var(--muted); font-size:14px; }
+  strong { color:var(--text); }
+  footer { border-top:1px solid #16202F; margin-top:44px; padding-top:22px; color:#5C6575; font-size:12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/></linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+      </svg>
+      <a href="/">아인</a>
+    </div>
+  </header>
+
+  <h1>개인정보처리방침</h1>
+  <p class="updated">시행일: 2026년 8월 27일</p>
+
+  <p>아인(이하 "프로그램")은 이용자의 개인정보를 소중히 다룹니다. 이 방침은 프로그램과
+     운영자가 어떤 정보를 어떻게 처리하는지 설명합니다.</p>
+
+  <div class="card">
+    <strong>핵심 요약</strong>
+    <ul style="margin:8px 0 0">
+      <li>프로그램은 <strong>이용자 본인의 컴퓨터에서 실행</strong>됩니다.</li>
+      <li>치지직 로그인 정보, 시청자 출석 기록, 설정 등은 <strong>이용자 컴퓨터에만 저장</strong>되며 외부로 전송되지 않습니다.</li>
+      <li>운영자 서버로 전송되는 것은 <strong>이용권 확인에 필요한 최소한의 정보</strong>(연장 코드 또는 주문번호)뿐입니다.</li>
+      <li>별도의 광고·추적·행태정보 수집을 하지 않습니다.</li>
+    </ul>
+  </div>
+
+  <h2>1. 이용자 컴퓨터에 저장되는 정보</h2>
+  <p>아래 정보는 프로그램이 동작하기 위해 <strong>이용자 컴퓨터 내부에만</strong> 저장되며, 운영자를 포함한 외부로 전송되지 않습니다.</p>
+  <ul>
+    <li>치지직 로그인 정보(액세스·리프레시 토큰) 및 개발자 API 키</li>
+    <li>봇 계정(부계정)으로 사용하는 경우의 로그인 쿠키</li>
+    <li>시청자 출석 기록(닉네임·누적 횟수), 명령어 설정 및 문구</li>
+    <li>프로그램 동작 로그</li>
+  </ul>
+  <p class="muted">이 정보들은 이용자가 프로그램을 삭제하면 함께 제거됩니다(이용권 관련 최소 기록은 예외 — 아래 4항 참고).</p>
+
+  <h2>2. 운영자 서버로 전송되는 정보</h2>
+  <p>다음의 경우에 한해, 이용권 확인에 필요한 최소한의 정보가 운영자 서버로 전송됩니다.</p>
+  <ul>
+    <li><strong>연장 코드 등록 시</strong>: 입력한 연장 코드. 코드의 정당성과 최초 사용 여부를 확인하기 위함입니다.</li>
+    <li><strong>주문번호 등록 시</strong>: 입력한 스마트스토어 주문번호. 결제 완료 여부를 확인하기 위함입니다.</li>
+    <li><strong>버전 확인 시</strong>: 새 버전 여부를 확인하기 위한 요청. 개인을 식별하는 정보는 포함되지 않습니다.</li>
+  </ul>
+  <p>이용권은 이용자의 치지직 채널 식별자를 기준으로 관리되며, 이는 중복 사용 방지 및 이용 기간 산정 목적으로만 사용됩니다.</p>
+
+  <h2>3. 제3자 서비스</h2>
+  <ul>
+    <li><strong>치지직(네이버)</strong>: 프로그램은 이용자를 대신해 치지직 공식 API에 연결하여 채팅·후원·구독 정보를 주고받습니다. 이는 이용자가 직접 로그인·동의한 범위 내에서 이루어집니다.</li>
+    <li><strong>Cloudflare</strong>: 이용권 확인 서버와 웹사이트 운영에 사용됩니다.</li>
+    <li><strong>네이버 커머스(스마트스토어)</strong>: 주문번호로 결제 여부를 확인할 때 이용됩니다.</li>
+  </ul>
+
+  <h2>4. 보관 기간</h2>
+  <p>운영자 서버에는 이용권 관리를 위해 사용된 코드·주문번호의 사용 여부와 이용 기간 정보가 보관됩니다.
+     이는 중복 사용 방지와 정당한 이용 기간 보장을 위한 것으로, 결제·환불 분쟁 대응에 필요한 기간 동안 보관됩니다.</p>
+
+  <h2>5. 이용자의 권리</h2>
+  <p>이용자는 프로그램을 삭제함으로써 자신의 컴퓨터에 저장된 정보를 언제든 제거할 수 있습니다.
+     운영자 서버에 보관된 이용권 정보의 확인·삭제를 원하시면 아래 연락처로 요청해 주세요.</p>
+
+  <h2>6. 아동의 개인정보</h2>
+  <p>프로그램은 만 14세 미만 아동을 대상으로 하지 않습니다.</p>
+
+  <h2>7. 방침의 변경</h2>
+  <p>이 방침이 변경되는 경우 이 페이지를 통해 공지합니다.</p>
+
+  <h2>8. 문의처</h2>
+  <p>개인정보 처리에 관한 문의: <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a></p>
+
+  <footer>
+    <p><a href="/">← 아인 홈으로</a></p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </footer>
+</div>
+</body>
+</html>
