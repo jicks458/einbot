@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 채팅봇 명령어 목록과 설정 방법 — 아인 명령어 가이드</title>
+<meta name="description" content="치지직 채팅봇 아인의 명령어 목록과 설정 방법. !출첵 !팔로우 !업타임 !시간 기본 명령어, 채팅에서 바로 추가하는 내가 만든 명령어, {호칭} {횟수} 같은 치환자, 문구·이름·대기시간 바꾸기, 반복 공지까지 정리했습니다.">
+<link rel="canonical" href="https://einbot.kr/guide/commands/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 채팅봇 명령어 목록과 설정 방법 — 아인">
+<meta property="og:description" content="기본 명령어, 채팅으로 추가하는 내 명령어, 치환자, 문구 바꾸기, 반복 공지. 치지직 채팅봇 아인의 명령어를 한 페이지에 정리.">
+<meta property="og:url" content="https://einbot.kr/guide/commands/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1220">
+<link rel="stylesheet" href="/guide/guide.css">
+<style>
+  table { border-collapse: collapse; width: 100%; margin: 14px 0 6px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+  td code { white-space: nowrap; }
+  .tbl { overflow-x: auto; }
+  .chat { background: var(--card); border: 1px solid var(--card-line); border-radius: 12px; padding: 12px 16px; margin: 12px 0; font-size: 14.5px; }
+  .chat p { margin: 4px 0; }
+  .chat .v { color: #9CB8D9; font-weight: 700; }
+  .chat .s { color: #F5C243; font-weight: 700; }
+  .chat .b { color: #7DA3FF; font-weight: 700; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "명령어 목록과 설정" }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://einbot.kr/guide/commands/#article",
+      "headline": "치지직 채팅봇 명령어 목록과 설정 방법 — 아인 명령어 가이드",
+      "description": "아인의 기본 명령어, 방장·매니저 전용 명령어, 내가 만든 명령어 추가 방법, 치환자, 문구·이름·대기시간 설정, 반복 공지.",
+      "inLanguage": "ko-KR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "mainEntityOfPage": "https://einbot.kr/guide/commands/",
+      "image": "https://einbot.kr/og.png",
+      "author": { "@id": "https://einbot.kr/#org" },
+      "publisher": { "@id": "https://einbot.kr/#org" },
+      "about": { "@id": "https://einbot.kr/#app" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "시청자가 명령어를 쳤는데 봇이 대답하지 않아요",
+          "acceptedAnswer": { "@type": "Answer", "text": "같은 명령어를 채널 전체가 5초, 한 사람이 15초 안에 다시 쓰면 대기시간 때문에 대답하지 않습니다. 명령어 앞 기호가 설정과 다르거나 봇이 꺼져 있어도 대답하지 않습니다. 방장과 매니저는 대기시간이 없습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "시청자도 명령어를 추가할 수 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "아니요. !명령어추가, !명령어삭제, !출석보정은 방장과 채널·채팅 매니저만 쓸 수 있습니다. 시청자가 치면 아무 반응이 없습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "다른 봇과 같이 써도 되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "됩니다. 다만 두 봇에 같은 이름의 명령어가 있으면 둘 다 대답합니다. 설정에서 아인의 명령어 앞 기호를 바꾸거나 겹치는 명령어를 끄면 됩니다." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/">가이드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 명령어 목록과 설정</p>
+      <p class="eyebrow">명령어 가이드</p>
+      <h1>치지직 채팅봇 명령어 목록과 설정 방법</h1>
+      <p class="lead">아인이 처음부터 알아듣는 명령어, 방장만 쓰는 관리 명령어, 채팅에서 바로 만드는 내 명령어,
+        그리고 문구와 이름을 바꾸는 설정 화면까지 한 페이지에 정리했습니다.</p>
+      <p class="meta">기준 버전 1.6 · 2026년 9월 6일 갱신 · 설정 화면 기준</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#basic">기본 명령어</a></li>
+          <li><a href="#attend">출석 체크는 조금 특별합니다</a></li>
+          <li><a href="#admin">방장·매니저 전용 명령어</a></li>
+          <li><a href="#custom">내가 만든 명령어</a></li>
+          <li><a href="#vars">치환자 한눈에</a></li>
+          <li><a href="#settings">문구와 이름 바꾸기</a></li>
+          <li><a href="#notice">반복 공지</a></li>
+          <li><a href="#faq">자주 묻는 것</a></li>
+        </ol>
+      </div>
+
+      <h2 id="basic">기본 명령어</h2>
+      <p>설치 직후부터 바로 됩니다. 이름과 대답은 <a href="#settings">설정 화면</a>에서 바꿀 수 있고, 안 쓰는 건 끌 수 있습니다.</p>
+      <div class="tbl">
+      <table>
+        <tr><th>명령어</th><th>하는 일</th><th>대답 예시</th></tr>
+        <tr><td><code>!출첵</code></td><td>출석 체크. 누적 출석 일수를 기억합니다.</td><td>별빛여우 치수, 안녕하세요~ (누적 12일 출석)</td></tr>
+        <tr><td><code>!팔로우</code></td><td>팔로우 시작일과 며칠째인지</td><td>💚 별빛여우 치수는 2026-03-02부터 팔로우 188일째!</td></tr>
+        <tr><td><code>!업타임</code></td><td>방송 시작 시각과 진행 시간</td><td>⏱️ 방송 시작: 20:00 · 지금 1시간 32분째 방송 중!</td></tr>
+        <tr><td><code>!시간</code></td><td>현재 시각</td><td>🕒 현재 시각: 21:32</td></tr>
+        <tr><td><code>!명령어</code> <code>!도움말</code></td><td>쓸 수 있는 명령어 목록</td><td>명령어: !명령어, !도움말, !시간, !업타임, !팔로우, !출첵, !디스코드</td></tr>
+      </table>
+      </div>
+      <p>"치수"는 기본 호칭입니다. 시청자를 부르는 방식은 <a href="#settings">설정</a>에서 "{이름} 님"처럼 바꿀 수 있습니다.</p>
+
+      <h2 id="attend">출석 체크는 조금 특별합니다</h2>
+      <ul>
+        <li><b>명령어 없이 인사만 해도 출석됩니다.</b> 시청자가 "안녕하세요"라고만 쳐도 출석 처리됩니다. 어떤 인사말을 출석으로 볼지는 설정에서 정합니다.</li>
+        <li><b>하루의 기준은 새벽 5시입니다.</b> 자정이 아니라 새벽 5시에 날이 바뀌므로, 밤샘 방송 중에 출석이 두 번 잡히지 않습니다. 이 시각도 바꿀 수 있습니다.</li>
+        <li><b>상황에 따라 다른 인사를 합니다.</b> 처음 온 시청자, 8일 넘게 안 오다 온 시청자, 오늘 이미 출석한 시청자에게 각각 다른 문구가 나갑니다. 문구는 전부 바꿀 수 있습니다.</li>
+        <li><b>출석에는 대기시간이 없습니다.</b> 여러 시청자가 동시에 인사해도 모두 받아줍니다.</li>
+      </ul>
+      <div class="chat" aria-label="출석 예시">
+        <p><span class="v">달빛토끼</span> 안녕하세요</p>
+        <p><span class="b">초코우유 봇</span> 달빛토끼 치수, 안녕하세요~ 🎉 첫 출석이에요! 와주셔서 반가워요, 앞으로 자주 봬요!</p>
+        <p><span class="v">별빛여우</span> !출첵</p>
+        <p><span class="b">초코우유 봇</span> 별빛여우 치수, 오늘은 이미 출석했어요! 다음 출석은 7시간 28분 후에 가능해요.</p>
+      </div>
+
+      <h2 id="admin">방장·매니저 전용 명령어</h2>
+      <p>방장(스트리머)과 채널 매니저, 채팅 매니저만 쓸 수 있습니다. 시청자가 치면 아무 반응이 없습니다. 이름은 고정이라 바꿀 수 없습니다.</p>
+      <div class="tbl">
+      <table>
+        <tr><th>명령어</th><th>하는 일</th></tr>
+        <tr><td><code>!명령어추가 이름 내용</code></td><td>새 명령어를 만듭니다. 예: <code>!명령어추가 디스코드 주소는 discord.gg/xxxx 예요!</code></td></tr>
+        <tr><td><code>!명령어삭제 이름</code></td><td>내가 만든 명령어를 지웁니다.</td></tr>
+        <tr><td><code>!출석보정 닉네임 횟수</code></td><td>시청자의 누적 출석 일수를 손으로 맞춥니다. 다른 봇에서 넘어올 때 단골의 기록을 이어주는 용도입니다. 예: <code>!출석보정 별빛여우 152</code></td></tr>
+      </table>
+      </div>
+
+      <h2 id="custom">내가 만든 명령어</h2>
+      <p>만드는 방법은 두 가지이고 결과는 같습니다.</p>
+      <h3>방법 1. 방송 중 채팅에서 바로</h3>
+      <div class="chat" aria-label="명령어 추가 예시">
+        <p><span class="s">초코우유</span> !명령어추가 유튜브 다시보기는 youtube.com/@chocomilk 에 올라와요</p>
+        <p><span class="b">초코우유 봇</span> ✅ !유튜브 명령어를 추가했어요.</p>
+        <p><span class="v">별빛여우</span> !유튜브</p>
+        <p><span class="b">초코우유 봇</span> 다시보기는 youtube.com/@chocomilk 에 올라와요</p>
+      </div>
+      <h3>방법 2. 설정 화면에서</h3>
+      <p>아인 창의 [설정] → <b>내가 만든 명령어</b> → [+ 명령어 추가]에서 이름과 대답을 적고 저장합니다. 여러 개를 한 번에 정리할 때 편합니다.</p>
+      <h3>대답에 넣을 수 있는 치환자</h3>
+      <ul>
+        <li><code>{이름}</code> 명령어를 친 시청자의 닉네임</li>
+        <li><code>{호칭}</code> 설정한 호칭을 붙인 이름. 예: 별빛여우 치수</li>
+        <li><code>{횟수}</code> 이 명령어가 지금까지 쓰인 횟수. 예: <code>!명령어추가 물 {호칭} 덕분에 {횟수}번째 물 마셨어요 💧</code></li>
+      </ul>
+      <h3>규칙</h3>
+      <ul>
+        <li>이름은 기본 명령어, 관리 명령어와 겹칠 수 없습니다.</li>
+        <li>대답은 <code>!</code>로 시작할 수 없습니다. 봇이 자기 명령어를 부르는 무한 반복을 막기 위해서입니다.</li>
+        <li>같은 이름으로 다시 추가하면 대답이 새 내용으로 바뀝니다.</li>
+        <li>추가한 명령어는 <code>!명령어</code> 목록에 자동으로 들어갑니다.</li>
+      </ul>
+      <p>자주 만드는 것들: <code>!디스코드</code> <code>!유튜브</code> <code>!일정</code> <code>!컨텐츠</code> <code>!사양</code> <code>!후원</code>. 시청자가 매번 묻는 질문이 있다면 그게 명령어 후보입니다.</p>
+
+      <h2 id="vars">치환자 한눈에</h2>
+      <p>문구 안에 중괄호로 적으면 실제 값으로 바뀝니다. 어디에 쓸 수 있는지가 다릅니다.</p>
+      <div class="tbl">
+      <table>
+        <tr><th>치환자</th><th>뜻</th><th>쓰는 곳</th></tr>
+        <tr><td><code>{이름}</code></td><td>시청자 닉네임</td><td>호칭, 내 명령어, 출석·후원·구독 인사</td></tr>
+        <tr><td><code>{호칭}</code></td><td>호칭을 붙인 이름</td><td>내 명령어, 출석·후원·구독 인사</td></tr>
+        <tr><td><code>{횟수}</code></td><td>누적 출석 일수 또는 명령어 사용 횟수</td><td>출석 인사, 내 명령어</td></tr>
+        <tr><td><code>{남은시간}</code></td><td>다음 출석까지 남은 시간</td><td>"오늘 이미 출석" 문구</td></tr>
+        <tr><td><code>{금액}</code> <code>{메시지}</code></td><td>후원 금액, 후원자가 남긴 말</td><td>후원 인사</td></tr>
+        <tr><td><code>{개월}</code> <code>{티어}</code></td><td>구독 개월 수, 구독 등급 이름</td><td>구독 인사</td></tr>
+        <tr><td><code>{개수}</code></td><td>선물한 구독권 개수</td><td>구독권 선물 인사</td></tr>
+        <tr><td><code>{날짜}</code> <code>{일수}</code></td><td>팔로우 시작일, 며칠째</td><td>!팔로우 대답</td></tr>
+        <tr><td><code>{시작시각}</code> <code>{방송시간}</code></td><td>방송 시작 시각, 진행 시간</td><td>!업타임 대답</td></tr>
+        <tr><td><code>{시각}</code></td><td>현재 시각</td><td>!시간 대답</td></tr>
+      </table>
+      </div>
+
+      <h2 id="settings">문구와 이름 바꾸기</h2>
+      <p>아인 창의 [설정]을 누르면 브라우저에 설정 화면이 열립니다. <b>명령어 설정</b> 항목에서 아래를 바꿀 수 있습니다. 저장한 뒤 봇을 껐다 켜면 반영됩니다. 채팅에서 <code>!명령어추가</code>로 만든 명령어는 바로 됩니다.</p>
+      <img src="/img/settings.png" alt="아인 설정 화면 — 명령어 설정" width="640" loading="lazy">
+      <ul>
+        <li><b>시청자를 부르는 방식</b>: 기본은 "{이름} 치수". "{이름} 님", "{이름}아" 처럼 방송 분위기에 맞게.</li>
+        <li><b>명령어 앞 기호</b>: 기본은 <code>!</code>. 다른 봇과 겹치면 <code>?</code>나 <code>#</code>으로.</li>
+        <li><b>대기시간</b>: 같은 명령어를 채널 전체가 다시 쓸 수 있을 때까지 5초, 한 사람이 다시 쓸 수 있을 때까지 15초가 기본입니다. 도배를 막는 장치이고, 방장과 매니저는 적용받지 않습니다.</li>
+        <li><b>출석 체크</b>: 명령어 이름, 출석으로 볼 인사말, 하루가 바뀌는 시각, "오랜만" 기준 일수, 상황별 4가지 문구.</li>
+        <li><b>명령어</b>: 기본 명령어마다 끄기, 이름 바꾸기, 대답 바꾸기. 이름은 쉼표로 여러 개를 둘 수 있어서 <code>!업타임</code>과 <code>!방송시간</code>이 같은 일을 하게 할 수 있습니다.</li>
+        <li><b>후원 감사 인사</b>, <b>구독·구독권 선물 감사 인사</b>: 켜고 끄기와 문구. 자세한 건 다음 가이드에서 다룹니다.</li>
+      </ul>
+
+      <h2 id="notice">반복 공지</h2>
+      <p>봇이 켜져 있는 동안 정한 간격으로 자동 전송합니다. 설정 화면의 <b>반복 공지</b>에서 [+ 공지 추가] 후 간격(분)과 내용을 적습니다. 예를 들어 20분마다 "구독하면 이모티콘이 열려요 💚" 같은 안내를 내보낼 수 있습니다. 여러 개를 두면 각자 간격대로 나갑니다. 필요 없으면 비워 두면 됩니다.</p>
+
+      <h2 id="faq">자주 묻는 것</h2>
+      <h3>시청자가 명령어를 쳤는데 봇이 대답하지 않아요</h3>
+      <p>대기시간 안에 다시 친 경우가 가장 흔합니다. 그 밖에 명령어 앞 기호가 설정과 다르거나, 봇이 꺼져 있거나, 방송 중이 아닐 때입니다. 방장과 매니저는 대기시간이 없어서 직접 테스트하면 항상 대답합니다.</p>
+      <h3>시청자도 명령어를 추가할 수 있나요?</h3>
+      <p>아니요. 추가·삭제·출석 보정은 방장과 매니저만 됩니다. 시청자가 치면 아무 반응이 없습니다.</p>
+      <h3>다른 봇과 같이 써도 되나요?</h3>
+      <p>됩니다. 다만 두 봇에 같은 이름의 명령어가 있으면 둘 다 대답합니다. 아인의 명령어 앞 기호를 바꾸거나 겹치는 명령어를 끄세요.</p>
+      <h3>설정을 바꿨는데 반영이 안 돼요</h3>
+      <p>설정 화면에서 [저장]을 누른 뒤 봇을 껐다 켜세요. 봇은 켤 때 설정을 읽습니다. 채팅에서 <code>!명령어추가</code>로 만든 명령어만 켜진 상태에서 바로 반영됩니다.</p>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/guide/install/">치지직 채팅봇 설치 방법</a><span>Microsoft Store 설치부터 봇 시작까지 5분</span></li>
+          <li><a href="/#feat">아인이 해주는 일</a><span>출석 체크, 후원·구독 인사, 명령어, 반복 공지</span></li>
+          <li><a href="/#faq">자주 묻는 질문</a><span>준비물, 다른 봇에서 넘어오기, 결제 방법</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a></p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>
