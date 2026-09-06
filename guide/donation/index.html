@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 후원·구독 감사 인사 자동으로 하기 — 아인 후원 인사 설정 가이드</title>
+<meta name="description" content="치지직 치즈 후원, 구독, 구독권 선물에 봇이 자동으로 감사 인사하게 설정하는 방법. 필요한 개발자 센터 권한, {금액} {메시지} {개월} {티어} {개수} 치환자, 문구 예시, 인사가 안 나갈 때 확인할 것까지 아인 기준으로 정리했습니다.">
+<link rel="canonical" href="https://einbot.kr/guide/donation/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 후원·구독 감사 인사 자동으로 하기 — 아인">
+<meta property="og:description" content="치즈 후원, 구독, 구독권 선물에 자동 감사 인사. 필요한 권한, 치환자, 문구 예시, 안 나갈 때 확인할 것.">
+<meta property="og:url" content="https://einbot.kr/guide/donation/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1220">
+<link rel="stylesheet" href="/guide/guide.css">
+<style>
+  table { border-collapse: collapse; width: 100%; margin: 14px 0 6px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+  .tbl { overflow-x: auto; }
+  .chat { background: var(--card); border: 1px solid var(--card-line); border-radius: 12px; padding: 12px 16px; margin: 12px 0; font-size: 14.5px; }
+  .chat p { margin: 4px 0; }
+  .chat .v { color: #9CB8D9; font-weight: 700; }
+  .chat .b { color: #7DA3FF; font-weight: 700; }
+  .chat .sys { color: var(--muted); font-size: 13px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "후원·구독 감사 인사" }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://einbot.kr/guide/donation/#article",
+      "headline": "치지직 후원·구독 감사 인사 자동으로 하기 — 아인 후원 인사 설정 가이드",
+      "description": "치즈 후원, 구독, 구독권 선물에 봇이 자동으로 감사 인사하게 하는 설정. 필요한 권한, 치환자, 문구 예시, 안 나갈 때 확인할 것.",
+      "inLanguage": "ko-KR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "mainEntityOfPage": "https://einbot.kr/guide/donation/",
+      "image": "https://einbot.kr/og.png",
+      "author": { "@id": "https://einbot.kr/#org" },
+      "publisher": { "@id": "https://einbot.kr/#org" },
+      "about": { "@id": "https://einbot.kr/#app" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "후원 인사가 안 나가요",
+          "acceptedAnswer": { "@type": "Answer", "text": "치지직 개발자 센터 앱 권한(API Scopes)에 '후원 조회'가 있는지 확인하세요. 빠져 있으면 아인이 시작할 때 어떤 권한이 빠졌는지 알려줍니다. 권한을 추가하면 치지직 검수 후 반영되고, 그 뒤 봇을 껐다 켜면 됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "구독 인사만 안 나가요",
+          "acceptedAnswer": { "@type": "Answer", "text": "'구독 조회' 권한이 빠진 경우입니다. 개발자 센터에서 추가하고 검수가 끝나면 봇을 껐다 켜세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "익명 후원에도 인사하나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "네. 이름 자리에 '익명의 후원자'가 들어가서 인사합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "구독권을 선물한 사람과 받은 사람 모두에게 인사하나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "네. 선물한 분께는 선물 감사 문구가, 선물을 받아 구독이 시작된 시청자에게는 구독 감사 문구가 각각 나갑니다. 두 문구 모두 따로 바꿀 수 있습니다." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/">가이드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 후원·구독 감사 인사</p>
+      <p class="eyebrow">후원·구독 인사 가이드</p>
+      <h1>치지직 후원·구독 감사 인사 자동으로 하기</h1>
+      <p class="lead">방송에 집중하다 보면 후원 인사를 놓치기 쉽습니다. 아인은 치즈 후원, 구독, 구독권 선물이 들어오는 순간
+        정해 둔 문구로 대신 인사합니다. 이 페이지는 그 설정과, 인사가 안 나갈 때 확인할 것을 정리합니다.</p>
+      <p class="meta">기준 버전 1.6 · 2026년 9월 6일 갱신</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#what">인사하는 세 가지 상황</a></li>
+          <li><a href="#scope">먼저 필요한 것: 권한 2개</a></li>
+          <li><a href="#donation">치즈 후원 감사 인사</a></li>
+          <li><a href="#sub">구독 감사 인사</a></li>
+          <li><a href="#gift">구독권 선물 감사 인사</a></li>
+          <li><a href="#examples">문구 예시</a></li>
+          <li><a href="#faq">안 나갈 때 확인할 것</a></li>
+        </ol>
+      </div>
+
+      <h2 id="what">인사하는 세 가지 상황</h2>
+      <div class="tbl">
+      <table>
+        <tr><th>상황</th><th>누구에게</th><th>기본 문구</th></tr>
+        <tr><td>치즈 후원</td><td>후원한 시청자</td><td>🧡 {호칭}, {금액}원 후원 감사합니다!</td></tr>
+        <tr><td>구독 시작</td><td>구독한 시청자 (선물받아 시작한 경우 포함)</td><td>💚 {호칭}, {개월}개월 구독 감사합니다!</td></tr>
+        <tr><td>구독권 선물</td><td>선물한 시청자</td><td>🎁 {호칭}, 구독권 {개수}개 선물 감사합니다!</td></tr>
+      </table>
+      </div>
+      <p>세 가지 모두 설치 직후부터 켜져 있고, 문구는 아인 창의 [설정]에서 바꿉니다. "치수"는 기본 호칭이며 "{이름} 님"처럼 바꿀 수 있습니다.</p>
+      <div class="chat" aria-label="후원 인사 예시">
+        <p class="sys">별빛여우님이 치즈 5,000개를 후원했습니다 — "오늘 방송 재밌어요!"</p>
+        <p><span class="b">초코우유 봇</span> 🧡 별빛여우 치수, 5000원 후원 감사합니다!</p>
+        <p class="sys">달빛토끼님이 구독권 2개를 선물했습니다!</p>
+        <p><span class="b">초코우유 봇</span> 🎁 달빛토끼 치수, 구독권 2개 선물 감사합니다!</p>
+      </div>
+
+      <h2 id="scope">먼저 필요한 것: 권한 2개</h2>
+      <p>후원과 구독 소식은 치지직이 봇에게 알려주는 것이라, 치지직 개발자 센터에 등록한 앱에 권한이 있어야 합니다. <a href="/guide/install/#step3">설치할 때</a> API Scopes 5개를 모두 체크했다면 이미 되어 있습니다.</p>
+      <ul>
+        <li><b>후원 조회</b> — 치즈 후원 감사 인사에 필요</li>
+        <li><b>구독 조회</b> — 구독 감사 인사에 필요</li>
+      </ul>
+      <div class="warn">
+        <p>빠진 권한이 있으면 아인이 봇을 켤 때 어떤 권한이 빠졌는지 이름을 짚어 알려줍니다. 개발자 센터에서 추가하면 치지직 검수를 거친 뒤 반영되고, 그다음 봇을 껐다 켜면 됩니다.</p>
+      </div>
+      <p>구독권 선물 인사는 권한이 아니라 방송 채팅의 안내 메시지를 보고 동작하므로 따로 준비할 게 없습니다.</p>
+
+      <h2 id="donation">치즈 후원 감사 인사</h2>
+      <p>시청자가 치즈를 후원하면 봇이 바로 인사합니다. 익명 후원이면 이름 자리에 "익명의 후원자"가 들어갑니다.</p>
+      <p>설정 위치: [설정] → <b>후원 감사 인사</b></p>
+      <ul>
+        <li><b>후원이 오면 자동으로 인사</b> 켜기/끄기</li>
+        <li><b>인사 문구</b>. 쓸 수 있는 치환자:
+          <code>{이름}</code> 후원자 닉네임 ·
+          <code>{호칭}</code> 호칭을 붙인 이름 ·
+          <code>{금액}</code> 후원 금액(원) ·
+          <code>{메시지}</code> 후원자가 남긴 말</li>
+      </ul>
+      <div class="note">
+        <p><code>{메시지}</code>는 후원자가 말을 안 남기면 빈칸이 됩니다. "💬 {메시지}"처럼 앞에 기호를 붙이면 말이 없을 때 기호만 남으니, 메시지를 문구에 넣을 때는 "{호칭}, {금액}원 감사합니다! {메시지}"처럼 끝에 두는 게 깔끔합니다.</p>
+      </div>
+
+      <h2 id="sub">구독 감사 인사</h2>
+      <p>시청자의 구독이 시작되면 인사합니다. 직접 구독한 경우와 구독권을 선물받아 시작된 경우 모두 여기에 해당합니다.</p>
+      <p>설정 위치: [설정] → <b>구독·구독권 선물 감사 인사</b></p>
+      <ul>
+        <li><b>구독·선물이 오면 자동으로 인사</b> 켜기/끄기. 이 스위치 하나로 구독 인사와 선물 인사가 함께 켜지고 꺼집니다.</li>
+        <li><b>구독 인사 문구</b>. 치환자:
+          <code>{이름}</code> <code>{호칭}</code> ·
+          <code>{개월}</code> 구독 개월 수 ·
+          <code>{티어}</code> 구독 등급 이름</li>
+      </ul>
+      <p>문구를 비워 두면 기본 문구가 나갑니다.</p>
+
+      <h2 id="gift">구독권 선물 감사 인사</h2>
+      <p>누군가 다른 시청자에게 구독권을 선물하면, <b>선물한 분께</b> 따로 감사 인사를 합니다. 선물을 받은 시청자에게는 위의 구독 인사가 나가므로 두 사람 모두 인사를 받습니다.</p>
+      <ul>
+        <li><b>선물한 분께 하는 인사 문구</b>. 치환자: <code>{이름}</code> <code>{호칭}</code> · <code>{개수}</code> 선물한 구독권 개수</li>
+        <li>선물 알림은 치지직이 공식적으로 알려주지 않아서, 아인이 방송 채팅에 올라오는 "○○님이 구독권 N개를 선물했습니다" 안내를 보고 알아냅니다. 그래서 <b>방송 중에 채팅이 연결된 상태</b>에서만 동작합니다.</li>
+        <li>봇을 켰을 때 이미 지나간 안내에는 인사하지 않습니다. 중복 인사를 막기 위해서입니다.</li>
+      </ul>
+
+      <h2 id="examples">문구 예시</h2>
+      <p>방송 말투에 맞게 바꾸면 봇이 방송의 일부처럼 느껴집니다. 그대로 복사해 써도 됩니다.</p>
+      <div class="tbl">
+      <table>
+        <tr><th>상황</th><th>예시</th></tr>
+        <tr><td>후원</td><td>{호칭} {금액}원 후원 감사해요!! 🧡 오늘 치킨은 {이름} 덕분입니다</td></tr>
+        <tr><td>후원 (메시지 포함)</td><td>🧡 {호칭}, {금액}원 감사합니다! {메시지}</td></tr>
+        <tr><td>구독</td><td>💚 {호칭} {개월}개월째 구독 감사합니다! 이모티콘 마음껏 쓰세요</td></tr>
+        <tr><td>구독 (등급 표시)</td><td>💚 {호칭}, {티어} {개월}개월 구독 감사합니다!</td></tr>
+        <tr><td>구독권 선물</td><td>🎁 {호칭}!! 구독권 {개수}개 선물 감사합니다, 방송이 풍성해졌어요</td></tr>
+      </table>
+      </div>
+      <p>저장한 뒤 봇을 껐다 켜면 반영됩니다.</p>
+
+      <h2 id="faq">안 나갈 때 확인할 것</h2>
+      <h3>후원 인사가 안 나가요</h3>
+      <p>개발자 센터 앱 권한에 <b>후원 조회</b>가 있는지 확인하세요. 아인 창의 로그에 후원이 들어올 때 "[후원]" 줄이 찍히면 받는 건 되는 것이고, 그 줄조차 없으면 권한 문제입니다. 설정에서 "후원이 오면 자동으로 인사"가 꺼져 있지는 않은지도 확인하세요.</p>
+      <h3>구독 인사만 안 나가요</h3>
+      <p><b>구독 조회</b> 권한이 빠진 경우입니다. 개발자 센터에서 추가하고 검수가 끝나면 봇을 껐다 켜세요.</p>
+      <h3>구독권 선물 인사만 안 나가요</h3>
+      <p>방송 중에 채팅이 연결돼 있어야 동작합니다. 방송을 켠 뒤 봇을 켜거나, 봇을 켠 채로 방송을 시작하면 자동으로 붙습니다. 봇 이름용 부계정을 쓴다면 "봇 계정 연결 끊김" 알림이 떠 있지 않은지 확인하세요.</p>
+      <h3>익명 후원에도 인사하나요?</h3>
+      <p>네. 이름 자리에 "익명의 후원자"가 들어갑니다.</p>
+      <h3>인사가 너무 자주 나가서 부담스러워요</h3>
+      <p>후원·구독 인사는 이벤트가 올 때마다 한 번씩만 나가고 대기시간은 없습니다. 특정 인사를 원치 않으면 해당 스위치를 끄면 됩니다.</p>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/guide/commands/">명령어 목록과 설정 방법</a><span>기본 명령어, 내가 만든 명령어, 치환자, 반복 공지</span></li>
+          <li><a href="/guide/attendance/">치지직 출석 체크 봇 설정 방법</a><span>인사말 출석, 하루 기준 시각, 상황별 문구, 기록 이어받기</span></li>
+          <li><a href="/guide/install/">치지직 채팅봇 설치 방법</a><span>Microsoft Store 설치부터 봇 시작까지 5분</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a></p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>
