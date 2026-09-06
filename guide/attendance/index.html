@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 출석 체크 봇 설정 방법 — 아인 출석 체크 가이드</title>
+<meta name="description" content="치지직 출석 체크 봇 설정 방법. 인사말만 쳐도 출석되는 기능, 하루가 바뀌는 시각, 첫 출석·오랜만·이미 출석 문구, 누적 횟수 표시, 다른 봇에서 시청자 출석 기록 이어받기까지 아인 기준으로 정리했습니다.">
+<link rel="canonical" href="https://einbot.kr/guide/attendance/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 출석 체크 봇 설정 방법 — 아인">
+<meta property="og:description" content="인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기. 치지직 출석 체크 봇 설정을 한 페이지에.">
+<meta property="og:url" content="https://einbot.kr/guide/attendance/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1220">
+<link rel="stylesheet" href="/guide/guide.css">
+<style>
+  table { border-collapse: collapse; width: 100%; margin: 14px 0 6px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+  .tbl { overflow-x: auto; }
+  .chat { background: var(--card); border: 1px solid var(--card-line); border-radius: 12px; padding: 12px 16px; margin: 12px 0; font-size: 14.5px; }
+  .chat p { margin: 4px 0; }
+  .chat .v { color: #9CB8D9; font-weight: 700; }
+  .chat .v2 { color: #C7A6FF; font-weight: 700; }
+  .chat .s { color: #F5C243; font-weight: 700; }
+  .chat .b { color: #7DA3FF; font-weight: 700; }
+  .chat .dim { color: var(--muted); font-size: 13px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "출석 체크 봇 설정" }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://einbot.kr/guide/attendance/#article",
+      "headline": "치지직 출석 체크 봇 설정 방법 — 아인 출석 체크 가이드",
+      "description": "인사말 출석, 하루 기준 시각, 첫 출석·오랜만·이미 출석 문구, 누적 횟수, 다른 봇에서 출석 기록 이어받기.",
+      "inLanguage": "ko-KR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "mainEntityOfPage": "https://einbot.kr/guide/attendance/",
+      "image": "https://einbot.kr/og.png",
+      "author": { "@id": "https://einbot.kr/#org" },
+      "publisher": { "@id": "https://einbot.kr/#org" },
+      "about": { "@id": "https://einbot.kr/#app" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "시청자가 하루에 여러 번 인사하면 출석이 여러 번 되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "아니요. 출석은 시청자마다 하루 한 번만 올라갑니다. 인사말로 다시 출석을 시도하면 조용히 넘어가고, !출첵을 다시 치면 오늘은 이미 출석했다는 안내와 다음 출석까지 남은 시간을 알려줍니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "밤샘 방송에서 자정이 지나면 출석이 또 되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "기본 설정에서는 하루가 새벽 5시에 바뀌므로 자정을 넘겨도 같은 방송 안에서 출석이 두 번 잡히지 않습니다. 이 시각은 설정에서 바꿀 수 있습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "다른 봇에서 쓰던 시청자 출석 횟수를 가져올 수 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "네. 설정의 출석 횟수 보정이나 채팅의 !출석보정 닉네임 횟수로 시청자별 누적 횟수를 넣어 두면, 그 시청자가 다음에 출석할 때 그 횟수에 이어서 올라갑니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "출석 기록은 어디에 저장되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "봇이 돌아가는 내 컴퓨터에만 저장되고 외부 서버로 나가지 않습니다. 봇을 껐다 켜도, 앱을 업데이트해도 기록은 그대로 남습니다." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/">가이드</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 출석 체크 봇 설정</p>
+      <p class="eyebrow">출석 체크 가이드</p>
+      <h1>치지직 출석 체크 봇 설정 방법</h1>
+      <p class="lead">출석 체크는 시청자가 "우리 방송에 몇 번 왔는지"를 봇이 기억하고 인사에 담아 주는 기능입니다.
+        아인은 설치하면 바로 켜져 있고, 이 페이지는 그 동작과 바꿀 수 있는 항목을 설명합니다.</p>
+      <p class="meta">기준 버전 1.6 · 2026년 9월 6일 갱신</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#how">어떻게 동작하나</a></li>
+          <li><a href="#trigger">출석되는 두 가지 방법</a></li>
+          <li><a href="#day">하루의 기준 시각</a></li>
+          <li><a href="#msgs">상황별 인사 문구 4가지</a></li>
+          <li><a href="#carry">다른 봇에서 출석 기록 이어받기</a></li>
+          <li><a href="#settings">설정 항목 정리</a></li>
+          <li><a href="#faq">자주 묻는 것</a></li>
+        </ol>
+      </div>
+
+      <h2 id="how">어떻게 동작하나</h2>
+      <p>시청자가 출석하면 봇이 그 시청자의 <b>누적 출석 일수</b>를 하나 올리고 인사합니다. 하루에 한 번만 올라가고, 몇 번을 인사해도 그날은 더 올라가지 않습니다. 기록은 시청자 계정 기준이라 닉네임을 바꿔도 이어집니다.</p>
+      <div class="chat" aria-label="출석 예시">
+        <p><span class="v">별빛여우</span> 안녕하세요</p>
+        <p><span class="b">초코우유 봇</span> 별빛여우 치수, 안녕하세요~ (누적 37일 출석)</p>
+        <p><span class="v2">달빛토끼</span> !출첵</p>
+        <p><span class="b">초코우유 봇</span> 달빛토끼 치수, 안녕하세요~ 🎉 첫 출석이에요! 와주셔서 반가워요, 앞으로 자주 봬요!</p>
+      </div>
+      <p>"치수"는 기본 호칭이고 "{이름} 님"처럼 바꿀 수 있습니다. 출석 기록은 봇이 돌아가는 내 컴퓨터에만 저장되며 외부로 나가지 않습니다.</p>
+
+      <h2 id="trigger">출석되는 두 가지 방법</h2>
+      <h3>1. 명령어로: <code>!출첵</code></h3>
+      <p>시청자가 <code>!출첵</code>을 치면 출석됩니다. 명령어 이름은 설정에서 바꿀 수 있고 쉼표로 여러 개를 둘 수도 있습니다. 예: <code>출첵, 출석</code></p>
+      <h3>2. 인사말로: "안녕하세요"</h3>
+      <p>기호 없이 인사말만 쳐도 출석됩니다. 기본은 "안녕하세요"이고, 설정의 <b>인사말로 출석 처리</b>에 방송에서 쓰는 인사를 쉼표로 적어 두면 됩니다. 예: <code>안녕하세요, 하이, ㅎㅇ, 왔어요</code></p>
+      <div class="note">
+        <p>인사말은 <b>그 말만 정확히 쳤을 때</b> 출석으로 봅니다. "안녕하세요"는 되지만 "안녕하세요 오늘 뭐해요"는 출석되지 않습니다. 시청자가 자주 쓰는 짧은 인사를 여러 개 넣어 두는 게 요령입니다.</p>
+      </div>
+      <p>두 방법의 차이는 하나입니다. 오늘 이미 출석한 시청자가 다시 <code>!출첵</code>을 치면 "오늘은 이미 출석했어요"라고 알려주지만, 인사말로 다시 인사하면 조용히 넘어갑니다. 인사할 때마다 봇이 끼어들지 않게 하기 위해서입니다.</p>
+      <p>출석에는 대기시간이 없습니다. 방송 시작 직후 여러 시청자가 한꺼번에 인사해도 전부 받아줍니다.</p>
+
+      <h2 id="day">하루의 기준 시각</h2>
+      <p>출석의 "하루"는 자정이 아니라 <b>새벽 5시</b>에 바뀝니다. 밤 10시에 시작해 새벽 2시에 끝나는 방송에서 자정이 지났다고 출석이 두 번 잡히는 일을 막기 위해서입니다. 설정의 <b>하루가 바뀌는 시각</b>에서 0시부터 23시 사이로 바꿀 수 있습니다.</p>
+      <ul>
+        <li>저녁·밤 방송이 많다면 기본값 5시가 맞습니다.</li>
+        <li>새벽 방송이 5시를 넘기는 일이 잦다면 7시나 8시로 늦추면 됩니다.</li>
+      </ul>
+      <p>"오늘은 이미 출석했어요" 문구에는 다음 출석까지 남은 시간이 붙는데, 이 기준 시각까지의 시간입니다.</p>
+
+      <h2 id="msgs">상황별 인사 문구 4가지</h2>
+      <p>같은 출석이라도 상황에 따라 다른 문구가 나갑니다. 네 가지 모두 설정에서 바꿀 수 있습니다.</p>
+      <div class="tbl">
+      <table>
+        <tr><th>상황</th><th>언제</th><th>기본 문구</th></tr>
+        <tr><td>보통 출석</td><td>어제도, 며칠 전에도 왔던 시청자</td><td>{호칭}, 안녕하세요~ (누적 {횟수}일 출석)</td></tr>
+        <tr><td>처음 출석</td><td>이 방송에 처음 출석하는 시청자</td><td>{호칭}, 안녕하세요~ 🎉 첫 출석이에요! 와주셔서 반가워요, 앞으로 자주 봬요!</td></tr>
+        <tr><td>오랜만</td><td>8일 이상 안 오다 온 시청자. 기준 일수는 설정에서 변경</td><td>{호칭}, 안녕하세요~ 오랜만이에요, 다시 봬서 반가워요! 😊 (누적 {횟수}일 출석)</td></tr>
+        <tr><td>오늘 이미 출석</td><td>오늘 출석한 뒤 <code>!출첵</code>을 또 친 시청자</td><td>{호칭}, 오늘은 이미 출석했어요! 다음 출석은 {남은시간} 후에 가능해요.</td></tr>
+      </table>
+      </div>
+      <p>문구에 쓸 수 있는 치환자는 <code>{이름}</code> 시청자 닉네임, <code>{호칭}</code> 호칭을 붙인 이름, <code>{횟수}</code> 누적 출석 일수, 그리고 "이미 출석" 문구에만 <code>{남은시간}</code>입니다.</p>
+      <div class="note">
+        <p>문구를 방송 말투로 바꾸는 게 출석 기능의 절반입니다. 예를 들어 처음 출석 문구를 "{호칭} 어서오세요! 처음 뵙네요, 편하게 놀다 가세요"로, 오랜만 문구를 "{호칭}!! 어디 갔다 이제 왔어요 😭 (누적 {횟수}일)"로 바꾸면 봇이 방송의 일부처럼 느껴집니다.</p>
+      </div>
+
+      <h2 id="carry">다른 봇에서 출석 기록 이어받기</h2>
+      <p>다른 봇을 쓰다 아인으로 넘어오면 단골 시청자의 출석이 0에서 다시 시작되는 게 제일 아쉽습니다. 그래서 시청자별 누적 횟수를 손으로 넣어 두는 기능이 있습니다.</p>
+      <h3>방법 1. 설정 화면에서</h3>
+      <p>아인 창의 [설정] → <b>출석 횟수 보정</b>에 시청자 닉네임과 횟수를 넣고 [적용]을 누릅니다. 한 명씩 넣습니다.</p>
+      <h3>방법 2. 방송 중 채팅에서</h3>
+      <p>방장이나 매니저가 <code>!출석보정 닉네임 횟수</code>를 칩니다. 여러 명을 빠르게 넣을 때 편합니다.</p>
+      <div class="chat" aria-label="출석 보정 예시">
+        <p><span class="s">초코우유</span> !출석보정 별빛여우 152</p>
+        <p><span class="b">초코우유 봇</span> ✅ 별빛여우님이 다음에 출석하면 153회째부터 이어져요.</p>
+        <p class="dim">(다음 방송에서)</p>
+        <p><span class="v">별빛여우</span> 안녕하세요</p>
+        <p><span class="b">초코우유 봇</span> 별빛여우 치수, 안녕하세요~ (누적 153일 출석)</p>
+      </div>
+      <ul>
+        <li>이미 아인에 출석한 적 있는 시청자는 그 자리에서 횟수가 바뀝니다.</li>
+        <li>아직 출석 전인 시청자는 닉네임으로 기억해 두었다가, 다음에 출석할 때 그 횟수에 이어서 올라갑니다. 이때는 "첫 출석" 인사 대신 누적 횟수가 담긴 보통 인사가 나갑니다.</li>
+        <li>닉네임이 정확해야 합니다. 이어받기 전에 시청자가 닉네임을 바꾸면 못 찾습니다.</li>
+      </ul>
+      <p>다른 봇의 출석 목록을 화면에서 보면서 단골 순으로 넣으면 됩니다. 전부 옮길 필요는 없고, 시청자가 기억하는 사람들만 넣어도 충분합니다.</p>
+
+      <h2 id="settings">설정 항목 정리</h2>
+      <p>아인 창의 [설정] → <b>출석 체크</b>에 있습니다. 저장한 뒤 봇을 껐다 켜면 반영됩니다.</p>
+      <div class="tbl">
+      <table>
+        <tr><th>항목</th><th>기본값</th><th>설명</th></tr>
+        <tr><td>출석 기능 사용</td><td>켜짐</td><td>끄면 명령어와 인사말 모두 출석 처리하지 않습니다.</td></tr>
+        <tr><td>명령어 이름</td><td>출첵</td><td>쉼표로 여러 개. 앞에 기호(!)가 붙습니다.</td></tr>
+        <tr><td>인사말로 출석 처리</td><td>안녕하세요</td><td>기호 없이 이 말만 쳐도 출석. 쉼표로 여러 개.</td></tr>
+        <tr><td>하루가 바뀌는 시각</td><td>5시</td><td>밤샘 방송을 같은 날로 치는 기준.</td></tr>
+        <tr><td>"오랜만" 기준(일)</td><td>8일</td><td>며칠 안 보이면 오랜만 인사를 할지.</td></tr>
+        <tr><td>인사 문구 4가지</td><td>위 표 참고</td><td>보통 / 처음 / 오랜만 / 오늘 이미 출석.</td></tr>
+        <tr><td>출석 횟수 보정</td><td>-</td><td>시청자별 누적 횟수를 직접 맞춤.</td></tr>
+      </table>
+      </div>
+
+      <h2 id="faq">자주 묻는 것</h2>
+      <h3>시청자가 하루에 여러 번 인사하면 출석이 여러 번 되나요?</h3>
+      <p>아니요. 시청자마다 하루 한 번만 올라갑니다. 인사말로 다시 인사하면 조용히 넘어가고, <code>!출첵</code>을 다시 치면 이미 출석했다는 안내가 나갑니다. 이 안내도 같은 사람에게 30초에 한 번만 나가서 도배가 되지 않습니다.</p>
+      <h3>밤샘 방송에서 자정이 지나면 출석이 또 되나요?</h3>
+      <p>기본 설정에서는 새벽 5시에 하루가 바뀌므로 자정을 넘겨도 같은 방송에서 두 번 잡히지 않습니다.</p>
+      <h3>출석 기록은 어디에 저장되나요? 앱을 지우면 사라지나요?</h3>
+      <p>내 컴퓨터에만 저장되고 외부로 나가지 않습니다. 봇을 껐다 켜거나 앱을 업데이트해도 남습니다. 앱을 완전히 삭제하면 기록도 함께 지워지니, 다른 컴퓨터로 옮길 때는 삭제 전에 문의해 주세요.</p>
+      <h3>스트리머 본인이 인사해도 출석되나요?</h3>
+      <p>네, 예외 없이 똑같이 처리됩니다. 원치 않으면 방송 계정으로는 인사말을 다르게 쓰면 됩니다.</p>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/guide/commands/">명령어 목록과 설정 방법</a><span>기본 명령어, 내가 만든 명령어, 치환자, 반복 공지</span></li>
+          <li><a href="/guide/install/">치지직 채팅봇 설치 방법</a><span>Microsoft Store 설치부터 봇 시작까지 5분</span></li>
+          <li><a href="/#faq">자주 묻는 질문</a><span>준비물, 다른 봇에서 넘어오기, 결제 방법</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a></p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>
