@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드 (Microsoft Store)</title>
+<meta name="description" content="치지직 채팅봇 아인 설치 방법을 순서대로 안내합니다. Microsoft Store 설치, 치지직 개발자 센터 API 키 발급, 방송 계정 로그인, 봇 이름 정하기, 봇 시작까지 5분. 준비물과 자주 막히는 지점도 정리했습니다.">
+<link rel="canonical" href="https://einbot.kr/guide/install/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드">
+<meta property="og:description" content="Microsoft Store 설치 → API 키 발급 → 로그인 → 봇 이름 → 봇 시작. 치지직 채팅봇 아인을 5분 안에 붙이는 순서와 막히는 지점 정리.">
+<meta property="og:url" content="https://einbot.kr/guide/install/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1220">
+<link rel="stylesheet" href="/guide/guide.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/install/" },
+        { "@type": "ListItem", "position": 3, "name": "치지직 채팅봇 설치 방법" }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://einbot.kr/guide/install/#article",
+      "headline": "치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드",
+      "description": "Microsoft Store 설치부터 API 키 발급, 로그인, 봇 이름 설정, 봇 시작까지 치지직 채팅봇 아인을 붙이는 순서.",
+      "inLanguage": "ko-KR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "mainEntityOfPage": "https://einbot.kr/guide/install/",
+      "image": "https://einbot.kr/og.png",
+      "author": { "@id": "https://einbot.kr/#org" },
+      "publisher": { "@id": "https://einbot.kr/#org" },
+      "about": { "@id": "https://einbot.kr/#app" }
+    },
+    {
+      "@type": "HowTo",
+      "name": "치지직 채팅봇 아인 설치 방법",
+      "totalTime": "PT5M",
+      "tool": [
+        { "@type": "HowToTool", "name": "Windows 10 또는 11 PC" },
+        { "@type": "HowToTool", "name": "치지직에 로그인한 적 있는 네이버 계정" }
+      ],
+      "step": [
+        { "@type": "HowToStep", "name": "Microsoft Store에서 설치", "text": "스토어에서 '아인'을 검색하거나 설치 링크를 열어 [설치]를 누릅니다. 파일 내려받기나 압축 해제, 보안 경고가 없습니다.", "url": "https://einbot.kr/guide/install/#step1" },
+        { "@type": "HowToStep", "name": "아인 실행", "text": "시작 메뉴 또는 바탕화면의 아인을 엽니다. 첫 실행 때 안내 화면이 순서대로 나옵니다.", "url": "https://einbot.kr/guide/install/#step2" },
+        { "@type": "HowToStep", "name": "치지직 개발자 센터에서 API 키 발급", "text": "developers.chzzk.naver.com에서 애플리케이션을 등록하고 리디렉션 URL과 권한 5개를 설정한 뒤 Client ID와 Secret을 아인에 붙여넣습니다.", "url": "https://einbot.kr/guide/install/#step3" },
+        { "@type": "HowToStep", "name": "방송 계정으로 로그인", "text": "[로그인 창 열기]를 눌러 방송하는 본인 계정으로 로그인하고 [동의]를 누릅니다.", "url": "https://einbot.kr/guide/install/#step4" },
+        { "@type": "HowToStep", "name": "봇 이름 정하기 (선택)", "text": "봇 전용 네이버 부계정을 연결하면 직접 지은 이름으로 응답합니다.", "url": "https://einbot.kr/guide/install/#step5" },
+        { "@type": "HowToStep", "name": "봇 시작", "text": "앱 창의 [봇 시작]을 누릅니다. 방송 전에 켜 두면 됩니다.", "url": "https://einbot.kr/guide/install/#step6" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/install/" aria-current="page">설치 방법</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › 가이드 › 치지직 채팅봇 설치 방법</p>
+      <p class="eyebrow">설치 가이드</p>
+      <h1>치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드</h1>
+      <p class="lead">치지직 채팅봇 아인을 방송에 붙이는 순서입니다. 파일을 내려받거나 압축을 풀 일은 없고,
+        손이 가는 건 치지직 개발자 센터에서 내 봇용 열쇠를 한 번 발급받는 것뿐입니다.</p>
+      <p class="meta">기준 버전 1.6 · 2026년 9월 6일 갱신 · Windows 10·11</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#prep">준비물</a></li>
+          <li><a href="#step1">Microsoft Store에서 설치</a></li>
+          <li><a href="#step2">아인 실행</a></li>
+          <li><a href="#step3">치지직 개발자 센터에서 API 키 발급</a></li>
+          <li><a href="#step4">방송 계정으로 로그인</a></li>
+          <li><a href="#step5">봇 이름 정하기 (선택)</a></li>
+          <li><a href="#step6">봇 시작</a></li>
+          <li><a href="#old">예전 방식으로 설치했던 분</a></li>
+          <li><a href="#trouble">막힐 때</a></li>
+        </ol>
+      </div>
+
+      <h2 id="prep">준비물</h2>
+      <ul>
+        <li><b>Windows 10 또는 11 PC.</b> 봇은 이 컴퓨터에서 돌아가므로 방송 중에는 켜 두어야 합니다.</li>
+        <li><b>치지직에 로그인한 적 있는 네이버 계정.</b> 방송하는 그 계정이면 됩니다. 계정이 없다면 네이버 회원가입 뒤 치지직에 한 번 로그인해 두세요.</li>
+        <li><b>(선택) 봇 이름용 네이버 부계정.</b> "○○봇"처럼 직접 지은 이름으로 응답하게 하고 싶을 때만 필요합니다. 나중에 추가해도 됩니다.</li>
+      </ul>
+      <p>회원가입이나 카드 등록은 없습니다. 설치하면 7일 동안 모든 기능을 무료로 쓸 수 있습니다.</p>
+
+      <section class="step" id="step1">
+        <h2><span class="n">1</span>Microsoft Store에서 설치</h2>
+        <p>아인은 Microsoft Store에 정식 등록되어 있습니다. 아래 버튼을 누르거나, Windows의 Microsoft Store 앱에서 <b>아인</b>을 검색해 [설치]를 누르세요.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://apps.microsoft.com/detail/9nw8q03rgqlv?mode=direct">Microsoft Store에서 설치하기</a>
+          <small>설치 파일 내려받기, 압축 해제, "확인되지 않은 앱" 경고가 전부 없습니다. 새 버전은 스토어가 알아서 업데이트합니다.</small>
+        </div>
+        <div class="note">
+          <p>회사 PC처럼 Microsoft Store가 막힌 환경이라면 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 문의해 주세요.</p>
+        </div>
+      </section>
+
+      <section class="step" id="step2">
+        <h2><span class="n">2</span>아인 실행</h2>
+        <p>설치가 끝나면 시작 메뉴에서 <b>아인</b>을 엽니다. 첫 실행 때 바탕화면에 바로가기가 자동으로 생기니 다음부터는 거기서 열면 됩니다.</p>
+        <p>처음 켜면 초기 설정 안내 화면이 순서대로 나옵니다. 아래 3·4·5단계가 그 화면의 순서와 같습니다.</p>
+      </section>
+
+      <section class="step" id="step3">
+        <h2><span class="n">3</span>치지직 개발자 센터에서 API 키 발급</h2>
+        <p>봇이 채팅을 읽고 쓰려면 치지직이 발급하는 열쇠가 필요합니다. 무료이고, 한 번만 하면 됩니다. 약 3분.</p>
+        <ol>
+          <li><a href="https://developers.chzzk.naver.com" target="_blank" rel="noopener">developers.chzzk.naver.com</a> 에 접속해 네이버로 로그인합니다. <b>방송하는 계정</b>으로 로그인하세요.</li>
+          <li>[애플리케이션 등록]을 누릅니다.</li>
+          <li><b>애플리케이션 이름</b>은 자유롭게 짓되, <code>치지직</code> <code>네이버</code> <code>chzzk</code> <code>naver</code> 는 넣을 수 없습니다. 넣으면 앱이 정지될 수 있습니다. 예: <code>내 방송 봇</code></li>
+          <li><b>로그인 리디렉션 URL</b> 칸에 아래를 정확히 붙여넣습니다.<br><code>http://localhost:3000/callback</code></li>
+          <li><b>API Scopes</b>에서 다음 5개를 모두 체크합니다.
+            <ul>
+              <li>유저 조회</li>
+              <li>채팅 메시지 조회</li>
+              <li>채팅 메시지 쓰기</li>
+              <li>후원 조회 — 치즈 후원 감사 인사에 필요</li>
+              <li>구독 조회 — 구독·구독권 선물 감사 인사에 필요</li>
+            </ul>
+          </li>
+          <li>등록을 마치면 <b>Client ID</b>와 <b>Client Secret</b>이 나옵니다. 두 값을 아인 화면의 칸에 붙여넣습니다.</li>
+        </ol>
+        <div class="warn">
+          <p><b>권한 5개는 처음 등록할 때 한 번에 체크하세요.</b> 등록 뒤에 권한을 바꾸면 치지직의 검수를 거쳐야 반영됩니다. 빠진 권한이 있으면 아인이 무엇이 빠졌는지 화면에 알려주니 그때 추가하면 됩니다.</p>
+        </div>
+      </section>
+
+      <section class="step" id="step4">
+        <h2><span class="n">4</span>방송 계정으로 로그인</h2>
+        <p>아인 화면의 [로그인 창 열기]를 누르면 깨끗한 로그인 창이 뜹니다. <b>방송하는 본인 계정</b>으로 로그인하고 [동의]를 누르면 끝입니다.</p>
+        <p>로그인이 끝나면 화면에 연동된 채널 이름이 표시됩니다. 다른 계정으로 로그인했으면 아인이 알려주니, 로그아웃하고 방송 계정으로 다시 하면 됩니다.</p>
+      </section>
+
+      <section class="step" id="step5">
+        <h2><span class="n">5</span>봇 이름 정하기 (선택)</h2>
+        <p>이 단계를 건너뛰면 봇이 방송 계정 이름으로 응답합니다. "○○봇" 같은 전용 이름을 쓰려면 네이버 부계정을 하나 만들어 연결합니다. 화면에 그림 안내가 함께 나옵니다.</p>
+        <ul>
+          <li>부계정의 치지직 닉네임이 곧 봇 이름입니다. 치지직에서 닉네임을 먼저 정해 두세요.</li>
+          <li>연결은 부계정의 로그인 정보를 아인에 한 번 넣는 방식입니다. 봇이 돌아가는 동안 자동으로 연장되어 매번 다시 넣지 않아도 됩니다.</li>
+        </ul>
+        <div class="warn">
+          <p><b>부계정은 봇 전용으로 두세요.</b> 폰 등 다른 기기에서 같은 계정으로 로그인하면 봇 연결이 끊겨 다시 넣어야 할 수 있습니다.</p>
+          <p>연결 직후 네이버에서 "새로운 기기 로그인" 알림이 올 수 있는데, 그게 봇입니다. [로그아웃]이나 [내가 아님]을 누르지 마세요.</p>
+        </div>
+      </section>
+
+      <section class="step" id="step6">
+        <h2><span class="n">6</span>봇 시작</h2>
+        <p>앱 창의 <kbd>봇 시작</kbd>을 누르면 켜집니다. 방송 전에 켜 두면 되고, 방송이 끝나면 꺼도 출석 기록과 설정은 전부 남습니다.</p>
+        <img src="/img/app-running.png" alt="아인 앱 창 — 봇이 실행 중인 화면" width="640" loading="lazy">
+        <p>치지직 채팅 서버는 방송 중에만 열립니다. 방송 전에 "봇 계정 연결 실패"라고 떠도 정상이고, 방송을 시작하면 자동으로 붙습니다.</p>
+        <p>이제 채팅창에서 <code>!출첵</code> <code>!시간</code> <code>!업타임</code> 같은 기본 명령어가 바로 됩니다. 문구와 명령어를 바꾸는 방법은 <a href="/#feat">기능 소개</a>를 참고하세요.</p>
+      </section>
+
+      <h2 id="old">예전 방식(압축 파일)으로 설치했던 분</h2>
+      <p>따로 할 일이 없습니다. 위 1단계대로 <b>스토어에서 설치하면</b> 설정, 시청자 출석 기록, 이용권이 그대로 넘어오고, 옛 버전은 지울지 물어본 뒤 정리해 줍니다.</p>
+      <div class="warn">
+        <p><b>옛 버전을 먼저 지우지 마세요.</b> 지우면 그 안의 설정과 기록이 함께 사라져서 처음부터 다시 설정해야 합니다. 스토어 설치를 먼저 하고, 아인이 물어볼 때 [예]로 정리하는 순서가 맞습니다.</p>
+      </div>
+
+      <h2 id="trouble">막힐 때</h2>
+      <h3>"권한이 빠졌습니다"라고 나와요</h3>
+      <p>개발자 센터의 API Scopes에서 빠진 항목을 체크하세요. 아인이 정확히 어떤 권한이 빠졌는지 이름을 보여줍니다. 등록 뒤 변경은 치지직 검수 후 반영됩니다.</p>
+      <h3>구독 인사만 안 나가요</h3>
+      <p>"구독 조회" 권한이 빠진 경우입니다. 개발자 센터에서 추가하고 봇을 껐다 켜세요.</p>
+      <h3>"봇 계정 연결 끊김" 알림이 떠요</h3>
+      <p>봇 이름용 부계정의 로그인이 풀린 것입니다. 부계정 비밀번호를 바꿨거나, 다른 기기에서 같은 계정을 썼거나, 봇을 몇 주 이상 안 켰을 때 생깁니다. 설정 화면의 안내대로 로그인 정보를 다시 넣으면 됩니다.</p>
+      <h3>Microsoft Store를 쓸 수 없어요</h3>
+      <p><a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 문의해 주세요.</p>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/#feat">아인이 해주는 일</a><span>출석 체크, 후원·구독 인사, 명령어, 반복 공지</span></li>
+          <li><a href="/#price">요금</a><span>7일 무료 체험 후 1개월 2,900원부터</span></li>
+          <li><a href="/#faq">자주 묻는 질문</a><span>준비물, 다른 봇에서 넘어오기, 결제 방법</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a></p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>
