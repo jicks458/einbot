@@ -56,7 +56,7 @@
       "step": [
         { "@type": "HowToStep", "name": "Microsoft Store에서 설치", "text": "스토어에서 '아인'을 검색하거나 설치 링크를 열어 [설치]를 누릅니다. 파일 내려받기나 압축 해제, 보안 경고가 없습니다.", "url": "https://einbot.kr/guide/install/#step1" },
         { "@type": "HowToStep", "name": "아인 실행", "text": "시작 메뉴 또는 바탕화면의 아인을 엽니다. 첫 실행 때 안내 화면이 순서대로 나옵니다.", "url": "https://einbot.kr/guide/install/#step2" },
-        { "@type": "HowToStep", "name": "치지직 개발자 센터에서 API 키 발급", "text": "developers.chzzk.naver.com에서 애플리케이션을 등록하고 리디렉션 URL과 권한 5개를 설정한 뒤 Client ID와 Secret을 아인에 붙여넣습니다.", "url": "https://einbot.kr/guide/install/#step3" },
+        { "@type": "HowToStep", "name": "치지직 개발자 센터에서 API 키 발급", "text": "developers.chzzk.naver.com에서 애플리케이션을 등록하고 리디렉션 URL과 권한 4개를 설정한 뒤 Client ID와 Secret을 아인에 붙여넣습니다.", "url": "https://einbot.kr/guide/install/#step3" },
         { "@type": "HowToStep", "name": "방송 계정으로 로그인", "text": "[로그인 창 열기]를 눌러 방송하는 본인 계정으로 로그인하고 [동의]를 누릅니다.", "url": "https://einbot.kr/guide/install/#step4" },
         { "@type": "HowToStep", "name": "봇 이름 정하기 (선택)", "text": "봇 전용 네이버 부계정을 연결하면 직접 지은 이름으로 응답합니다.", "url": "https://einbot.kr/guide/install/#step5" },
         { "@type": "HowToStep", "name": "봇 시작", "text": "앱 창의 [봇 시작]을 누릅니다. 방송 전에 켜 두면 됩니다.", "url": "https://einbot.kr/guide/install/#step6" }
@@ -157,22 +157,22 @@
           <li><b>로그인 리디렉션 URL</b> 칸에 아래를 정확히 붙여넣습니다.<br><code>http://localhost:3000/callback</code>
             <img src="/img/devcenter-register.png" alt="애플리케이션 등록 화면 — 애플리케이션 ID, 애플리케이션 이름, 로그인 리디렉션 URL, API Scopes 칸" width="760" loading="lazy">
           </li>
-          <li><b>API Scopes</b>에서 다음 5개를 모두 체크합니다.
+          <li><b>API Scopes</b>에서 다음 4개를 모두 체크합니다.
             <ul>
               <li>유저 조회</li>
               <li>채팅 메시지 조회</li>
               <li>채팅 메시지 쓰기</li>
               <li>후원 조회 — 치즈 후원 감사 인사에 필요</li>
-              <li>구독 조회 — 구독·구독권 선물 감사 인사에 필요</li>
             </ul>
-            <img src="/img/devcenter-scopes.png" alt="API scope 선택 창 — 목록에서 유저 조회, 채팅 메시지 조회, 채팅 메시지 쓰기, 후원 조회, 구독 조회 다섯 개를 체크하고 저장" width="420" loading="lazy">
+            <p class="muted" style="margin:6px 0 0;font-size:14px;color:var(--muted)">"구독 조회"는 1.7.2부터 필요 없습니다. 구독·구독권 선물 인사는 방송 채팅의 구독 메시지와 선물 안내를 보고 동작합니다. 이미 체크했다면 그대로 두어도 됩니다.</p>
+            <img src="/img/devcenter-scopes.png" alt="API scope 선택 창 — 목록에서 유저 조회, 채팅 메시지 조회, 채팅 메시지 쓰기, 후원 조회를 체크하고 저장 (예시 화면의 구독 조회는 1.7.2부터 필요 없음)" width="420" loading="lazy">
           </li>
           <li>등록을 마치면 <b>Client ID</b>와 <b>Client Secret</b>이 나옵니다. 두 값을 아인 화면의 칸에 붙여넣습니다.
-            <img src="/img/devcenter-appinfo.png" alt="등록 뒤 애플리케이션 정보 화면 — 클라이언트 ID와 Secret(가림), 로그인 리디렉션 URL, API Scopes 다섯 개가 사용중으로 표시됨" width="760" loading="lazy">
+            <img src="/img/devcenter-appinfo.png" alt="등록 뒤 애플리케이션 정보 화면 — 클라이언트 ID와 Secret(가림), 로그인 리디렉션 URL, API Scopes가 사용중으로 표시됨" width="760" loading="lazy">
           </li>
         </ol>
         <div class="warn">
-          <p><b>권한 5개는 처음 등록할 때 한 번에 체크하세요.</b> 등록 뒤에 권한을 바꾸면 치지직의 검수를 거쳐야 반영됩니다. 빠진 권한이 있으면 아인이 무엇이 빠졌는지 화면에 알려주니 그때 추가하면 됩니다.</p>
+          <p><b>권한 4개는 처음 등록할 때 한 번에 체크하세요.</b> 등록 뒤에 권한을 바꾸면 치지직의 검수를 거쳐야 반영됩니다. 빠진 권한이 있으면 아인이 무엇이 빠졌는지 화면에 알려주니 그때 추가하면 됩니다.</p>
         </div>
       </section>
 
@@ -217,7 +217,7 @@
       <h3>"권한이 빠졌습니다"라고 나와요</h3>
       <p>개발자 센터의 API Scopes에서 빠진 항목을 체크하세요. 아인이 정확히 어떤 권한이 빠졌는지 이름을 보여줍니다. 등록 뒤 변경은 치지직 검수 후 반영됩니다.</p>
       <h3>구독 인사만 안 나가요</h3>
-      <p>"구독 조회" 권한이 빠진 경우입니다. 개발자 센터에서 추가하고 봇을 껐다 켜세요. 후원·구독 인사 설정은 <a href="/guide/donation/">따로 정리한 가이드</a>가 있습니다.</p>
+      <p>구독 인사는 시청자가 구독·갱신 뒤 "기념 메시지를 남기시겠습니까?"에 예를 눌러 채팅에 올린 구독 메시지에만 나갑니다. 조용히 구독·갱신한 시청자나 방송 밖 갱신에는 메시지가 없으니 인사도 없는 것이 정상입니다. 권한과는 관계가 없습니다. 1.7.1 이하 버전은 "구독 조회" 권한이 필요했으니 Microsoft Store에서 업데이트하세요. 자세한 설정은 <a href="/guide/donation/">후원·구독 인사 가이드</a>에 있습니다.</p>
       <h3>"봇 계정 연결 끊김" 알림이 떠요</h3>
       <p>봇 이름용 부계정의 로그인이 풀린 것입니다. 부계정 비밀번호를 바꿨거나, 다른 기기에서 같은 계정을 썼거나, 봇을 몇 주 이상 안 켰을 때 생깁니다. 설정 화면의 안내대로 로그인 정보를 다시 넣으면 됩니다.</p>
       <h3>Microsoft Store를 쓸 수 없어요</h3>
