@@ -26,7 +26,9 @@
 <meta name="twitter:description" content="설치 5분, 회원가입 없음. 내가 지은 봇 이름으로 응답하는 치지직 채팅봇. 7일 무료 체험.">
 <meta name="twitter:image" content="https://einbot.kr/og.png">
 <link rel="canonical" href="https://einbot.kr/">
-<meta name="theme-color" content="#0B1220">
+<meta name="theme-color" content="#F7F9FB">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
 <!-- 검색엔진용 구조화 데이터: 이 사이트가 Windows 앱 '아인'의 공식 사이트이고, 설치처는 Microsoft Store임을 기계가 읽을 수 있게 적는다 -->
 <script type="application/ld+json">
@@ -97,7 +99,7 @@
         {
           "@type": "Question",
           "name": "쓰려면 뭐가 필요한가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Windows PC와 치지직 계정이면 됩니다. 처음 한 번은 치지직 개발자 사이트에서 내 봇용 열쇠(API 키)를 발급받아야 하는데, 무료이고 설치 안내가 화면에 그대로 나와서 3분이면 끝나요. 봇 전용 이름을 쓰고 싶다면 네이버 부계정이 하나 더 필요합니다." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Windows PC와 치지직 계정이면 됩니다. 처음 한 번은 치지직 개발자 사이트에서 내 봇용 열쇠(API 키)를 발급받아야 하는데, 무료이고 설치 안내가 화면에 그대로 나와서 3분이면 끝나요. 봇 전용 이름을 쓰고 싶다면 네이버 부계정이 하나 더 필요합니다. Microsoft Store를 쓸 수 없는 환경이라면 einbot.help@gmail.com 으로 문의해 주세요." }
         },
         {
           "@type": "Question",
@@ -125,152 +127,249 @@
 }
 </script>
 <style>
+  /* 밝은 바탕 + 넉넉한 여백. 초록은 버튼·소제목·링크에만, 강조는 굵기로. 어두운 것은 채팅 데모 창 하나만. */
   :root {
-    --green: #00FFA3;
-    --green-deep: #04302A;
-    --bg: #0B1220;
-    --card: #131C2C;
-    --card-line: #223049;
-    --text: #E7ECF3;
-    --muted: #8B94A5;
-    --bubble: #FFFFFF;
+    --green: #00FFA3;        /* 브랜드 초록: 버튼·배지 채움 전용 (밝아서 글자색으로는 안 씀) */
+    --green-ink: #077A55;    /* 글자·링크용 초록 (흰 바탕 대비 5.4:1) */
+    --green-deep: #04302A;   /* 초록 버튼 위 글자 */
+    --bg: #F7F9FB;
+    --surface: #FFFFFF;
+    --line: #E5E9F0;
+    --text: #111827;
+    --text-2: #374151;
+    --muted: #6B7280;
+    --navy: #0B1220;
+    --navy-line: #223049;
+    --card: var(--surface); --card-line: var(--line);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--bg); color: var(--text);
-    font-family: "Pretendard", "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
-    line-height: 1.7; font-size: 16px;
+    font-family: "Pretendard Variable", Pretendard, "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
+    line-height: 1.75; font-size: 16px; -webkit-font-smoothing: antialiased;
   }
-  a { color: var(--green); text-decoration: none; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--green-ink); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  b, strong { font-weight: 700; color: var(--text); }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
   /* ── 헤더 ── */
   header { padding: 22px 0; }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
-  .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 19px; color: var(--text); white-space: nowrap; }
-  .brand small { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 2px; }
-  nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
-  nav a { color: var(--muted); font-size: 14px; white-space: nowrap; }
-  nav a:hover { color: var(--green); }
+  header .wrap { display: flex; align-items: center; justify-content: flex-end; gap: 10px 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 19px; color: var(--text); white-space: nowrap; letter-spacing: -.2px; }
+  .brand small { color: var(--muted); font-weight: 500; font-size: 13px; margin-left: 2px; }
+  nav { display: flex; flex-wrap: wrap; gap: 4px 26px; }
+  nav a { color: var(--muted); font-size: 14.5px; font-weight: 500; white-space: nowrap; }
+  nav a:hover { color: var(--text); text-decoration: none; }
 
   /* ── 히어로 ── */
-  .hero { padding: 52px 0 72px; }
-  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
-  h1 { font-size: 44px; line-height: 1.25; margin: 0 0 18px; letter-spacing: -0.5px; text-wrap: balance; }
-  h1 .g { color: var(--green); }
-  .lead { color: var(--muted); font-size: 17px; margin: 0 0 30px; max-width: 30em; }
+  .hero { padding: 100px 0 132px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+  h1 { font-size: 52px; line-height: 1.14; margin: 0 0 30px; letter-spacing: -1.2px; font-weight: 800; text-wrap: balance; }
+  h1 .g { color: var(--green-ink); }
+  .lead { color: var(--text-2); font-size: 18px; line-height: 1.75; margin: 0 0 34px; max-width: 30em; }
   .cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .btn {
-    display: inline-block; border-radius: 12px; padding: 14px 26px; font-size: 16px;
-    font-weight: 800; cursor: pointer; border: 0; font-family: inherit;
+    display: inline-block; border-radius: 12px; padding: 15px 26px; font-size: 16px;
+    font-weight: 800; cursor: pointer; border: 0; font-family: inherit; transition: transform .15s, filter .15s;
   }
-  .btn.primary { background: var(--green); color: var(--green-deep); }
-  .btn.primary:hover { filter: brightness(1.08); }
-  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--card-line); }
-  .btn.ghost:hover { border-color: var(--green); color: var(--green); }
-  .cta small { flex-basis: 100%; color: var(--muted); font-size: 13px; }
+  .btn:hover { text-decoration: none; }
+  .btn.primary { background: var(--green); color: var(--green-deep); box-shadow: 0 8px 24px rgba(0,255,163,.28); }
+  .btn.primary:hover { filter: brightness(1.04); transform: translateY(-1px); }
+  .btn.ghost { background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+  .btn.ghost:hover { border-color: #C9D1DC; }
+  .cta small { flex-basis: 100%; color: var(--muted); font-size: 13.5px; margin-top: 6px; }
+  .cta small a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
 
-  /* 채팅 데모 */
+  /* 히어로 입체 아이콘: 왼쪽이 들어간 사다리꼴 + 두께 + 그림자 */
+  .hero-art { perspective: 1000px; display: flex; align-items: center; justify-content: center; min-height: 380px; position: relative; }
+  .hero-art::after { content: ""; position: absolute; left: 50%; bottom: 8%; width: 240px; height: 44px; transform: translateX(-46%); border-radius: 50%; background: radial-gradient(closest-side, rgba(4,48,42,.28), transparent); filter: blur(6px); }
+  .icon3d { position: relative; width: 300px; height: 300px; transform: rotateY(-24deg) rotateX(8deg); transform-style: preserve-3d; }
+  .icon3d svg { position: relative; width: 100%; height: 100%; display: block; filter: drop-shadow(0 34px 44px rgba(4,48,42,.32)); }
+  .icon3d .side { position: absolute; inset: 4.5%; border-radius: 26%; }
+  .icon3d .s1 { background: #00C98C; transform: translate3d(7px, 2px, -9px); }
+  .icon3d .s2 { background: #00AE7B; transform: translate3d(14px, 4px, -18px); }
+  .icon3d .s3 { background: #049268; transform: translate3d(21px, 6px, -27px); }
+
+  /* 채팅 데모: 치지직 채팅창 비율(세로형)·색을 따르고, 입체 아이콘과 같은 각도로 */
+  .demo-row { display: grid; grid-template-columns: 430px 1fr; gap: 56px; align-items: center; margin: 4px 0 60px; }
+  .tilt { perspective: 1200px; padding: 10px 16px 24px 0; }
   .chatwin {
-    background: var(--card); border: 1px solid var(--card-line); border-radius: 16px;
-    overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    width: 347px; height: 540px; display: flex; flex-direction: column; overflow: hidden;
+    background: #141517; color: #E5E5E7; border: 1px solid #2A2B2F; border-radius: 16px;
+    transform: rotateY(14deg) rotateX(2deg);
+    box-shadow: 28px 40px 70px -20px rgba(17,24,39,.38), 0 8px 24px rgba(17,24,39,.14);
   }
-  .chatwin .bar {
-    display: flex; align-items: center; gap: 8px; padding: 11px 14px;
-    border-bottom: 1px solid var(--card-line); color: var(--muted); font-size: 12.5px;
-  }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: #2A3A57; }
-  .dot.live { background: var(--green); }
-  .chat { padding: 18px 16px 22px; display: flex; flex-direction: column; gap: 11px; min-height: 300px; }
-  /* 실제 치지직처럼 닉네임과 메시지가 한 줄로 이어지고, 길면 그 아래로 줄바꿈된다 */
-  .msg { font-size: 14.5px; line-height: 1.55; opacity: 0; transform: translateY(8px); }
+  .chatwin .bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid #2A2B2F; font-weight: 700; font-size: 15px; }
+  .bar-icons i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: #3A3B40; margin-left: 10px; }
+  .chat { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 14px 15px 12px; }
+  .msg { font-size: 14px; line-height: 1.65; opacity: 0; transform: translateY(8px); }
   .msg.show { opacity: 1; transform: none; transition: opacity .35s, transform .35s; }
-  .msg .who { font-weight: 700; white-space: nowrap; margin-right: 7px; }
-  .msg .who .crown, .msg .who .badge { display: inline-block; vertical-align: -2px; margin-right: 4px; }
+  .msg .who { font-weight: 700; white-space: nowrap; margin-right: 6px; }
+  .msg .who .crown, .msg .who .badge { display: inline-block; vertical-align: -2px; margin-right: 4px; width: 14px; height: 14px; }
   .msg .who.viewer { color: #9CB8D9; }
   .msg .who.viewer2 { color: #C7A6FF; }
-  .msg .who.strm { color: #F5C243; }   /* 치지직 스트리머: 주황 왕관 배지 + 노란 닉네임·채팅 */
-  .msg .who.ein { color: #7DA3FF; }    /* 봇(매니저): 파란 배지 + 파란 닉네임·채팅 */
-  .msg .who .crown, .msg .who .badge { width: 14px; height: 14px; }
-  .msg .body { color: var(--text); word-break: keep-all; }
-  .msg.strm .body { color: #F5C243; }  /* 스트리머는 채팅 본문도 노란색 */
-  .msg.ein .body { color: #7DA3FF; }   /* 매니저는 채팅 본문도 파란색 */
-  .chathint { color: var(--muted); font-size: 13px; text-align: center; margin: 12px 4px 0; }
-  .chathint b { color: var(--green); }
+  .msg .who.strm { color: #F5C243; }
+  .msg .who.ein { color: #749FFE; }
+  .msg .body { color: #E5E5E7; word-break: keep-all; }
+  .msg.strm .body { color: #F5C243; }
+  .msg.ein .body { color: #749FFE; }
+  /* 치즈 후원 카드 (실제 치지직 채팅창의 후원 표시) */
+  .msg.donation { margin: 6px 0 4px; }
+  .msg.donation img { width: 317px; max-width: 100%; height: auto; display: block; border-radius: 6px; }
+  .chatwin .input { margin: 0 12px 12px; background: #26272B; border-radius: 10px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; color: #8B8D93; font-size: 13px; }
+  .chatwin .input b { color: #9A9CA3; background: #3A3B40; border-radius: 8px; padding: 3px 10px; font-size: 12px; font-weight: 700; }
+  .demo-text h3 { font-size: 22px; letter-spacing: -.4px; margin: 0 0 14px; }
+  .demo-text ul { list-style: none; padding: 0; margin: 0; }
+  .demo-text li { margin: 0 0 12px; color: var(--text-2); font-size: 15.5px; line-height: 1.7; padding-left: 18px; position: relative; }
+  .demo-text li::before { content: ""; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .demo-text li b { color: var(--text); }
   @media (prefers-reduced-motion: reduce) {
     .msg { opacity: 1; transform: none; transition: none; }
   }
 
-  /* ── 섹션 공통 ── */
-  section { padding: 64px 0; border-top: 1px solid #16202F; }
-  .eyebrow { color: var(--green); font-size: 13px; font-weight: 800; letter-spacing: .12em; margin: 0 0 10px; }
-  h2 { font-size: 28px; margin: 0 0 12px; letter-spacing: -0.3px; text-wrap: balance; }
-  .sub { color: var(--muted); margin: 0 0 36px; max-width: 38em; }
+  /* ── 섹션 공통: 테두리 대신 여백과 흰 띠로 구분 ── */
+  section { padding: 104px 0; }
+  section.band { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .eyebrow { color: var(--green-ink); font-size: 13px; font-weight: 700; letter-spacing: .14em; margin: 0 0 12px; }
+  h2 { font-size: 34px; line-height: 1.25; margin: 0 0 14px; letter-spacing: -.6px; font-weight: 800; text-wrap: balance; }
+  .sub { color: var(--muted); font-size: 17px; margin: 0 0 44px; max-width: 34em; }
 
   /* 기능 */
-  .feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .feat { background: var(--card); border: 1px solid var(--card-line); border-radius: 14px; padding: 22px 20px; }
-  .feat h3 { margin: 0 0 8px; font-size: 16.5px; }
-  .feat p { margin: 0; color: var(--muted); font-size: 14px; }
-  .feat .k { color: var(--green); font-weight: 800; }
+  .feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feat { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; }
+  .feat h3 { margin: 0 0 10px; font-size: 17px; letter-spacing: -.2px; }
+  .feat p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+  .feat .k { color: var(--text); font-weight: 700; }
 
-  /* 스크린샷 자리 */
-  /* 두 이미지의 원본 비율(436:499, 900:760)에 맞춰 폭을 나눠 높이를 맞춘다 */
-  .shots { display: grid; grid-template-columns: 0.874fr 1.184fr; gap: 14px; align-items: start; }
-  .shot {
-    border: 1px solid var(--card-line); border-radius: 14px;
-    background: var(--card); padding: 8px;
+  /* 화면: 앱 창을 입체로 세우고 버튼에서 설명선을 뽑는다 */
+  .shotrow { position: relative; min-height: 470px; }
+  .shot3d { position: absolute; left: 110px; top: 0; padding: 0; perspective: 1200px; }
+  .appwin {
+    width: 400px; background: #F6F7F9; color: #111827; border-radius: 10px; overflow: hidden; border: 1px solid #2A2B2F;
+    font-family: "Malgun Gothic", "맑은 고딕", "Pretendard Variable", sans-serif; line-height: 1.3;
+    transform: rotateY(14deg) rotateX(2deg); box-shadow: 28px 40px 70px -20px rgba(17,24,39,.38), 0 8px 24px rgba(17,24,39,.14);
   }
-  .shot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+  .appwin .ttl { height: 24px; background: #F9F1ED; display: flex; align-items: center; gap: 6px; padding: 0 10px; font-size: 12px; color: #222; }
+  .appwin .ttl .wc { margin-left: auto; display: flex; gap: 22px; font-size: 12px; color: #333; font-style: normal; }
+  .appwin .hdr { height: 57px; background: #111827; display: flex; align-items: center; gap: 10px; padding: 0 20px; color: #fff; }
+  .appwin .hdrt b { font-size: 15px; font-weight: 800; color: #fff; }
+  .appwin .hdrt small { color: #8B94A5; font-size: 11px; margin-left: 8px; }
+  .appwin .hdrt .st { display: block; color: #8B94A5; font-size: 10.5px; margin-top: 1px; }
+  .appwin .bd { padding: 16px 20px 18px; }
+  .appwin .run { height: 79px; background: #00E592; border-radius: 3px; display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 19px; font-weight: 800; color: #111827; }
+  .appwin .run i { width: 13px; height: 13px; border-radius: 50%; background: #111827; }
+  .appwin .cap { text-align: center; color: #6B7280; font-size: 11.5px; margin: 8px 0 10px; }
+  .appwin .setbtn { height: 42px; background: #fff; border: 1px solid #E3E6EA; border-radius: 3px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; }
+  .appwin .gear { font-size: 15px; }
+  .appwin .lbl { color: #6B7280; font-size: 11px; margin: 14px 0 6px; }
+  .appwin .log { margin: 0; background: #0F172A; color: #CBD5E1; font: 10.5px/1.45 Consolas, "D2Coding", monospace; padding: 8px 10px; border-radius: 3px; height: 156px; overflow: hidden; white-space: pre; }
+  .co { position: absolute; left: 400px; display: flex; align-items: flex-start; }
+  .co-on { top: 118px; }
+  .co-set { top: 212px; }
+  .co .line { flex: none; width: 240px; height: 2px; margin-top: 17px; background: #B8C0CC; position: relative; }
+  .co .line::before { content: ""; position: absolute; left: -6px; top: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px #fff, 0 0 0 4px #B8C0CC; }
+  .co .txt { padding-left: 18px; }
+  .co .txt b { display: block; font-size: 28px; font-weight: 800; letter-spacing: -.6px; line-height: 1.25; }
+  .co .txt p { margin: 6px 0 0; color: var(--muted); font-size: 15px; max-width: 26em; }
 
   /* 가격 */
-  .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
+  .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
   .price {
-    background: var(--card); border: 1px solid var(--card-line); border-radius: 14px;
-    padding: 26px 22px; text-align: center; position: relative;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 30px 24px; text-align: center; position: relative;
   }
-  .price.hot { border-color: var(--green); }
+  .price.hot { border: 2px solid var(--green-ink); }
   .price .tag {
-    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
-    background: var(--green); color: var(--green-deep); font-size: 11.5px; font-weight: 800;
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: var(--green-deep); font-size: 12px; font-weight: 800;
     padding: 3px 12px; border-radius: 99px; white-space: nowrap;
   }
-  .price h3 { margin: 0 0 6px; font-size: 15px; color: var(--muted); font-weight: 700; }
-  .price .amount { font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
-  .price .per { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .price h3 { margin: 0 0 8px; font-size: 15px; color: var(--muted); font-weight: 600; }
+  .price .amount { font-size: 34px; font-weight: 800; letter-spacing: -.8px; font-variant-numeric: tabular-nums; }
+  .price .per { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
   .trial-note {
-    margin-top: 26px; background: rgba(0,255,163,.06); border: 1px solid rgba(0,255,163,.25);
-    border-radius: 12px; padding: 16px 20px; font-size: 14.5px; color: var(--text);
+    margin-top: 28px; background: rgba(0,255,163,.12); border: 1px solid rgba(7,122,85,.22);
+    border-radius: 14px; padding: 18px 22px; font-size: 15px; color: var(--text-2);
   }
 
-  /* FAQ */
-  .faq details {
-    background: var(--card); border: 1px solid var(--card-line); border-radius: 12px;
-    padding: 0 20px; margin-bottom: 10px;
-  }
-  .faq summary { cursor: pointer; font-weight: 700; font-size: 15px; padding: 16px 0; list-style: none; }
-  .faq summary::before { content: "Q. "; color: var(--green); }
-  .faq details p { margin: 0 0 16px; color: var(--muted); font-size: 14.5px; }
+  /* FAQ: 상자 대신 줄로 구분 */
+  .faq { max-width: 760px; }
+  .faq details { border-bottom: 1px solid var(--line); padding: 0 4px; }
+  .faq details:first-of-type { border-top: 1px solid var(--line); }
+  .faq summary { cursor: pointer; font-weight: 700; font-size: 17px; padding: 18px 0; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::before { content: "Q. "; color: var(--green-ink); }
+  .faq details p { margin: -4px 0 18px; color: var(--text-2); font-size: 15.5px; line-height: 1.75; }
 
   /* 가이드 카드 */
-  .guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .guide { display: block; background: var(--card); border: 1px solid var(--card-line); border-radius: 14px; padding: 20px 20px 18px; color: var(--text); }
-  .guide:hover { border-color: var(--green); }
-  .guide h3 { margin: 0 0 6px; font-size: 16px; }
-  .guide p { margin: 0; color: var(--muted); font-size: 14px; }
-  .guide .more { display: block; margin-top: 10px; color: var(--green); font-size: 13.5px; font-weight: 700; }
+  .guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .guide { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px 24px 20px; color: var(--text); transition: box-shadow .15s, border-color .15s; }
+  .guide:hover { text-decoration: none; border-color: #C9D1DC; box-shadow: 0 10px 30px rgba(17,24,39,.06); }
+  .guide h3 { margin: 0 0 8px; font-size: 17px; }
+  .guide p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+  .guide .more { display: block; margin-top: 12px; color: var(--green-ink); font-size: 14px; font-weight: 700; }
 
-  footer { padding: 44px 0 60px; border-top: 1px solid #16202F; color: #5C6575; font-size: 12.5px; }
-  footer p { margin: 4px 0; }
+  footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; background: var(--surface); }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--text-2); }
 
-  :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 4px; }
+  :focus-visible { outline: 2px solid var(--green-ink); outline-offset: 2px; border-radius: 4px; }
+
+  /* 히어로 보조 요소 */
+  .hero .wrap { grid-template-columns: 1.25fr 0.75fr; }
+  h1 { font-size: clamp(38px, 4.3vw, 54px); }
+  .hero-eyebrow { margin-bottom: 20px; }
+
+  /* 기능 카드: 아이콘 타일, 제목은 크고 본문은 옅게 */
+  .feat .ico { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); font-size: 20px; margin-bottom: 14px; }
+  .feat h3 { font-size: 18.5px; font-weight: 800; letter-spacing: -.3px; margin: 0 0 8px; }
+  .feat p { font-size: 14.5px; line-height: 1.65; }
+  .feat.hot { border-color: var(--green-ink); background: linear-gradient(180deg, rgba(0,255,163,.12), var(--surface) 75%); }
+  .feat.hot .ico { background: var(--green); border-color: transparent; }
+
+  /* 세부 기능 칩: 지금 되는 것 / 개발 중 — 작고 옅게 */
+  .featlist { margin-top: 26px; }
+  .fl { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+  .fl b { font-size: 12px; color: var(--muted); letter-spacing: .06em; margin-right: 6px; white-space: nowrap; }
+  .fl ul { display: contents; list-style: none; margin: 0; padding: 0; }
+  .fl li { font-size: 12.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; line-height: 1.4; }
+  .fl.soon { margin-top: 12px; }
+  .fl.soon b { font-size: 14px; color: var(--text); }
+  .fl.soon li { border-style: dashed; border-color: #C9D1DC; font-size: 13.5px; color: var(--text-2); padding: 4px 11px; }
+  .fl.soon p { font-size: 13.5px; }
+  .fl p { margin: 0 0 0 4px; font-size: 12.5px; }
+
+  /* 스크롤 등장: 살짝 떠오르며 나타난다 (JS가 있을 때만, 동작 줄이기 설정이면 끔) */
+  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; transition-delay: calc(var(--d, 0) * 70ms); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+  }
 
   @media (max-width: 800px) {
-    .hero .wrap { grid-template-columns: 1fr; gap: 34px; }
-    h1 { font-size: 32px; }
-    .feats, .shots, .prices, .guides { grid-template-columns: 1fr; }
-    nav { gap: 4px 14px; }
+    .hero { padding: 56px 0 84px; }
+    .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+    h1 { font-size: 33px; letter-spacing: -.8px; }
+    .featlist, .demo-row { grid-template-columns: 1fr; }
+    .shotrow { min-height: 0; }
+    .shot3d { position: static; }
+    .appwin { width: 100%; max-width: 380px; margin: 0 auto; transform: none; box-shadow: 0 16px 40px rgba(17,24,39,.18); }
+    .co { position: static; margin-top: 22px; }
+    .co .line { display: none; }
+    .co .txt { padding-left: 0; }
+    .co .txt b { font-size: 22px; }
+    .demo-row { gap: 28px; }
+    .tilt { padding: 0; }
+    .chatwin { transform: none; width: 100%; max-width: 347px; height: 470px; margin: 0 auto; box-shadow: 0 16px 40px rgba(17,24,39,.18); }
+    .hero-art { min-height: 250px; }
+    .icon3d { width: 190px; height: 190px; }
+    .hero-art::after { width: 160px; height: 30px; }
+    h2 { font-size: 27px; }
+    section { padding: 72px 0; }
+    .feats, .prices, .guides { grid-template-columns: 1fr; }
+    nav { gap: 4px 16px; }
     .price.hot { order: -1; }
   }
 </style>
@@ -279,21 +378,6 @@
 
 <header>
   <div class="wrap">
-    <div class="brand">
-      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
-        </linearGradient></defs>
-        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
-        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
-        <polygon points="88,160 129,160 88,192" fill="#fff"/>
-        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
-        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
-        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
-        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
-      </svg>
-      아인 <small>나만의 치지직 채팅봇</small>
-    </div>
     <nav>
       <a href="#feat">기능</a>
       <a href="#price">가격</a>
@@ -307,98 +391,170 @@
 <div class="hero">
   <div class="wrap">
     <div>
-      <h1>치지직 채팅봇은<br><span class="g">아인</span>에게 맡기세요</h1>
-      <p class="lead">설치 5분, 회원가입 없음. 출석 체크부터 후원 인사까지 —
-        남들과 똑같은 봇 이름이 아니라 <b style="color:var(--green)">내가 지은, 우리 방송만의 이름</b>으로
-        응답하는 가장 쉬운 치지직 채팅봇입니다.</p>
+      <p class="eyebrow hero-eyebrow">치지직 채팅봇 아인</p>
+      <h1><span class="g">내가 지은 이름</span>으로<br>응답하는 치지직 채팅봇</h1>
+      <p class="lead">출석 체크, 후원·구독 감사 인사, 명령어 응답을 남들과 같은 봇 이름이 아니라
+        <b>우리 방송만의 "○○봇" 이름</b>으로 합니다. 신청도 승인도 없이,
+        Microsoft Store에서 받아 5분이면 시작합니다.</p>
       <div class="cta">
         <a class="btn primary" href="https://apps.microsoft.com/detail/9nw8q03rgqlv?mode=direct">Microsoft Store에서 무료로 시작하기</a>
         <a class="btn ghost" href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">이용권 구매</a>
-        <small>Windows용 · 설치 5분 · 7일 무료 체험 · <b>Microsoft Store 공식 등록</b> · <a href="/guide/install/">설치 방법 자세히</a><br>
-          Microsoft Store를 이용할 수 없는 환경이라면 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 문의해주세요.</small>
       </div>
     </div>
-    <div>
-      <div class="chatwin" aria-label="아인 응답 예시">
-        <div class="bar"><span class="dot live"></span><span class="dot"></span><span class="dot"></span>&nbsp;초코우유 님의 방송 채팅</div>
-        <div class="chat" id="chat"></div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="icon3d">
+        <span class="side s3"></span><span class="side s2"></span><span class="side s1"></span>
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+          </linearGradient></defs>
+          <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g3)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        </svg>
       </div>
-      <p class="chathint">스트리머는 <b>초코우유</b>, 응답하는 건 <b>초코우유 봇</b> — 부계정만 연결하면 됩니다.</p>
     </div>
   </div>
 </div>
 
 <section id="feat">
   <div class="wrap">
+    <div class="sec-head reveal">
     <p class="eyebrow">기능</p>
-    <h2>필요한 것만, 알아서</h2>
-    <p class="sub">복잡한 설정 없이 켜면 바로 일합니다. 문구 하나까지 내 방송에 맞게 바꿀 수 있어요.</p>
+    <h2>출석부터 후원 인사까지, 알아서</h2>
+    <p class="sub">켜면 바로 일하고, 문구 하나까지 내 방송에 맞게 바꿀 수 있어요. 방송 채팅봇에 기대하는 일은 빠짐없이 하고, 참여 기능은 계속 늘고 있습니다.</p>
+    </div>
+    <div class="demo-row">
+      <div class="tilt reveal">
+        <div class="chatwin" aria-label="아인 응답 예시 — 초코우유 님 방송 채팅">
+          <div class="bar"><span>채팅</span><span class="bar-icons"><i></i><i></i></span></div>
+          <div class="chat" id="chat"></div>
+          <div class="input"><span>채팅을 입력해주세요</span><b>채팅</b></div>
+        </div>
+      </div>
+      <div class="demo-text reveal">
+        <h3>방송에서 아인이 하는 일</h3>
+        <ul>
+          <li><b>인사하면 출석.</b> 시청자가 "○하"처럼 정해 둔 인사말을 치면 누적 출석 일수를 세어 반겨줍니다. 인사말과 문구는 내 방송에 맞게 바꿉니다.</li>
+          <li><b>후원이 오면 감사 인사.</b> 치즈 후원, 구독, 구독권 선물에 정해 둔 문구로 바로 답합니다.</li>
+          <li><b>이름은 우리 방송 것.</b> 예시처럼 "○○ 봇" 이름으로 응답합니다. 네이버 부계정만 연결하면 됩니다.</li>
+        </ul>
+      </div>
+    </div>
     <div class="feats">
-      <div class="feat"><h3>🙋 출석 체크</h3><p>"안녕하세요" 한마디면 자동 출석. <span class="k">출석 횟수가 쌓여</span> 단골 시청자가 보입니다. 다른 봇에서 넘어와도 횟수를 이어받을 수 있어요.</p></div>
-      <div class="feat"><h3>💝 후원·구독 감사 인사</h3><p>치즈 후원, 구독, <span class="k">구독권 선물까지</span> 놓치지 않고 즉시 감사 인사를 올립니다. 문구는 내 마음대로.</p></div>
-      <div class="feat"><h3>🎲 명령어</h3><p>!출첵, !팔로우, !업타임, !시간 기본 제공. <span class="k">나만의 명령어</span>와 반복 공지도 클릭 몇 번으로 추가됩니다.</p></div>
-      <div class="feat"><h3>🤖 우리 방송만의 봇 이름</h3><p>모두가 똑같은 이름을 쓰는 봇이 아니에요. 부계정을 연결하면 <span class="k">내가 지은 "OO봇" 이름</span>으로 응답합니다.</p></div>
-      <div class="feat"><h3>🖥️ 내 컴퓨터에서</h3><p>봇은 <span class="k">내 컴퓨터에서 직접</span> 돕니다. 로그인 정보와 시청자 기록은 내 PC에만 저장되고 외부로 보내지 않아요. (이용권 확인할 때만 인터넷을 씁니다)</p></div>
-      <div class="feat"><h3>🔔 알아서 챙김</h3><p>새 버전 알림, 로그인 만료 안내까지 <span class="k">앱이 먼저 알려줍니다.</span> 신경 쓸 게 없어요.</p></div>
+      <div class="feat hot reveal"><span class="ico">🤖</span><h3>우리 방송만의 봇 이름</h3><p>모두가 똑같은 이름을 쓰는 봇이 아니에요. 네이버 부계정을 연결하면 <span class="k">내가 지은 "○○봇" 이름</span>으로 응답합니다. 신청도 승인도 필요 없어요.</p></div>
+      <div class="feat reveal"><span class="ico">🙋</span><h3>출석 체크</h3><p>"안녕하세요" 한마디면 자동 출석. <span class="k">출석 횟수가 쌓여</span> 단골 시청자가 보입니다. 다른 봇에서 넘어와도 횟수를 이어받을 수 있어요.</p></div>
+      <div class="feat reveal"><span class="ico">💝</span><h3>후원·구독 감사 인사</h3><p>치즈 후원, 구독, <span class="k">구독권 선물까지</span> 놓치지 않고 즉시 감사 인사를 올립니다. 문구는 내 마음대로.</p></div>
+      <div class="feat reveal"><span class="ico">🎲</span><h3>명령어와 반복 공지</h3><p>!출첵, !팔로우, !업타임, !시간 기본 제공. <span class="k">나만의 명령어</span>와 반복 공지도 클릭 몇 번으로 추가됩니다.</p></div>
+      <div class="feat reveal"><span class="ico">🖥️</span><h3>내 컴퓨터에서</h3><p>봇은 <span class="k">내 컴퓨터에서 직접</span> 돕니다. 로그인 정보와 시청자 기록은 내 PC에만 저장되고 외부로 보내지 않아요.</p></div>
+      <div class="feat reveal"><span class="ico">🔔</span><h3>알아서 챙김</h3><p>새 버전 알림, 로그인 만료 안내까지 <span class="k">앱이 먼저 알려줍니다.</span> 신경 쓸 게 없어요.</p></div>
+    </div>
+    <div class="featlist reveal">
+      <div class="fl"><b>지금 되는 것</b>
+        <ul>
+          <li>인사말만으로 자동 출석</li><li>누적 출석 횟수 인사</li><li>하루 기준 시각 설정</li><li>상황별 출석 문구</li><li>다른 봇 출석 기록 이어받기</li>
+          <li>치즈 후원 감사 인사</li><li>후원 금액·메시지 치환</li><li>익명 후원 처리</li><li>구독 감사 인사</li><li>티어별 구독 문구</li><li>구독권 선물 감사 인사</li>
+          <li>!출첵 !팔로우 !업타임 !시간</li><li>채팅에서 명령어 추가·삭제</li><li>방장 전용 명령어</li><li>{이름} {호칭} 같은 치환자</li><li>반복 공지</li>
+          <li>부계정으로 봇 이름 지정</li><li>설정 저장 즉시 반영</li><li>새 버전·연결 끊김 알림</li>
+        </ul>
+      </div>
+      <div class="fl soon"><b>개발 중</b>
+        <ul><li>투표</li><li>추첨</li><li>룰렛 (후원 연동)</li><li>카운터·타이머</li><li>TITS 물건 던지기</li><li>채팅·알림 오버레이</li><li>TTS 읽어주기</li><li>유튜브 신청곡</li></ul>
+        <p><a href="/updates/">업데이트 기록에서 진행 보기 →</a></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="shots" style="padding-top: 48px">
+<section id="shots" class="band">
   <div class="wrap">
+    <div class="sec-head reveal">
     <p class="eyebrow">화면</p>
     <h2>켜고, 끄고, 끝</h2>
-    <p class="sub">버튼 하나로 켜지고, 설정은 브라우저에서 편하게 바꿉니다.</p>
-    <div class="shots">
-      <div class="shot"><img src="img/app-running.png" alt="아인 앱 — 봇 실행 중"></div>
-      <div class="shot"><img src="img/settings.png" alt="아인 설정 화면"></div>
+    <p class="sub">켜는 것도 버튼 하나, 바꾸는 것도 버튼 하나입니다.</p>
+    </div>
+    <div class="shotrow">
+      <div class="tilt shot3d reveal">
+        <div class="appwin" role="img" aria-label="아인 앱 창 — 봇 실행 중 버튼과 설정 버튼, 아래에 진행 상황 로그">
+          <div class="ttl"><svg width="14" height="14" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="#00E592"/><rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/><polygon points="88,160 129,160 88,192" fill="#fff"/><circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/><line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/></svg><span>아인</span><span class="wc"><i>&#8212;</i><i>&#9633;</i><i>&#10005;</i></span></div>
+          <div class="hdr"><svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="#00E592"/><rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/><polygon points="88,160 129,160 88,192" fill="#fff"/><circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/><line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/></svg><div class="hdrt"><b>아인</b><small>나만의 치지직 채팅봇</small><span class="st">켜짐</span></div></div>
+          <div class="bd">
+            <div class="run"><i></i>봇 실행 중</div>
+            <div class="cap">실행 중 · "초코우유 봇" 이름으로 응답</div>
+            <div class="setbtn"><span class="gear">&#9881;</span>설정</div>
+            <div class="lbl">진행 상황</div>
+            <pre class="log">[이용권] 무료 체험 · 7일 남음 (2026-09-16 까지)
+=========================================
+ 아인 시작: 초코우유
+ 명령어 접두사: !  (채팅창에 !명령어 입력해보세요)
+ 명령어/문구를 바꾸려면: "설정" 을 누르세요
+=========================================
+[봇 계정] 연결 완료 · "초코우유 봇" 계정으로 전송합니다.
+[세션] 웹소켓 연결됨
+[세션] sessionKey 수신, 이벤트 구독 중...
+[세션] CHAT 이벤트 구독 완료
+[세션] DONATION 이벤트 구독 완료</pre>
+          </div>
+        </div>
+      </div>
+      <div class="co co-on reveal"><span class="line"></span><div class="txt"><b>ON / OFF 버튼 하나</b><p>누르면 켜지고, 다시 누르면 꺼집니다. 방송 전에 한 번이면 끝.</p></div></div>
+      <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정 버튼 하나</b><p>인사말, 후원 문구, 명령어를 눌러서 고치면 봇에 바로 반영됩니다.</p></div></div>
     </div>
   </div>
 </section>
 
 <section id="price">
   <div class="wrap">
+    <div class="sec-head reveal">
     <p class="eyebrow">가격</p>
     <h2>커피 한 잔 값으로 한 달</h2>
     <p class="sub">먼저 7일 동안 전부 무료로 써보세요. 마음에 들면 그때 결제해도 늦지 않아요.</p>
-    <div class="prices">
-      <div class="price"><h3>1개월</h3><div class="amount">2,900원</div><div class="per">월 2,900원</div></div>
-      <div class="price hot"><h3>3개월</h3><div class="amount">7,900원</div><div class="per">월 약 2,633원</div></div>
-      <div class="price"><h3>6개월</h3><div class="amount">14,900원</div><div class="per">월 약 2,483원</div></div>
     </div>
-    <div class="trial-note">🎁 <b>7일 무료 체험</b> — 설치하고 로그인하면 바로 시작됩니다. 카드 등록 없음, 자동 결제 없음.
+    <div class="prices">
+      <div class="price reveal"><h3>1개월</h3><div class="amount">2,900원</div><div class="per">월 2,900원</div></div>
+      <div class="price hot reveal"><h3>3개월</h3><div class="amount">7,900원</div><div class="per">월 약 2,633원</div></div>
+      <div class="price reveal"><h3>6개월</h3><div class="amount">14,900원</div><div class="per">월 약 2,483원</div></div>
+    </div>
+    <div class="trial-note reveal">🎁 <b>7일 무료 체험</b> — 설치하고 로그인하면 바로 시작됩니다. 카드 등록 없음, 자동 결제 없음.
       체험이 끝나도 기록과 설정은 그대로 남아요. 이용권 코드는 다른 스트리머에게 <b>선물</b>할 수도 있습니다.</div>
   </div>
 </section>
 
-<section id="faq">
+<section id="faq" class="band">
   <div class="wrap">
+    <div class="sec-head reveal">
     <p class="eyebrow">FAQ</p>
     <h2>자주 묻는 질문</h2>
+    </div>
     <div class="faq" style="margin-top: 28px">
-      <details>
+      <details class="reveal">
         <summary>컴퓨터를 잘 몰라도 쓸 수 있나요?</summary>
         <p>네. 설치하면 안내 화면이 순서대로 알려줍니다. 로그인 두 번이면 준비 끝이고, 어려운 부분은 그림 안내가 함께 나와요.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>쓰려면 뭐가 필요한가요?</summary>
         <p>Windows PC와 치지직 계정이면 됩니다. 처음 한 번은 치지직 개발자 사이트에서 <b>내 봇용 열쇠(API 키)를 발급</b>받아야 하는데,
-          무료이고 설치 안내가 화면에 그대로 나와서 3분이면 끝나요. 봇 전용 이름을 쓰고 싶다면 네이버 부계정이 하나 더 필요합니다.</p>
+          무료이고 설치 안내가 화면에 그대로 나와서 3분이면 끝나요. 봇 전용 이름을 쓰고 싶다면 네이버 부계정이 하나 더 필요합니다.
+          Microsoft Store를 쓸 수 없는 환경이라면 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 문의해 주세요.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>방송 안 할 때도 켜둬야 하나요?</summary>
         <p>아니요. 방송할 때만 켜면 됩니다. 꺼도 출석 기록과 설정은 전부 남아 있어요.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>결제하면 어떻게 이용하나요?</summary>
         <p>스마트스토어에서 결제한 뒤, 아인 설정 → [이용권]에 <b>주문번호</b>를 붙여넣으면 즉시 기간이 늘어납니다.
           기다릴 것도, 받을 것도 없어요. 무료 체험이 남아 있으면 남은 날짜도 그대로 보존됩니다.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>다른 봇을 쓰다가 넘어와도 되나요?</summary>
         <p>네. 시청자 출석 횟수를 이어받는 기능이 있어서, 단골 시청자들의 기록이 처음부터 다시 시작되지 않게 할 수 있습니다.</p>
       </details>
-      <details>
+      <details class="reveal">
         <summary>환불이 되나요?</summary>
         <p>주문번호나 연장 코드를 아인에 <b>등록하기 전이면 전액 환불</b>됩니다. 등록해서 이용 기간이 늘어난 뒤에는 환불되지 않습니다.
           7일 무료 체험이 시험 기간이니, 결제 전에 충분히 써 보고 결정해 주세요. 환불은 스마트스토어 주문 내역에서 취소하거나
@@ -410,16 +566,18 @@
 
 <section id="guide">
   <div class="wrap">
+    <div class="sec-head reveal">
     <p class="eyebrow">가이드</p>
     <h2>더 자세히 알아보기</h2>
     <p class="sub">앱의 실제 동작을 기준으로 정리한 사용 가이드입니다. 막히는 부분이 있으면 먼저 여기를 보세요.</p>
+    </div>
     <div class="guides">
-      <a class="guide" href="/guide/install/"><h3>📦 설치 방법</h3><p>Microsoft Store 설치 → API 키 발급 → 로그인 → 봇 이름 → 봇 시작. 5분이면 끝납니다.</p><span class="more">설치 가이드 →</span></a>
-      <a class="guide" href="/guide/commands/"><h3>🎲 명령어 목록과 설정</h3><p>기본 명령어, 방장 전용 명령어, 채팅에서 바로 만드는 내 명령어, 치환자, 반복 공지.</p><span class="more">명령어 가이드 →</span></a>
-      <a class="guide" href="/guide/attendance/"><h3>🙋 출석 체크 설정</h3><p>인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기.</p><span class="more">출석 가이드 →</span></a>
-      <a class="guide" href="/guide/donation/"><h3>💝 후원·구독 감사 인사</h3><p>치즈 후원, 구독, 구독권 선물에 자동으로 인사하는 설정과 필요한 권한, 문구 예시.</p><span class="more">후원 인사 가이드 →</span></a>
-      <a class="guide" href="/guide/troubleshooting/"><h3>🔧 안 될 때 확인할 것</h3><p>반응이 없을 때, 권한이 빠졌다고 나올 때, 봇 계정 연결이 끊겼을 때. 증상별로 바로 해결합니다.</p><span class="more">문제 해결 →</span></a>
-      <a class="guide" href="/updates/"><h3>📝 업데이트 기록</h3><p>버전마다 무엇이 바뀌었는지. 새 기능은 계속 추가됩니다.</p><span class="more">업데이트 기록 →</span></a>
+      <a class="guide reveal" href="/guide/install/"><h3>📦 설치 방법</h3><p>Microsoft Store 설치 → API 키 발급 → 로그인 → 봇 이름 → 봇 시작. 5분이면 끝납니다.</p><span class="more">설치 가이드 →</span></a>
+      <a class="guide reveal" href="/guide/commands/"><h3>🎲 명령어 목록과 설정</h3><p>기본 명령어, 방장 전용 명령어, 채팅에서 바로 만드는 내 명령어, 치환자, 반복 공지.</p><span class="more">명령어 가이드 →</span></a>
+      <a class="guide reveal" href="/guide/attendance/"><h3>🙋 출석 체크 설정</h3><p>인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기.</p><span class="more">출석 가이드 →</span></a>
+      <a class="guide reveal" href="/guide/donation/"><h3>💝 후원·구독 감사 인사</h3><p>치즈 후원, 구독, 구독권 선물에 자동으로 인사하는 설정과 필요한 권한, 문구 예시.</p><span class="more">후원 인사 가이드 →</span></a>
+      <a class="guide reveal" href="/guide/troubleshooting/"><h3>🔧 안 될 때 확인할 것</h3><p>반응이 없을 때, 권한이 빠졌다고 나올 때, 봇 계정 연결이 끊겼을 때. 증상별로 바로 해결합니다.</p><span class="more">문제 해결 →</span></a>
+      <a class="guide reveal" href="/updates/"><h3>📝 업데이트 기록</h3><p>버전마다 무엇이 바뀌었는지. 새 기능은 계속 추가됩니다.</p><span class="more">업데이트 기록 →</span></a>
     </div>
   </div>
 </section>
@@ -446,17 +604,17 @@
     + '<path d="M6.1 14.9 L5.5 8.9 L9.1 11.3 L12 7.6 L14.9 11.3 L18.5 8.9 L17.9 14.9 Z" fill="#fff"/>'
     + '<rect x="5.9" y="16" width="12.2" height="2.3" rx="1.15" fill="#fff"/></svg>';
   var MGR = '<svg class="badge" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="매니저">'
-    + '<rect x="1" y="1" width="22" height="22" rx="7" fill="#4A6DFF"/>'
+    + '<rect x="1" y="1" width="22" height="22" rx="6" fill="#304EE1"/>'
     + '<line x1="10.4" y1="13.6" x2="16.2" y2="7.8" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/>'
     + '<circle cx="7.6" cy="16.4" r="1.5" fill="#fff"/></svg>';
   var SCRIPT = [
     ['strm',    '초코우유',   '안녕하세요!'],
     ['viewer',  '별빛여우',   '초하'],
     ['viewer2', '달빛토끼',   '초하!!'],
-    ['ein',     '초코우유 봇', '별빛여우 치수, 어서오세요! 오늘로 42번째 출석이에요 🎉'],
-    ['ein',     '초코우유 봇', '달빛토끼 치수, 첫 출석 환영해요! 🎉'],
-    ['viewer',  '별빛여우',   '치즈 1,000개 후원!'],
-    ['ein',     '초코우유 봇', '별빛여우 치수, 치즈 1,000개 감사합니다! 💛'],
+    ['ein',     '초코우유 봇', '별빛여우 치수, 안녕하세요~ (누적 42일 출석)'],
+    ['ein',     '초코우유 봇', '달빛토끼 치수, 안녕하세요~ 🎉 첫 출석이에요! 와주셔서 반가워요, 앞으로 자주 봬요!'],
+    ['donation'],
+    ['ein',     '초코우유 봇', '🧡 익명의 후원자, 1000원 후원 감사합니다!'],
   ];
   var chat = document.getElementById('chat');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -466,14 +624,48 @@
     var m = SCRIPT[i++];
     var div = document.createElement('div');
     div.className = 'msg ' + m[0] + (reduce ? ' show' : '');
-    var badge = m[0] === 'strm' ? CROWN : (m[0] === 'ein' ? MGR : '');
-    div.innerHTML = '<span class="who ' + m[0] + '">' + badge + m[1] + '</span><span class="body"></span>';
-    div.querySelector('.body').textContent = m[2];
+    if (m[0] === 'donation') {
+      div.innerHTML = '<img src="img/donation-card.png" width="317" height="92" alt="치즈 후원 카드 — 익명의 후원자: 오늘도 평화로운 방송이네요, 치즈 1,000">';
+    } else {
+      var badge = m[0] === 'strm' ? CROWN : (m[0] === 'ein' ? MGR : '');
+      div.innerHTML = '<span class="who ' + m[0] + '">' + badge + m[1] + '</span><span class="body"></span>';
+      div.querySelector('.body').textContent = m[2];
+    }
     chat.appendChild(div);
     if (!reduce) requestAnimationFrame(function(){ requestAnimationFrame(function(){ div.classList.add('show'); }); });
     setTimeout(addMsg, m[0] === 'ein' ? 1300 : 850);
   }
-  if (reduce) { SCRIPT.forEach(function(){ addMsg(); }); } else { setTimeout(addMsg, 500); }
+  // 채팅 데모는 창이 화면에 들어올 때 시작한다
+  var chatStarted = false;
+  function startChat() { if (chatStarted) return; chatStarted = true; if (reduce) { SCRIPT.forEach(function(){ addMsg(); }); } else { setTimeout(addMsg, 400); } }
+  if (reduce || !('IntersectionObserver' in window)) startChat();
+  else {
+    var cio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { startChat(); cio.disconnect(); } }, { threshold: 0.3 });
+    cio.observe(document.querySelector('.chatwin'));
+  }
+
+  // 스크롤 등장 효과: 화면에 들어오면 한 번만, 같은 묶음 안에서는 70ms씩 차례로
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  items.forEach(function (el) {
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList.contains('reveal'); });
+    el.style.setProperty('--d', Math.min(sibs.indexOf(el), 5));
+  });
+  if (reduce || !('IntersectionObserver' in window) || location.hash) {
+    items.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    // 처음 열었을 때는 숨겨 두고, 스크롤을 시작해야 차례로 나타난다 (5초 동안 스크롤이 없으면 보이는 것만 표시)
+    var armed = false;
+    function arm() { if (armed) return; armed = true; items.forEach(function (el) { io.observe(el); }); }
+    window.addEventListener('scroll', arm, { once: true, passive: true });
+    window.addEventListener('wheel', arm, { once: true, passive: true });
+    window.addEventListener('touchmove', arm, { once: true, passive: true });
+    setTimeout(arm, 5000);
+  }
 </script>
 
 <!-- 네이버 애널리틱스 (방문 통계) -->
