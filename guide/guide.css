@@ -21,11 +21,12 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* 헤더 (메인과 동일) */
 header { padding: 22px 0; }
-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 19px; color: var(--text); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 19px; color: var(--text); white-space: nowrap; }
 .brand:hover { text-decoration: none; }
 .brand small { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 2px; }
-nav a { color: var(--muted); font-size: 14px; margin-left: 22px; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+nav a { color: var(--muted); font-size: 14px; white-space: nowrap; }
 nav a:hover { color: var(--green); text-decoration: none; }
 nav a[aria-current] { color: var(--green); }
 
@@ -94,5 +95,5 @@ footer p { margin: 6px 0; }
 :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 4px; }
 @media (max-width: 800px) {
   h1 { font-size: 28px; }
-  nav a { margin-left: 14px; }
+  nav { gap: 4px 14px; }
 }

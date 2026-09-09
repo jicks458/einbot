@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 채팅봇이 안 될 때 확인할 것 — 아인 문제 해결 가이드</title>
+<meta name="description" content="치지직 채팅봇 아인이 반응이 없거나, 권한이 빠졌다고 나오거나, 봇 계정 연결이 끊겼을 때. 구독 인사만 안 나갈 때, 설정이 반영되지 않을 때, 내 이름으로 대답할 때까지 증상별 원인과 해결 순서를 정리했습니다.">
+<link rel="canonical" href="https://einbot.kr/guide/troubleshooting/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 채팅봇이 안 될 때 확인할 것 — 아인">
+<meta property="og:description" content="반응 없음, 권한 빠짐, 봇 계정 연결 끊김, 구독 인사 안 나감, 설정 미반영. 증상별 원인과 해결 순서.">
+<meta property="og:url" content="https://einbot.kr/guide/troubleshooting/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1220">
+<link rel="stylesheet" href="/guide/guide.css">
+<style>
+  .sym { color: var(--muted); font-size: 14px; margin: -6px 0 10px; }
+  .fix { border-left: 3px solid var(--green); background: rgba(0,255,163,.06); border-radius: 0 12px 12px 0; padding: 12px 16px; margin: 12px 0 0; }
+  .fix b { color: var(--green); }
+  .fix ol { margin: 6px 0 0; }
+  .log { font-family: Consolas, "D2Coding", monospace; font-size: 13.5px; background: var(--card); border: 1px solid var(--card-line); border-radius: 8px; padding: 8px 12px; color: var(--muted); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "안 될 때 확인할 것" }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://einbot.kr/guide/troubleshooting/#article",
+      "headline": "치지직 채팅봇이 안 될 때 확인할 것 — 아인 문제 해결 가이드",
+      "description": "아인이 반응이 없거나, 권한이 빠졌다고 나오거나, 봇 계정 연결이 끊겼을 때 증상별 원인과 해결 순서.",
+      "inLanguage": "ko-KR",
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "mainEntityOfPage": "https://einbot.kr/guide/troubleshooting/",
+      "image": "https://einbot.kr/og.png",
+      "author": { "@id": "https://einbot.kr/#org" },
+      "publisher": { "@id": "https://einbot.kr/#org" },
+      "about": { "@id": "https://einbot.kr/#app" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "치지직 채팅봇을 켰는데 채팅에 아무 반응이 없어요",
+          "acceptedAnswer": { "@type": "Answer", "text": "가장 흔한 원인은 방송 채널이 아닌 계정(부계정 등)으로 로그인한 경우입니다. 아인 창에 표시된 연동 채널이 방송 채널인지 확인하고, 다르면 설정의 [방송 계정 변경]으로 방송 계정에 다시 로그인하세요. 치지직 채팅은 방송 중에만 열리므로 방송을 켠 상태에서 확인하고, 명령어 앞에 !가 붙었는지, 무료 체험이나 이용권이 끝나지 않았는지도 확인합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "\"권한이 빠졌습니다\"라고 나와요",
+          "acceptedAnswer": { "@type": "Answer", "text": "치지직 개발자 센터의 앱 API Scopes에서 빠진 항목을 체크하세요. 아인이 어떤 권한이 빠졌는지 이름을 보여줍니다. 변경은 치지직 검수 후 반영되며, 그 뒤 봇을 다시 켜면 아인이 로그인 창을 열어 새 권한에 동의를 받습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "후원 인사는 되는데 구독 인사만 안 나가요",
+          "acceptedAnswer": { "@type": "Answer", "text": "개발자 센터 앱에 '구독 조회' 권한이 없는 경우입니다. 권한을 체크한 뒤 봇을 다시 켜서 로그인 창에서 새 권한에 동의하면 됩니다. 개발자 센터에서 체크만 하고 다시 로그인하지 않으면 이전 권한 그대로 동작합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "\"봇 계정 연결 끊김\" 알림이 떠요",
+          "acceptedAnswer": { "@type": "Answer", "text": "봇 이름용 부계정의 로그인이 풀린 것입니다. 부계정을 휴대폰 등 다른 기기에서도 쓰고 있으면 네이버가 세션을 정리해 끊어지므로, 다른 기기에서는 로그아웃하고 부계정을 봇 전용으로 두세요. 그다음 봇을 끄고 설정의 봇 계정 화면에서 NID_AUT, NID_SES를 다시 복사해 넣고 저장한 뒤 봇을 시작합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "봇이 봇 이름이 아니라 내 이름으로 대답해요",
+          "acceptedAnswer": { "@type": "Answer", "text": "부계정 연결이 끊겨 본인 계정으로 대신 응답하는 상태입니다. 방송 전에는 치지직 채팅 서버가 닫혀 있어 봇 계정 연결 실패 표시가 나오는 것이 정상이고, 방송이 시작되면 자동으로 연결됩니다. 방송 중에도 계속 내 이름으로 나오면 부계정 로그인 정보를 다시 넣으세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "설정을 바꿨는데 반영이 안 돼요",
+          "acceptedAnswer": { "@type": "Answer", "text": "설정 화면에서 [저장]을 눌렀는지 확인하세요. 저장하면 봇이 켜진 상태에서도 몇 초 안에 반영됩니다. API 키나 봇 계정을 바꾼 경우에만 봇을 껐다 켜야 합니다. 그래도 안 되면 Microsoft Store에서 최신 버전으로 업데이트하세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "초기 설정 화면이 다시 열려요",
+          "acceptedAnswer": { "@type": "Answer", "text": "API 키를 바꾸었거나 치지직 로그인이 만료되어 로그인 정보가 지워진 경우입니다. 안내대로 다시 로그인만 하면 되고, 출석 기록과 설정은 그대로 남아 있습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "로그인하다가 하얀 화면에서 멈춰요",
+          "acceptedAnswer": { "@type": "Answer", "text": "네이버 로그인까지는 되는데 마지막 치지직 연동 단계에서 하얀 화면이 나오면 API 키(Client ID 또는 Client Secret)가 잘못 입력된 것입니다. 설정의 API 설정에서 개발자 센터의 값을 다시 복사해 넣으세요." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/">가이드</a>
+      <a href="/updates/">업데이트</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 안 될 때 확인할 것</p>
+      <p class="eyebrow">문제 해결 가이드</p>
+      <h1>치지직 채팅봇이 안 될 때 확인할 것</h1>
+      <p class="lead">아인을 쓰다가 막히는 상황을 증상별로 모았습니다. 실제로 사용자들이 겪은 일과 그 원인을 기준으로 쓰며,
+        대부분은 설정 화면에서 한두 번 클릭으로 해결됩니다. 해당 증상을 차례에서 골라 그 부분만 읽으세요.</p>
+      <p class="meta">기준 버전 1.7.1 · 2026년 9월 9일 갱신</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#none">봇을 켰는데 채팅에 아무 반응이 없어요</a></li>
+          <li><a href="#scope">"권한이 빠졌습니다"라고 나와요</a></li>
+          <li><a href="#sub">후원 인사는 되는데 구독 인사만 안 나가요</a></li>
+          <li><a href="#cookie">"봇 계정 연결 끊김" 알림이 떠요</a></li>
+          <li><a href="#myname">봇 이름이 아니라 내 이름으로 대답해요</a></li>
+          <li><a href="#gift">구독권 선물 인사가 안 나가요</a></li>
+          <li><a href="#settings">설정을 바꿨는데 반영이 안 돼요</a></li>
+          <li><a href="#wizard">초기 설정 화면이 다시 열려요</a></li>
+          <li><a href="#white">로그인하다가 하얀 화면에서 멈춰요</a></li>
+          <li><a href="#twice">인사가 두 번 나가요</a></li>
+          <li><a href="#license">무료 체험이 끝났다고 나와요</a></li>
+          <li><a href="#quit">창을 닫아도 봇이 계속 돌아요</a></li>
+          <li><a href="#store">Microsoft Store에서 설치가 안 돼요</a></li>
+          <li><a href="#contact">그래도 안 되면</a></li>
+        </ol>
+      </div>
+
+      <h2 id="none">봇을 켰는데 채팅에 아무 반응이 없어요</h2>
+      <p class="sym">증상: 아인 창은 "실행 중"인데 !출첵을 쳐도, 인사를 해도 봇이 아무 말도 하지 않습니다.</p>
+      <p>순서대로 확인하세요. 위에 있는 것이 더 흔한 원인입니다.</p>
+      <div class="fix">
+        <b>확인 순서</b>
+        <ol>
+          <li><b>방송 채널로 로그인했는지.</b> 아인은 로그인한 계정의 채널에 붙습니다. 봇 이름용 부계정이나 다른 계정으로 로그인하면 그 계정의 (비어 있는) 채널을 지켜보게 되어 아무 반응이 없습니다. 아인 창과 설정 화면에 표시된 <b>연동 채널 이름</b>이 방송 채널인지 보고, 다르면 설정 → <b>[방송 계정 변경]</b>으로 방송 계정에 다시 로그인하세요.</li>
+          <li><b>방송 중인지.</b> 치지직 채팅은 방송 중에만 열립니다. 방송을 켠 뒤 채팅에 명령어를 쳐 보세요.</li>
+          <li><b>명령어 형식.</b> 기본 명령어는 <code>!출첵</code>처럼 앞에 느낌표가 붙습니다. 출석은 설정한 인사말(기본 "안녕하세요")을 쳐야 인식합니다. <a href="/guide/commands/">명령어 가이드</a>에서 목록을 확인하세요.</li>
+          <li><b>무료 체험·이용권 기간.</b> 기간이 끝나면 봇이 멈춥니다. 아인 창에 남은 기간이 표시되고, 끝났으면 <a href="#license">아래 항목</a>을 보세요.</li>
+          <li><b>권한.</b> 아인 창 로그에 "권한이 빠졌습니다"가 있으면 <a href="#scope">다음 항목</a>입니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="scope">"권한이 빠졌습니다"라고 나와요</h2>
+      <p class="sym">증상: 봇을 켤 때 로그에 빠진 권한 이름이 나오거나, 로그인 완료 화면이 빠진 권한 목록을 보여줍니다.</p>
+      <p>아인은 치지직 개발자 센터에 등록한 앱의 권한(API Scopes) 5개로 동작합니다. 유저 조회, 채팅 메시지 조회, 채팅 메시지 쓰기는 봇이 뜨는 데 필요하고, 후원 조회와 구독 조회는 각각 후원 인사와 구독 인사에 필요합니다. 아인이 정확히 어떤 권한이 빠졌는지 이름을 짚어 알려주므로, 그 항목만 추가하면 됩니다.</p>
+      <div class="fix">
+        <b>해결</b>
+        <ol>
+          <li><a href="https://developers.chzzk.naver.com/" target="_blank" rel="noopener">치지직 개발자 센터</a>에서 내 앱을 열고 API Scopes에서 빠진 항목을 체크해 저장합니다. <a href="/guide/install/#step3">설치 가이드의 화면 안내</a>를 참고하세요.</li>
+          <li>등록 뒤의 권한 변경은 치지직 검수를 거쳐 반영됩니다. 검수가 끝나면 봇을 다시 켜세요. 아인이 로그인 창을 열어 새 권한에 동의를 받습니다.</li>
+          <li>로그인 창이 열리지 않으면 설정 → <b>[방송 계정 변경]</b>으로 직접 다시 로그인하면 됩니다.</li>
+        </ol>
+      </div>
+      <div class="warn">
+        <p>개발자 센터에서 권한을 바꾸면 "신규 검수가 진행되며 승인까지 이용이 제한된다"는 안내가 나옵니다. 필요한 권한을 한 번에 모두 체크하고, 시험 삼아 권한을 뺐다 넣지 마세요.</p>
+      </div>
+
+      <h2 id="sub">후원 인사는 되는데 구독 인사만 안 나가요</h2>
+      <p class="sym">증상: 치즈 후원에는 인사하는데 구독이 들어와도 조용합니다. 로그에 403이나 "구독 조회"가 보일 수 있습니다.</p>
+      <p>개발자 센터 앱에 <b>구독 조회</b> 권한이 없는 경우입니다. 이 권한은 2026년 8월 말에 추가된 것이라, 그전에 앱을 등록한 분은 빠져 있을 수 있습니다.</p>
+      <div class="fix">
+        <b>해결</b>
+        <ol>
+          <li>개발자 센터에서 <b>구독 조회</b>를 체크하고 저장합니다.</li>
+          <li>검수 후 봇을 다시 켜서, 열리는 로그인 창에서 새 권한에 동의합니다. <b>개발자 센터에서 체크만 하고 다시 로그인하지 않으면 이전 권한 그대로 동작합니다.</b></li>
+          <li>설정 → 구독·구독권 선물 감사 인사에서 "구독·선물이 오면 자동으로 인사"가 켜져 있는지 확인합니다.</li>
+        </ol>
+      </div>
+      <p>후원·구독 인사의 설정과 문구는 <a href="/guide/donation/">후원·구독 인사 가이드</a>에 따로 정리했습니다.</p>
+
+      <h2 id="cookie">"봇 계정 연결 끊김" 알림이 떠요</h2>
+      <p class="sym">증상: 아인 창 위에 노란 배너와 트레이 알림이 뜨고, 봇이 내 이름으로 대답하기 시작합니다.</p>
+      <p>봇 이름용 부계정의 네이버 로그인이 풀린 것입니다. 가장 흔한 원인은 <b>부계정을 휴대폰 등 다른 기기에서도 쓰는 것</b>입니다. 봇이 접속하면 휴대폰에 "새로운 기기 로그인" 알림이 오는데, 여기서 [로그아웃]이나 [내가 아님]을 누르면 봇의 세션이 바로 끊어집니다. 그 외에 부계정 비밀번호를 바꿨거나 봇을 몇 주 이상 켜지 않았을 때도 생깁니다.</p>
+      <div class="fix">
+        <b>해결</b>
+        <ol>
+          <li>휴대폰 등 다른 기기에서 부계정을 <b>로그아웃</b>합니다. 부계정은 봇 전용으로 두는 것이 가장 안정적입니다.</li>
+          <li>봇을 끄고 설정 → <b>[API 및 봇 계정 설정]</b>(또는 [부계정 설정하기])에서 안내대로 브라우저에서 부계정으로 로그인한 뒤 NID_AUT, NID_SES를 다시 복사해 넣고 저장합니다. 화면 순서는 <a href="/guide/install/#step5">설치 가이드 5단계</a>에 있습니다.</li>
+          <li>봇을 시작합니다. "[봇 계정] 연결 완료" 로그가 나오면 끝입니다.</li>
+        </ol>
+      </div>
+      <div class="note">
+        <p>앞으로 휴대폰에 "새로운 기기 로그인" 알림이 오면 그것이 봇입니다. 로그아웃하지 말고 두세요.</p>
+      </div>
+
+      <h2 id="myname">봇 이름이 아니라 내 이름으로 대답해요</h2>
+      <p class="sym">증상: 부계정을 연결했는데 채팅에는 내 닉네임으로 응답이 올라옵니다.</p>
+      <p>부계정 연결이 안 된 상태에서 아인이 본인 계정으로 대신 응답하는 것입니다. 두 경우가 있습니다.</p>
+      <ul>
+        <li><b>방송 전.</b> 치지직 채팅 서버는 방송 중에만 열리므로, 방송 전에 봇을 켜면 로그에 아래처럼 나오는 것이 정상입니다. 방송이 시작되면 자동으로 연결됩니다.
+          <p class="log">[봇 계정] 연결 실패 (방송 전이면 정상): …</p></li>
+        <li><b>방송 중에도 계속 내 이름으로 나옴.</b> 부계정 로그인이 풀린 것입니다. <a href="#cookie">위 항목</a>대로 로그인 정보를 다시 넣으세요. 설정에 부계정을 넣은 적이 없다면 <a href="/guide/install/#step5">설치 가이드 5단계</a>부터 하면 됩니다.</li>
+      </ul>
+
+      <h2 id="gift">구독권 선물 인사가 안 나가요</h2>
+      <p class="sym">증상: 구독 인사와 후원 인사는 되는데, 누가 구독권을 선물해도 인사가 없습니다.</p>
+      <p>구독권 선물은 치지직이 공식적으로 알려주지 않아서, 아인이 방송 채팅에 올라오는 "○○님이 구독권 N개를 선물했습니다" 안내를 보고 동작합니다. 그래서 <b>방송 중에 채팅이 연결된 상태</b>여야 하고, 봇을 켠 뒤에 들어온 선물에만 인사합니다.</p>
+      <div class="fix">
+        <b>확인</b>
+        <ol>
+          <li>봇 이름용 부계정을 쓴다면 "봇 계정 연결 끊김" 알림이 떠 있지 않은지 봅니다. 끊겨 있으면 선물 안내도 받지 못합니다.</li>
+          <li>설정 → 구독·구독권 선물 감사 인사가 켜져 있는지, 선물 인사 문구가 비어 있지 않은지 확인합니다. 비어 있으면 기본 문구로 나갑니다.</li>
+          <li>그래도 안 되면 선물이 들어온 시각과 함께 <a href="#contact">문의</a>해 주세요. 치지직이 안내 문구를 바꾸면 아인이 알아보지 못할 수 있어서, 확인 뒤 업데이트로 고칩니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="settings">설정을 바꿨는데 반영이 안 돼요</h2>
+      <p class="sym">증상: 문구나 명령어를 바꿨는데 봇은 예전 그대로 대답합니다.</p>
+      <div class="fix">
+        <b>확인</b>
+        <ol>
+          <li>설정 화면 아래의 <b>[저장]</b>을 눌렀는지 확인합니다. 저장하면 봇이 켜진 상태에서도 몇 초 안에 반영됩니다.</li>
+          <li>API 키나 봇 계정(부계정) 정보를 바꾼 경우에만 봇을 껐다 켜야 합니다.</li>
+          <li>그래도 안 되면 앱이 1.7 이전 버전일 수 있습니다. Microsoft Store에서 업데이트하세요. 현재 버전은 <a href="/updates/">업데이트 기록</a>에서 확인할 수 있습니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="wizard">초기 설정 화면이 다시 열려요</h2>
+      <p class="sym">증상: 잘 쓰던 아인을 켰는데 처음 설치할 때 봤던 "초기 설정" 화면이 다시 나옵니다.</p>
+      <p>치지직 로그인 정보가 지워질 때 나오는 정상 동작입니다. API 키를 바꿨거나, 치지직 쪽에서 로그인이 만료·거부(401/403)된 경우 아인이 로그인 정보를 지우고 다시 로그인을 안내합니다.</p>
+      <div class="fix">
+        <b>해결</b>
+        <ol>
+          <li>안내대로 방송 계정으로 다시 로그인만 하면 됩니다. API 키를 다시 발급받을 필요는 없습니다.</li>
+          <li>출석 기록, 명령어, 문구 설정은 그대로 남아 있습니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="white">로그인하다가 하얀 화면에서 멈춰요</h2>
+      <p class="sym">증상: 네이버 로그인과 2단계 인증까지는 되는데, 마지막 치지직 연동 단계에서 하얀 화면만 나오고 끝나지 않습니다.</p>
+      <p>API 키(Client ID 또는 Client Secret)가 잘못 입력된 경우입니다. 키가 틀려도 네이버 로그인까지는 정상으로 진행되고, 치지직이 앱을 확인하는 마지막 단계에서 멈춥니다.</p>
+      <div class="fix">
+        <b>해결</b>
+        <ol>
+          <li>로그인 창을 닫고 설정 → <b>API 설정</b>에서 개발자 센터의 Client ID와 Client Secret을 다시 복사해 붙여 넣습니다. 앞뒤 공백이 들어가지 않게 주의하세요.</li>
+          <li>개발자 센터에서 앱의 로그인 리다이렉트 URI가 설치 가이드의 값과 같은지 확인합니다. <a href="/guide/install/#step3">설치 가이드 3단계</a> 참고.</li>
+          <li>저장 후 다시 로그인합니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="twice">인사가 두 번 나가요</h2>
+      <p class="sym">증상: 시청자가 인사하면 출석 인사가 두 개 올라오거나, 후원 인사가 겹칩니다.</p>
+      <ul>
+        <li><b>다른 채팅봇과 함께 쓰는 경우.</b> 두 봇이 각자 인사합니다. 한쪽에서 해당 기능을 끄세요. 다른 봇의 출석 기록을 아인으로 옮기는 방법은 <a href="/guide/attendance/">출석 가이드</a>에 있습니다.</li>
+        <li><b>아인이 두 개 켜진 경우.</b> 아인은 한 번에 하나만 실행되도록 되어 있어 보통 생기지 않지만, 예전 방식(압축 파일)으로 설치한 것이 남아 있으면 둘 다 돌 수 있습니다. <a href="/guide/install/#old">예전 설치본 정리</a>를 참고하세요.</li>
+      </ul>
+
+      <h2 id="license">무료 체험이 끝났다고 나와요</h2>
+      <p class="sym">증상: 아인 창에 체험이나 이용권이 끝났다는 안내가 나오고 봇이 켜지지 않습니다.</p>
+      <div class="fix">
+        <b>해결</b>
+        <ol>
+          <li><a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a>에서 이용권을 결제합니다. 1개월 2,900원부터입니다.</li>
+          <li>아인 설정 → <b>[이용권]</b>에 주문번호(또는 받은 연장 코드)를 붙여 넣습니다. 즉시 기간이 늘어나고, 기다릴 것은 없습니다.</li>
+          <li>봇을 시작합니다. 출석 기록과 설정은 체험이 끝나도 지워지지 않으므로 그대로 이어집니다.</li>
+        </ol>
+      </div>
+      <p>주문번호를 넣었는데 "확인할 수 없다"고 나오면 결제가 완료된 주문인지 확인하고, 그래도 안 되면 주문번호와 함께 <a href="#contact">문의</a>해 주세요.</p>
+
+      <h2 id="quit">창을 닫아도 봇이 계속 돌아요</h2>
+      <p class="sym">증상: 아인 창의 X를 눌렀는데 봇이 계속 채팅에 응답하고, 작업 표시줄에서도 사라졌습니다.</p>
+      <p>의도된 동작입니다. 창을 닫으면 아인은 작업 표시줄 오른쪽 <b>트레이</b>로 숨고 봇은 계속 실행됩니다. 방송 중에 창을 실수로 닫아도 봇이 멈추지 않게 하기 위해서입니다.</p>
+      <div class="fix">
+        <b>봇을 완전히 끄려면</b>
+        <ol>
+          <li>아인 창에서 <b>[봇 중지]</b>를 누르거나,</li>
+          <li>트레이의 아인 아이콘을 눌러 <b>[앱 종료]</b>를 선택합니다. 봇도 함께 멈춥니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="store">Microsoft Store에서 설치가 안 돼요</h2>
+      <p class="sym">증상: 설치 버튼이 반응하지 않거나, Store 앱이 열리지 않습니다.</p>
+      <ul>
+        <li>아인은 <b>Windows 10 이상</b>에서 동작합니다. Windows 업데이트가 오래 밀려 있으면 Store 자체가 안 열릴 수 있으니 업데이트 후 다시 시도하세요.</li>
+        <li>회사·학교 PC처럼 Store 사용이 막힌 환경이라면 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 문의해 주세요. 다른 설치 방법을 안내합니다.</li>
+      </ul>
+
+      <h2 id="contact">그래도 안 되면</h2>
+      <p><a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 보내 주세요. <b>평일 24시간 내</b>에 답변합니다.</p>
+      <p>메일에 다음을 적어 주시면 빨리 찾을 수 있습니다.</p>
+      <ul>
+        <li>치지직 <b>채널 이름</b></li>
+        <li>문제가 생긴 <b>날짜와 시각</b>, 그때 무슨 일이 있었는지 (예: "9월 8일 저녁 8시쯤 구독권 선물이 들어왔는데 인사가 없었다")</li>
+        <li>아인 창 로그에 보이는 빨간 글씨나 경고 문구가 있으면 그 내용</li>
+      </ul>
+      <div class="note">
+        <p>1.7.1부터 아인은 오류와 이벤트 종류 정보만 운영자 서버로 자동 전송합니다(채팅 내용·닉네임·로그인 정보는 보내지 않음). 채널 이름과 시각만 알려 주시면 그 기록과 대조해 원인을 찾습니다.
+          전송을 원치 않으면 설정 → [진단 정보 보내기]를 끌 수 있습니다. 자세한 내용은 <a href="/privacy.html">개인정보처리방침</a>에 있습니다.</p>
+      </div>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/guide/install/">치지직 채팅봇 설치 방법</a><span>Microsoft Store 설치부터 봇 시작까지 5분</span></li>
+          <li><a href="/guide/donation/">치지직 후원·구독 감사 인사 자동으로 하기</a><span>필요한 권한, 치환자, 문구 예시</span></li>
+          <li><a href="/guide/commands/">명령어 목록과 설정 방법</a><span>기본 명령어, 내가 만든 명령어, 치환자, 반복 공지</span></li>
+          <li><a href="/updates/">업데이트 기록</a><span>버전별 변경 내용</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/updates/">업데이트 기록</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      <a href="/terms.html">이용약관</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> (평일 24시간 내 답변)</p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>

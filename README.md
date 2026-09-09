@@ -9,6 +9,8 @@
   - [명령어 목록과 설정 방법](https://einbot.kr/guide/commands/)
   - [출석 체크 봇 설정 방법](https://einbot.kr/guide/attendance/)
   - [후원·구독 감사 인사 자동으로 하기](https://einbot.kr/guide/donation/)
+  - [치지직 채팅봇이 안 될 때 확인할 것](https://einbot.kr/guide/troubleshooting/)
+- 이용약관: https://einbot.kr/terms.html · 개인정보처리방침: https://einbot.kr/privacy.html
 
 ## 아인이 하는 일
 
