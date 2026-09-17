@@ -43,8 +43,20 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://einbot.kr/guide/participation/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://einbot.kr/guide/time/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://einbot.kr/guide/troubleshooting/</loc>
-    <lastmod>2026-09-09</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

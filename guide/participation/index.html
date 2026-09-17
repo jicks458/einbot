@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 투표·추첨·룰렛 봇 사용법 — 아인 참여 기능 가이드</title>
+<meta name="description" content="치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 시청자는 채팅에 번호만 치면 되고, 방장은 기능 창 버튼으로 진행합니다. OBS 오버레이 주소까지.">
+<link rel="canonical" href="https://einbot.kr/guide/participation/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 투표·추첨·룰렛 봇 사용법 — 아인">
+<meta property="og:description" content="치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 시청자는 채팅에 번호만 치면 되고, 방장은 기능 창 버튼으로 진행합니다. OBS 오버레이 주소까지.">
+<meta property="og:url" content="https://einbot.kr/guide/participation/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F9FB">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/guide/guide.css">
+<style>
+  table { border-collapse: collapse; width: 100%; margin: 14px 0 6px; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+  .tbl { overflow-x: auto; }
+  .chat { background: #0B1220; color: #E7ECF3; border: 1px solid #223049; border-radius: 12px; padding: 12px 16px; margin: 12px 0; font-size: 14.5px; }
+  .chat p { margin: 4px 0; }
+  .chat .v { color: #9CB8D9; font-weight: 700; }
+  .chat .s { color: #F5C243; font-weight: 700; }
+  .chat .b { color: #7DA3FF; font-weight: 700; }
+  .chat .dim { color: #8B94A5; font-size: 13px; }
+  .kbd { display:inline-block; background:#EEF1F5; border:1px solid #D1D5DB; border-radius:6px; padding:1px 7px; font-size:13px; }
+  
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+      { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
+      { "@type": "ListItem", "position": 3, "name": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "item": "https://einbot.kr/guide/participation/" } ] },
+    { "@type": "TechArticle", "headline": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "description": "치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 시청자는 채팅에 번호만 치면 되고, 방장은 기능 창 버튼으로 진행합니다. OBS 오버레이 주소까지.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-09-17",
+      "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
+      "mainEntityOfPage": "https://einbot.kr/guide/participation/" }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/">가이드</a>
+      <a href="/updates/">업데이트</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 치지직 투표·추첨·돌림판·후원 룰렛 사용법</p>
+      <p class="eyebrow">참여 기능 가이드</p>
+      <h1>치지직 투표·추첨·돌림판·후원 룰렛 사용법</h1>
+      <p class="lead">아인 창의 <b>[기능]</b> 버튼을 누르면 참여 기능 창이 열립니다. 방장은 거기서 버튼으로 진행하고, 시청자는 채팅에 번호나 말 한마디만 치면 됩니다. 명령어를 외울 필요가 없습니다.</p>
+      <p class="meta">기준 버전 1.8.0 · 2026년 9월 17일 작성</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#open">기능 창 여는 법</a></li>
+          <li><a href="#vote">투표</a></li>
+          <li><a href="#raffle">추첨</a></li>
+          <li><a href="#wheel">돌림판</a></li>
+          <li><a href="#roulette">후원 룰렛</a></li>
+          <li><a href="#obs">OBS에 띄우기</a></li>
+          <li><a href="#faq">자주 묻는 것</a></li>
+        </ol>
+      </div>
+
+      <h2 id="open">기능 창 여는 법</h2>
+      <p>아인 창에서 <b>봇을 켠 다음</b> [⚙ 설정] 아래의 <b>[✦ 기능]</b> 버튼을 누르세요. 투표와 추첨이 채팅을 읽어야 하기 때문에 봇이 꺼져 있으면 열리지 않습니다.
+        창 왼쪽 목록에서 투표·추첨·돌림판·후원 룰렛(참여 기능)과 카운터·타이머·스톱워치(시간 기능)를 고릅니다.</p>
+      <p>이 창은 봇이 켜져 있는 동안 내 컴퓨터 안에서만 동작합니다. 다른 사이트에 접속하거나 별도로 가입할 것이 없습니다.</p>
+
+      <h2 id="vote">투표</h2>
+      <p>질문과 보기(최대 9개)를 적고 시간을 고른 뒤 <b>[투표 시작]</b>을 누릅니다. 시청자는 채팅에 <b>번호만</b> 치면 됩니다. "2", "2번", "!투표 2" 모두 됩니다.</p>
+      <div class="chat">
+        <p><span class="b">초코우유 봇</span> 📊 투표 시작! 채팅에 번호만 쳐 주세요 — 오늘 뭐 할까? (1. 게임 / 2. 잡담)</p>
+        <p><span class="v">별빛여우</span> 1</p>
+        <p><span class="v">달빛토끼</span> 2번</p>
+        <p class="dim">… 90초 뒤</p>
+        <p><span class="b">초코우유 봇</span> 📊 오늘 뭐 할까? — 1. 게임 12표(60%) · 2. 잡담 8표(40%) · 총 20표</p>
+      </div>
+      <ul>
+        <li>한 사람 한 표. 나중에 친 번호가 앞의 표를 덮어씁니다.</li>
+        <li>표마다 봇이 대답하지 않습니다. 채팅이 도배되지 않게 하려는 것이고, 집계는 기능 창과 오버레이에서 실시간으로 보입니다.</li>
+        <li><b>결과 가리기</b>를 켜면 종료 때까지 시청자 화면(오버레이)에는 표 수가 "?"로 나옵니다. 방장 창에서는 계속 보입니다.</li>
+        <li>"직접 종료"를 고르면 [종료]를 누를 때까지 받습니다. 시작·결과 채팅은 끌 수 있고 문구는 바꿀 수 있습니다.</li>
+      </ul>
+
+      <h2 id="raffle">추첨</h2>
+      <p><b>[모집 시작]</b>을 누르면 그때부터 채팅한 사람이 자동으로 참여자에 들어갑니다. 특정 말을 쳐야 들어오게 하려면 키워드를 적으세요(예: 참여).
+        <b>[모집 마감]</b> 뒤 인원을 정해 <b>[뽑기]</b>를 누르면 무작위로 뽑고 채팅에 알립니다.</p>
+      <ul>
+        <li>같은 사람은 한 번만 들어갑니다. 이미 당첨된 사람은 다시 뽑지 않으니, 당첨자가 없으면 [뽑기]를 한 번 더 누르면 됩니다.</li>
+        <li>참여자 이름은 기능 창 오른쪽에 나열되고, 오버레이에는 참여 인원과 당첨자만 보입니다.</li>
+        <li>구독자만 받는 기능은 아직 없습니다. 채팅 정보에 구독 여부가 실려 오는지 확인한 뒤 넣을 예정입니다.</li>
+      </ul>
+
+      <h2 id="wheel">돌림판</h2>
+      <p>방장이 직접 돌리는 룰렛입니다. 항목과 확률을 적어 저장하고 <b>[돌리기]</b>를 누르면 기능 창의 원판과 방송 화면의 원판이 같이 돌아갑니다.</p>
+      <ul>
+        <li>확률 합이 100이 아니어도 비율대로 돕니다. 항목마다 색은 자동으로 붙습니다.</li>
+        <li>돌림판은 여러 개 만들 수 있습니다(벌칙판, 선물판…). 회전 시간은 2~30초.</li>
+        <li>결과를 채팅에 올릴지, 문구를 어떻게 할지 정할 수 있습니다. 기본 문구는 <code>🎰 {대상} → {결과}!</code></li>
+        <li>결과는 날짜와 함께 기록에 남아 나중에 볼 수 있습니다.</li>
+      </ul>
+
+      <h2 id="roulette">후원 룰렛</h2>
+      <p>정해 둔 금액이 후원되면 방송 화면에서 룰렛이 <b>자동으로</b> 돌고, 다 돌면 결과가 채팅에 올라갑니다. 규칙은 여러 개 둘 수 있습니다.</p>
+      <div class="tbl"><table>
+        <tr><th>항목</th><th>뜻</th></tr>
+        <tr><td>금액</td><td><b>정확히</b> 이 금액일 때만 돕니다. 1,000원 룰렛에 1,500원을 후원하면 돌지 않습니다.</td></tr>
+        <tr><td>감지 키워드</td><td>적어 두면 후원 메시지에 그 말이 있을 때만 돕니다. 같은 금액으로 다른 룰렛을 나눌 때 씁니다.</td></tr>
+        <tr><td>돌림판</td><td>어느 돌림판을 돌릴지.</td></tr>
+        <tr><td>연차</td><td>켜면 2배·3배 금액에 2번·3번 돕니다. "한 번에 N회까지" 상한을 넘지 않습니다.</td></tr>
+        <tr><td>하루 최대</td><td>하루에 도는 횟수 제한. 0이면 제한 없음.</td></tr>
+      </table></div>
+      <div class="chat">
+        <p><span class="s">시스템</span> 익명의 후원자 님이 1,000원을 후원하셨습니다</p>
+        <p><span class="b">초코우유 봇</span> 🧡 익명의 후원자, 1000원 후원 감사합니다!</p>
+        <p class="dim">… 방송 화면의 룰렛이 6초 돌고</p>
+        <p><span class="b">초코우유 봇</span> 🧀 익명의 후원자 1000원 → 노래 한 곡!</p>
+      </div>
+      <ul>
+        <li>오버레이를 OBS에 안 넣어 두어도 채팅 결과는 나갑니다. 화면에 원판을 보여 주고 싶을 때만 오버레이를 넣으면 됩니다.</li>
+        <li>익명 후원도 돕니다. 이름 자리에 "익명의 후원자"가 들어갑니다.</li>
+        <li>후원 인사와 별개입니다. 후원 인사는 <a href="/guide/donation/">후원·구독 감사 인사</a>에서 따로 켜고 끕니다.</li>
+        <li>실제 후원 없이 확인하려면 <b>[첫 규칙 테스트]</b>를 누르세요.</li>
+      </ul>
+
+      <h2 id="obs">OBS에 띄우기</h2>
+      <p>각 화면 아래에 <b>OBS 브라우저 소스 주소</b>가 있습니다. [주소 복사] → OBS에서 소스 추가 → 브라우저 → URL에 붙여넣기. 폭 1280, 높이 720이면 무난하고 배경은 투명입니다.</p>
+      <div class="tbl"><table>
+        <tr><th>오버레이</th><th>주소</th><th>보이는 것</th></tr>
+        <tr><td>투표</td><td><code>http://localhost:8391/overlay/vote</code></td><td>질문, 남은 시간, 보기별 막대</td></tr>
+        <tr><td>추첨</td><td><code>http://localhost:8391/overlay/raffle</code></td><td>참여 인원, 당첨자</td></tr>
+        <tr><td>돌림판</td><td><code>http://localhost:8391/overlay/wheel</code></td><td>돌 때만 나타나 8초 뒤 사라짐. 항상 보이게: <code>?hidden=0</code>, 크기: <code>?size=400</code></td></tr>
+        <tr><td>후원 룰렛</td><td><code>http://localhost:8391/overlay/roulette</code></td><td>후원이 오면 자동으로 돌고 결과 표시</td></tr>
+      </table></div>
+      <p>글자 크기·색·배경은 기능 창의 <b>오버레이 꾸미기</b>에서 한 번에 바꿉니다. 포트 8391이 다른 프로그램과 겹치면 아인이 8392~8395 중 빈 곳을 쓰고, 기능 창의 주소가 그에 맞게 바뀝니다.</p>
+
+      <h2 id="faq">자주 묻는 것</h2>
+      <h3>[기능] 버튼을 눌렀는데 "봇을 먼저 켜 주세요"라고 나와요.</h3>
+      <p>투표·추첨은 채팅을 읽어야 해서 봇이 켜져 있어야 합니다. 봇을 켜고 몇 초 뒤 다시 누르세요.</p>
+      <h3>OBS에 아무것도 안 보여요.</h3>
+      <p>봇이 켜져 있는지, 주소를 정확히 붙였는지 확인하세요. 돌림판 오버레이는 돌 때만 나타나는 것이 기본입니다. 브라우저 소스의 "소스가 보이지 않을 때 종료" 옵션은 꺼 두세요.</p>
+      <h3>시청자가 명령어를 쳐야 하나요?</h3>
+      <p>아니요. 투표는 번호, 추첨은 채팅 한 줄(또는 정한 키워드)이면 됩니다. 방장 쪽도 창의 버튼뿐이라 명령어를 외울 것이 없습니다.</p>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/guide/time/">카운터·타이머·스톱워치 띄우기</a><span>시간 기능 창과 OBS 오버레이</span></li>
+          <li><a href="/guide/donation/">후원·구독 감사 인사 자동으로 하기</a><span>치즈 후원, 구독, 구독권 선물 인사 설정과 문구</span></li>
+          <li><a href="/guide/commands/">명령어 목록과 설정 방법</a><span>기본 명령어, 내가 만든 명령어, 치환자, 반복 공지</span></li>
+          <li><a href="/guide/troubleshooting/">치지직 채팅봇이 안 될 때 확인할 것</a><span>기능 창이 안 열릴 때, 오버레이가 안 보일 때 포함</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/updates/">업데이트 기록</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      <a href="/terms.html">이용약관</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> (평일 24시간 내 답변)</p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>
