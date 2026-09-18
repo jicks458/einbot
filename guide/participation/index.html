@@ -124,7 +124,8 @@
         <b>[모집 마감]</b> 뒤 인원을 정해 <b>[뽑기]</b>를 누르면 무작위로 뽑고 채팅에 알립니다.</p>
       <ul>
         <li>같은 사람은 한 번만 들어갑니다. 이미 당첨된 사람은 다시 뽑지 않으니, 당첨자가 없으면 [뽑기]를 한 번 더 누르면 됩니다.</li>
-        <li>참여자 이름은 기능 창 오른쪽에 나열되고, 오버레이에는 참여 인원과 당첨자만 보입니다.</li>
+        <li>참여자 이름은 기능 창 오른쪽과 방송 화면 양쪽에 나옵니다. 화면에 명단을 안 보이게 하려면 모집 카드의 "방송 화면에 참여자 명단 표시"를 끄세요.</li>
+        <li>[모집 마감] 뒤 [모집 재개]를 누르면 참여자를 지우지 않고 다시 받습니다. 처음부터 하려면 [초기화].</li>
         <li>구독자만 받는 기능은 아직 없습니다. 채팅 정보에 구독 여부가 실려 오는지 확인한 뒤 넣을 예정입니다.</li>
       </ul>
 
@@ -161,11 +162,11 @@
       </ul>
 
       <h2 id="obs">OBS에 띄우기</h2>
-      <p>각 화면 아래에 <b>OBS 브라우저 소스 주소</b>가 있습니다. [주소 복사] → OBS에서 소스 추가 → 브라우저 → URL에 붙여넣기. 폭 1280, 높이 720이면 무난하고 배경은 투명입니다.</p>
+      <p>각 화면 아래에 <b>OBS 브라우저 소스 URL</b>과 <b>권장 크기</b>가 있습니다. [URL 복사] → OBS에서 소스 추가 → 브라우저 → URL에 붙여넣고, 폭·높이를 권장 크기(예: 투표 560×420, 추첨 900×420)로 두면 1920×1080 화면에 딱 맞고 또렷합니다. 배경은 투명입니다.</p>
       <div class="tbl"><table>
         <tr><th>오버레이</th><th>주소</th><th>보이는 것</th></tr>
-        <tr><td>투표</td><td><code>http://localhost:8391/overlay/vote</code></td><td>질문, 남은 시간, 보기별 막대</td></tr>
-        <tr><td>추첨</td><td><code>http://localhost:8391/overlay/raffle</code></td><td>참여 인원, 당첨자</td></tr>
+        <tr><td>투표</td><td><code>http://localhost:8391/overlay/vote</code></td><td>질문, 남은 시간, 보기별 막대. 1위 왼쪽에 초록 선, 끝나면 세 번 깜빡임</td></tr>
+        <tr><td>추첨</td><td><code>http://localhost:8391/overlay/raffle</code></td><td>참여 인원, 참여자 명단(끌 수 있음), 뽑을 때 초록 테두리가 닉네임 사이를 돌다가 당첨자에 멈춤</td></tr>
         <tr><td>돌림판</td><td><code>http://localhost:8391/overlay/wheel</code></td><td>돌 때만 나타나 8초 뒤 사라짐. 항상 보이게: <code>?hidden=0</code>, 크기: <code>?size=400</code></td></tr>
         <tr><td>후원 룰렛</td><td><code>http://localhost:8391/overlay/roulette</code></td><td>후원이 오면 자동으로 돌고 결과 표시</td></tr>
       </table></div>
