@@ -250,7 +250,7 @@
 
   /* 화면: 앱 창을 입체로 세우고 버튼에서 설명선을 뽑는다 */
   .shotrow { position: relative; min-height: 470px; }
-  .shot3d { position: absolute; left: 110px; top: 0; padding: 0; }
+  .shot3d { position: absolute; left: -10px; top: 0; padding: 0; }
   .shot3d .win3d { display: block; width: 640px; height: auto; margin: -120px 0 0 -120px; }
   .appwin {
     width: 400px; background: #F6F7F9; color: #111827; border-radius: 10px; overflow: hidden; border: 1px solid #2A2B2F;
@@ -274,7 +274,9 @@
   .scr .txt { flex: 0 0 240px; }
   .scr .txt b { display: block; font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -.01em; }
   .scr .txt p { margin: 0; color: var(--muted, #6B7280); line-height: 1.6; font-size: 15px; }
-  .scr .pic { flex: 1; max-width: 1060px; padding: 0; margin: -40px 0; }
+  .scr .pic { flex: 1; max-width: 1060px; padding: 0; margin: -40px -150px -40px 0; }
+  .scr.rev .pic { margin: -40px 0 -40px -150px; }
+  #shots { overflow: hidden; }
   .scr .txt { margin-right: -100px; position: relative; z-index: 1; }
   .scr.rev .txt { margin-right: 0; margin-left: -100px; }
   .scr .pic img { display: block; width: 100%; height: auto; }
@@ -287,7 +289,7 @@
   .appwin .gear { font-size: 15px; }
   .appwin .lbl { color: #6B7280; font-size: 11px; margin: 14px 0 6px; }
   .appwin .log { margin: 0; background: #0F172A; color: #CBD5E1; font: 10.5px/1.45 Consolas, "D2Coding", monospace; padding: 8px 10px; border-radius: 3px; height: 156px; overflow: hidden; white-space: pre; }
-  .co { position: absolute; left: 400px; display: flex; align-items: flex-start; }
+  .co { position: absolute; left: 280px; display: flex; align-items: flex-start; }
   .co-on { top: 118px; }
   .co-set { top: 212px; }
   .co .line { flex: none; width: 240px; height: 2px; margin-top: 17px; background: #B8C0CC; position: relative; }
@@ -379,7 +381,7 @@
     .shot3d { position: static; }
     .shot3d .win3d { width: 100%; max-width: 520px; margin: 0 auto; }
     .scr .txt, .scr.rev .txt { margin: 0; }
-    .scr .pic { margin: 0; }
+    .scr .pic, .scr.rev .pic { margin: 0; }
     .appwin { width: 100%; max-width: 380px; margin: 0 auto; transform: none; box-shadow: 0 16px 40px rgba(17,24,39,.18); }
     .co { position: static; margin-top: 22px; }
     .co .line { display: none; }
@@ -511,7 +513,7 @@
     <div class="screens">
       <div class="scr reveal">
         <div class="txt"><b>방송 화면에 이렇게 뜹니다</b><p>OBS 브라우저 소스로 넣는 타이머·투표·추첨·돌림판. 시청자는 채팅에 번호만 치면 되고, 결과는 화면과 채팅에 같이 나옵니다.</p></div>
-        <div class="pic"><img src="/img/shots/overlay-3d-v3.webp" width="3180" height="2106" alt="방송 화면 예시(밝은 배경) — 위 줄에 타이머·투표·추첨, 왼쪽 아래 데스 카운터와 돌림판, 오른쪽 아래 캠" loading="lazy"></div>
+        <div class="pic"><img src="/img/shots/overlay-3d-v4.webp" width="3180" height="2106" alt="방송 화면 예시(밝은 배경) — 위 줄에 타이머·투표·추첨, 왼쪽 아래 데스 카운터와 돌림판, 오른쪽 아래 캠" loading="lazy"></div>
       </div>
       <div class="scr rev reveal">
         <div class="txt"><b>기능 창에서 버튼으로</b><p>투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행합니다. 명령어를 외울 것이 없고, 각 화면의 URL을 OBS에 한 번 넣으면 끝입니다.</p></div>
