@@ -250,8 +250,9 @@
 
   /* 화면: 앱 창을 입체로 세우고 버튼에서 설명선을 뽑는다 */
   .shotrow { position: relative; min-height: 470px; }
-  .shot3d { position: absolute; left: -10px; top: 0; padding: 0; }
-  .shot3d .win3d { display: block; width: 640px; height: auto; margin: -120px 0 0 -120px; }
+  /* 미리 그린 그림의 보이는 가장자리(투명 여백 제외)가 본문 왼쪽 끝에 딱 맞게: 측정값 117px */
+  .shot3d { position: absolute; left: 0; top: 0; padding: 0; }
+  .shot3d .win3d { display: block; width: 640px; height: auto; margin: -112px 0 0 -117px; }
   .appwin {
     width: 400px; background: #F6F7F9; color: #111827; border-radius: 10px; overflow: hidden; border: 1px solid #2A2B2F;
     font-family: "Malgun Gothic", "맑은 고딕", "Pretendard Variable", sans-serif; line-height: 1.3;
@@ -270,14 +271,15 @@
   .appwin .setbtn { height: 42px; background: #fff; border: 1px solid #E3E6EA; border-radius: 3px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; }
   .appwin .featbtn { margin-top: 8px; color: #077A55; }
   .screens { margin-top: 24px; display: flex; flex-direction: column; gap: 0; }
-  .scr { display: flex; align-items: center; gap: 0; }
+  .scr { display: flex; align-items: center; gap: 0; justify-content: space-between; }
   .scr .txt { flex: 0 0 240px; }
   .scr .txt b { display: block; font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -.01em; }
   .scr .txt p { margin: 0; color: var(--muted, #6B7280); line-height: 1.6; font-size: 15px; }
-  .scr .pic { flex: 1; max-width: 1060px; padding: 0; margin: -40px -150px -40px 0; }
-  .scr.rev .pic { margin: -40px 0 -40px -150px; }
+  /* 보이는 가장자리를 본문 끝에 맞춘다: 방송 화면은 오른쪽(투명 여백 104px), 기능 창은 왼쪽(투명 여백 104px) */
+  .scr .pic { flex: 1; max-width: 1060px; padding: 0; margin: -40px -104px -40px 0; }
+  .scr.rev .pic { margin: -40px 0 -40px -104px; }
   #shots { overflow: hidden; }
-  .scr .txt { margin-right: -100px; position: relative; z-index: 1; }
+  .scr .txt { margin-right: -125px; position: relative; z-index: 1; }
   .scr.rev .txt { margin-right: 0; margin-left: -100px; }
   .scr .pic img { display: block; width: 100%; height: auto; }
   .scr.rev { flex-direction: row-reverse; }
@@ -289,7 +291,7 @@
   .appwin .gear { font-size: 15px; }
   .appwin .lbl { color: #6B7280; font-size: 11px; margin: 14px 0 6px; }
   .appwin .log { margin: 0; background: #0F172A; color: #CBD5E1; font: 10.5px/1.45 Consolas, "D2Coding", monospace; padding: 8px 10px; border-radius: 3px; height: 156px; overflow: hidden; white-space: pre; }
-  .co { position: absolute; left: 280px; display: flex; align-items: flex-start; }
+  .co { position: absolute; left: 350px; display: flex; align-items: flex-start; }
   .co-on { top: 118px; }
   .co-set { top: 212px; }
   .co .line { flex: none; width: 240px; height: 2px; margin-top: 17px; background: #B8C0CC; position: relative; }
