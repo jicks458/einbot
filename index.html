@@ -251,7 +251,7 @@
   /* 화면: 앱 창을 입체로 세우고 버튼에서 설명선을 뽑는다 */
   .shotrow { position: relative; min-height: 470px; }
   .shot3d { position: absolute; left: 110px; top: 0; padding: 0; }
-  .shot3d .win3d { display: block; width: 540px; height: auto; margin: -70px 0 0 -70px; }
+  .shot3d .win3d { display: block; width: 640px; height: auto; margin: -120px 0 0 -120px; }
   .appwin {
     width: 400px; background: #F6F7F9; color: #111827; border-radius: 10px; overflow: hidden; border: 1px solid #2A2B2F;
     font-family: "Malgun Gothic", "맑은 고딕", "Pretendard Variable", sans-serif; line-height: 1.3;
@@ -274,7 +274,9 @@
   .scr .txt { flex: 0 0 300px; }
   .scr .txt b { display: block; font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -.01em; }
   .scr .txt p { margin: 0; color: var(--muted, #6B7280); line-height: 1.6; font-size: 15px; }
-  .scr .pic { flex: 1; max-width: 840px; padding: 0; }
+  .scr .pic { flex: 1; max-width: 940px; padding: 0; margin: -30px 0; }
+  .scr .txt { margin-right: -50px; position: relative; z-index: 1; }
+  .scr.rev .txt { margin-right: 0; margin-left: -50px; }
   .scr .pic img { display: block; width: 100%; height: auto; }
   .scr.rev { flex-direction: row-reverse; }
   @media (max-width: 760px) {
@@ -375,7 +377,9 @@
     .featlist, .demo-row { grid-template-columns: 1fr; }
     .shotrow { min-height: 0; }
     .shot3d { position: static; }
-    .shot3d .win3d { width: 100%; max-width: 470px; margin: 0 auto; }
+    .shot3d .win3d { width: 100%; max-width: 520px; margin: 0 auto; }
+    .scr .txt, .scr.rev .txt { margin: 0; }
+    .scr .pic { margin: 0; }
     .appwin { width: 100%; max-width: 380px; margin: 0 auto; transform: none; box-shadow: 0 16px 40px rgba(17,24,39,.18); }
     .co { position: static; margin-top: 22px; }
     .co .line { display: none; }
@@ -500,18 +504,18 @@
     <p class="sub">켜는 것도 버튼 하나, 바꾸는 것도 버튼 하나입니다.</p>
     </div>
     <div class="shotrow">
-      <div class="shot3d reveal"><img class="win3d" src="/img/shots/appwin-3d.webp" width="1080" height="1302" alt="아인 앱 창 — 봇 실행 중 버튼, 설정·기능 버튼, 아래에 진행 상황 로그"></div>
+      <div class="shot3d reveal"><img class="win3d" src="/img/shots/appwin-3d.webp" width="1280" height="1502" alt="아인 앱 창 — 봇 실행 중 버튼, 설정·기능 버튼, 아래에 진행 상황 로그"></div>
       <div class="co co-on reveal"><span class="line"></span><div class="txt"><b>ON / OFF 버튼 하나</b><p>누르면 켜지고, 다시 누르면 꺼집니다. 방송 전에 한 번이면 끝.</p></div></div>
       <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정 버튼 하나</b><p>인사말, 후원 문구, 명령어를 눌러서 고치면 봇에 바로 반영됩니다.</p></div></div>
     </div>
     <div class="screens">
       <div class="scr reveal">
         <div class="txt"><b>방송 화면에 이렇게 뜹니다</b><p>OBS 브라우저 소스로 넣는 타이머·투표·추첨·돌림판. 시청자는 채팅에 번호만 치면 되고, 결과는 화면과 채팅에 같이 나옵니다.</p></div>
-        <div class="pic"><img src="/img/shots/overlay-3d.webp" width="1680" height="1070" alt="방송 화면 예시(밝은 배경) — 위 줄에 타이머·투표·추첨, 왼쪽 아래 데스 카운터와 돌림판, 오른쪽 아래 캠" loading="lazy"></div>
+        <div class="pic"><img src="/img/shots/overlay-3d.webp" width="1880" height="1270" alt="방송 화면 예시(밝은 배경) — 위 줄에 타이머·투표·추첨, 왼쪽 아래 데스 카운터와 돌림판, 오른쪽 아래 캠" loading="lazy"></div>
       </div>
       <div class="scr rev reveal">
         <div class="txt"><b>기능 창에서 버튼으로</b><p>투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행합니다. 명령어를 외울 것이 없고, 각 화면의 URL을 OBS에 한 번 넣으면 끝입니다.</p></div>
-        <div class="pic"><img src="/img/shots/features-3d.webp" width="1680" height="1198" alt="아인 기능 창 — 추첨 화면. 모집 재개 버튼, 명단 표시·자동 채팅 띄우기·TTS 스위치, 참여자 15명 목록" loading="lazy"></div>
+        <div class="pic"><img src="/img/shots/features-3d.webp" width="1880" height="1398" alt="아인 기능 창 — 추첨 화면. 모집 재개 버튼, 명단 표시·자동 채팅 띄우기·TTS 스위치, 참여자 15명 목록" loading="lazy"></div>
       </div>
     </div>
   </div>
