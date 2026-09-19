@@ -250,7 +250,8 @@
 
   /* 화면: 앱 창을 입체로 세우고 버튼에서 설명선을 뽑는다 */
   .shotrow { position: relative; min-height: 470px; }
-  .shot3d { position: absolute; left: 110px; top: 0; padding: 0; perspective: 1200px; }
+  .shot3d { position: absolute; left: 110px; top: 0; padding: 0; }
+  .shot3d .win3d { display: block; width: 540px; height: auto; margin: -70px 0 0 -70px; }
   .appwin {
     width: 400px; background: #F6F7F9; color: #111827; border-radius: 10px; overflow: hidden; border: 1px solid #2A2B2F;
     font-family: "Malgun Gothic", "맑은 고딕", "Pretendard Variable", sans-serif; line-height: 1.3;
@@ -268,16 +269,19 @@
   .appwin .cap { text-align: center; color: #6B7280; font-size: 11.5px; margin: 8px 0 10px; }
   .appwin .setbtn { height: 42px; background: #fff; border: 1px solid #E3E6EA; border-radius: 3px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13.5px; font-weight: 700; }
   .appwin .featbtn { margin-top: 8px; color: #077A55; }
-  .screens { margin-top: 56px; }
-  .screens .big { border-radius: 16px; border: 1px solid var(--card-line, #E5E9F0); box-shadow: 0 18px 50px rgba(15,23,42,.18); overflow: hidden; background: #0f1b2d; }
-  .screens .big img { display: block; width: 100%; height: auto; }
-  .screens .cap { text-align: center; color: var(--muted, #6B7280); font-size: 14px; margin: 12px 0 0; }
-  .screens .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
-  .screens .three figure { margin: 0; }
-  .screens .three img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--card-line, #E5E9F0); box-shadow: 0 10px 30px rgba(15,23,42,.10); background: #fff; }
-  .screens .three figcaption { font-size: 14px; color: var(--muted, #6B7280); margin-top: 10px; text-align: center; }
-  .screens .three figcaption b { color: var(--ink, #111827); display: block; margin-bottom: 2px; }
-  @media (max-width: 760px) { .screens .three { grid-template-columns: 1fr; } }
+  .screens { margin-top: 24px; display: flex; flex-direction: column; gap: 0; }
+  .scr { display: flex; align-items: center; gap: 0; }
+  .scr .txt { flex: 0 0 300px; }
+  .scr .txt b { display: block; font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -.01em; }
+  .scr .txt p { margin: 0; color: var(--muted, #6B7280); line-height: 1.6; font-size: 15px; }
+  .scr .pic { flex: 1; max-width: 840px; padding: 0; }
+  .scr .pic img { display: block; width: 100%; height: auto; }
+  .scr.rev { flex-direction: row-reverse; }
+  @media (max-width: 760px) {
+    .scr, .scr.rev { flex-direction: column; gap: 16px; }
+    .scr .txt { flex: none; }
+    .scr .pic { padding: 0; }
+  }
   .appwin .gear { font-size: 15px; }
   .appwin .lbl { color: #6B7280; font-size: 11px; margin: 14px 0 6px; }
   .appwin .log { margin: 0; background: #0F172A; color: #CBD5E1; font: 10.5px/1.45 Consolas, "D2Coding", monospace; padding: 8px 10px; border-radius: 3px; height: 156px; overflow: hidden; white-space: pre; }
@@ -371,6 +375,7 @@
     .featlist, .demo-row { grid-template-columns: 1fr; }
     .shotrow { min-height: 0; }
     .shot3d { position: static; }
+    .shot3d .win3d { width: 100%; max-width: 470px; margin: 0 auto; }
     .appwin { width: 100%; max-width: 380px; margin: 0 auto; transform: none; box-shadow: 0 16px 40px rgba(17,24,39,.18); }
     .co { position: static; margin-top: 22px; }
     .co .line { display: none; }
@@ -495,40 +500,18 @@
     <p class="sub">켜는 것도 버튼 하나, 바꾸는 것도 버튼 하나입니다.</p>
     </div>
     <div class="shotrow">
-      <div class="tilt shot3d reveal">
-        <div class="appwin" role="img" aria-label="아인 앱 창 — 봇 실행 중 버튼과 설정 버튼, 아래에 진행 상황 로그">
-          <div class="ttl"><svg width="14" height="14" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="#00E592"/><rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/><polygon points="88,160 129,160 88,192" fill="#fff"/><circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/><line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/></svg><span>아인</span><span class="wc"><i>&#8212;</i><i>&#9633;</i><i>&#10005;</i></span></div>
-          <div class="hdr"><svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="#00E592"/><rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/><polygon points="88,160 129,160 88,192" fill="#fff"/><circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/><line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/></svg><div class="hdrt"><b>아인</b><small>나만의 치지직 채팅봇</small><span class="st">켜짐</span></div></div>
-          <div class="bd">
-            <div class="run"><i></i>봇 실행 중</div>
-            <div class="cap">실행 중 · "초코우유 봇" 이름으로 응답</div>
-            <div class="setbtn"><span class="gear">&#9881;</span>설정</div>
-            <div class="setbtn featbtn">&#10022;&nbsp;기능</div>
-            <div class="lbl">진행 상황</div>
-            <pre class="log">[이용권] 무료 체험 · 7일 남음 (2026-09-16 까지)
-=========================================
- 아인 시작: 초코우유
- 명령어 접두사: !  (채팅창에 !명령어 입력해보세요)
- 명령어/문구를 바꾸려면: "설정" 을 누르세요
-=========================================
-[봇 계정] 연결 완료 · "초코우유 봇" 계정으로 전송합니다.
-[세션] 웹소켓 연결됨
-[세션] sessionKey 수신, 이벤트 구독 중...
-[세션] CHAT 이벤트 구독 완료
-[세션] DONATION 이벤트 구독 완료</pre>
-          </div>
-        </div>
-      </div>
+      <div class="shot3d reveal"><img class="win3d" src="/img/shots/appwin-3d.webp" width="1080" height="1302" alt="아인 앱 창 — 봇 실행 중 버튼, 설정·기능 버튼, 아래에 진행 상황 로그"></div>
       <div class="co co-on reveal"><span class="line"></span><div class="txt"><b>ON / OFF 버튼 하나</b><p>누르면 켜지고, 다시 누르면 꺼집니다. 방송 전에 한 번이면 끝.</p></div></div>
       <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정 버튼 하나</b><p>인사말, 후원 문구, 명령어를 눌러서 고치면 봇에 바로 반영됩니다.</p></div></div>
     </div>
-    <div class="screens reveal">
-      <div class="big"><img src="/img/shots/overlay-all.jpg" width="1280" height="720" alt="방송 화면 예시(밝은 배경) — 위 줄에 타이머·투표·추첨, 왼쪽 아래 데스 카운터와 돌림판, 오른쪽 아래 캠" loading="lazy"></div>
-      <p class="cap">방송 화면에는 이렇게 뜹니다. OBS 브라우저 소스로 넣는 타이머·카운터·돌림판·추첨·투표 (예시 화면)</p>
-      <div class="three">
-        <figure><img src="/img/shots/features-raffle.png" width="1100" height="720" alt="아인 기능 창 — 추첨 화면. 모집 재개 버튼, 명단 표시·자동 채팅 띄우기·TTS 스위치, 참여자 15명 목록" loading="lazy"><figcaption><b>기능 창</b>투표·추첨·룰렛·타이머를 버튼으로</figcaption></figure>
-        <figure><img src="/img/shots/overlay-spotlight.jpg" width="1280" height="720" alt="방송 화면 예시 — 당첨자 닉네임과 그 사람의 채팅 두 줄이 화면에 뜬 모습" loading="lazy"><figcaption><b>당첨자 채팅 띄우기</b>한 명 뽑으면 그 사람 채팅이 화면에, 음성으로도</figcaption></figure>
-        <figure><img src="/img/shots/settings-paneBot.png" width="1000" height="760" alt="아인 설정 창 — 왼쪽 목록형 메뉴와 봇 계정 로그인 카드" loading="lazy"><figcaption><b>설정 창</b>왼쪽 목록에서 골라 고치면 바로 반영</figcaption></figure>
+    <div class="screens">
+      <div class="scr reveal">
+        <div class="txt"><b>방송 화면에 이렇게 뜹니다</b><p>OBS 브라우저 소스로 넣는 타이머·투표·추첨·돌림판. 시청자는 채팅에 번호만 치면 되고, 결과는 화면과 채팅에 같이 나옵니다.</p></div>
+        <div class="pic"><img src="/img/shots/overlay-3d.webp" width="1680" height="1070" alt="방송 화면 예시(밝은 배경) — 위 줄에 타이머·투표·추첨, 왼쪽 아래 데스 카운터와 돌림판, 오른쪽 아래 캠" loading="lazy"></div>
+      </div>
+      <div class="scr rev reveal">
+        <div class="txt"><b>기능 창에서 버튼으로</b><p>투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행합니다. 명령어를 외울 것이 없고, 각 화면의 URL을 OBS에 한 번 넣으면 끝입니다.</p></div>
+        <div class="pic"><img src="/img/shots/features-3d.webp" width="1680" height="1198" alt="아인 기능 창 — 추첨 화면. 모집 재개 버튼, 명단 표시·자동 채팅 띄우기·TTS 스위치, 참여자 15명 목록" loading="lazy"></div>
       </div>
     </div>
   </div>
