@@ -31,6 +31,7 @@
   td.me, th.me { background: rgba(0,229,146,.07); }
   tr.grp th { background: #EEF2F5; color: var(--text); font-size: 13px; padding: 8px 10px; white-space: normal; position: static; }
   tr.grp th span { color: var(--muted); font-weight: 500; margin-left: 8px; }
+  td .hl { background: rgba(0,255,163,.32); color: #05463A; font-weight: 800; padding: 1px 6px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
   .y { color: #077A55; } .h { color: #B54708; } .d { color: #9CA3AF; }
   .legend { font-size: 13.5px; color: var(--muted); margin: 6px 0 0; }
   .measure { background: #fff; border: 1px solid var(--card-line); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
@@ -101,7 +102,6 @@
           <li><a href="#feat">기능</a></li>
           <li><a href="#each">각 봇이 특히 강한 것</a></li>
           <li><a href="#measure">아인만 직접 잰 값</a></li>
-          <li><a href="#pick">고르는 기준</a></li>
           <li><a href="#src">확인한 곳·정정 요청·갱신 기록</a></li>
         </ol>
       </div>
@@ -117,7 +117,7 @@
 <tr><th>시작하는 법</th><td class="me">Microsoft Store 설치 → 치지직 API 키(무료) → 로그인</td><td>네이버 로그인 → 채널 연동 → 초대 버튼 (채널 주인 본인만)</td><td>네이버로 로그인</td><td>승인제 — 신청 뒤 승인되면 사용. 치지직 계정 로그인</td><td>치지직 계정 연동</td><td>설치 후 방송용 네이버 계정으로 로그인</td></tr>
 <tr><th>쓰는 환경</th><td class="me">Windows 10 이상</td><td>브라우저</td><td>브라우저</td><td>브라우저</td><td>브라우저 (모바일 미지원)</td><td>Windows · Mac · Linux</td></tr>
 <tr><th>봇이 돌아가는 곳</th><td class="me">내 PC</td><td>서비스 서버</td><td>서비스 서버</td><td>운영자 개인 서버</td><td>자체 서버</td><td>내 PC</td></tr>
-<tr><th>채팅에 보이는 봇 이름</th><td class="me">내가 정한 부계정 닉네임 (신청 없음)</td><td>"뚜봇" — 서비스 이름으로 표시. 원하는 이름의 개인봇은 문의로 신청(조건·방법은 공개돼 있지 않음)</td><td>"빵떡" — 서비스 이름으로 표시</td><td>"한봇" — 서비스 이름으로 표시</td><td>"나디아" — 서비스 이름으로 표시</td><td>방송 계정 본인 (스트리머 계정으로 로그인)</td></tr>
+<tr><th>채팅에 보이는 봇 이름</th><td class="me"><b class="hl">내가 정한 부계정 닉네임</b> (신청 없음)</td><td>"뚜봇" — 서비스 이름으로 표시. 원하는 이름의 개인봇은 문의로 신청(조건·방법은 공개돼 있지 않음)</td><td>"빵떡" — 서비스 이름으로 표시</td><td>"한봇" — 서비스 이름으로 표시</td><td>"나디아" — 서비스 이름으로 표시</td><td>방송 계정 본인 (스트리머 계정으로 로그인)</td></tr>
 <tr><th>시청자 기록이 남는 곳</th><td class="me">내 PC</td><td>서비스 서버</td><td>서비스 서버</td><td>운영자 서버</td><td>자체 서버</td><td>내 PC (안내: "내 컴퓨터에만 저장")</td></tr>
 <tr><th>비용</th><td class="me">7일 무료 뒤 월 2,900원</td><td>요금 안내 없음</td><td>유료 이용권 — 30일 4,900원(자동결제) · 120일 19,800원 · 1년 55,000원. 무료로 되는 범위는 공지에 없음 (카페 공지 2025-02-17)</td><td>100% 무료</td><td>요금 안내 없음</td><td>기본 기능 무료. Pro(원격 모니터링·프롬프터·최소 후원 금액)는 개발자 채널 구독</td></tr>
 <tr><th>공식 안내</th><td class="me">einbot.kr</td><td>chzzk-bot.ddutto.com</td><td>bbazzik.unripesoft.com</td><td>bot.mangul.kr</td><td>buzzk.arite.studio</td><td>github.com/auejin/vzzk-bot</td></tr></tbody></table></div>
@@ -159,16 +159,6 @@
         <dt>요구하는 치지직 권한</dt><dd>유저 조회, 채팅 메시지 조회, 채팅 메시지 쓰기, 후원 조회 — 네 개. 후원 인사를 끄면 후원 조회는 없어도 됩니다. 개발자 센터에서 직접 발급하는 무료 키라 아인 서버를 거치지 않습니다.</dd>
         <dt>PC 밖으로 나가는 정보</dt><dd>이용권 확인용 채널 식별자, 그리고 끌 수 있는 진단 정보(버전·오류 종류·명령어 사용 횟수). 채팅 내용·닉네임·후원 메시지·로그인 정보·출석 기록은 나가지 않습니다. <a href="/privacy.html">개인정보처리방침</a></dd>
       </dl></div>
-
-      <h2 id="pick">고르는 기준</h2>
-      <h3>기능이 얼마나 필요한가</h3>
-      <p>포인트, 미니게임, AI, 게임 전적까지 쓰려면 한봇이 맞고, 명령어를 변수로 정교하게 짜고 싶으면 뚜봇이 맞습니다. 출석·인사·명령어에 투표·추첨·룰렛·타이머 정도면 아인이나 브이찍이 되고, 이때는 설정이 얼마나 간단한지가 더 중요합니다.</p>
-      <h3>봇 이름을 어떻게 하고 싶은가</h3>
-      <p>웹형 네 봇(뚜봇·빵떡·한봇·나디아)은 서비스 이름으로 채팅에 올라옵니다. 뚜봇은 원하는 이름의 개인봇을 문의로 받지만 조건과 방법은 공개돼 있지 않습니다. 브이찍은 방송 계정 본인으로 로그인하므로 스트리머 이름으로 나가고, 아인은 부계정으로 한 번 로그인하면 그 닉네임이 봇 이름이 됩니다.</p>
-      <h3>컴퓨터를 켜 둘 수 있는가</h3>
-      <p>설치형(브이찍·아인)은 방송 중에 내 PC에서 돌아가야 합니다. 대신 로그인 정보와 시청자 기록이 밖으로 나가지 않습니다. 웹형은 PC를 꺼도 봇이 살아 있지만, 봇 운영자 서버에 채널을 연동하는 구조입니다.</p>
-      <h3>아인이 맞지 않는 경우</h3>
-      <p>신청곡·포인트·미니게임·게임 전적이 꼭 필요하거나, 방송 PC를 켜 둘 수 없다면 위의 다른 봇이 맞습니다. 돈을 내고 싶지 않다면 한봇(승인제)·뚜봇·나디아, 그리고 브이찍의 기본 기능이 무료입니다. 유료 봇끼리 보면 빵떡은 30일 4,900원, 아인은 한 달 2,900원이고 7일 무료 체험 안에 판단하시면 됩니다.</p>
 
       <h2 id="src">확인한 곳·정정 요청·갱신 기록</h2>
       <p>2026년 9월 20일에 아래 페이지를 직접 열어 읽었습니다. 로그인해야 보이는 곳(대시보드, 네이버 카페)은 보지 않았습니다.</p>
