@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>치지직 채팅봇 6종 비교표 — 공식 안내 기준 (2026년 9월) — 아인</title>
+<meta name="description" content="뚜봇·빵떡·한봇·나디아·브이찍·아인을 방식, 비용, 봇 이름, 데이터 저장 위치, 기능 항목별로 비교한 표. 각 봇의 공식 안내를 기준으로 하고, 아인만 직접 측정한 값을 따로 적었습니다.">
+<link rel="canonical" href="https://einbot.kr/compare/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="아인">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="치지직 채팅봇 6종 비교표 — 공식 안내 기준 (2026년 9월)">
+<meta property="og:description" content="뚜봇·빵떡·한봇·나디아·브이찍·아인을 방식, 비용, 봇 이름, 데이터 저장 위치, 기능 항목별로 비교한 표. 각 봇의 공식 안내를 기준으로 하고, 아인만 직접 측정한 값을 따로 적었습니다.">
+<meta property="og:url" content="https://einbot.kr/compare/">
+<meta property="og:image" content="https://einbot.kr/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F9FB">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/guide/guide.css">
+<style>
+  .tbl { overflow-x: auto; margin: 14px 0 6px; width: calc(100vw - 48px); max-width: 992px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 900px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+  thead th { color: var(--muted); font-weight: 700; font-size: 12.5px; letter-spacing: .04em; white-space: nowrap; }
+  tbody th { font-weight: 700; white-space: nowrap; width: 128px; }
+  td.me { min-width: 190px; }
+  tbody th, thead th:first-child { position: sticky; left: 0; background: var(--bg, #F7F9FB); }
+  td.me, th.me { background: rgba(0,229,146,.07); }
+  .y { color: #077A55; } .n { color: #B42318; } .h { color: #B54708; } .d { color: #9CA3AF; }
+  .legend { font-size: 13.5px; color: var(--muted); margin: 6px 0 0; }
+  .measure { background: #fff; border: 1px solid var(--card-line); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+  .measure dl { display: grid; grid-template-columns: 170px 1fr; gap: 8px 14px; margin: 0; font-size: 15px; }
+  .measure dt { color: var(--muted); font-weight: 700; } .measure dd { margin: 0; }
+  .fine { font-size: 14px; color: var(--muted); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
+      { "@type": "ListItem", "position": 2, "name": "치지직 채팅봇 비교표", "item": "https://einbot.kr/compare/" } ] },
+    { "@type": "Article", "headline": "치지직 채팅봇 6종 비교표 — 공식 안내 기준 (2026년 9월)", "description": "뚜봇·빵떡·한봇·나디아·브이찍·아인을 방식, 비용, 봇 이름, 데이터 저장 위치, 기능 항목별로 비교한 표. 각 봇의 공식 안내를 기준으로 하고, 아인만 직접 측정한 값을 따로 적었습니다.", "inLanguage": "ko", "datePublished": "2026-09-20", "dateModified": "2026-09-20",
+      "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
+      "mainEntityOfPage": "https://einbot.kr/compare/" }
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="34" height="34" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00FFA3"/><stop offset="1" stop-color="#00C793"/>
+        </linearGradient></defs>
+        <rect x="11.5" y="11.5" width="233" height="233" rx="61" fill="url(#g)"/>
+        <rect x="56.5" y="61.5" width="143" height="102" rx="26" fill="#fff"/>
+        <polygon points="88,160 129,160 88,192" fill="#fff"/>
+        <circle cx="90.9" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="128" cy="112.5" r="16" fill="#0A1E1C"/><circle cx="165.1" cy="112.5" r="16" fill="#0A1E1C"/>
+        <line x1="80.9" y1="112.5" x2="100.9" y2="112.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="128" y1="102.5" x2="128" y2="122.5" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <line x1="157.6" y1="120" x2="172.6" y2="105" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+      </svg>
+      아인 <small>나만의 치지직 채팅봇</small>
+    </a>
+    <nav>
+      <a href="/#feat">기능</a>
+      <a href="/#price">가격</a>
+      <a href="/#faq">자주 묻는 질문</a>
+      <a href="/guide/">가이드</a>
+      <a href="/updates/">업데이트</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <article>
+      <p class="crumbs"><a href="/">아인</a> › 치지직 채팅봇 비교표</p>
+      <p class="eyebrow">비교표</p>
+      <h1>치지직 채팅봇 6종 비교표</h1>
+      <p class="lead">치지직에서 쓸 수 있는 채팅봇 여섯 개를 같은 항목으로 놓고 비교한 표입니다. <b>이 페이지는 아인을 만든 사람이 씁니다.</b>
+        그래서 다른 봇은 각 봇의 공식 안내에 적힌 내용만 옮기고 써 보지 않은 기능은 평가하지 않았으며, 직접 측정한 값은 아인에 대해서만 따로 적었습니다.
+        아인이 못 하는 것도 그대로 표시했습니다.</p>
+      <p class="meta">다른 봇: 2026년 9월 7일 각 공식 안내 확인 · 아인: 1.8.0 기준 2026년 9월 20일 측정</p>
+
+      <div class="toc">
+        <b>차례</b>
+        <ol>
+          <li><a href="#how">표를 읽는 법</a></li>
+          <li><a href="#basic">기본 사실</a></li>
+          <li><a href="#feat">기능</a></li>
+          <li><a href="#measure">아인만 직접 잰 값</a></li>
+          <li><a href="#pick">고르는 기준</a></li>
+          <li><a href="#fix">정정 요청·갱신 기록</a></li>
+        </ol>
+      </div>
+
+      <h2 id="how">표를 읽는 법</h2>
+      <p><b class="y">○</b>는 공식 안내에 그 기능이 적혀 있다는 뜻, <b class="n">×</b>는 없다고 안내하거나 아인이 지원하지 않는 것, <b class="h">△</b>는 일부만, <span class="d">—</span>는 공식 안내에서 찾지 못한 항목입니다.
+        "안내에 없음"은 "없다"와 다릅니다. 표는 각 봇을 써 보고 만든 것이 아니라 공식 안내를 읽고 만든 것이라, 실제로는 되는데 안내에 없는 기능이 있을 수 있습니다.</p>
+
+      <h2 id="basic">기본 사실</h2>
+      <div class="tbl"><table><thead><tr><th></th><th>뚜봇</th><th>빵떡</th><th>한봇</th><th>나디아</th><th>브이찍</th><th class="me">아인</th></tr></thead><tbody><tr><th>방식</th><td>웹</td><td>웹</td><td>웹</td><td>웹</td><td>설치형</td><td class="me">설치형</td></tr>
+<tr><th>쓰려면</th><td>네이버 로그인·채널 연동</td><td>네이버 로그인·채널 연동</td><td>신청 후 승인</td><td>네이버 로그인·채널 연동</td><td>프로그램 설치</td><td class="me">Microsoft Store 설치 + 치지직 API 키(무료)</td></tr>
+<tr><th>쓰는 환경</th><td>브라우저</td><td>브라우저</td><td>브라우저</td><td>브라우저 (모바일 미지원)</td><td>Windows·Mac·Linux</td><td class="me">Windows 10 이상</td></tr>
+<tr><th>봇이 돌아가는 곳</th><td>봇 서버</td><td>봇 서버</td><td>운영자 개인 서버</td><td>봇 서버</td><td>내 PC</td><td class="me">내 PC</td></tr>
+<tr><th>채팅에 보이는 봇 이름</th><td>뚜봇 (개인 이름은 신청·검토)</td><td>빵떡</td><td>한봇</td><td>안내 없음</td><td>로그인한 네이버 계정</td><td class="me">내가 정한 부계정 닉네임</td></tr>
+<tr><th>시청자 기록이 남는 곳</th><td>봇 서버</td><td>봇 서버</td><td>운영자 서버</td><td>봇 서버</td><td>내 PC</td><td class="me">내 PC</td></tr>
+<tr><th>비용</th><td>요금 안내 없음</td><td>후원 전용</td><td>무료</td><td>요금 안내 없음</td><td>무료</td><td class="me">7일 무료 뒤 월 2,900원</td></tr>
+<tr><th>공식 안내</th><td>chzzk-bot.ddutto.com</td><td>bbazzik.unripesoft.com</td><td>bot.mangul.kr</td><td>buzzk.arite.studio</td><td>github.com/auejin/vzzk-bot</td><td class="me">einbot.kr</td></tr></tbody></table></div>
+      <p class="legend">"요금 안내 없음"은 공식 사이트에 가격 페이지가 없다는 뜻이고, 실제로는 무료로 쓰이는 경우입니다.</p>
+
+      <h2 id="feat">기능</h2>
+      <div class="tbl"><table><thead><tr><th></th><th>뚜봇</th><th>빵떡</th><th>한봇</th><th>나디아</th><th>브이찍</th><th class="me">아인</th></tr></thead><tbody><tr><th>출석 체크</th><td><b class="y">○</b></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td class="me"><b class="y">○</b> 인사만 해도 기록</td></tr>
+<tr><th>후원 감사 인사</th><td><b class="y">○</b> 후원 알림</td><td><span class="d">—</span></td><td><b class="y">○</b> 금액 구간별</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td class="me"><b class="y">○</b> 익명 후원 포함</td></tr>
+<tr><th>구독·구독권 선물 인사</th><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b> 구독 알림</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td class="me"><b class="y">○</b> 티어별</td></tr>
+<tr><th>커스텀 명령어</th><td><b class="y">○</b></td><td><b class="y">○</b></td><td><span class="d">—</span></td><td><b class="y">○</b> 함수형</td><td><b class="y">○</b> 자동응답</td><td class="me"><b class="y">○</b> 채팅에서 추가</td></tr>
+<tr><th>반복 공지</th><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b> 매크로</td><td><span class="d">—</span></td><td class="me"><b class="y">○</b></td></tr>
+<tr><th>투표</th><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td class="me"><b class="y">○</b> 채팅에 번호만</td></tr>
+<tr><th>추첨</th><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td class="me"><b class="y">○</b> 명단·연출·당첨자 채팅</td></tr>
+<tr><th>룰렛·돌림판</th><td><b class="y">○</b></td><td><b class="y">○</b></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td class="me"><b class="y">○</b> 후원 금액 연동</td></tr>
+<tr><th>카운터·타이머</th><td><span class="d">—</span></td><td><b class="y">○</b> 카운트</td><td><span class="d">—</span></td><td><b class="y">○</b> 카운터</td><td><span class="d">—</span></td><td class="me"><b class="y">○</b> 스톱워치 포함</td></tr>
+<tr><th>방송 화면 오버레이</th><td><b class="y">○</b> 채팅</td><td><b class="y">○</b></td><td><b class="y">○</b> 59종</td><td><span class="d">—</span></td><td><b class="y">○</b> 자막·후원 목표</td><td class="me"><b class="y">○</b> 투표·추첨·룰렛·시간</td></tr>
+<tr><th>TTS (채팅 읽기)</th><td><b class="y">○</b></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td class="me"><b class="h">△</b> 당첨자 채팅만</td></tr>
+<tr><th>신청곡</th><td><b class="y">○</b></td><td><b class="y">○</b></td><td><span class="d">—</span></td><td><b class="y">○</b></td><td><b class="y">○</b></td><td class="me"><b class="n">×</b></td></tr>
+<tr><th>포인트·상점</th><td><span class="d">—</span></td><td><span class="d">—</span></td><td><b class="y">○</b> 경매 포함</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td class="me"><b class="n">×</b></td></tr>
+<tr><th>미니게임</th><td><span class="d">—</span></td><td><b class="y">○</b></td><td><b class="y">○</b> 28종</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td class="me"><b class="n">×</b></td></tr>
+<tr><th>게임 전적·티어</th><td><b class="y">○</b></td><td><b class="y">○</b></td><td><b class="y">○</b></td><td><span class="d">—</span></td><td><span class="d">—</span></td><td class="me"><b class="n">×</b></td></tr></tbody></table></div>
+      <p class="legend">아인 열의 설명은 1.8 기준입니다. 신청곡·포인트·미니게임·게임 전적은 아인에 없고, 앞으로도 우선순위가 낮습니다.</p>
+
+      <h2 id="measure">아인만 직접 잰 값</h2>
+      <p class="fine">다른 봇은 계정을 만들어 써 보지 않았기 때문에 같은 값을 적을 수 없습니다. 아인 값은 누구나 같은 방법으로 다시 잴 수 있게 방법을 함께 적습니다.</p>
+      <div class="measure"><dl>
+        <dt>설치에 걸리는 시간</dt><dd>약 5분 — Microsoft Store 설치 1분 안팎, 초기 설정 3단계(API 키·방송 계정 로그인·봇 이름) 약 4분. <a href="/guide/install/">설치 가이드</a>의 단계를 처음부터 따라간 시간입니다.</dd>
+        <dt>설치 파일 크기</dt><dd>35 MB (스토어 패키지)</dd>
+        <dt>메모리 사용량</dt><dd>앱 창 53 MB (봇 대기 상태, Windows 작업 관리자 기준). 봇을 켜면 채팅 처리 프로세스가 하나 더 붙습니다.</dd>
+        <dt>요구하는 치지직 권한</dt><dd>유저 조회, 채팅 메시지 조회, 채팅 메시지 쓰기, 후원 조회 — 네 개. 후원 인사를 끄면 후원 조회는 없어도 됩니다. 개발자 센터에서 직접 발급하는 무료 키라 아인 서버를 거치지 않습니다.</dd>
+        <dt>PC 밖으로 나가는 정보</dt><dd>이용권 확인용 채널 식별자, 그리고 끌 수 있는 진단 정보(버전·오류 종류·명령어 사용 횟수). 채팅 내용·닉네임·후원 메시지·로그인 정보·출석 기록은 나가지 않습니다. <a href="/privacy.html">개인정보처리방침</a></dd>
+      </dl></div>
+
+      <h2 id="pick">고르는 기준</h2>
+      <h3>기능이 얼마나 필요한가</h3>
+      <p>신청곡, 포인트, 미니게임, 게임 전적까지 쓰려면 한봇이나 뚜봇, 빵떡이 맞습니다. 아인에는 없습니다. 출석·인사·명령어에 투표·추첨·룰렛·타이머 정도면 아인이나 브이찍이 됩니다.</p>
+      <h3>봇 이름을 어떻게 하고 싶은가</h3>
+      <p>웹형은 대개 서비스 이름(뚜봇·빵떡·한봇)으로 채팅에 올라옵니다. 뚜봇은 개인 이름 봇을 신청받아 검토한다고 안내하지만 방법과 조건은 공개돼 있지 않습니다. 아인은 부계정으로 한 번 로그인하면 그 닉네임이 봇 이름이 되고, 브이찍은 로그인한 계정 이름으로 나갑니다.</p>
+      <h3>컴퓨터를 켜 둘 수 있는가</h3>
+      <p>설치형(브이찍·아인)은 방송 중에 내 PC에서 돌아가야 합니다. 대신 로그인 정보와 시청자 기록이 밖으로 나가지 않습니다. 웹형은 PC를 꺼도 봇이 살아 있지만, 봇 회사 서버에 채널을 연동하는 구조입니다.</p>
+      <h3>아인이 맞지 않는 경우</h3>
+      <p>신청곡·포인트·미니게임이 꼭 필요하거나, 방송 PC를 켜 둘 수 없거나, 한 달 2,900원을 내고 싶지 않다면 위의 다른 봇이 맞습니다. 7일 무료 체험 안에 판단하시면 됩니다.</p>
+
+      <h2 id="fix">정정 요청·갱신 기록</h2>
+      <p>다른 봇의 내용은 각 공식 안내를 읽고 옮긴 것이라 바뀌었거나 틀린 부분이 있을 수 있습니다. <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>으로 알려 주시면 확인 뒤 바로 고치고 아래에 기록합니다.</p>
+      <ul>
+        <li>2026-09-20 — 첫 게시. 다른 봇 안내는 2026-09-07 확인분, 아인은 1.8.0 기준.</li>
+      </ul>
+
+      <div class="related">
+        <h2>다음 읽을 글</h2>
+        <ul>
+          <li><a href="/guide/install/">치지직 채팅봇 설치 방법</a><span>Microsoft Store 설치부터 봇 시작까지 5분</span></li>
+          <li><a href="/guide/participation/">투표·추첨·돌림판·후원 룰렛 사용법</a><span>기능 창과 OBS 오버레이</span></li>
+          <li><a href="/guide/attendance/">출석 체크 봇 설정 방법</a><span>인사말 출석, 하루 기준 시각, 문구</span></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>아인</b> — 나만의 치지직 채팅봇 ·
+      <a href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어</a> ·
+      <a href="/updates/">업데이트 기록</a> ·
+      <a href="/privacy.html">개인정보처리방침</a> ·
+      <a href="/terms.html">이용약관</a> ·
+      문의 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> (평일 24시간 내 답변)</p>
+    <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
+  </div>
+</footer>
+<script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "25c7b4a217c3da0";
+if(window.wcs) { wcs_do(); }
+</script>
+</body>
+</html>
