@@ -108,3 +108,21 @@ footer a { color: var(--text-2); }
   body { font-size: 16px; }
   nav { gap: 4px 16px; }
 }
+
+/* docs-nav: 아인 창 순서의 왼쪽 목차 */
+.wrap.docs { display: flex; gap: 40px; align-items: flex-start; }
+.docs-nav { width: 224px; flex: none; position: sticky; top: 18px; max-height: calc(100vh - 36px); overflow: auto; font-size: 14px; scrollbar-width: thin; }
+.docs-nav summary { list-style: none; cursor: pointer; font-weight: 800; font-size: 13px; letter-spacing: .08em; color: var(--muted); padding: 6px 0 10px; }
+.docs-nav summary::-webkit-details-marker { display: none; }
+.docs-nav .dn-hint { font-weight: 500; letter-spacing: 0; margin-left: 6px; color: var(--muted); opacity: .8; }
+.docs-nav .dn-grp { margin: 12px 0 4px; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .06em; }
+.docs-nav a { display: block; padding: 5px 10px; border-radius: 8px; color: var(--text-2); line-height: 1.35; }
+.docs-nav a:hover { background: var(--surface); text-decoration: none; }
+.docs-nav a.on { background: rgba(0,255,163,.16); color: var(--green-deep); font-weight: 700; }
+.docs-nav .dn-body { padding-bottom: 8px; }
+@media (max-width: 800px) {
+  .wrap.docs { display: block; }
+  .docs-nav { position: static; width: auto; max-height: none; margin: 0 0 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; }
+  .docs-nav summary { padding: 4px 0; }
+  .docs-nav summary::after { content: " ▾"; }
+}

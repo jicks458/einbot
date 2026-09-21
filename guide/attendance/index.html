@@ -116,7 +116,53 @@
 </header>
 
 <main>
-  <div class="wrap">
+  <div class="wrap docs">
+    <!-- docs-nav:start --><aside class="docs-nav" id="docsNav">
+  <details open>
+    <summary>목차 <span class="dn-hint">아인 창 순서</span></summary>
+    <div class="dn-body">
+      <div class="dn-grp">시작하기</div>
+      <a href="/guide/install/">설치</a>
+      <a href="/guide/install/#step3">초기 설정 (API 키·로그인)</a>
+      <a href="/guide/install/#step5">봇 계정 로그인</a>
+      <div class="dn-grp">설정 창</div>
+      <a href="/guide/install/#step3">🔑 치지직 연결</a>
+      <a href="/guide/install/#step5">🤖 봇 계정</a>
+      <a href="/#price">🎟️ 이용권</a>
+      <a href="/guide/commands/#settings">💬 기본 설정</a>
+      <a href="/guide/attendance/">📅 출석 체크</a>
+      <a href="/guide/commands/#basic">❗ 기본 명령어</a>
+      <a href="/guide/commands/#custom">✏️ 내가 만든 명령어</a>
+      <a href="/guide/donation/#donation">🧡 후원 인사</a>
+      <a href="/guide/donation/#sub">💚 구독·선물 인사</a>
+      <a href="/guide/commands/#notice">📢 반복 공지</a>
+      <a href="/privacy.html">🩺 진단 정보</a>
+      <a href="/guide/troubleshooting/">🧰 문제 해결·앱 삭제</a>
+      <div class="dn-grp">기능 창 · 참여</div>
+      <a href="/guide/participation/#vote">📊 투표</a>
+      <a href="/guide/participation/#raffle">🎁 추첨</a>
+      <a href="/guide/participation/#wheel">🎡 돌림판</a>
+      <a href="/guide/participation/#roulette">🧀 후원 룰렛</a>
+      <div class="dn-grp">기능 창 · 시간</div>
+      <a href="/guide/time/#counter">🔢 카운터</a>
+      <a href="/guide/time/#timer">⏳ 타이머</a>
+      <a href="/guide/time/#stopwatch">⏱ 스톱워치</a>
+      <div class="dn-grp">기능 창 · 화면</div>
+      <a href="/guide/overlay/#chat">💬 채팅 오버레이</a>
+      <a href="/guide/overlay/#alert">🔔 알림 오버레이</a>
+      <a href="/guide/time/#style">🎨 오버레이 꾸미기</a>
+      <div class="dn-grp">기능 창 · 소리·연동</div>
+      <a href="/guide/overlay/#tts">🔊 TTS 읽어주기</a>
+      <a href="/guide/overlay/#tits">🍌 TITS 던지기</a>
+      <a href="/guide/overlay/#dark">🌙 다크 모드</a>
+      <div class="dn-grp">안 될 때</div>
+      <a href="/guide/troubleshooting/">🩹 증상별 확인</a>
+      <a href="/updates/">🗂 업데이트 기록</a>
+    </div>
+  </details>
+</aside><!-- docs-nav:end -->
+
+    
     <article>
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 출석 체크 봇 설정</p>
       <p class="eyebrow">출석 체크 가이드</p>
@@ -258,5 +304,12 @@ if(!wcs_add) var wcs_add = {};
 wcs_add["wa"] = "25c7b4a217c3da0";
 if(window.wcs) { wcs_do(); }
 </script>
+<!-- docs-nav-js:start --><script>
+(function(){ var nav=document.getElementById('docsNav'); if(!nav) return; var here=location.pathname.replace(/index\.html$/,''); var links=nav.querySelectorAll('a'); var best=null;
+  function mark(){ var h=location.hash; best=null; links.forEach(function(a){ a.classList.remove('on'); var u=a.getAttribute('href'); var p=u.split('#')[0], f=u.split('#')[1]||''; if(p!==here) return; if(f&&('#'+f)===h) best=a; else if(!f&&!best) best=a; }); if(!best){ links.forEach(function(a){ var u=a.getAttribute('href'); if(!best && u.split('#')[0]===here) best=a; }); } if(best) best.classList.add('on'); }
+  mark(); window.addEventListener('hashchange', mark);
+  if (window.matchMedia('(max-width: 800px)').matches) { var d=nav.querySelector('details'); if(d) d.open=false; }
+})();
+</script><!-- docs-nav-js:end -->
 </body>
 </html>

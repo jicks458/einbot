@@ -78,7 +78,53 @@
 </header>
 
 <main>
-  <div class="wrap">
+  <div class="wrap docs">
+    <!-- docs-nav:start --><aside class="docs-nav" id="docsNav">
+  <details open>
+    <summary>목차 <span class="dn-hint">아인 창 순서</span></summary>
+    <div class="dn-body">
+      <div class="dn-grp">시작하기</div>
+      <a href="/guide/install/">설치</a>
+      <a href="/guide/install/#step3">초기 설정 (API 키·로그인)</a>
+      <a href="/guide/install/#step5">봇 계정 로그인</a>
+      <div class="dn-grp">설정 창</div>
+      <a href="/guide/install/#step3">🔑 치지직 연결</a>
+      <a href="/guide/install/#step5">🤖 봇 계정</a>
+      <a href="/#price">🎟️ 이용권</a>
+      <a href="/guide/commands/#settings">💬 기본 설정</a>
+      <a href="/guide/attendance/">📅 출석 체크</a>
+      <a href="/guide/commands/#basic">❗ 기본 명령어</a>
+      <a href="/guide/commands/#custom">✏️ 내가 만든 명령어</a>
+      <a href="/guide/donation/#donation">🧡 후원 인사</a>
+      <a href="/guide/donation/#sub">💚 구독·선물 인사</a>
+      <a href="/guide/commands/#notice">📢 반복 공지</a>
+      <a href="/privacy.html">🩺 진단 정보</a>
+      <a href="/guide/troubleshooting/">🧰 문제 해결·앱 삭제</a>
+      <div class="dn-grp">기능 창 · 참여</div>
+      <a href="/guide/participation/#vote">📊 투표</a>
+      <a href="/guide/participation/#raffle">🎁 추첨</a>
+      <a href="/guide/participation/#wheel">🎡 돌림판</a>
+      <a href="/guide/participation/#roulette">🧀 후원 룰렛</a>
+      <div class="dn-grp">기능 창 · 시간</div>
+      <a href="/guide/time/#counter">🔢 카운터</a>
+      <a href="/guide/time/#timer">⏳ 타이머</a>
+      <a href="/guide/time/#stopwatch">⏱ 스톱워치</a>
+      <div class="dn-grp">기능 창 · 화면</div>
+      <a href="/guide/overlay/#chat">💬 채팅 오버레이</a>
+      <a href="/guide/overlay/#alert">🔔 알림 오버레이</a>
+      <a href="/guide/time/#style">🎨 오버레이 꾸미기</a>
+      <div class="dn-grp">기능 창 · 소리·연동</div>
+      <a href="/guide/overlay/#tts">🔊 TTS 읽어주기</a>
+      <a href="/guide/overlay/#tits">🍌 TITS 던지기</a>
+      <a href="/guide/overlay/#dark">🌙 다크 모드</a>
+      <div class="dn-grp">안 될 때</div>
+      <a href="/guide/troubleshooting/">🩹 증상별 확인</a>
+      <a href="/updates/">🗂 업데이트 기록</a>
+    </div>
+  </details>
+</aside><!-- docs-nav:end -->
+
+    
     <article>
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 채팅 오버레이·알림·TTS·TITS 설정 방법</p>
       <p class="eyebrow">화면·소리 가이드</p>
@@ -109,6 +155,7 @@
       </ul>
 
       <h2 id="chat">채팅 오버레이</h2>
+      <img src="/img/shots/features-chat.png" width="1100" height="720" alt="아인 기능 창 — 채팅 오버레이 화면. 프리셋, 글꼴, 크기, 닉네임 색, 배경, 테두리 설정과 오른쪽 미리보기" loading="lazy">
       <p>방송 화면에 채팅을 띄웁니다. 기본은 <b>흰 둥근 상자에 검은 글씨</b>입니다. 닉네임 옆 아이콘은 치지직 채팅창이 주는 배지(방장 왕관, 관리자, 구독 배지 등)만 그리고, 아인이 따로 붙이는 표시는 없습니다. 닉네임 색과 꾸미기(치트키 색, 2티어 그라데이션·하이라이트)도 치지직 채팅창과 같은 규칙으로 나옵니다.</p>
       <div class="tbl"><table>
         <tr><th>항목</th><th>뜻</th></tr>
@@ -125,6 +172,7 @@
         <li>주소 뒤에 값을 붙여 화면마다 다르게 할 수도 있습니다. <code>?stay=8&amp;max=6&amp;bot=0</code>처럼 표시 시간(초)·최대 줄·봇 답변 숨김.</li>
         <li>권장 크기 <b>480 × 720</b>. 세로로 긴 화면 한쪽에 두면 알맞습니다.</li>
       </ul>
+      <img src="/img/shots/overlay-chat.png" width="1280" height="720" alt="방송 화면 예시 — 오른쪽 아래에 흰 상자 채팅 오버레이, 왼쪽 위에 후원 알림 카드" loading="lazy">
 
       <h2 id="css">공유되는 채팅 CSS 그대로 쓰기</h2>
       <p>트위치 시절부터 돌아다니는 채팅 CSS(KapChat 계열)와 뚜봇 "커스텀 치지직 채팅 오버레이"용 CSS는 HTML 구조가 같아서 <b>그대로 붙여 넣으면 됩니다.</b> 기능 창의 <b>CSS 직접 넣기</b>에 붙이고 [적용]을 누르거나, OBS 브라우저 소스의 "사용자 지정 CSS"에 넣어도 됩니다. [예시 CSS 넣기]를 누르면 구조를 볼 수 있는 예시가 들어갑니다.</p>
@@ -166,6 +214,7 @@
       </ul>
 
       <h2 id="tits">TITS 던지기</h2>
+      <img src="/img/shots/features-tits.png" width="1100" height="720" alt="아인 기능 창 — TITS 던지기 화면. 연결됨 표시, 포트, 아이템 새로고침, 규칙표(조건·금액·키워드·아이템·개수·비례·트리거)" loading="lazy">
       <p>TITS(Twitch Integrated Throwing System)는 시청자가 버튜버 아바타에 물건을 던지게 하는 프로그램입니다. 원래 트위치·유튜브만 알아듣는데, 아인이 치지직의 후원·구독·구독권 선물·채팅을 TITS에 전달합니다.</p>
       <div class="note"><b>준비물.</b> VTube Studio(Steam, 무료)와 TITS(Steam, ₩21,500 · 유료). 둘 다 같은 PC에 설치합니다. 아인은 TITS의 공개 API(내 PC 안 포트 42069)로만 말하고 인터넷으로 나가지 않습니다.</div>
       <h3>연결 순서</h3>
@@ -237,5 +286,12 @@ if(!wcs_add) var wcs_add = {};
 wcs_add["wa"] = "25c7b4a217c3da0";
 if(window.wcs) { wcs_do(); }
 </script>
+<!-- docs-nav-js:start --><script>
+(function(){ var nav=document.getElementById('docsNav'); if(!nav) return; var here=location.pathname.replace(/index\.html$/,''); var links=nav.querySelectorAll('a'); var best=null;
+  function mark(){ var h=location.hash; best=null; links.forEach(function(a){ a.classList.remove('on'); var u=a.getAttribute('href'); var p=u.split('#')[0], f=u.split('#')[1]||''; if(p!==here) return; if(f&&('#'+f)===h) best=a; else if(!f&&!best) best=a; }); if(!best){ links.forEach(function(a){ var u=a.getAttribute('href'); if(!best && u.split('#')[0]===here) best=a; }); } if(best) best.classList.add('on'); }
+  mark(); window.addEventListener('hashchange', mark);
+  if (window.matchMedia('(max-width: 800px)').matches) { var d=nav.querySelector('details'); if(d) d.open=false; }
+})();
+</script><!-- docs-nav-js:end -->
 </body>
 </html>

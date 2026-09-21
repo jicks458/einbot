@@ -22,7 +22,7 @@
 <style>
   .sym { color: var(--muted); font-size: 14px; margin: -6px 0 10px; }
   .fix { border-left: 3px solid var(--green); background: rgba(0,255,163,.06); border-radius: 0 12px 12px 0; padding: 12px 16px; margin: 12px 0 0; }
-  .fix b { color: var(--green); }
+  .fix b { color: var(--green-ink); }
   .fix ol { margin: 6px 0 0; }
   .log { font-family: Consolas, "D2Coding", monospace; font-size: 13.5px; background: var(--card); border: 1px solid var(--card-line); border-radius: 8px; padding: 8px 12px; color: var(--muted); }
 </style>
@@ -45,7 +45,7 @@
       "description": "아인이 반응이 없거나, 권한이 빠졌다고 나오거나, 봇 계정 연결이 끊겼을 때 증상별 원인과 해결 순서.",
       "inLanguage": "ko-KR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-21",
       "mainEntityOfPage": "https://einbot.kr/guide/troubleshooting/",
       "image": "https://einbot.kr/og.png",
       "author": { "@id": "https://einbot.kr/#org" },
@@ -64,6 +64,16 @@
           "@type": "Question",
           "name": "OBS에 아인 오버레이가 안 보여요",
           "acceptedAnswer": { "@type": "Answer", "text": "봇이 켜져 있어야 보입니다. 주소는 기능 창의 [URL 복사]로 넣은 그대로여야 하고, 돌림판 오버레이는 돌 때만 나타나는 것이 기본입니다(항상 보이게 하려면 ?hidden=0). OBS의 '표시되지 않을 때 소스 종료'는 꺼 두세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "아인 TTS 소리가 안 나요",
+          "acceptedAnswer": { "@type": "Answer", "text": "기능 창 → TTS 읽어주기에서 [TTS 사용]이 켜져 있는지 확인하세요. 처음에는 꺼져 있습니다. 소리는 Windows 기본 출력 장치로 나가므로, 방송에 실으려면 OBS 데스크톱 오디오가 그 장치를 잡고 있어야 합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "TITS가 연결 안 됨이라고 나와요",
+          "acceptedAnswer": { "@type": "Answer", "text": "TITS가 켜져 있고 TITS Connections 화면의 API가 Enabled ON인지, 포트(기본 42069)가 아인 기능 창의 값과 같은지 확인하세요. 아인은 15초마다 다시 연결을 시도합니다." }
         },
         {
           "@type": "Question",
@@ -140,14 +150,60 @@
 </header>
 
 <main>
-  <div class="wrap">
+  <div class="wrap docs">
+    <!-- docs-nav:start --><aside class="docs-nav" id="docsNav">
+  <details open>
+    <summary>목차 <span class="dn-hint">아인 창 순서</span></summary>
+    <div class="dn-body">
+      <div class="dn-grp">시작하기</div>
+      <a href="/guide/install/">설치</a>
+      <a href="/guide/install/#step3">초기 설정 (API 키·로그인)</a>
+      <a href="/guide/install/#step5">봇 계정 로그인</a>
+      <div class="dn-grp">설정 창</div>
+      <a href="/guide/install/#step3">🔑 치지직 연결</a>
+      <a href="/guide/install/#step5">🤖 봇 계정</a>
+      <a href="/#price">🎟️ 이용권</a>
+      <a href="/guide/commands/#settings">💬 기본 설정</a>
+      <a href="/guide/attendance/">📅 출석 체크</a>
+      <a href="/guide/commands/#basic">❗ 기본 명령어</a>
+      <a href="/guide/commands/#custom">✏️ 내가 만든 명령어</a>
+      <a href="/guide/donation/#donation">🧡 후원 인사</a>
+      <a href="/guide/donation/#sub">💚 구독·선물 인사</a>
+      <a href="/guide/commands/#notice">📢 반복 공지</a>
+      <a href="/privacy.html">🩺 진단 정보</a>
+      <a href="/guide/troubleshooting/">🧰 문제 해결·앱 삭제</a>
+      <div class="dn-grp">기능 창 · 참여</div>
+      <a href="/guide/participation/#vote">📊 투표</a>
+      <a href="/guide/participation/#raffle">🎁 추첨</a>
+      <a href="/guide/participation/#wheel">🎡 돌림판</a>
+      <a href="/guide/participation/#roulette">🧀 후원 룰렛</a>
+      <div class="dn-grp">기능 창 · 시간</div>
+      <a href="/guide/time/#counter">🔢 카운터</a>
+      <a href="/guide/time/#timer">⏳ 타이머</a>
+      <a href="/guide/time/#stopwatch">⏱ 스톱워치</a>
+      <div class="dn-grp">기능 창 · 화면</div>
+      <a href="/guide/overlay/#chat">💬 채팅 오버레이</a>
+      <a href="/guide/overlay/#alert">🔔 알림 오버레이</a>
+      <a href="/guide/time/#style">🎨 오버레이 꾸미기</a>
+      <div class="dn-grp">기능 창 · 소리·연동</div>
+      <a href="/guide/overlay/#tts">🔊 TTS 읽어주기</a>
+      <a href="/guide/overlay/#tits">🍌 TITS 던지기</a>
+      <a href="/guide/overlay/#dark">🌙 다크 모드</a>
+      <div class="dn-grp">안 될 때</div>
+      <a href="/guide/troubleshooting/">🩹 증상별 확인</a>
+      <a href="/updates/">🗂 업데이트 기록</a>
+    </div>
+  </details>
+</aside><!-- docs-nav:end -->
+
+    
     <article>
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 안 될 때 확인할 것</p>
       <p class="eyebrow">문제 해결 가이드</p>
       <h1>치지직 채팅봇이 안 될 때 확인할 것</h1>
       <p class="lead">아인을 쓰다가 막히는 상황을 증상별로 모았습니다. 실제로 사용자들이 겪은 일과 그 원인을 기준으로 쓰며,
         대부분은 설정 화면에서 한두 번 클릭으로 해결됩니다. 해당 증상을 차례에서 골라 그 부분만 읽으세요.</p>
-      <p class="meta">기준 버전 1.8.0 · 2026년 9월 17일 갱신</p>
+      <p class="meta">기준 버전 1.9.0 · 2026년 9월 21일 갱신</p>
 
       <div class="toc">
         <b>차례</b>
@@ -267,6 +323,7 @@
           <li>아인 창에서 봇이 <b>● 봇 실행 중</b>인지 확인합니다. 투표·추첨이 채팅을 읽어야 해서 봇이 켜져 있을 때만 열립니다.</li>
           <li>봇을 막 켰다면 진행 상황에 "기능 창·오버레이 준비됨"이 찍힌 뒤(몇 초) 다시 누릅니다.</li>
           <li>그래도 안 되면 다른 프로그램이 8391~8395 포트를 모두 쓰고 있는 것입니다. 그 프로그램을 끄고 봇을 껐다 켭니다.</li>
+          <li>1.9부터는 [기능]을 다시 누르면 창이 다시 열립니다. 창을 잃어버렸을 때도 그냥 다시 누르세요.</li>
         </ol>
       </div>
 
@@ -279,6 +336,52 @@
           <li>주소는 기능 창의 [URL 복사]로 넣은 그대로여야 합니다. 봇을 껐다 켤 때 포트가 바뀌었으면 기능 창의 주소가 함께 바뀌니 다시 복사합니다.</li>
           <li>돌림판 오버레이는 돌 때만 나타나고 8초 뒤 사라지는 것이 기본입니다. 항상 보이게 하려면 주소 뒤에 <code>?hidden=0</code>.</li>
           <li>OBS 브라우저 소스 속성의 "표시되지 않을 때 소스 종료"는 꺼 둡니다. 켜 두면 장면을 바꿀 때마다 다시 연결해 그 사이 결과를 놓칠 수 있습니다.</li>
+          <li>채팅·알림 오버레이는 <a href="/guide/overlay/">화면·소리 가이드</a>에 따로 있습니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="chat">채팅 오버레이에 채팅이 안 올라와요</h2>
+      <p class="sym">증상: 예시 채팅만 계속 보이거나, 아무것도 안 보입니다.</p>
+      <div class="fix">
+        <b>확인</b>
+        <ol>
+          <li>봇이 켜져 있어야 실제 채팅이 올라옵니다. 예시 채팅은 봇이 켜지고 첫 채팅이 오기 전까지만 보입니다.</li>
+          <li>봇을 껐다 켰다면 OBS 브라우저 소스를 새로고침합니다(소스 속성 → 새로 고침).</li>
+          <li>CSS를 직접 넣었다면 그 CSS가 글자를 숨기거나 투명하게 만든 것일 수 있습니다. 기능 창에서 CSS를 지우고 다시 봅니다. <a href="/guide/overlay/#css">화면·소리 가이드</a> 참고.</li>
+        </ol>
+      </div>
+
+      <h2 id="tts">TTS 소리가 안 나요 / 방송에 안 나가요</h2>
+      <p class="sym">증상: [테스트 읽기]를 눌러도 조용하거나, 내 귀에는 들리는데 방송에는 안 나갑니다.</p>
+      <div class="fix">
+        <b>확인</b>
+        <ol>
+          <li>기능 창 → TTS 읽어주기에서 <b>[TTS 사용]</b>이 켜져 있는지 봅니다. 처음에는 꺼져 있습니다.</li>
+          <li>소리는 Windows 기본 출력 장치로 나갑니다. 헤드셋이 기본 장치면 OBS 데스크톱 오디오가 그 장치를 잡고 있어야 방송에 나갑니다.</li>
+          <li>Windows 설정 → 시간 및 언어 → 음성에서 한국어 음성이 설치돼 있는지 봅니다. 없으면 설치합니다.</li>
+          <li>채팅이 몰려 밀렸다면 [지금 읽는 것 멈추기]를 누르거나 "밀림 허용" 값을 줄입니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="tits">TITS가 "연결 안 됨"이에요</h2>
+      <p class="sym">증상: TITS 연동 사용을 켰는데 배지가 "연결 안 됨 — TITS 를 켜 주세요"에서 바뀌지 않습니다.</p>
+      <div class="fix">
+        <b>확인</b>
+        <ol>
+          <li>TITS가 켜져 있고, TITS의 Connections 화면 오른쪽 <b>API</b>가 <b>Enabled ON</b>인지 봅니다.</li>
+          <li>TITS의 API 포트(기본 42069)와 아인 기능 창의 포트 값이 같은지 봅니다.</li>
+          <li>아인은 15초마다 다시 붙으니 고친 뒤 잠시 기다립니다. 던졌는데 아바타가 반응하지 않으면 TITS와 VTube Studio 사이 연결(TITS 왼쪽 목록의 ✓)을 봅니다.</li>
+        </ol>
+      </div>
+
+      <h2 id="roulette">후원 룰렛을 껐는데 돌아요 / 켜지 않았는데 돌아요</h2>
+      <p class="sym">증상: 스위치를 끄고 저장했는데 결과가 또 나오거나, 룰렛을 만든 적이 없는데 후원에 결과가 나옵니다.</p>
+      <div class="fix">
+        <b>확인</b>
+        <ol>
+          <li>끄고 저장하면 <b>새 후원부터</b> 멈춥니다. 이미 들어온 후원의 회전은 마저 돌고 결과도 나갑니다.</li>
+          <li>1.8.0은 룰렛이 켜진 채로 설치됐습니다. 1.9.0으로 올라가면 손대지 않은 룰렛 설정은 자동으로 꺼집니다. Microsoft Store에서 업데이트하세요.</li>
+          <li>저장 뒤 "저장했어요"가 떴는지 봅니다. 안 떴다면 기능 창을 닫고 아인 창의 [기능]으로 다시 열어 저장합니다.</li>
         </ol>
       </div>
 
@@ -361,6 +464,7 @@
           <li><a href="/guide/install/">치지직 채팅봇 설치 방법</a><span>Microsoft Store 설치부터 봇 시작까지 5분</span></li>
           <li><a href="/guide/donation/">치지직 후원·구독 감사 인사 자동으로 하기</a><span>필요한 권한, 치환자, 문구 예시</span></li>
           <li><a href="/guide/commands/">명령어 목록과 설정 방법</a><span>기본 명령어, 내가 만든 명령어, 치환자, 반복 공지</span></li>
+          <li><a href="/guide/overlay/">채팅 오버레이·알림·TTS·TITS 설정</a><span>방송 화면에 채팅·알림 띄우기, 읽어주기, 아바타에 던지기</span></li>
           <li><a href="/updates/">업데이트 기록</a><span>버전별 변경 내용</span></li>
         </ul>
       </div>
@@ -385,5 +489,12 @@ if(!wcs_add) var wcs_add = {};
 wcs_add["wa"] = "25c7b4a217c3da0";
 if(window.wcs) { wcs_do(); }
 </script>
+<!-- docs-nav-js:start --><script>
+(function(){ var nav=document.getElementById('docsNav'); if(!nav) return; var here=location.pathname.replace(/index\.html$/,''); var links=nav.querySelectorAll('a'); var best=null;
+  function mark(){ var h=location.hash; best=null; links.forEach(function(a){ a.classList.remove('on'); var u=a.getAttribute('href'); var p=u.split('#')[0], f=u.split('#')[1]||''; if(p!==here) return; if(f&&('#'+f)===h) best=a; else if(!f&&!best) best=a; }); if(!best){ links.forEach(function(a){ var u=a.getAttribute('href'); if(!best && u.split('#')[0]===here) best=a; }); } if(best) best.classList.add('on'); }
+  mark(); window.addEventListener('hashchange', mark);
+  if (window.matchMedia('(max-width: 800px)').matches) { var d=nav.querySelector('details'); if(d) d.open=false; }
+})();
+</script><!-- docs-nav-js:end -->
 </body>
 </html>
