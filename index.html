@@ -659,14 +659,14 @@
     }
     chat.appendChild(div);
     if (!reduce) requestAnimationFrame(function(){ requestAnimationFrame(function(){ div.classList.add('show'); }); });
-    setTimeout(addMsg, m[0] === 'ein' ? 1300 : 850);
+    setTimeout(addMsg, m[0] === 'ein' ? 650 : 420);
   }
   // 채팅 데모는 창이 화면에 들어올 때 시작한다
   var chatStarted = false;
-  function startChat() { if (chatStarted) return; chatStarted = true; if (reduce) { SCRIPT.forEach(function(){ addMsg(); }); } else { setTimeout(addMsg, 400); } }
+  function startChat() { if (chatStarted) return; chatStarted = true; if (reduce) { SCRIPT.forEach(function(){ addMsg(); }); } else { setTimeout(addMsg, 150); } }
   if (reduce || !('IntersectionObserver' in window)) startChat();
   else {
-    var cio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { startChat(); cio.disconnect(); } }, { threshold: 0.3 });
+    var cio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { startChat(); cio.disconnect(); } }, { threshold: 0.12 });
     cio.observe(document.querySelector('.chatwin'));
   }
 
