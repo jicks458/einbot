@@ -301,10 +301,9 @@
   .appwin .log { margin: 0; background: #0F172A; color: #CBD5E1; font: 10.5px/1.45 Consolas, "D2Coding", monospace; padding: 8px 10px; border-radius: 3px; height: 156px; overflow: hidden; white-space: pre; }
   .co { position: absolute; left: 356px; display: flex; align-items: flex-start; }
   .co-on { top: 118px; }
-  .co-set { top: 212px; }
-  .co-feat { top: 262px; }
-  .co-set .txt { margin-top: -18px; }
-  .co-feat .txt { margin-top: 12px; }
+  .co-set { top: 227px; }
+  .co-feat { top: 322px; }
+  .co-set .txt, .co-feat .txt { margin-top: -12px; }
   .co .line { flex: none; width: 240px; height: 2px; margin-top: 17px; background: #B8C0CC; position: relative; }
   .co .line::before { content: ""; position: absolute; left: -6px; top: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px #fff, 0 0 0 4px #B8C0CC; }
   .co .txt { padding-left: 18px; }
@@ -521,8 +520,8 @@
     <div class="shotrow">
       <div class="shot3d reveal"><img class="win3d" src="/img/shots/appwin-3d-v7.webp" width="1920" height="1992" alt="아인 앱 창 — 봇 실행 중 버튼, 설정·기능 버튼, 아래에 최근 활동"></div>
       <div class="co co-on reveal"><span class="line"></span><div class="txt"><b>ON / OFF 버튼 하나</b><p>누르면 켜지고, 다시 누르면 꺼집니다. 방송 전에 한 번이면 끝.</p></div></div>
-      <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정 버튼 하나</b><p>인사말, 후원 문구, 명령어를 눌러서 고치면 봇에 바로 반영됩니다.</p></div></div>
-      <div class="co co-feat reveal"><span class="line"></span><div class="txt"><b>기능 버튼 하나</b><p>투표·추첨·룰렛, 채팅·알림 오버레이, TTS, TITS를 여기서 켭니다. 방송 화면에는 URL 한 줄이면 됩니다.</p></div></div>
+      <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정과 기능, 버튼 둘</b><p>인사말·후원 문구·명령어는 설정에서 고치고, 투표·추첨·룰렛과 오버레이, TTS, TITS는 기능에서 켭니다.</p></div></div>
+      <div class="co co-feat reveal"><span class="line"></span><div class="txt"><b>최근 활동 한눈에</b><p>봇 계정 연결, 인사 전송 같은 일이 순서대로 남습니다. 문제가 생기면 여기부터 보면 됩니다.</p></div></div>
     </div>
     <div class="screens">
       <div class="scr reveal">
