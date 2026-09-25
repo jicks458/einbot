@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>아인 — 나만의 치지직 채팅봇 | 공식 사이트</title>
-<meta name="description" content="치지직 채팅봇 아인 공식 사이트. Windows에 설치하는 치지직 방송용 채팅봇으로, 시청자 출석 체크와 후원·구독 감사 인사, 명령어 응답을 내가 지은 봇 이름으로 처리하고, 투표·추첨·룰렛과 채팅 오버레이·TTS까지 방송 화면에 띄웁니다. Microsoft Store 설치 방법, 요금, 자주 묻는 질문 안내.">
+<meta name="description" content="치지직 채팅봇 아인 공식 사이트. Windows에 설치하는 치지직 방송용 채팅봇으로, 시청자 출석 체크와 후원·구독 감사 인사, 명령어 응답을 내가 지은 봇 이름으로 처리하고, 투표·추첨·룰렛과 유튜브 신청곡, 채팅 오버레이·TTS까지 방송 화면에 띄웁니다. Microsoft Store 설치 방법, 요금, 자주 묻는 질문 안내.">
 <meta name="google-site-verification" content="XPHwR9YrPSfPCOK2xQPDkNskoBNokElZDlfA1l82-2c">
 <meta name="naver-site-verification" content="33965b4724db410ffd4ae83485cc9b53e46523c5">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -81,6 +81,7 @@
         "반복 공지",
         "투표·추첨·돌림판·후원 룰렛, 카운터·타이머 (OBS 오버레이)",
         "채팅 오버레이·알림 오버레이·TTS·TITS 던지기",
+        "채팅 !신청곡 유튜브 링크로 받는 신청곡 (OBS 플레이어·곡 제목 표시)",
         "방송 시작 디스코드 알림 (웹훅)"
       ],
       "offers": [
@@ -122,7 +123,7 @@
         {
           "@type": "Question",
           "name": "투표·추첨·룰렛도 되나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "됩니다. 아인 창의 [기능] 버튼에서 투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행하고, OBS 브라우저 소스로 방송 화면에 띄웁니다. 시청자는 채팅에 번호나 말 한마디만 치면 됩니다. 1.9부터는 채팅 오버레이, 알림 오버레이, TTS 읽어주기, TITS 던지기도 됩니다." }
+          "acceptedAnswer": { "@type": "Answer", "text": "됩니다. 아인 창의 [기능] 버튼에서 투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행하고, OBS 브라우저 소스로 방송 화면에 띄웁니다. 시청자는 채팅에 번호나 말 한마디만 치면 됩니다. 1.9부터는 채팅 오버레이, 알림 오버레이, TTS 읽어주기, TITS 던지기, 2.1부터는 채팅 !신청곡 유튜브 링크로 받는 신청곡도 됩니다." }
         },
         {
           "@type": "Question",
@@ -500,11 +501,11 @@
           <li>치즈 후원 감사 인사</li><li>후원 금액·메시지 치환</li><li>익명 후원 처리</li><li>구독 감사 인사</li><li>티어별 구독 문구</li><li>구독권 선물 감사 인사</li>
           <li>!출첵 !팔로우 !업타임 !시간</li><li>채팅에서 명령어 추가·삭제</li><li>방장 전용 명령어</li><li>{이름} {호칭} 같은 치환자</li><li>반복 공지</li>
           <li>부계정으로 봇 이름 지정</li><li>봇 계정 로그인 창 (쿠키 복사 없음)</li><li>설정 저장 즉시 반영</li><li>새 버전·연결 끊김 알림</li><li>방송 시작 디스코드 알림 (웹훅)</li>
-          <li>투표 (채팅에 번호만)</li><li>시청자 추첨 (명단·뽑기 연출)</li><li>구독자 뽑기 (구독자만 골라 뽑기)</li><li>당첨자 채팅 띄우기·TTS</li><li>돌림판</li><li>후원 룰렛 (배수만큼 걸쇠)</li><li>카운터·타이머·스톱워치</li><li>OBS 오버레이 (투표·추첨·룰렛·시간·채팅·알림)</li><li>채팅 오버레이 (치지직 닉네임 색·배지 그대로, 공유 CSS 그대로)</li><li>알림 오버레이 (후원·구독·선물·룰렛·투표·추첨)</li><li>TTS 읽어주기 (구독·선물·채팅)</li><li>TITS 물건 던지기 (VTube Studio)</li><li>다크 모드</li><li>!봇 명령어</li>
+          <li>투표 (채팅에 번호만)</li><li>시청자 추첨 (명단·뽑기 연출)</li><li>구독자 뽑기 (구독자만 골라 뽑기)</li><li>당첨자 채팅 띄우기·TTS</li><li>돌림판</li><li>후원 룰렛 (배수만큼 걸쇠)</li><li>카운터·타이머·스톱워치</li><li>OBS 오버레이 (투표·추첨·룰렛·시간·채팅·알림·신청곡)</li><li>채팅 오버레이 (치지직 닉네임 색·배지 그대로, 공유 CSS 그대로)</li><li>알림 오버레이 (후원·구독·선물·룰렛·투표·추첨)</li><li>TTS 읽어주기 (구독·선물·채팅)</li><li>TITS 물건 던지기 (VTube Studio)</li><li>유튜브 신청곡 (!신청곡 링크)</li><li>곡 제목 표시 오버레이</li><li>다크 모드</li><li>!봇 명령어</li>
         </ul>
       </div>
       <div class="fl soon"><b>개발 중</b>
-        <ul><li>유튜브 신청곡</li><li>구독자만 참여하는 추첨</li></ul>
+        <ul><li>구독자만 참여하는 추첨</li></ul>
         <p><a href="/updates/">업데이트 기록에서 진행 보기 →</a></p>
       </div>
     </div>
@@ -521,7 +522,7 @@
     <div class="shotrow">
       <div class="shot3d reveal"><img class="win3d" src="/img/shots/appwin-3d-v11.webp" width="1920" height="1800" alt="아인 앱 창 — 실행 상태 카드와 중지 버튼, 설정·기능 타일"></div>
       <div class="co co-on reveal"><span class="line"></span><div class="txt"><b>켜고 끄기, 버튼 하나</b><p>상태 카드에 지금 실행 중인지, 어떤 이름으로 응답하는지가 보이고 [시작]/[중지] 하나로 켜고 끕니다.</p></div></div>
-      <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정과 기능, 타일 둘</b><p>인사말·후원 문구·명령어는 설정에서 고치고, 투표·추첨·룰렛과 오버레이, TTS, TITS는 기능에서 켭니다.</p></div></div>
+      <div class="co co-set reveal"><span class="line"></span><div class="txt"><b>설정과 기능, 타일 둘</b><p>인사말·후원 문구·명령어는 설정에서 고치고, 투표·추첨·룰렛과 오버레이, 신청곡, TTS, TITS는 기능에서 켭니다.</p></div></div>
     </div>
     <div class="screens">
       <div class="scr reveal">
@@ -529,7 +530,7 @@
         <div class="pic"><img src="/img/shots/overlay-3d-v9.webp" width="3180" height="2104" alt="방송 화면 예시(밝은 배경) — 왼쪽 위 후원 알림 카드, 그 아래 라면 타이머, 왼쪽 아래 채팅 오버레이 8줄, 가운데 7연차 후원 룰렛과 결과, 오른쪽에 추첨 15명·데스 카운터·투표, 오른쪽 아래 캠에 TITS로 던진 사과·바나나" loading="lazy"></div>
       </div>
       <div class="scr rev reveal">
-        <div class="txt"><b>기능 창에서 버튼으로</b><p>투표·추첨·돌림판·후원 룰렛, 카운터·타이머·스톱워치, 채팅·알림 오버레이, TTS·TITS를 한 창에서 다룹니다. 명령어를 외울 것이 없고, 각 화면의 URL을 OBS에 한 번 넣으면 끝입니다.</p></div>
+        <div class="txt"><b>기능 창에서 버튼으로</b><p>투표·추첨·돌림판·후원 룰렛, 카운터·타이머·스톱워치, 채팅·알림 오버레이, 신청곡, TTS·TITS를 한 창에서 다룹니다. 명령어를 외울 것이 없고, 각 화면의 URL을 OBS에 한 번 넣으면 끝입니다.</p></div>
         <div class="pic"><img src="/img/shots/features-3d-v15.webp" width="3180" height="2393" alt="아인 1.9 기능 창 — 추첨 화면. 왼쪽 목록에 참여·시간·화면·소리 연동 항목과 사용 설명서 버튼, 모집 마감 버튼, 명단 표시·자동 채팅 띄우기·TTS 스위치, 참여자 15명" loading="lazy"></div>
       </div>
     </div>

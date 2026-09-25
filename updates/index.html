@@ -39,7 +39,7 @@
   "inLanguage": "ko-KR",
   "isPartOf": { "@id": "https://einbot.kr/#website" },
   "about": { "@id": "https://einbot.kr/#app" },
-  "dateModified": "2026-09-10",
+  "dateModified": "2026-09-25",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -87,7 +87,19 @@
       <p class="lead">버전별로 무엇이 바뀌었는지 날짜와 함께 적습니다. 최신이 맨 위입니다.</p>
       <p class="how">업데이트는 Microsoft Store가 자동으로 설치합니다. 지금 바로 받으려면 Microsoft Store 앱 → 라이브러리 → [업데이트 받기]를 누르세요. 고치고 싶은 점이나 필요한 기능은 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>으로 보내 주시면 됩니다.</p>
 
-      <section class="ver latest" id="v2-0-0">
+      <section class="ver latest" id="v2-1-0">
+        <h2>2.1 <span class="date">2026년 9월 24일</span></h2>
+        <p class="pkg">스토어 버전 2.1.0.0</p>
+        <ul>
+          <li><b>신청곡.</b> 시청자가 채팅에 <code>!신청곡 유튜브 링크</code>를 치면 대기열에 들어가고, OBS에 넣은 플레이어가 차례로 재생합니다. 제목과 가수는 유튜브에서 가져와 [MV]·(Official Video) 같은 꼬리표를 떼고 보여 주고, 신청한 사람은 <code>!신청곡취소</code>로 자기 곡을 뺄 수 있습니다. 기능 창 → 소리·연동 → 신청곡에서 다음 곡·일시정지·볼륨·순서 올리기·빼기·직접 추가를 하고, 한 사람당 대기 곡 수(기본 3), 곡 길이(기본 8분), 같은 곡을 다시 받지 않는 시간(기본 24시간)을 정합니다. <b>처음에는 꺼져 있습니다.</b> <a href="/guide/overlay/#songs">가이드</a></li>
+          <li><b>곡 제목 표시.</b> 썸네일·제목·가수·신청자·진행 시간과 다음 곡을 가로 띠로 방송 화면에 띄웁니다. 강조색은 곡 썸네일에서 뽑고, 배경은 오버레이 꾸미기(어둡게·밝게·없음)를 따릅니다. 권장 크기 980×140.</li>
+          <li><b>플레이어 창.</b> OBS 없이 이 PC에서 신청곡을 틀 때 [플레이어 창 열기]를 누릅니다. OBS와 창을 같이 열면 나중에 연 곳에서만 소리가 납니다.</li>
+          <li><b>기능 창·설정 창 아이콘.</b> 작업 표시줄 아이콘을 메인 창 타일과 같은 색·그림(기능 보라, 설정 파랑)으로 바꾸고, 작은 크기에서도 선명하게 다시 그렸습니다. 창을 열자마자 새 아이콘으로 보입니다.</li>
+          <li>진단 정보의 기능별 사용 횟수에 신청곡 신청·재생 오류 횟수와 신청곡 켬·끔 저장이 추가됐습니다. 곡 제목·채팅 내용·이름은 보내지 않습니다.</li>
+        </ul>
+      </section>
+
+      <section class="ver" id="v2-0-0">
         <h2>2.0 <span class="date">2026년 9월 24일</span></h2>
         <p class="pkg">스토어 버전 2.0.0.0</p>
         <ul>
