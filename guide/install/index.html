@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드 (Microsoft Store)</title>
-<meta name="description" content="치지직 채팅봇 아인 설치 방법을 순서대로 안내합니다. Microsoft Store 설치, 치지직 개발자 센터 API 키 발급, 방송 계정 로그인, 봇 이름 정하기, 봇 시작까지 5분. 준비물과 자주 막히는 지점도 정리했습니다.">
+<meta name="description" content="치지직 채팅봇 아인 설치 방법을 순서대로 안내합니다. Microsoft Store 설치, 방송 계정 로그인, 봇 이름 정하기, 봇 시작까지 5분. API 키 발급은 필요 없습니다. 준비물과 자주 막히는 지점도 정리했습니다.">
 <link rel="canonical" href="https://einbot.kr/guide/install/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="아인">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드">
-<meta property="og:description" content="Microsoft Store 설치 → API 키 발급 → 로그인 → 봇 이름 → 봇 시작. 치지직 채팅봇 아인을 5분 안에 붙이는 순서와 막히는 지점 정리.">
+<meta property="og:description" content="Microsoft Store 설치 → 로그인 → 봇 이름 → 봇 시작. 치지직 채팅봇 아인을 5분 안에 붙이는 순서와 막히는 지점 정리.">
 <meta property="og:url" content="https://einbot.kr/guide/install/">
 <meta property="og:image" content="https://einbot.kr/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,10 +35,10 @@
       "@type": "TechArticle",
       "@id": "https://einbot.kr/guide/install/#article",
       "headline": "치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드",
-      "description": "Microsoft Store 설치부터 API 키 발급, 로그인, 봇 이름 설정, 봇 시작까지 치지직 채팅봇 아인을 붙이는 순서.",
+      "description": "Microsoft Store 설치부터 방송 계정 로그인, 봇 이름 설정, 봇 시작까지 치지직 채팅봇 아인을 붙이는 순서.",
       "inLanguage": "ko-KR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-27",
+      "dateModified": "%ISO%",
       "mainEntityOfPage": "https://einbot.kr/guide/install/",
       "image": "https://einbot.kr/og.png?v=2",
       "author": { "@id": "https://einbot.kr/#org" },
@@ -56,7 +56,6 @@
       "step": [
         { "@type": "HowToStep", "name": "Microsoft Store에서 설치", "text": "스토어에서 '아인'을 검색하거나 설치 링크를 열어 [설치]를 누릅니다. 파일 내려받기나 압축 해제, 보안 경고가 없습니다.", "url": "https://einbot.kr/guide/install/#step1" },
         { "@type": "HowToStep", "name": "아인 실행", "text": "시작 메뉴 또는 바탕화면의 아인을 엽니다. 첫 실행 때 안내 화면이 순서대로 나옵니다.", "url": "https://einbot.kr/guide/install/#step2" },
-        { "@type": "HowToStep", "name": "치지직 개발자 센터에서 API 키 발급", "text": "developers.chzzk.naver.com에서 애플리케이션을 등록하고 리디렉션 URL과 권한 4개를 설정한 뒤 Client ID와 Secret을 아인에 붙여넣습니다.", "url": "https://einbot.kr/guide/install/#step3" },
         { "@type": "HowToStep", "name": "방송 계정으로 로그인", "text": "[로그인 창 열기]를 눌러 방송하는 본인 계정으로 로그인하고 [동의]를 누릅니다.", "url": "https://einbot.kr/guide/install/#step4" },
         { "@type": "HowToStep", "name": "봇 이름 정하기 (선택)", "text": "봇 전용 네이버 부계정으로 [봇 계정으로 로그인] 버튼을 눌러 한 번 로그인하면 직접 지은 이름으로 응답합니다.", "url": "https://einbot.kr/guide/install/#step5" },
         { "@type": "HowToStep", "name": "봇 시작", "text": "초기 설정 마지막 화면의 '컴퓨터를 켜면 아인과 봇을 자동으로 켜기'를 켜 두면 다음부터 컴퓨터를 켤 때 봇이 저절로 시작합니다. 지금 바로 켜려면 아인 창 상태 카드의 [시작]을 누릅니다.", "url": "https://einbot.kr/guide/install/#step6" }
@@ -102,7 +101,7 @@
     <div class="dn-body">
       <div class="dn-grp">시작하기</div>
       <a href="/guide/install/">설치</a>
-      <a href="/guide/install/#step3">초기 설정 (API 키·로그인)</a>
+      <a href="/guide/install/#step4">초기 설정 (로그인)</a>
       <a href="/guide/install/#step5">봇 계정 로그인</a>
       <div class="dn-grp">설정 창</div>
       <a href="/guide/install/#step3">🔑 치지직 연결</a>
@@ -151,8 +150,8 @@
       <p class="eyebrow">설치 가이드</p>
       <h1>치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드</h1>
       <p class="lead">치지직 채팅봇 아인을 방송에 붙이는 순서입니다. 파일을 내려받거나 압축을 풀 일은 없고,
-        손이 가는 건 치지직 개발자 센터에서 내 봇용 열쇠를 한 번 발급받는 것뿐입니다.</p>
-      <p class="meta">기준 버전 2.2.5 · 2026년 9월 27일 갱신 · Windows 10·11</p>
+        방송하는 계정으로 한 번 로그인하면 됩니다. 2.3부터 치지직 개발자 센터에서 API 키를 발급받는 단계가 없어졌습니다.</p>
+      <p class="meta">기준 버전 2.3.0 · %게시일% 갱신 · Windows 10·11</p>
 
       <div class="toc">
         <b>차례</b>
@@ -160,10 +159,10 @@
           <li><a href="#prep">준비물</a></li>
           <li><a href="#step1">Microsoft Store에서 설치</a></li>
           <li><a href="#step2">아인 실행</a></li>
-          <li><a href="#step3">치지직 개발자 센터에서 API 키 발급</a></li>
           <li><a href="#step4">방송 계정으로 로그인</a></li>
           <li><a href="#step5">봇 이름 정하기 (선택)</a></li>
           <li><a href="#step6">봇 시작</a></li>
+          <li><a href="#step3">직접 발급한 API 키로 연결하기 (고급)</a></li>
           <li><a href="#old">예전 방식으로 설치했던 분</a></li>
           <li><a href="#trouble">막힐 때</a></li>
         </ol>
@@ -192,12 +191,48 @@
       <section class="step" id="step2">
         <h2><span class="n">2</span>아인 실행</h2>
         <p>설치가 끝나면 시작 메뉴에서 <b>아인</b>을 엽니다. 첫 실행 때 바탕화면에 바로가기가 자동으로 생기니 다음부터는 거기서 열면 됩니다.</p>
-        <p>처음 켜면 초기 설정 안내 화면이 순서대로 나옵니다. 아래 3·4·5단계가 그 화면의 순서와 같습니다.</p>
+        <p>처음 켜면 초기 설정 안내 화면이 순서대로 나옵니다. 아래 3·4단계가 그 화면의 순서와 같습니다.</p>
+      </section>
+
+      <section class="step" id="step4">
+        <h2><span class="n">3</span>방송 계정으로 로그인</h2>
+        <img src="/img/shots/wizard-login.png?v=230" width="900" height="880" alt="아인 초기 설정 1단계 — 스트리머 계정 로그인 안내와 [로그인 창 열기] 버튼" loading="lazy">
+        <p>아인 화면의 [로그인 창 열기]를 누르면 깨끗한 로그인 창이 뜹니다. <b>방송하는 본인 계정</b>으로 로그인하면 치지직의 동의 화면이 나옵니다. 앱 이름이 <b>아인</b>으로 표시되고, 아인이 쓰는 권한 목록이 보입니다. 항목을 모두 켠 채 [동의]를 누르면 끝입니다.</p>
+        <p>요청하는 권한은 채팅을 읽고 쓰는 것(출석·명령어·공지), 후원·구독 조회(감사 인사), 채널·방송·채팅 설정, 활동 제한입니다. 지금 쓰지 않는 항목은 앞으로 넣을 기능을 위해 미리 받아 두는 것입니다(나중에 권한을 늘리면 모두가 다시 로그인해야 해서). <b>방송 스트림키는 요청하지 않습니다.</b> 받은 로그인 정보는 이 컴퓨터에만 저장됩니다. <a href="/privacy.html">개인정보처리방침</a></p>
+        <p>로그인이 끝나면 화면에 연동된 채널 이름이 표시됩니다. 다른 계정으로 로그인했으면 아인이 알려주니, 로그아웃하고 방송 계정으로 다시 하면 됩니다.</p>
+      </section>
+
+      <section class="step" id="step5">
+        <h2><span class="n">4</span>봇 이름 정하기 (선택)</h2>
+        <p>이 단계를 건너뛰면 봇이 방송 계정 이름으로 응답합니다. "○○봇" 같은 전용 이름을 쓰려면 네이버 부계정을 하나 만들어 연결합니다. 화면에 그림 안내가 함께 나옵니다.</p>
+        <ul>
+          <li>부계정의 치지직 닉네임이 곧 봇 이름입니다. 치지직에서 닉네임을 먼저 정해 두세요. 프로필 아이콘 → 네이버 게임 프로필 → 프로필 편집에서 바꿉니다. 한 번 바꾸면 30일 동안 다시 바꿀 수 없으니 한 번에 정하세요.
+            <img src="/img/chzzk-profile-edit.png" alt="치지직 프로필 편집 창 — 닉네임 칸과 30일 변경 제한 안내" width="352" loading="lazy">
+          </li>
+          <li>연결은 <b>[봇 계정으로 로그인]</b> 버튼 하나입니다 (1.8). 초기 설정 2단계나 [설정] → 봇 계정에서 누르면 로그인 창이 열리고, 거기서 <b>부계정으로</b> 로그인하면 아인이 알아서 저장하고 창을 닫습니다. 예전처럼 브라우저 개발자 도구에서 쿠키를 복사할 필요가 없습니다. 봇이 돌아가는 동안 로그인이 자동으로 연장되어 매번 다시 하지 않아도 됩니다.
+            <img src="/img/bot-account.png?v=210925" alt="아인 설정 창의 봇 계정 화면 — [봇 계정으로 로그인] 버튼과 부계정 안내" width="1040" height="720" loading="lazy">
+          </li>
+          <li>연결하면 아인이 부계정의 치지직 채널 소개에 <b>"아인으로 만든 봇 · einbot.kr"</b> 한 줄을 넣습니다 (2.2.5). 시청자가 봇 이름을 눌러 봇 채널에 들어왔을 때 어떤 봇인지 알 수 있게 하려는 것입니다. 원래 소개 글은 그대로 두고, 원하지 않으면 설정 → 봇 계정 → 봇 채널 소개에서 끄면 그 한 줄만 지웁니다.</li>
+        </ul>
+        <div class="warn">
+          <p><b>부계정은 봇 전용으로 두세요.</b> 폰 등 다른 기기에서 같은 계정으로 로그인하면 봇 연결이 끊겨 다시 넣어야 할 수 있습니다.</p>
+          <p>연결 직후 네이버에서 "새로운 기기 로그인" 알림이 올 수 있는데, 그게 봇입니다. [로그아웃]이나 [내가 아님]을 누르지 마세요.</p>
+        </div>
+      </section>
+
+      <section class="step" id="step6">
+        <h2><span class="n">5</span>봇 시작</h2>
+        <p>초기 설정 마지막 화면의 <b>"컴퓨터를 켜면 아인과 봇을 자동으로 켜기 (권장)"</b>를 켜 둔 채 마치면(2.2부터, 처음에 켜져 있음), 다음부터는 컴퓨터를 켤 때 아인이 창 없이 작업 표시줄 오른쪽 알림 영역에서 켜지고 봇도 시작합니다. 방송만 켜면 됩니다. 나중에 끄려면 설정 → 기본 설정 → 자동 시작에서 끕니다.</p>
+        <p>지금 바로 켜려면 아인 창 상태 카드의 <kbd>시작</kbd>을 누릅니다. 카드가 "봇이 실행 중입니다"로 바뀝니다. 방송이 끝나고 꺼도 출석 기록과 설정은 전부 남습니다.</p>
+        <img src="/img/app-running.png?v=200924" alt="아인 앱 창 — 실행 상태 카드와 중지 버튼, 설정·기능 타일, 아래에 버전과 다크 모드 버튼" width="432" height="394" loading="lazy">
+        <p>치지직 채팅 서버는 방송 중에만 열립니다. 방송 전에 "봇 계정 연결 실패"라고 떠도 정상이고, 방송을 시작하면 자동으로 붙습니다.</p>
+        <p>이제 채팅창에서 <code>!출첵</code> <code>!시간</code> <code>!업타임</code> 같은 기본 명령어가 바로 됩니다. 문구와 명령어를 바꾸는 방법은 <a href="/guide/commands/">명령어 목록과 설정 방법</a>을 참고하세요.</p>
       </section>
 
       <section class="step" id="step3">
-        <h2><span class="n">3</span>치지직 개발자 센터에서 API 키 발급</h2>
-        <p>봇이 채팅을 읽고 쓰려면 치지직이 발급하는 열쇠가 필요합니다. 무료이고, 한 번만 하면 됩니다. 약 3분.</p>
+        <h2>직접 발급한 API 키로 연결하기 (고급)</h2>
+        <p><b>보통은 필요 없습니다.</b> 2.2까지는 누구나 거치던 단계였고, 2.3부터는 위 3단계의 로그인만으로 됩니다. 이미 키를 넣어 쓰고 계신 분은 그대로 쓰면 되고, 아무것도 바꾸지 않아도 됩니다.</p>
+        <p>치지직 개발자 센터에 내 앱을 직접 등록해 쓰고 싶은 분은 초기 설정의 로그인 화면 아래 <b>"직접 발급한 API 키로 연결하기 (고급)"</b>을 누르거나, 설정 → 치지직 연결에서 같은 이름의 항목을 펼쳐 아래 순서대로 넣습니다. 반대로 키 없이 쓰는 방식으로 바꾸려면 두 칸을 비우고 저장한 뒤 [방송 계정 변경 (다시 로그인)]을 누릅니다.</p>
         <ol>
           <li><a href="https://developers.chzzk.naver.com" target="_blank" rel="noopener">developers.chzzk.naver.com</a> 에 접속해 네이버로 로그인합니다. <b>방송하는 계정</b>으로 로그인하세요.</li>
           <li>[애플리케이션 등록]을 누릅니다.
@@ -226,40 +261,6 @@
         </div>
       </section>
 
-      <section class="step" id="step4">
-        <h2><span class="n">4</span>방송 계정으로 로그인</h2>
-        <img src="/img/shots/wizard-step2.png?v=190924" width="900" height="760" alt="아인 초기 설정 2단계 — 스트리머 계정 로그인 안내와 [로그인 창 열기] 버튼. 방송 계정과 로그인 상태 유지가 초록 칩으로 강조됨" loading="lazy">
-        <p>아인 화면의 [로그인 창 열기]를 누르면 깨끗한 로그인 창이 뜹니다. <b>방송하는 본인 계정</b>으로 로그인하고 [동의]를 누르면 끝입니다.</p>
-        <p>로그인이 끝나면 화면에 연동된 채널 이름이 표시됩니다. 다른 계정으로 로그인했으면 아인이 알려주니, 로그아웃하고 방송 계정으로 다시 하면 됩니다.</p>
-      </section>
-
-      <section class="step" id="step5">
-        <h2><span class="n">5</span>봇 이름 정하기 (선택)</h2>
-        <p>이 단계를 건너뛰면 봇이 방송 계정 이름으로 응답합니다. "○○봇" 같은 전용 이름을 쓰려면 네이버 부계정을 하나 만들어 연결합니다. 화면에 그림 안내가 함께 나옵니다.</p>
-        <ul>
-          <li>부계정의 치지직 닉네임이 곧 봇 이름입니다. 치지직에서 닉네임을 먼저 정해 두세요. 프로필 아이콘 → 네이버 게임 프로필 → 프로필 편집에서 바꿉니다. 한 번 바꾸면 30일 동안 다시 바꿀 수 없으니 한 번에 정하세요.
-            <img src="/img/chzzk-profile-edit.png" alt="치지직 프로필 편집 창 — 닉네임 칸과 30일 변경 제한 안내" width="352" loading="lazy">
-          </li>
-          <li>연결은 <b>[봇 계정으로 로그인]</b> 버튼 하나입니다 (1.8). 초기 설정 3단계나 [설정] → 봇 계정에서 누르면 로그인 창이 열리고, 거기서 <b>부계정으로</b> 로그인하면 아인이 알아서 저장하고 창을 닫습니다. 예전처럼 브라우저 개발자 도구에서 쿠키를 복사할 필요가 없습니다. 봇이 돌아가는 동안 로그인이 자동으로 연장되어 매번 다시 하지 않아도 됩니다.
-            <img src="/img/bot-account.png?v=210925" alt="아인 설정 창의 봇 계정 화면 — [봇 계정으로 로그인] 버튼과 부계정 안내" width="1040" height="720" loading="lazy">
-          </li>
-          <li>연결하면 아인이 부계정의 치지직 채널 소개에 <b>"아인으로 만든 봇 · einbot.kr"</b> 한 줄을 넣습니다 (2.2.5). 시청자가 봇 이름을 눌러 봇 채널에 들어왔을 때 어떤 봇인지 알 수 있게 하려는 것입니다. 원래 소개 글은 그대로 두고, 원하지 않으면 설정 → 봇 계정 → 봇 채널 소개에서 끄면 그 한 줄만 지웁니다.</li>
-        </ul>
-        <div class="warn">
-          <p><b>부계정은 봇 전용으로 두세요.</b> 폰 등 다른 기기에서 같은 계정으로 로그인하면 봇 연결이 끊겨 다시 넣어야 할 수 있습니다.</p>
-          <p>연결 직후 네이버에서 "새로운 기기 로그인" 알림이 올 수 있는데, 그게 봇입니다. [로그아웃]이나 [내가 아님]을 누르지 마세요.</p>
-        </div>
-      </section>
-
-      <section class="step" id="step6">
-        <h2><span class="n">6</span>봇 시작</h2>
-        <p>초기 설정 마지막 화면의 <b>"컴퓨터를 켜면 아인과 봇을 자동으로 켜기 (권장)"</b>를 켜 둔 채 마치면(2.2부터, 처음에 켜져 있음), 다음부터는 컴퓨터를 켤 때 아인이 창 없이 작업 표시줄 오른쪽 알림 영역에서 켜지고 봇도 시작합니다. 방송만 켜면 됩니다. 나중에 끄려면 설정 → 기본 설정 → 자동 시작에서 끕니다.</p>
-        <p>지금 바로 켜려면 아인 창 상태 카드의 <kbd>시작</kbd>을 누릅니다. 카드가 "봇이 실행 중입니다"로 바뀝니다. 방송이 끝나고 꺼도 출석 기록과 설정은 전부 남습니다.</p>
-        <img src="/img/app-running.png?v=200924" alt="아인 앱 창 — 실행 상태 카드와 중지 버튼, 설정·기능 타일, 아래에 버전과 다크 모드 버튼" width="432" height="394" loading="lazy">
-        <p>치지직 채팅 서버는 방송 중에만 열립니다. 방송 전에 "봇 계정 연결 실패"라고 떠도 정상이고, 방송을 시작하면 자동으로 붙습니다.</p>
-        <p>이제 채팅창에서 <code>!출첵</code> <code>!시간</code> <code>!업타임</code> 같은 기본 명령어가 바로 됩니다. 문구와 명령어를 바꾸는 방법은 <a href="/guide/commands/">명령어 목록과 설정 방법</a>을 참고하세요.</p>
-      </section>
-
       <h2 id="old">예전 방식(압축 파일)으로 설치했던 분</h2>
       <p>따로 할 일이 없습니다. 위 1단계대로 <b>스토어에서 설치하면</b> 설정, 시청자 출석 기록, 이용권이 그대로 넘어오고, 옛 버전은 지울지 물어본 뒤 정리해 줍니다.</p>
       <div class="warn">
@@ -268,7 +269,7 @@
 
       <h2 id="trouble">막힐 때</h2>
       <h3>"권한이 빠졌습니다"라고 나와요</h3>
-      <p>개발자 센터의 API Scopes에서 빠진 항목을 체크하세요. 아인이 정확히 어떤 권한이 빠졌는지 이름을 보여줍니다. 등록 뒤 변경은 치지직 검수 후 반영됩니다.</p>
+      <p>설정 → 치지직 연결 → [방송 계정 변경 (다시 로그인)]을 눌러 다시 로그인하고, 동의 화면의 항목을 모두 켠 채 [동의]를 누르세요. 직접 발급한 API 키로 쓰는 분은 개발자 센터의 API Scopes에서 빠진 항목을 체크한 뒤 다시 로그인합니다(권한 변경은 치지직 검수 후 반영). <a href="/guide/troubleshooting/#relogin">자세히</a></p>
       <h3>구독 인사만 안 나가요</h3>
       <p>구독 인사는 시청자가 구독·갱신 뒤 "기념 메시지를 남기시겠습니까?"에 예를 눌러 채팅에 올린 구독 메시지에만 나갑니다. 조용히 구독·갱신한 시청자나 방송 밖 갱신에는 메시지가 없으니 인사도 없는 것이 정상입니다. 권한과는 관계가 없습니다. 1.7.1 이하 버전은 "구독 조회" 권한이 필요했으니 Microsoft Store에서 업데이트하세요. 자세한 설정은 <a href="/guide/donation/">후원·구독 인사 가이드</a>에 있습니다.</p>
       <h3>"봇 계정 연결 끊김" 알림이 떠요</h3>
