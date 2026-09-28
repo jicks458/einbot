@@ -77,6 +77,8 @@ img { max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(
 .note { border-left: 3px solid var(--green-ink); background: rgba(0,255,163,.12); border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 18px 0; }
 .warn { border-left: 3px solid #D97706; background: #FFF7E6; border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 18px 0; }
 .note p, .warn p { margin: 0; }
+.ask { margin: 26px 0 0; color: var(--muted); font-size: 15px; line-height: 1.75; word-break: keep-all; }
+.ask a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
 .note p + p, .warn p + p { margin-top: 8px; }
 
 /* 버튼 */
@@ -107,6 +109,9 @@ footer a { color: var(--text-2); }
   h2 { font-size: 22px; }
   body { font-size: 16px; }
   nav { gap: 4px 16px; }
+}
+@media (max-width: 400px) {
+  nav { gap: 4px 12px; }
 }
 
 /* docs-nav: 아인 창 순서의 왼쪽 목차 */
