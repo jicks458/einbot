@@ -41,7 +41,7 @@
       { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
       { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
       { "@type": "ListItem", "position": 3, "name": "카운터·타이머·스톱워치 방송 화면에 띄우기", "item": "https://einbot.kr/guide/time/" } ] },
-    { "@type": "TechArticle", "headline": "카운터·타이머·스톱워치 방송 화면에 띄우기", "description": "데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-09-17",
+    { "@type": "TechArticle", "headline": "카운터·타이머·스톱워치 방송 화면에 띄우기", "description": "데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "%ISO%",
       "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
       "mainEntityOfPage": "https://einbot.kr/guide/time/" }
   ]
@@ -134,7 +134,7 @@
       <p class="eyebrow">시간 기능 가이드</p>
       <h1>카운터·타이머·스톱워치 방송 화면에 띄우기</h1>
       <p class="lead">데스 수를 세거나, 라면 10분을 재거나, 도전 시간을 잴 때 씁니다. 아인 창의 <b>[기능]</b> 버튼 → 시간 기능에서 누르면 방송 화면이 바로 바뀝니다.</p>
-      <p class="meta">기준 버전 1.8.0 · 2026년 9월 17일 작성</p>
+      <p class="meta">기준 버전 2.4.0 · 2026년 9월 17일 작성, %게시일짧게% 화면 꾸미기 고침</p>
 
       <div class="toc">
         <b>차례</b>
@@ -148,7 +148,7 @@
         </ol>
       </div>
 
-      <img src="/img/shots/overlay-time.jpg?v=190924" width="1280" height="720" alt="방송 화면 예시 — 오른쪽에 타이머, 데스 카운터, 스톱워치가 세로로 놓인 모습" loading="lazy">
+      <img src="/img/shots/overlay-time.jpg?v=240" width="1280" height="720" alt="방송 화면 예시 — 오른쪽에 타이머, 데스 카운터, 스톱워치가 세로로 놓인 모습" loading="lazy">
 
       <h2 id="counter">카운터</h2>
       <p>이름을 정해 만들면(예: 데스) 큰 숫자와 <b>[−] [+] [0]</b> 버튼이 생깁니다. 누를 때마다 방송 화면의 숫자가 바로 바뀝니다. 카운터는 여러 개 만들 수 있고 값은 봇을 껐다 켜도 남습니다.</p>
@@ -179,6 +179,11 @@
       <h2 id="style">화면 꾸미기</h2>
       <p>기능 창 왼쪽 맨 아래 <b>오버레이 꾸미기</b>에서 글자 크기(작게~아주 크게), 글자색, 배경(어둡게·밝게·없음), 그림자를 정하면 모든 오버레이에 같이 적용됩니다.
         특정 소스만 다르게 하려면 주소 뒤에 <code>?크기=크게</code>, <code>?배경=없음</code>, <code>?글자색=%23111827</code> 처럼 붙입니다.</p>
+      <ul>
+        <li>밝은 방송 화면에는 배경을 <b>밝게</b>로 바꾸면 잘 어울립니다. 글자색은 따로 바꾸지 않아도 됩니다.</li>
+        <li>글자색은 판 위에서 읽히는 색일 때만 따릅니다(2.4.0부터). 밝은 판에 흰색처럼 안 읽히는 색이면 판에 맞는 색으로 보여 줍니다. 배경이 <b>없음</b>이면 고른 색 그대로 나옵니다.</li>
+        <li>알림과 룰렛 결과는 배경을 없음으로 해도 판이 남습니다. 잠깐 떴다 사라지는 글이라 어떤 화면에서도 읽혀야 해서입니다.</li>
+      </ul>
 
       <h2 id="faq">자주 묻는 것</h2>
       <h3>키보드 단축키로 카운터를 올릴 수 있나요?</h3>

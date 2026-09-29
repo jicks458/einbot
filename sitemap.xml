@@ -38,19 +38,19 @@
   </url>
   <url>
     <loc>https://einbot.kr/updates/</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>%ISO%</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://einbot.kr/guide/participation/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>%ISO%</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://einbot.kr/guide/time/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>%ISO%</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://einbot.kr/guide/overlay/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>%ISO%</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
