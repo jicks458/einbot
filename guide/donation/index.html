@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>치지직 후원·구독 감사 인사 자동으로 하기 — 아인 후원 인사 설정 가이드</title>
-<meta name="description" content="치지직 치즈 후원, 구독, 구독권 선물에 봇이 자동으로 감사 인사하게 설정하는 방법. 필요한 권한, {금액} {메시지} {개월} {티어} {개수} 치환자, 문구 예시, 인사가 안 나갈 때 확인할 것까지 아인 기준으로 정리했습니다.">
+<title>치지직 후원·구독·팔로우 감사 인사 자동으로 하기 — 아인 인사 설정 가이드</title>
+<meta name="description" content="치지직 치즈 후원, 구독, 구독권 선물, 새 팔로우에 봇이 자동으로 감사 인사하게 설정하는 방법. 팔로우 인사에 필요한 채널 관리자 지정, 필요한 권한, {금액} {메시지} {개월} {티어} {개수} 치환자, 문구 예시, 인사가 안 나갈 때 확인할 것까지 아인 기준으로 정리했습니다.">
 <link rel="canonical" href="https://einbot.kr/guide/donation/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="아인">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="치지직 후원·구독 감사 인사 자동으로 하기 — 아인">
-<meta property="og:description" content="치즈 후원, 구독, 구독권 선물에 자동 감사 인사. 필요한 권한, 치환자, 문구 예시, 안 나갈 때 확인할 것.">
+<meta property="og:title" content="치지직 후원·구독·팔로우 감사 인사 자동으로 하기 — 아인">
+<meta property="og:description" content="치즈 후원, 구독, 구독권 선물, 새 팔로우에 자동 감사 인사. 필요한 권한, 치환자, 문구 예시, 안 나갈 때 확인할 것.">
 <meta property="og:url" content="https://einbot.kr/guide/donation/">
 <meta property="og:image" content="https://einbot.kr/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
@@ -45,8 +45,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://einbot.kr/guide/donation/#article",
-      "headline": "치지직 후원·구독 감사 인사 자동으로 하기 — 아인 후원 인사 설정 가이드",
-      "description": "치즈 후원, 구독, 구독권 선물에 봇이 자동으로 감사 인사하게 하는 설정. 필요한 권한, 치환자, 문구 예시, 안 나갈 때 확인할 것.",
+      "headline": "치지직 후원·구독·팔로우 감사 인사 자동으로 하기 — 아인 인사 설정 가이드",
+      "description": "치즈 후원, 구독, 구독권 선물, 새 팔로우에 봇이 자동으로 감사 인사하게 하는 설정. 필요한 권한, 치환자, 문구 예시, 안 나갈 때 확인할 것.",
       "inLanguage": "ko-KR",
       "datePublished": "2026-09-06",
       "dateModified": "2026-10-02",
@@ -68,6 +68,11 @@
           "@type": "Question",
           "name": "구독 인사만 안 나가요",
           "acceptedAnswer": { "@type": "Answer", "text": "구독 인사는 시청자가 구독·갱신 뒤 '기념 메시지를 남기시겠습니까?'에 예를 눌러 채팅에 올린 구독 메시지에만 나갑니다. 조용히 구독·갱신한 시청자나 방송 밖 갱신에는 메시지가 없으니 인사도 없는 것이 정상입니다. 방송 중 채팅이 연결돼 있어야 하고, 설정에서 구독 인사가 켜져 있어야 합니다. 1.7.1 이하 버전은 '구독 조회' 권한이 필요했으니 업데이트하세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "팔로우 인사가 안 나가요",
+          "acceptedAnswer": { "@type": "Answer", "text": "팔로우 인사는 처음에 꺼져 있습니다. 설정 → 팔로우 인사에서 켰는지, 방송 중인지 확인하세요. 봇 계정(부계정)을 치지직 스튜디오 → 채널/권한 관리 → 권한 관리에서 내 채널의 채널 관리자로 지정해 두어야 동작하고, 지정하지 않았으면 아인 창에 안내가 뜹니다. 전에 한 번 인사한 분이 팔로우를 취소했다 다시 한 것이면 인사하지 않습니다." }
         },
         {
           "@type": "Question",
@@ -134,6 +139,7 @@
       <a href="/guide/commands/#custom">✏️ 내가 만든 명령어</a>
       <a href="/guide/donation/#donation">🧡 후원 인사</a>
       <a href="/guide/donation/#sub">💚 구독·선물 인사</a>
+      <a href="/guide/donation/#follow">👋 팔로우 인사</a>
       <a href="/guide/commands/#notice">📢 반복 공지</a>
       <a href="/guide/commands/#discord">📣 디스코드 알림</a>
       <a href="/privacy.html">🩺 진단 정보</a>
@@ -169,9 +175,9 @@
     <article>
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 후원·구독 감사 인사</p>
       <p class="eyebrow">후원·구독 인사 가이드</p>
-      <h1>치지직 후원·구독 감사 인사 자동으로 하기</h1>
+      <h1>치지직 후원·구독·팔로우 감사 인사 자동으로 하기</h1>
       <p class="lead">방송에 집중하다 보면 후원 인사를 놓치기 쉽습니다. 아인은 치즈 후원, 구독, 구독권 선물이 들어오는 순간
-        정해 둔 문구로 대신 인사합니다. 이 페이지는 그 설정과, 인사가 안 나갈 때 확인할 것을 정리합니다.</p>
+        정해 둔 문구로 대신 인사합니다. 2.5.0부터는 새로 팔로우한 분께도 인사합니다. 이 페이지는 그 설정과, 인사가 안 나갈 때 확인할 것을 정리합니다.</p>
       <p class="meta">기준 버전 2.5.0 · 2026년 9월 21일 갱신, 2026년 10월 2일 팔로우 인사 추가</p>
 
       <div class="toc">

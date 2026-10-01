@@ -76,6 +76,7 @@
       "featureList": [
         "시청자 출석 체크 (누적 횟수 기억)",
         "치즈 후원·구독·구독권 선물 감사 인사",
+        "새 팔로우 감사 인사·팔로우 알림 카드 (봇 계정을 채널 관리자로 지정)",
         "!출첵 !팔로우 !업타임 !시간 기본 명령어와 커스텀 명령어",
         "부계정 연결로 직접 정하는 봇 이름",
         "반복 공지",
@@ -124,6 +125,11 @@
           "@type": "Question",
           "name": "투표·추첨·룰렛도 되나요?",
           "acceptedAnswer": { "@type": "Answer", "text": "됩니다. 아인 창의 [기능] 버튼에서 투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행하고, OBS 브라우저 소스로 방송 화면에 띄웁니다. 시청자는 채팅에 번호나 말 한마디만 치면 됩니다. 1.9부터는 채팅 오버레이, 알림 오버레이, TTS 읽어주기, TITS 던지기, 2.1부터는 채팅 !신청곡 유튜브 링크로 받는 신청곡도 됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "팔로우하면 알림이 뜨게 할 수 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "됩니다(2.5.0부터). 방송 중에 누가 팔로우하면 봇이 채팅으로 인사하고, 알림 오버레이에 카드로 띄웁니다. 둘 다 처음에는 꺼져 있습니다. 봇 계정(부계정)을 치지직 스튜디오 → 채널/권한 관리 → 권한 관리에서 내 채널의 채널 관리자로 지정해 두어야 동작합니다. 팔로우하면 1~2초 안에 뜨고, 같은 분은 한 번만 알립니다." }
         },
         {
           "@type": "Question",
@@ -487,7 +493,7 @@
         <h3>방송에서 아인이 하는 일</h3>
         <ul>
           <li><b>인사하면 출석.</b> 시청자가 "○하"처럼 정해 둔 인사말을 치면 누적 출석 일수를 세어 반겨줍니다. 인사말과 문구는 내 방송에 맞게 바꿉니다.</li>
-          <li><b>후원이 오면 감사 인사.</b> 치즈 후원, 구독, 구독권 선물에 정해 둔 문구로 바로 답합니다.</li>
+          <li><b>후원이 오면 감사 인사.</b> 치즈 후원, 구독, 구독권 선물에 정해 둔 문구로 바로 답합니다. 새로 팔로우한 분께 하는 인사도 켤 수 있습니다.</li>
           <li><b>이름은 우리 방송 것.</b> 예시처럼 "○○ 봇" 이름으로 응답합니다. 네이버 부계정만 연결하면 됩니다.</li>
         </ul>
       </div>
@@ -495,7 +501,7 @@
     <div class="feats">
       <div class="feat hot reveal"><span class="ico" style="--tb:#00E592;--tc:#04302A"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="M8 16h.01M16 16h.01"/></svg></span><h3>우리 방송만의 봇 이름</h3><p>모두가 똑같은 이름을 쓰는 봇이 아니에요. 네이버 부계정을 연결하면 <span class="k">내가 지은 "○○봇" 이름</span>으로 응답합니다. 신청도 승인도 필요 없어요.</p></div>
       <div class="feat reveal"><span class="ico" style="--tb:#E4ECFF;--tc:#2F5FE8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11"/><path d="M10 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M13 10V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M16 12v-1.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4l-2.6-4.3a1.5 1.5 0 0 1 2.5-1.6L7 15"/></svg></span><h3>출석 체크</h3><p>"안녕하세요" 한마디면 자동 출석. <span class="k">출석 횟수가 쌓여</span> 단골 시청자가 보입니다. 다른 봇에서 넘어와도 횟수를 이어받을 수 있어요.</p></div>
-      <div class="feat reveal"><span class="ico" style="--tb:#FDE8EF;--tc:#C2185B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></span><h3>후원·구독 감사 인사</h3><p>치즈 후원, 구독, <span class="k">구독권 선물까지</span> 놓치지 않고 즉시 감사 인사를 올립니다. 문구는 내 마음대로.</p></div>
+      <div class="feat reveal"><span class="ico" style="--tb:#FDE8EF;--tc:#C2185B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></span><h3>후원·구독·팔로우 인사</h3><p>치즈 후원, 구독, <span class="k">구독권 선물까지</span> 놓치지 않고 즉시 감사 인사를 올립니다. 새로 팔로우한 분께도 인사할 수 있어요. 문구는 내 마음대로.</p></div>
       <div class="feat reveal"><span class="ico" style="--tb:#EFE8FF;--tc:#7040E6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></span><h3>명령어와 반복 공지</h3><p>!출첵, !팔로우, !업타임, !시간 기본 제공. <span class="k">나만의 명령어</span>와 반복 공지도 클릭 몇 번으로 추가됩니다.</p></div>
       <div class="feat reveal"><span class="ico" style="--tb:#FFF0D3;--tc:#C26A00"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><h3>내 컴퓨터에서</h3><p>봇은 <span class="k">내 컴퓨터에서 직접</span> 돕니다. 로그인 정보와 시청자 기록은 내 PC에만 저장돼요. 시청자 기록과 채팅은 밖으로 나가지 않습니다.</p></div>
       <div class="feat reveal"><span class="ico" style="--tb:#D9F3F0;--tc:#0E7C7B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span><h3>알아서 챙김</h3><p>방송을 켜면 <span class="k">디스코드 채널에 시작 알림</span>을 보내고, 새 버전 안내와 로그인 만료 안내까지 앱이 먼저 알려줍니다.</p></div>
@@ -504,10 +510,10 @@
       <div class="fl"><b>지금 되는 것</b>
         <ul>
           <li>인사말만으로 자동 출석</li><li>누적 출석 횟수 인사</li><li>하루 기준 시각 설정</li><li>상황별 출석 문구</li><li>다른 봇 출석 기록 이어받기</li>
-          <li>치즈 후원 감사 인사</li><li>후원 금액·메시지 치환</li><li>익명 후원 처리</li><li>구독 감사 인사</li><li>티어별 구독 문구</li><li>구독권 선물 감사 인사</li>
+          <li>치즈 후원 감사 인사</li><li>후원 금액·메시지 치환</li><li>익명 후원 처리</li><li>구독 감사 인사</li><li>티어별 구독 문구</li><li>구독권 선물 감사 인사</li><li>팔로우 감사 인사</li>
           <li>!출첵 !팔로우 !업타임 !시간</li><li>채팅에서 명령어 추가·삭제</li><li>방장 전용 명령어</li><li>{이름} {호칭} 같은 치환자</li><li>반복 공지</li>
           <li>부계정으로 봇 이름 지정</li><li>봇 계정 로그인 창 (쿠키 복사 없음)</li><li>설정 저장 즉시 반영</li><li>새 버전·연결 끊김 알림</li><li>방송 시작 디스코드 알림 (웹훅)</li>
-          <li>투표 (채팅에 번호만)</li><li>시청자 추첨 (명단·뽑기 연출)</li><li>구독자 뽑기 (구독자만 골라 뽑기)</li><li>당첨자 채팅 띄우기·TTS</li><li>돌림판</li><li>후원 룰렛 (배수만큼 걸쇠)</li><li>카운터·타이머·스톱워치</li><li>OBS 오버레이 (투표·추첨·룰렛·시간·채팅·알림·신청곡)</li><li>채팅 오버레이 (치지직 닉네임 색·배지 그대로, 공유 CSS 그대로)</li><li>알림 오버레이 (후원·구독·선물·룰렛·투표·추첨)</li><li>TTS 읽어주기 (구독·선물·채팅)</li><li>TITS 물건 던지기 (VTube Studio)</li><li>유튜브 신청곡 (!신청곡 링크)</li><li>곡 제목 표시 오버레이</li><li>다크 모드</li><li>!봇 명령어</li>
+          <li>투표 (채팅에 번호만)</li><li>시청자 추첨 (명단·뽑기 연출)</li><li>구독자 뽑기 (구독자만 골라 뽑기)</li><li>당첨자 채팅 띄우기·TTS</li><li>돌림판</li><li>후원 룰렛 (배수만큼 걸쇠)</li><li>카운터·타이머·스톱워치</li><li>OBS 오버레이 (투표·추첨·룰렛·시간·채팅·알림·신청곡)</li><li>채팅 오버레이 (치지직 닉네임 색·배지 그대로, 공유 CSS 그대로)</li><li>알림 오버레이 (후원·구독·선물·팔로우·룰렛·투표·추첨)</li><li>TTS 읽어주기 (구독·선물·채팅)</li><li>TITS 물건 던지기 (VTube Studio)</li><li>유튜브 신청곡 (!신청곡 링크)</li><li>곡 제목 표시 오버레이</li><li>다크 모드</li><li>!봇 명령어</li>
         </ul>
       </div>
       <div class="fl soon"><b>개발 중</b>
@@ -594,6 +600,10 @@
         <p>됩니다. 아인 창의 [기능] 버튼에서 투표·추첨·돌림판·후원 룰렛과 카운터·타이머·스톱워치를 버튼으로 진행하고, OBS 브라우저 소스로 방송 화면에 띄웁니다. 시청자는 채팅에 번호나 말 한마디만 치면 되고 명령어를 외울 필요가 없습니다. <a href="/guide/participation/">참여 기능 가이드</a> 1.9부터는 채팅 오버레이, 알림 오버레이, TTS 읽어주기, TITS 던지기도 됩니다. <a href="/guide/overlay/">화면·소리 가이드</a></p>
       </details>
       <details class="reveal">
+        <summary>팔로우하면 알림이 뜨게 할 수 있나요?</summary>
+        <p>됩니다(2.5.0부터). 방송 중에 누가 팔로우하면 봇이 채팅으로 인사하고, 알림 오버레이에 카드로 띄웁니다. 둘 다 처음에는 꺼져 있어요. 봇 계정(부계정)을 치지직 스튜디오 → 채널/권한 관리 → 권한 관리에서 내 채널의 <b>채널 관리자</b>로 지정해 두어야 동작합니다. 팔로우하면 1~2초 안에 뜨고, 같은 분은 한 번만 알립니다. <a href="/guide/donation/#follow">켜는 순서</a></p>
+      </details>
+      <details class="reveal">
         <summary>방송 시작을 디스코드에 알릴 수 있나요?</summary>
         <p>됩니다. 설정 → [디스코드 알림]에 디스코드 채널의 웹훅 주소를 넣고 켜 두면, 방송이 시작될 때 제목·카테고리·썸네일 카드를 한 번 보냅니다. 디스코드 봇을 따로 만들거나 서버를 켜 둘 필요가 없어요. 봇을 방송 시작 10분 뒤에 켜면 보내지 않고, 방송이 잠깐 끊겼다 30분 안에 다시 시작해도 다시 보내지 않습니다. (1.9.3부터)</p>
       </details>
@@ -619,7 +629,7 @@
       <a class="guide reveal" href="/guide/install/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>설치 방법</h3><p>Microsoft Store 설치 → 로그인 → 봇 이름 → 봇 시작. 5분이면 끝납니다.</p><span class="more">설치 가이드 →</span></a>
       <a class="guide reveal" href="/guide/commands/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg>명령어 목록과 설정</h3><p>기본 명령어, 방장 전용 명령어, 채팅에서 바로 만드는 내 명령어, 치환자, 반복 공지.</p><span class="more">명령어 가이드 →</span></a>
       <a class="guide reveal" href="/guide/attendance/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11"/><path d="M10 10V4.5a1.5 1.5 0 0 1 3 0V10"/><path d="M13 10V5.5a1.5 1.5 0 0 1 3 0V12"/><path d="M16 12v-1.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.4l-2.6-4.3a1.5 1.5 0 0 1 2.5-1.6L7 15"/></svg>출석 체크 설정</h3><p>인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기.</p><span class="more">출석 가이드 →</span></a>
-      <a class="guide reveal" href="/guide/donation/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>후원·구독 감사 인사</h3><p>치즈 후원, 구독, 구독권 선물에 자동으로 인사하는 설정과 필요한 권한, 문구 예시.</p><span class="more">후원 인사 가이드 →</span></a>
+      <a class="guide reveal" href="/guide/donation/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>후원·구독 감사 인사</h3><p>치즈 후원, 구독, 구독권 선물, 새 팔로우에 자동으로 인사하는 설정과 필요한 권한, 문구 예시.</p><span class="more">후원 인사 가이드 →</span></a>
       <a class="guide reveal" href="/guide/troubleshooting/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8z"/></svg>안 될 때 확인할 것</h3><p>반응이 없을 때, 권한이 빠졌다고 나올 때, 봇 계정 연결이 끊겼을 때. 증상별로 바로 해결합니다.</p><span class="more">문제 해결 →</span></a>
       <a class="guide reveal" href="/compare/"><h3><svg class="hi" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20v-9M18 20V4M6 20v-4"/></svg>채팅봇 6종 비교표</h3><p>뚜봇·빵떡·한봇·나디아·브이찍·아인을 같은 항목으로. 다른 봇은 공식 안내 기준, 아인이 못 하는 것도 그대로.</p><span class="more">비교표 보기 →</span></a>
     </div>
