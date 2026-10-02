@@ -214,3 +214,51 @@ article img { max-height: min(520px, 72vh); object-fit: contain; }
   .toc li { padding: 1px 0; }
   .toc a { font-size: 14.5px; }
 }
+
+/* ===== 11. 본문 사진 (2026-10-03) — 쓰는 법: 본문 규칙.md 「사진」 =====
+   참고: 카카오 디벨로퍼스·Vercel·StreamElements(필요한 칸만 잘라 원래 크기), 토스플레이스·배민(나란히·이름표), Apple(글줄 안 아이콘).
+   원칙: 그림은 잘라서 넣고, width·height 속성 = 보여 줄 크기(2배로 찍었으면 원본의 절반). CSS 는 줄이기만 하고 늘리지 않는다(.full 만 예외). */
+
+/* 11-1. 클래스 없는 옛 그림: 크기 계산은 그대로(불러오기 전 자리 = 속성 비율이라 쪽이 밀리지 않음).
+         높이 상한에 걸린 세로 그림의 좌우 여백이 '빈 띠' 대신 연한 판으로 보이게 하고, 그림은 가운데에 둔다 */
+article img { background: var(--bg); object-position: center; }
+
+/* 11-2. .shot — 잘라 쓴 화면 한 장. 기본으로 이것을 쓴다. 칸보다 작으면 원래 크기 그대로 왼쪽에, 크면 칸 폭 */
+article img.shot { max-width: 100%; height: auto; max-height: min(560px, 80vh); margin: 12px 0 24px; border-radius: 10px; background: var(--surface); }
+/* 방송 화면 16:9 전체·창 전체가 꼭 필요할 때만: 칸 폭에 맞춰 늘림 */
+article img.shot.full { width: 100%; }
+
+/* 11-3. figure.shot-fig — 한 장에 이름표(캡션)가 꼭 필요할 때. 이름표는 그림 바로 아래 가운데, 회색 한 줄 */
+article figure { margin: 12px 0 24px; }
+article figure.shot-fig { width: fit-content; max-width: 100%; }
+article figure img, article figure img.shot { margin: 0; }
+article figcaption { margin-top: 6px; font-size: 13.5px; line-height: 1.5; color: var(--muted); text-align: center; word-break: keep-all; }
+
+/* 11-4. .shots — 두세 장 나란히(경우 나누기, 결과 카드 모아 보기). 칸을 똑같이 나누고 윗줄을 맞춤.
+         .seq 를 붙이면 차례로 바뀌는 화면 사이에 › 표시, .three 는 세 장 */
+article .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; align-items: start; margin: 12px 0 24px; }
+article .shots.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+article .shots.seq { column-gap: 28px; }
+article .shots > figure { position: relative; margin: 0; min-width: 0; text-align: center; }
+article .shots img { max-width: 100%; height: auto; max-height: none; margin: 0 auto; border-radius: 10px; background: var(--surface); }
+article .shots.seq > figure + figure::before { content: "›"; position: absolute; left: -14px; top: 40%; transform: translate(-50%, -50%); font-size: 26px; font-weight: 700; line-height: 1; color: var(--muted); }
+
+/* 11-5. .shot-box + .hl — 다시 찍을 수 없는 그림(네이버·치지직 화면)에 누를 곳 하나를 짚을 때.
+         <span class="shot-box"><img class="shot" …><i class="hl" style="left:4%;top:42%;width:20%;height:20%"></i></span> — 값은 그림 크기 대비 % */
+article .shot-box { position: relative; display: block; width: fit-content; max-width: 100%; margin: 12px 0 24px; line-height: 0; }
+article .shot-box img, article .shot-box img.shot { margin: 0; }
+article .shot-box .hl { position: absolute; border: 3px solid #E5484D; border-radius: 8px; box-shadow: 0 0 0 2px rgba(255, 255, 255, .9); pointer-events: none; }
+
+/* 11-6. img.ico — 글줄 안 작은 그림(봇 기본 그림 같은 것). 혼자 한 줄을 차지하지 않는다. .flat 은 테두리 없이 */
+article img.ico { display: inline-block; width: auto; height: 1.45em; max-height: none; margin: 0 .2em; vertical-align: -.4em; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); }
+article img.ico.flat { border: 0; border-radius: 0; background: none; }
+
+/* 11-7. 휴대폰: 나란한 그림은 세로로 쌓고 › 는 ↓ 로. .keep 은 세로로 긴 작은 화면 두 장이라 휴대폰에서도 나란히 */
+@media (max-width: 560px) {
+  article .shots, article .shots.three { grid-template-columns: minmax(0, 1fr); row-gap: 14px; }
+  article .shots.keep { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  article .shots.seq { row-gap: 30px; }
+  article .shots.seq > figure + figure::before { content: "↓"; left: 50%; top: -16px; font-size: 18px; }
+  article .shots.seq.keep > figure + figure::before { content: "›"; left: -14px; top: 40%; font-size: 22px; }
+  article img.shot, article figure, article .shots, article .shot-box { margin-bottom: 20px; }
+}

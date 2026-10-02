@@ -41,7 +41,7 @@
       { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
       { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
       { "@type": "ListItem", "position": 3, "name": "카운터·타이머·스톱워치 방송 화면에 띄우기", "item": "https://einbot.kr/guide/time/" } ] },
-    { "@type": "TechArticle", "headline": "카운터·타이머·스톱워치 방송 화면에 띄우기", "description": "데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-09-29",
+    { "@type": "TechArticle", "headline": "카운터·타이머·스톱워치 방송 화면에 띄우기", "description": "데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-10-03",
       "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
       "mainEntityOfPage": "https://einbot.kr/guide/time/" }
   ]
@@ -88,7 +88,7 @@
       <a href="/guide/install/#step4">초기 설정 (로그인)</a>
       <a href="/guide/install/#step5">봇 계정 로그인</a>
       <div class="dn-grp">설정 창</div>
-      <a href="/guide/install/#step3">🔑 치지직 연결</a>
+      <a href="/guide/install/#step4">🔑 치지직 연결</a>
       <a href="/guide/install/#step5">🤖 봇 계정</a>
       <a href="/#price">🎟️ 이용권</a>
       <a href="/guide/commands/#settings">💬 기본 설정</a>
@@ -134,8 +134,8 @@
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 카운터·타이머·스톱워치 방송 화면에 띄우기</p>
       <p class="eyebrow">시간 기능 가이드</p>
       <h1>카운터·타이머·스톱워치 방송 화면에 띄우기</h1>
-      <p class="lead">데스 수를 세거나, 라면 10분을 재거나, 도전 시간을 잴 때 씁니다. 아인 창의 <b>[기능]</b> 버튼 → 시간 기능에서 누르면 방송 화면이 바로 바뀝니다.</p>
-      <p class="meta">2026년 9월 29일 고침</p>
+      <p class="lead">데스 수, 라면 10분, 도전 시간을 방송 화면에 띄웁니다. 아인 창의 [기능]을 누르고 왼쪽 목록의 "시간 기능"에서 고릅니다.</p>
+      <p class="meta">2026년 10월 3일 고침</p>
 
       <div class="toc">
         <b>차례</b>
@@ -144,51 +144,45 @@
           <li><a href="#timer">타이머</a></li>
           <li><a href="#stopwatch">스톱워치</a></li>
           <li><a href="#obs">OBS에 띄우기</a></li>
-          <li><a href="#style">화면 꾸미기</a></li>
+          <li><a href="#style">오버레이 꾸미기</a></li>
           <li><a href="#faq">자주 묻는 것</a></li>
         </ol>
       </div>
 
-      <img src="/img/shots/overlay-time.jpg?v=242" width="1280" height="720" alt="방송 화면 예시 — 오른쪽에 타이머, 데스 카운터, 스톱워치가 세로로 놓인 모습" loading="lazy">
+      <img class="shot" src="/img/shots/time-overlay-cards.jpg" width="238" height="336" alt="방송 화면의 타이머·카운터·스톱워치 카드" loading="lazy">
 
       <h2 id="counter">카운터</h2>
-      <p>이름을 정해 만들면(예: 데스) 큰 숫자와 <b>[−] [+] [0]</b> 버튼이 생깁니다. 누를 때마다 방송 화면의 숫자가 바로 바뀝니다. 카운터는 여러 개 만들 수 있고 값은 봇을 껐다 켜도 남습니다.</p>
-      <p>오버레이 주소는 카운터마다 다릅니다. <code>http://localhost:8391/overlay/counter/데스</code> 처럼 이름이 붙습니다. 이름표 없이 숫자만 띄우려면 주소 뒤에 <code>?label=0</code>.</p>
+      <p>새 카운터에 이름(예: 데스)을 적고 [만들기]를 누르면 [−] [+] [0] 버튼이 생깁니다. 누를 때마다 방송 화면의 숫자가 바뀝니다.</p>
+      <p>카운터는 여러 개 만들 수 있고, 주소에 카운터 이름이 붙습니다. 숫자만 띄우려면 주소 뒤에 <code>?label=0</code>을 붙입니다.</p>
 
       <h2 id="timer">타이머</h2>
-      <p>5분·10분·30분·1시간 중 고르거나 분을 직접 넣고 <b>[시작]</b>. 이름(예: 라면)을 적어 두면 화면에 같이 나옵니다. 버튼 하나가 시작 → 일시정지 → 계속으로 바뀌고 [초기화]는 따로 있습니다. 분을 직접 넣으려면 [직접]을 고르세요. 끝나면 채팅에 알릴 수 있습니다.</p>
+      <p>5분·10분·30분·1시간 또는 [직접]으로 고르고 [시작]을 누릅니다. 이름(예: 라면)을 적으면 화면에 같이 나옵니다.</p>
+      <img class="shot" src="/img/shots/time-timer-card.png" width="544" height="393" alt="기능 창의 타이머 — 시간 고르기, 이름 칸, 시작·초기화 버튼, 종료 시 채팅 알림" loading="lazy">
       <div class="chat">
         <p class="dim">10분 뒤</p>
         <p><span class="b">초코우유 봇</span> ⏰ 라면 시간이에요!</p>
       </div>
-      <p>문구는 기능 창에서 바꿉니다. <code>{이름}</code> 자리에 타이머 이름이 들어갑니다. 멈춰 있을 때 화면에서 감추려면 주소 뒤에 <code>?autohide=1</code>.</p>
-
-      <img src="/img/shots/features-timer.png?v=200924" width="1100" height="720" alt="아인 기능 창 — 타이머 화면. 5분·10분·30분·1시간·직접 선택, 시작 버튼, 끝나면 채팅 알리기" loading="lazy">
+      <p>"종료 시 채팅 알림"이 켜져 있으면 끝날 때 채팅에 알립니다. 문구의 <code>{이름}</code>에 타이머 이름이 들어갑니다. 멈춰 있을 때 화면에서 감추려면 주소 뒤에 <code>?autohide=1</code>을 붙입니다.</p>
 
       <h2 id="stopwatch">스톱워치</h2>
-      <p><b>[시작]</b>으로 재기 시작해 <b>[정지]</b>로 멈추고 <b>[계속]</b>으로 이어 잽니다. <b>[랩]</b>을 누르면 그 순간의 기록이 아래에 쌓입니다(최근 20개). 0.1초 단위로 보입니다.</p>
+      <p>[시작]으로 재고 [정지]로 멈추며 [계속]으로 이어 잽니다. [랩]을 누르면 그 순간의 기록이 아래에 쌓입니다(최근 20개).</p>
 
       <h2 id="obs">OBS에 띄우기</h2>
       <div class="tbl"><table>
-        <tr><th>오버레이</th><th>주소</th></tr>
-        <tr><td>카운터</td><td><code>http://localhost:8391/overlay/counter/이름</code> · 권장 480×150</td></tr>
-        <tr><td>타이머</td><td><code>http://localhost:8391/overlay/timer</code> · 권장 520×220</td></tr>
-        <tr><td>스톱워치</td><td><code>http://localhost:8391/overlay/stopwatch</code> · 권장 520×160</td></tr>
+        <tr><th>오버레이</th><th>주소</th><th>권장 크기</th></tr>
+        <tr><td>카운터</td><td><code>http://localhost:8391/overlay/counter/이름</code></td><td>480×150</td></tr>
+        <tr><td>타이머</td><td><code>http://localhost:8391/overlay/timer</code></td><td>520×220</td></tr>
+        <tr><td>스톱워치</td><td><code>http://localhost:8391/overlay/stopwatch</code></td><td>520×160</td></tr>
       </table></div>
-      <p>OBS에서 소스 추가 → 브라우저 → URL에 붙여넣고 폭·높이를 권장값으로 두면 1920×1080 화면에서 또렷합니다. 배경은 투명이라 원하는 자리에 놓으면 됩니다. 세 개를 따로 소스로 넣어 각각 다른 위치에 둘 수 있습니다.</p>
+      <p>셋을 따로 소스로 넣어 각각 다른 자리에 둘 수 있습니다. 넣는 법은 <a href="/guide/overlay/#open">화면·소리 가이드</a>에 있습니다.</p>
 
-      <h2 id="style">화면 꾸미기</h2>
-      <p>기능 창 왼쪽 맨 아래 <b>오버레이 꾸미기</b>에서 글자 크기(작게~아주 크게), 글자색, 배경(어둡게·밝게·없음), 그림자를 정하면 모든 오버레이에 같이 적용됩니다.
-        특정 소스만 다르게 하려면 주소 뒤에 <code>?크기=크게</code>, <code>?배경=없음</code>, <code>?글자색=%23111827</code> 처럼 붙입니다.</p>
-      <ul>
-        <li>밝은 방송 화면에는 배경을 <b>밝게</b>로 바꾸면 잘 어울립니다. 글자색은 따로 바꾸지 않아도 됩니다.</li>
-        <li>글자색은 판 위에서 읽히는 색일 때만 따릅니다(2.4.0부터). 밝은 판에 흰색처럼 안 읽히는 색이면 판에 맞는 색으로 보여 줍니다. 배경이 <b>없음</b>이면 고른 색 그대로 나옵니다.</li>
-        <li>알림과 룰렛 결과는 배경을 없음으로 해도 판이 남습니다. 잠깐 떴다 사라지는 글이라 어떤 화면에서도 읽혀야 해서입니다.</li>
-      </ul>
+      <h2 id="style">오버레이 꾸미기</h2>
+      <p>오버레이 꾸미기는 기능 창 왼쪽 목록의 "화면" 묶음에 있습니다. 글자 크기·글자색·배경·그림자를 정하고 [적용]을 누르면 모든 오버레이에 같이 적용됩니다.</p>
+      <p>특정 소스만 다르게 하려면 주소 뒤에 <code>?크기=크게</code>, <code>?배경=없음</code>처럼 붙입니다. 밝은 방송 화면에는 배경을 "밝게"로 바꾸면 잘 어울립니다.</p>
 
       <h2 id="faq">자주 묻는 것</h2>
       <h3>키보드 단축키로 카운터를 올릴 수 있나요?</h3>
-      <p>지금은 기능 창의 버튼으로만 됩니다. 방송 중에 다른 프로그램을 쓰면서 누르는 전역 단축키는 나중 버전에서 넣을 생각입니다.</p>
+      <p>지금은 기능 창의 버튼으로만 됩니다. 방송 중에 다른 프로그램을 쓰면서 누르는 전역 단축키는 없습니다.</p>
       <h3>봇을 끄면 타이머가 사라지나요?</h3>
       <p>카운터 값은 남고, 진행 중이던 타이머와 스톱워치는 멈춥니다. 오버레이는 봇이 켜져 있을 때만 보입니다.</p>
 
@@ -196,9 +190,8 @@
         <h2>다음 읽을 글</h2>
         <ul>
           <li><a href="/guide/participation/">투표·추첨·돌림판·후원 룰렛 사용법</a><span>참여 기능 창과 오버레이</span></li>
-          <li><a href="/guide/overlay/">채팅 오버레이·신청곡·알림·TTS·TITS 설정</a><span>방송 화면에 채팅·알림 띄우기, 유튜브 신청곡, 읽어주기, 아바타에 던지기</span></li>
-          <li><a href="/guide/commands/">명령어 목록과 설정 방법</a><span>기본 명령어, 내가 만든 명령어, 치환자, 반복 공지</span></li>
-          <li><a href="/guide/troubleshooting/">치지직 채팅봇이 안 될 때 확인할 것</a><span>기능 창이 안 열릴 때, 오버레이가 안 보일 때 포함</span></li>
+          <li><a href="/guide/overlay/">채팅 오버레이·신청곡·알림·TTS·TITS 설정</a><span>방송 화면 채팅·알림, 신청곡</span></li>
+          <li><a href="/guide/troubleshooting/">치지직 채팅봇이 안 될 때 확인할 것</a><span>오버레이가 안 보일 때 포함</span></li>
         </ul>
       </div>
     </article>
