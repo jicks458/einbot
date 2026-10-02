@@ -20,13 +20,25 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/guide/guide.css">
 <style>
-  .list { list-style: none; padding: 0; display: grid; gap: 14px; margin: 26px 0 0; }
-  .list li { background: var(--card); border: 1px solid var(--card-line); border-radius: 16px; padding: 18px 22px; margin: 0; }
-  .list li a { font-size: 19px; font-weight: 800; color: var(--text); }
-  .list li a:hover { color: var(--green-ink); text-decoration: underline; }
-  .list li p { margin: 6px 0 0; color: var(--muted); }
-  .soon { opacity: .6; }
-  .soon b { color: var(--muted); font-size: 12px; letter-spacing: .08em; margin-left: 8px; }
+  .hub-h { font-size: 15px; font-weight: 800; color: var(--muted); letter-spacing: 0; margin: 30px 0 12px; }
+  .path { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .path li { margin: 0; }
+  .path a { display: flex; align-items: center; gap: 10px; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--text); font-weight: 700; font-size: 16px; line-height: 1.4; word-break: keep-all; }
+  .path a b { flex: none; width: 26px; height: 26px; border-radius: 8px; background: #DDF5EC; color: #05613F; font-size: 14px; display: grid; place-items: center; }
+  .path a:hover { border-color: #9AD9C2; text-decoration: none; }
+  .hub-more { margin: 10px 0 0; font-size: 15px; }
+  .list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .list li { position: relative; background: var(--card); border: 1px solid var(--card-line); border-radius: 12px; padding: 14px 18px; margin: 0; }
+  .list li:hover { border-color: #9AD9C2; }
+  .list li a { font-size: 17px; font-weight: 800; color: var(--text); word-break: keep-all; }
+  .list li a::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
+  .list li p { margin: 4px 0 0; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+  @media (min-width: 1280px) {
+    .wrap.docs article { max-width: 980px; flex-basis: 980px; }
+    .path { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) { .path, .list { grid-template-columns: 1fr; } }
 </style>
 <script type="application/ld+json">
 {
@@ -134,44 +146,29 @@
       <p class="crumbs"><a href="/">아인</a> › 가이드</p>
       <p class="eyebrow">가이드</p>
       <h1>치지직 채팅봇 아인 사용 가이드</h1>
-      <p class="lead">설치부터 명령어, 출석 체크, 후원·구독 인사, 안 될 때 확인할 것까지. 앱의 실제 동작을 기준으로 씁니다.</p>
+      <p class="lead">설치부터 기능 설정, 안 될 때 확인할 것까지. 앱의 실제 동작을 기준으로 씁니다.</p>
+      <h2 class="hub-h">처음이라면 — 5분</h2>
+      <ol class="path">
+        <li><a href="/guide/install/#step1"><b>1</b>Microsoft Store에서 설치</a></li>
+        <li><a href="/guide/install/#step4"><b>2</b>방송 계정으로 로그인</a></li>
+        <li><a href="/guide/install/#step5"><b>3</b>봇 이름 정하기 (선택)</a></li>
+        <li><a href="/guide/install/#step6"><b>4</b>봇 시작</a></li>
+      </ol>
+      <p class="hub-more"><a href="/guide/install/">설치 가이드 전체 보기 →</a></p>
+      <h2 class="hub-h">기능별 설정</h2>
       <ul class="list">
-        <li>
-          <a href="/guide/install/">치지직 채팅봇 설치 방법</a>
-          <p>Microsoft Store 설치 → 로그인 → 봇 이름 → 봇 시작. 5분.</p>
-        </li>
-        <li>
-          <a href="/guide/commands/">명령어 목록과 설정 방법</a>
-          <p>기본 명령어, 방장 전용 명령어, 채팅에서 바로 만드는 내 명령어, 치환자, 반복 공지.</p>
-        </li>
-        <li>
-          <a href="/guide/attendance/">치지직 출석 체크 봇 설정 방법</a>
-          <p>인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기.</p>
-        </li>
-        <li>
-          <a href="/guide/donation/">치지직 후원·구독·팔로우 감사 인사 자동으로 하기</a>
-          <p>치즈 후원, 구독, 구독권 선물, 새 팔로우에 자동으로 인사하는 설정, 필요한 권한, 문구 예시.</p>
-        </li>
-        <li>
-          <a href="/guide/participation/">치지직 투표·추첨·돌림판·후원 룰렛 사용법</a>
-          <p>기능 창에서 버튼으로 진행, 시청자는 채팅에 번호만. 후원 룰렛 규칙, OBS 오버레이 주소.</p>
-        </li>
-        <li>
-          <a href="/guide/time/">카운터·타이머·스톱워치 방송 화면에 띄우기</a>
-          <p>데스 카운터, 라면 타이머, 스톱워치를 OBS 브라우저 소스로. 꾸미기 옵션.</p>
-        </li>
-        <li>
-          <a href="/guide/overlay/">채팅 오버레이·신청곡·알림·TTS·TITS 설정 방법</a>
-          <p>방송 화면에 채팅과 알림 카드 띄우기, 채팅으로 유튜브 신청곡 받기, 구독·채팅 읽어주기, VTube Studio 아바타에 물건 던지기, 다크 모드.</p>
-        </li>
-        <li>
-          <a href="/guide/troubleshooting/">치지직 채팅봇이 안 될 때 확인할 것</a>
-          <p>반응 없음, 권한 빠짐, 봇 계정 연결 끊김, 구독·팔로우 인사 안 나감, 설정 미반영. 증상별 원인과 해결 순서.</p>
-        </li>
-        <li>
-          <a href="/compare/">치지직 채팅봇 6종 비교표</a>
-          <p>뚜봇·빵떡·한봇·나디아·브이찍·아인을 방식·비용·봇 이름·기능별로. 공식 안내 기준, 아인만 직접 측정.</p>
-        </li>
+        <li><a href="/guide/commands/">명령어</a><p>기본·방장 전용 명령어, 채팅에서 만드는 내 명령어, 치환자, 반복 공지</p></li>
+        <li><a href="/guide/attendance/">출석 체크</a><p>인사말 출석, 하루 기준 시각, 다른 봇의 출석 기록 이어받기</p></li>
+        <li><a href="/guide/donation/">후원·구독·팔로우 인사</a><p>치즈 후원, 구독, 구독권 선물, 새 팔로우에 자동으로 인사</p></li>
+        <li><a href="/guide/participation/">투표·추첨·돌림판·후원 룰렛</a><p>기능 창 버튼으로 진행, 시청자는 채팅에 번호만</p></li>
+        <li><a href="/guide/time/">카운터·타이머·스톱워치</a><p>데스 카운터, 라면 타이머를 OBS 브라우저 소스로</p></li>
+        <li><a href="/guide/overlay/">오버레이·신청곡·TTS·TITS</a><p>채팅·알림 카드, 유튜브 신청곡, 읽어주기, 아바타에 던지기</p></li>
+      </ul>
+      <h2 class="hub-h">안 될 때·참고</h2>
+      <ul class="list">
+        <li><a href="/guide/troubleshooting/">안 될 때 확인할 것</a><p>반응 없음, 권한 빠짐, 봇 계정 끊김 — 증상별 원인과 해결</p></li>
+        <li><a href="/compare/">치지직 채팅봇 6종 비교표</a><p>뚜봇·빵떡·한봇·나디아·브이찍·아인, 공식 안내 기준</p></li>
+        <li><a href="/updates/">업데이트 기록</a><p>버전마다 바뀐 것</p></li>
       </ul>
       <p class="ask">가이드에 없는 내용은 <a href="/discord/">디스코드 문의 서버</a>나 메일(<a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>)로 물어보세요. 평일 24시간 안에 답합니다. 결제·환불·개인 정보는 메일로 보내 주세요.</p>
     </article>

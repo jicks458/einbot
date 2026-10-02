@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/guide/guide.css">
 <style>
-  .sym { color: var(--muted); font-size: 14px; margin: -6px 0 10px; }
+  .sym { color: var(--text-2); font-size: 16px; margin: -4px 0 12px; }
   .fix { border-left: 3px solid var(--green); background: rgba(0,255,163,.06); border-radius: 0 12px 12px 0; padding: 12px 16px; margin: 12px 0 0; }
   .fix b { color: var(--green-ink); }
   .fix ol { margin: 6px 0 0; }
@@ -224,11 +224,12 @@
       <h1>치지직 채팅봇이 안 될 때 확인할 것</h1>
       <p class="lead">아인을 쓰다가 막히는 상황을 증상별로 모았습니다. 실제로 사용자들이 겪은 일과 그 원인을 기준으로 쓰며,
         대부분은 설정 화면에서 한두 번 클릭으로 해결됩니다. 해당 증상을 차례에서 골라 그 부분만 읽으세요.</p>
-      <p class="meta">기준 버전 2.3.1 · 2026년 9월 29일 갱신</p>
+      <p class="meta">2026년 10월 2일 고침</p>
 
       <div class="toc">
         <b>차례</b>
         <ol>
+          <li class="grp">봇·인사</li>
           <li><a href="#none">봇을 켰는데 채팅에 아무 반응이 없어요</a></li>
           <li><a href="#scope">"권한이 빠졌습니다"라고 나와요</a></li>
           <li><a href="#sub">후원 인사는 되는데 구독 인사만 안 나가요</a></li>
@@ -237,10 +238,18 @@
           <li><a href="#boticon">봇 계정 프로필 사진이 아인 그림으로 바뀌었어요</a></li>
           <li><a href="#gift">구독권 선물 인사가 안 나가요</a></li>
           <li><a href="#follow">팔로우 인사·팔로우 알림이 안 나와요</a></li>
+          <li><a href="#twice">인사가 두 번 나가요</a></li>
           <li><a href="#settings">설정을 바꿨는데 반영이 안 돼요</a></li>
+          <li class="grp">기능 창·화면·소리</li>
+          <li><a href="#features">[기능] 버튼을 눌러도 창이 안 열려요</a></li>
+          <li><a href="#overlay">OBS에 오버레이가 안 보여요</a></li>
+          <li><a href="#chat">채팅 오버레이에 채팅이 안 올라와요</a></li>
+          <li><a href="#tts">TTS 소리가 안 나요 / 방송에 안 나가요</a></li>
+          <li><a href="#tits">TITS가 "연결 안 됨"이에요</a></li>
+          <li><a href="#roulette">후원 룰렛을 껐는데 돌아요 / 켜지 않았는데 돌아요</a></li>
+          <li class="grp">설치·로그인·이용권</li>
           <li><a href="#wizard">초기 설정 화면이 다시 열려요</a></li>
           <li><a href="#white">로그인하다가 하얀 화면에서 멈춰요</a></li>
-          <li><a href="#twice">인사가 두 번 나가요</a></li>
           <li><a href="#license">무료 체험이 끝났다고 나와요</a></li>
           <li><a href="#quit">창을 닫아도 봇이 계속 돌아요</a></li>
           <li><a href="#autostart">컴퓨터를 켜면 아인이 저절로 켜져요 (자동 시작 끄기·켜기)</a></li>
@@ -352,6 +361,13 @@
         </ol>
       </div>
 
+      <h2 id="twice">인사가 두 번 나가요</h2>
+      <p class="sym">증상: 시청자가 인사하면 출석 인사가 두 개 올라오거나, 후원 인사가 겹칩니다.</p>
+      <ul>
+        <li><b>다른 채팅봇과 함께 쓰는 경우.</b> 두 봇이 각자 인사합니다. 한쪽에서 해당 기능을 끄세요. 다른 봇의 출석 기록을 아인으로 옮기는 방법은 <a href="/guide/attendance/">출석 가이드</a>에 있습니다.</li>
+        <li><b>아인이 두 개 켜진 경우.</b> 아인은 한 번에 하나만 실행되도록 되어 있어 보통 생기지 않지만, 예전 방식(압축 파일)으로 설치한 것이 남아 있으면 둘 다 돌 수 있습니다. <a href="/guide/install/#old">예전 설치본 정리</a>를 참고하세요.</li>
+      </ul>
+
       <h2 id="settings">설정을 바꿨는데 반영이 안 돼요</h2>
       <p class="sym">증상: 문구나 명령어를 바꿨는데 봇은 예전 그대로 대답합니다.</p>
       <div class="fix">
@@ -457,13 +473,6 @@
           <li>저장 후 다시 로그인합니다.</li>
         </ol>
       </div>
-
-      <h2 id="twice">인사가 두 번 나가요</h2>
-      <p class="sym">증상: 시청자가 인사하면 출석 인사가 두 개 올라오거나, 후원 인사가 겹칩니다.</p>
-      <ul>
-        <li><b>다른 채팅봇과 함께 쓰는 경우.</b> 두 봇이 각자 인사합니다. 한쪽에서 해당 기능을 끄세요. 다른 봇의 출석 기록을 아인으로 옮기는 방법은 <a href="/guide/attendance/">출석 가이드</a>에 있습니다.</li>
-        <li><b>아인이 두 개 켜진 경우.</b> 아인은 한 번에 하나만 실행되도록 되어 있어 보통 생기지 않지만, 예전 방식(압축 파일)으로 설치한 것이 남아 있으면 둘 다 돌 수 있습니다. <a href="/guide/install/#old">예전 설치본 정리</a>를 참고하세요.</li>
-      </ul>
 
       <h2 id="license">무료 체험이 끝났다고 나와요</h2>
       <p class="sym">증상: 아인 창에 체험이나 이용권이 끝났다는 안내가 나오고 봇이 켜지지 않습니다.</p>

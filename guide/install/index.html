@@ -38,7 +38,7 @@
       "description": "Microsoft Store 설치부터 방송 계정 로그인, 봇 이름 설정, 봇 시작까지 치지직 채팅봇 아인을 붙이는 순서.",
       "inLanguage": "ko-KR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-29",
+      "dateModified": "2026-10-02",
       "mainEntityOfPage": "https://einbot.kr/guide/install/",
       "image": "https://einbot.kr/og.png?v=2",
       "author": { "@id": "https://einbot.kr/#org" },
@@ -151,26 +151,24 @@
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 치지직 채팅봇 설치 방법</p>
       <p class="eyebrow">설치 가이드</p>
       <h1>치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드</h1>
-      <p class="lead">치지직 채팅봇 아인을 방송에 붙이는 순서입니다. 파일을 내려받거나 압축을 풀 일은 없고,
-        방송하는 계정으로 한 번 로그인하면 됩니다. 2.3부터 치지직 개발자 센터에서 API 키를 발급받는 단계가 없어졌습니다.</p>
-      <p class="meta">기준 버전 2.3.1 · 2026년 9월 29일 갱신 · Windows 10·11</p>
+      <p class="lead">치지직 채팅봇 아인을 방송에 붙이는 순서입니다. 방송하는 계정으로 한 번 로그인하면 되고, API 키 발급이나 압축 풀기는 없습니다.</p>
+      <p class="meta">2026년 10월 2일 고침 · Windows 10·11</p>
+      <p class="watch">▶ <a href="https://youtu.be/zUiRGK2pYPQ" target="_blank" rel="noopener">영상으로 보기 (1분)</a></p>
 
       <div class="toc">
         <b>차례</b>
         <ol>
           <li><a href="#prep">준비물</a></li>
-          <li><a href="#step1">Microsoft Store에서 설치</a></li>
-          <li><a href="#step2">아인 실행</a></li>
-          <li><a href="#step4">방송 계정으로 로그인</a></li>
-          <li><a href="#step5">봇 이름 정하기 (선택)</a></li>
-          <li><a href="#step6">봇 시작</a></li>
+          <li><a href="#step1">1. Microsoft Store에서 설치</a></li>
+          <li><a href="#step2">2. 아인 실행</a></li>
+          <li><a href="#step4">3. 방송 계정으로 로그인</a></li>
+          <li><a href="#step5">4. 봇 이름 정하기 (선택)</a></li>
+          <li><a href="#step6">5. 봇 시작</a></li>
           <li><a href="#step3">직접 발급한 API 키로 연결하기 (고급)</a></li>
           <li><a href="#old">예전 방식으로 설치했던 분</a></li>
           <li><a href="#trouble">막힐 때</a></li>
         </ol>
       </div>
-
-      <p class="note">▶ <a href="https://youtu.be/zUiRGK2pYPQ" target="_blank" rel="noopener">영상으로 보기 (1분)</a></p>
 
       <h2 id="prep">준비물</h2>
       <ul>
@@ -187,9 +185,7 @@
           <a class="btn primary" href="https://apps.microsoft.com/detail/9nw8q03rgqlv?mode=direct">Microsoft Store에서 설치하기</a>
           <small>설치 파일 내려받기, 압축 해제, "확인되지 않은 앱" 경고가 전부 없습니다. 새 버전은 아인이 방송하지 않는 동안 스스로 설치합니다.</small>
         </div>
-        <div class="note">
-          <p>회사 PC처럼 Microsoft Store가 막힌 환경이라면 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 문의해 주세요.</p>
-        </div>
+        <p class="ask">회사 PC처럼 Microsoft Store가 막힌 환경이라면 메일(<a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>)로 문의해 주세요.</p>
       </section>
 
       <section class="step" id="step2">
@@ -200,8 +196,8 @@
 
       <section class="step" id="step4">
         <h2><span class="n">3</span>방송 계정으로 로그인</h2>
-        <img src="/img/shots/wizard-login.png?v=230" width="900" height="880" alt="아인 초기 설정 1단계 — 스트리머 계정 로그인 안내와 [로그인 창 열기] 버튼" loading="lazy">
         <p>아인 화면의 [로그인 창 열기]를 누르면 깨끗한 로그인 창이 뜹니다. <b>방송하는 본인 계정</b>으로 로그인하면 치지직의 동의 화면이 나옵니다. 앱 이름이 <b>아인</b>으로 표시되고, 아인이 쓰는 권한 목록이 보입니다. 항목을 모두 켠 채 [동의]를 누르면 끝입니다.</p>
+        <img src="/img/shots/wizard-login.png?v=230" width="900" height="880" alt="아인 초기 설정 1단계 — 스트리머 계정 로그인 안내와 [로그인 창 열기] 버튼" loading="lazy">
         <p>요청하는 권한은 채팅을 읽고 쓰는 것(출석·명령어·공지), 후원·구독 조회(감사 인사), 채널·방송·채팅 설정, 활동 제한입니다. 지금 쓰지 않는 항목은 앞으로 넣을 기능을 위해 미리 받아 두는 것입니다(나중에 권한을 늘리면 모두가 다시 로그인해야 해서). <b>방송 스트림키는 요청하지 않습니다.</b> 받은 로그인 정보는 이 컴퓨터에만 저장됩니다. <a href="/privacy.html">개인정보처리방침</a></p>
         <p>로그인이 끝나면 화면에 연동된 채널 이름이 표시됩니다. 다른 계정으로 로그인했으면 아인이 알려주니, 로그아웃하고 방송 계정으로 다시 하면 됩니다.</p>
       </section>

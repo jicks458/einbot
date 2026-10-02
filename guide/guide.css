@@ -131,3 +131,86 @@ footer a { color: var(--text-2); }
   .docs-nav summary { padding: 4px 0; }
   .docs-nav summary::after { content: " ▾"; }
 }
+
+/* ===== 가이드 읽기 고침 (2026-10-02) — 참고: Stripe·Vercel·카카오 디벨로퍼스·뚜봇·토스·Apple ===== */
+
+/* 1. 한글 줄바꿈: 제목·요약·차례가 낱말 가운데서 끊기지 않게, 요약 끝줄에 한 낱말만 남지 않게 */
+h1, h2, h3, .lead, .meta, .toc, .watch, .note, .warn, .related, .docs-nav a { word-break: keep-all; overflow-wrap: break-word; }
+h3 { text-wrap: balance; }
+.lead { text-wrap: pretty; }
+
+/* 2. 쪽 머리: 빵부스러기 → 제목 한 줄 → 요약 → 날짜 → (영상 한 줄) → 본문 */
+.crumbs { margin: 0 0 14px; }
+.eyebrow { display: none; }
+h1 { font-size: 34px; line-height: 1.28; letter-spacing: -.6px; margin: 0 0 12px; }
+.lead { font-size: 17.5px; line-height: 1.7; margin: 0 0 10px; }
+.meta { font-size: 13px; margin: 0 0 28px; }
+.watch { margin: 0 0 18px; font-size: 15px; color: var(--muted); }
+.watch a { font-weight: 700; }
+.meta + .watch { margin: -16px 0 28px; }
+h2 + .watch { margin: -4px 0 16px; }
+
+/* 3. 본문 글자: 순검정 대신 한 단계 낮추고 제목·굵은 말만 진하게, 문단 사이 넓게 */
+article { color: var(--text-2); }
+article h1, article h2, article h3 { color: var(--text); }
+article p { margin: 0 0 18px; }
+article li { margin: 6px 0; }
+h3 { font-size: 20px; line-height: 1.4; margin: 36px 0 10px; }
+
+/* 4. 단계 배지: 채운 초록은 설치 버튼에만 */
+.step .n { background: #DDF5EC; color: #05613F; min-width: 30px; text-align: center; padding: 0 8px; }
+
+/* 5. 안내 상자: 채운 색은 주의(.warn)에만, 안내(.note)는 테두리만 */
+article .note { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid #5BC79F; border-radius: 0 10px 10px 0; padding: 12px 16px; margin: 18px 0; font-size: 15.5px; line-height: 1.75; }
+.step .note { background: var(--bg); }
+.warn { padding: 12px 16px; font-size: 15.5px; line-height: 1.75; }
+
+/* 6. 그림 한 장이 화면을 다 먹지 않게 (비율 유지) */
+article img { max-height: min(520px, 72vh); object-fit: contain; }
+
+/* 7. 이 쪽 차례: 번호 떼기(단계 배지와 어긋남), 좁은 화면에서는 두 단 */
+.toc { padding: 14px 18px; }
+.toc b { letter-spacing: 0; font-size: 13px; }
+.toc ol { list-style: none; padding: 0; columns: 2 240px; column-gap: 28px; }
+.toc li { margin: 0; padding: 3px 0; break-inside: avoid; line-height: 1.5; }
+.toc a { font-size: 15px; }
+.toc li.grp { padding: 10px 0 2px; font-size: 12.5px; font-weight: 700; color: var(--muted); break-after: avoid; }
+.toc li.grp:first-child { padding-top: 0; }
+
+/* 8. 1280px 이상: 틀 1320, 차례는 본문 오른쪽 '이 쪽에서' 고정 칸, 업데이트·비교도 본문 자리 맞춤 */
+@media (min-width: 1280px) {
+  .wrap { max-width: 1320px; }
+  .wrap:not(.docs) > article { margin-left: 264px; }
+  .wrap:not(.docs) .tbl { width: min(992px, calc(100vw - 332px)); max-width: none; }
+  .wrap.docs article { position: relative; flex: 0 1 720px; }
+  .wrap.docs .toc { position: absolute; top: 0; bottom: 0; left: calc(100% + 40px); width: 200px; margin: 0; padding: 0; background: none; border: 0; border-radius: 0; }
+  .wrap.docs .toc b { display: none; }
+  .wrap.docs .toc ol { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; columns: auto; border-left: 1px solid var(--line); scrollbar-width: none; }
+  .wrap.docs .toc ol::before { content: "이 쪽에서"; display: block; padding: 0 0 8px 14px; font-size: 12.5px; font-weight: 700; color: var(--muted); }
+  .wrap.docs .toc li { padding: 0; }
+  .wrap.docs .toc li.grp { padding: 10px 0 2px 14px; }
+  .wrap.docs .toc a { display: block; padding: 4px 0 4px 14px; margin-left: -1px; border-left: 2px solid transparent; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+  .wrap.docs .toc a:hover { color: var(--text); text-decoration: none; }
+  .wrap.docs .toc a.here { color: var(--green-ink); border-left-color: var(--green-ink); font-weight: 700; }
+}
+
+/* 9. 왼쪽 목차: 스크롤 막대는 마우스를 올릴 때만, 간격 조금 촘촘히, 한글 자간 0 */
+.docs-nav { scrollbar-color: transparent transparent; }
+.docs-nav:hover, .docs-nav:focus-within { scrollbar-color: #CBD3DF transparent; }
+.docs-nav a { padding: 4px 10px; }
+.docs-nav .dn-grp { margin: 10px 0 2px; }
+.docs-nav summary, .docs-nav .dn-grp { letter-spacing: 0; }
+
+/* 10. 휴대폰: 제목만 줄이고 본문 16px 그대로 */
+@media (max-width: 800px) {
+  main { padding-top: 16px; }
+  .docs-nav { padding: 6px 14px; margin: 0 0 16px; }
+  h1 { font-size: 26px; line-height: 1.32; letter-spacing: -.4px; }
+  h2 { font-size: 21px; margin-top: 48px; }
+  h3 { font-size: 18px; }
+  .lead { font-size: 16.5px; }
+  .step { padding: 18px 16px; border-radius: 14px; }
+  .toc { padding: 12px 14px; }
+  .toc li { padding: 1px 0; }
+  .toc a { font-size: 14.5px; }
+}
