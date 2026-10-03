@@ -178,7 +178,7 @@
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 출석 체크 봇 설정</p>
       <p class="eyebrow">출석 체크 가이드</p>
       <h1>치지직 출석 체크 봇 설정 방법</h1>
-      <p class="lead">시청자가 몇 번 왔는지 봇이 기억해 출석 인사에 담아 줍니다. 설치하면 바로 켜져 있습니다.</p>
+      <p class="lead">처음부터 켜져 있어, 시청자가 <code>!출첵</code>이나 "안녕하세요"를 치면 출석 일수로 인사합니다.</p>
       <p class="meta">2026년 10월 3일 고침</p>
 
       <div class="toc">
@@ -231,7 +231,7 @@
       <h3>방법 1. 설정 창에서</h3>
       <p>설정 → 출석 체크 화면 아래의 "출석 횟수 보정"에 닉네임과 횟수를 넣고 [적용]을 누릅니다. 한 명씩 넣습니다.</p>
       <h3>방법 2. 방송 중 채팅에서</h3>
-      <p>방장이나 매니저가 <code>!출석보정 닉네임 횟수</code>를 칩니다.</p>
+      <p>방장이나 매니저가 <code class="copy" data-copy="!출석보정 ">!출석보정 닉네임 횟수</code>를 칩니다.</p>
       <div class="chat" aria-label="출석 보정 예시">
         <p><span class="s">초코우유</span> !출석보정 별빛여우 152</p>
         <p><span class="b">초코우유 봇</span> ✅ 별빛여우님이 다음에 출석하면 153회째부터 이어져요.</p>
@@ -296,6 +296,7 @@
   </div>
 </footer>
 <script src="/mail.js" defer></script>
+<script src="/guide/copy.js" defer></script>
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
 <script type="text/javascript">
 if(!wcs_add) var wcs_add = {};

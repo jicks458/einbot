@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>치지직 방송 카운터·타이머·스톱워치 오버레이 — 아인 시간 기능 가이드</title>
-<meta name="description" content="데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.">
+<meta name="description" content="데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 조작합니다. 기능 창에 적힌 주소를 복사해 OBS 브라우저 소스로 넣습니다. 오버레이 주소와 권장 크기까지.">
 <link rel="canonical" href="https://einbot.kr/guide/time/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="아인">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="치지직 방송 카운터·타이머·스톱워치 오버레이 — 아인">
-<meta property="og:description" content="데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.">
+<meta property="og:description" content="데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 조작합니다. 기능 창에 적힌 주소를 복사해 OBS 브라우저 소스로 넣습니다. 오버레이 주소와 권장 크기까지.">
 <meta property="og:url" content="https://einbot.kr/guide/time/">
 <meta property="og:image" content="https://einbot.kr/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,7 +41,7 @@
       { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
       { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
       { "@type": "ListItem", "position": 3, "name": "카운터·타이머·스톱워치 방송 화면에 띄우기", "item": "https://einbot.kr/guide/time/" } ] },
-    { "@type": "TechArticle", "headline": "카운터·타이머·스톱워치 방송 화면에 띄우기", "description": "데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 아인 기능 창에서 버튼으로 조작하고 OBS 브라우저 소스로 보여 줍니다.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-10-03",
+    { "@type": "TechArticle", "headline": "카운터·타이머·스톱워치 방송 화면에 띄우기", "description": "데스 카운터, 라면 타이머, 스톱워치를 치지직 방송 화면에 띄우는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 조작합니다. 기능 창에 적힌 주소를 복사해 OBS 브라우저 소스로 넣습니다. 오버레이 주소와 권장 크기까지.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-10-03",
       "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
       "mainEntityOfPage": "https://einbot.kr/guide/time/" }
   ]
@@ -134,7 +134,7 @@
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 카운터·타이머·스톱워치 방송 화면에 띄우기</p>
       <p class="eyebrow">시간 기능 가이드</p>
       <h1>카운터·타이머·스톱워치 방송 화면에 띄우기</h1>
-      <p class="lead">데스 수, 라면 10분, 도전 시간을 방송 화면에 띄웁니다. 아인 창의 [기능]을 누르고 왼쪽 목록의 "시간 기능"에서 고릅니다.</p>
+      <p class="lead">봇을 켠 뒤 아인 창의 [기능]&#8288;에서 고르고 버튼으로 조작합니다. 방송 화면에는 기능 창의 주소를 OBS 브라우저 소스로 넣습니다.</p>
       <p class="meta">2026년 10월 3일 고침</p>
 
       <div class="toc">
@@ -171,8 +171,8 @@
       <div class="tbl"><table>
         <tr><th>오버레이</th><th>주소</th><th>권장 크기</th></tr>
         <tr><td>카운터</td><td><code>http://localhost:8391/overlay/counter/이름</code></td><td>480×150</td></tr>
-        <tr><td>타이머</td><td><code>http://localhost:8391/overlay/timer</code></td><td>520×220</td></tr>
-        <tr><td>스톱워치</td><td><code>http://localhost:8391/overlay/stopwatch</code></td><td>520×160</td></tr>
+        <tr><td>타이머</td><td><code class="copy">http://localhost:8391/overlay/timer</code></td><td>520×220</td></tr>
+        <tr><td>스톱워치</td><td><code class="copy">http://localhost:8391/overlay/stopwatch</code></td><td>520×160</td></tr>
       </table></div>
       <p>셋을 따로 소스로 넣어 각각 다른 자리에 둘 수 있습니다. 넣는 법은 <a href="/guide/overlay/#open">화면·소리 가이드</a>에 있습니다.</p>
 
@@ -211,6 +211,7 @@
   </div>
 </footer>
 <script src="/mail.js" defer></script>
+<script src="/guide/copy.js" defer></script>
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
 <script type="text/javascript">
 if(!wcs_add) var wcs_add = {};

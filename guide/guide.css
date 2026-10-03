@@ -262,3 +262,44 @@ article img.ico.flat { border: 0; border-radius: 0; background: none; }
   article .shots.seq.keep > figure + figure::before { content: "›"; left: -14px; top: 40%; font-size: 22px; }
   article img.shot, article figure, article .shots, article .shot-box { margin-bottom: 20px; }
 }
+
+/* ===== 12. 쪽 머리 요약 (2026-10-03) — 참고: Stripe(제목 밑 한 문장 + 첫 문단에 할 일), Apple(제목 밑 한 문장, 상자·표지 없음) =====
+   .lead 한 줄이 곧 요약이다. 채운 상자·"요약" 표지는 쓰지 않는다(뚜봇 '빠른 시작 가이드' 회색 상자는 따르지 않음).
+   요약 안의 채팅 명령어(code)는 줄 끝에서 "!"와 낱말 사이가 끊기지 않게 한 덩어리로 둔다. */
+article .lead code { white-space: nowrap; }
+
+/* ===== 13. 복사 버튼 (2026-10-03) — 참고: Stripe 테스트 카드 번호(값 바로 옆 작은 아이콘, 누르면 체크 2초), 뚜봇 명령어 칸(칸에 붙은 아이콘, 초록 체크 2초),
+   Vercel(아이콘만, 체크 1초 + 화면 읽기용 "Copied!"), 토스페이먼츠(아이콘 + "코드가 복사되었습니다" 알림)
+   단추는 guide/copy.js 가 <code class="copy"> 옆에 붙인다(JS 가 꺼지면 단추만 없고 글자는 그대로).
+   아이콘을 칩 안 오른쪽에 넣어 "!출첵[⧉]을"처럼 조사가 칩에 그대로 붙게 한다. 채운 색 없이 회색 아이콘, 누르면 초록 글자색 체크.
+   보이는 칸은 작게(26×18) 두고 누르는 자리만 34×32(휴대폰 38×36)로 넓힌다. 줄 높이를 늘리지 않는다.
+   칩은 한 덩어리(inline-flex)라 줄 끝에서 갈리지 않는다. 칩 뒤 조사는 copy.js 가 붙인 U+2060(.glue)으로 칩에 붙는다.
+   칩이 칸보다 길 때만(휴대폰의 긴 주소) 단추가 칩 안 둘째 줄로 내려간다. 폭 상한의 40px 은 칩 뒤 두 글자 조사("인지"·"처럼") 자리다.
+   표 안은 표가 옆으로 밀리므로 내리지 않는다. */
+.cp-unit { white-space: nowrap; }
+.cp-wrap {
+  display: inline-flex; flex-wrap: wrap; align-items: center; max-width: 100%; box-sizing: border-box; vertical-align: baseline;
+  white-space: nowrap; font-family: Consolas, "D2Coding", monospace; font-size: 14px; line-height: 19px;
+  background: #EEF2F7; border: 1px solid #E1E6EE; border-radius: 6px; padding: 0 0 0 7px; color: var(--text);
+}
+.cp-wrap > code { background: none; border: 0; border-radius: 0; padding: 0; }
+.cp-unit.glue > .cp-wrap { max-width: calc(100% - 40px); }
+td .cp-wrap, td .cp-unit.glue > .cp-wrap { flex-wrap: nowrap; max-width: none; }
+.cp {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 18px; margin: 0 1px 0 3px; padding: 0; border: 0; border-radius: 4px;
+  background: transparent; color: var(--muted); vertical-align: middle; cursor: pointer; font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.cp::before { content: ""; position: absolute; inset: -7px -4px; }
+.cp svg { display: block; width: 15px; height: 15px; }
+.cp:hover { background: #DDE3EC; color: var(--text); }
+.cp.done, .cp.done:hover { color: var(--green-ink); background: transparent; }
+.cp:focus-visible { outline-offset: 0; border-radius: 4px; }
+@media (pointer: coarse) { .cp::before { inset: -9px -6px; } }
+.cp-tip {
+  position: absolute; z-index: 50; padding: 5px 9px; border-radius: 7px; background: #111827; color: #fff;
+  font-size: 12.5px; line-height: 1.4; white-space: nowrap; pointer-events: none; box-shadow: 0 4px 14px rgba(17,24,39,.18);
+}
+.cp-live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+@media print { .cp, .cp-tip { display: none; } .cp-wrap { padding-right: 7px; } }

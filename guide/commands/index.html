@@ -167,7 +167,7 @@
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 명령어 목록과 설정</p>
       <p class="eyebrow">명령어 가이드</p>
       <h1>치지직 채팅봇 명령어 목록과 설정 방법</h1>
-      <p class="lead">시청자가 치는 명령어와, 이름·대답을 바꾸는 법입니다.</p>
+      <p class="lead">기본 명령어는 바로 됩니다. 새 명령어는 채팅에 <code>!명령어추가 이름 내용</code>으로 만듭니다.</p>
       <p class="meta">2026년 10월 3일 고침</p>
 
       <div class="toc">
@@ -209,9 +209,9 @@
       <div class="tbl">
       <table>
         <tr><th>명령어</th><th>하는 일</th></tr>
-        <tr><td><code>!명령어추가 이름 내용</code></td><td>새 명령어를 만듭니다. 예: <code>!명령어추가 디스코드 주소는 discord.gg/xxxx 예요!</code></td></tr>
-        <tr><td><code>!명령어삭제 이름</code></td><td>내가 만든 명령어를 지웁니다.</td></tr>
-        <tr><td><code>!출석보정 닉네임 횟수</code></td><td>시청자의 누적 출석 일수를 맞춥니다. 다른 봇의 기록을 이어받을 때 씁니다. 예: <code>!출석보정 별빛여우 152</code></td></tr>
+        <tr><td><code class="copy" data-copy="!명령어추가 ">!명령어추가 이름 내용</code></td><td>새 명령어를 만듭니다. 예: <code>!명령어추가 디스코드 주소는 discord.gg/xxxx 예요!</code></td></tr>
+        <tr><td><code class="copy" data-copy="!명령어삭제 ">!명령어삭제 이름</code></td><td>내가 만든 명령어를 지웁니다.</td></tr>
+        <tr><td><code class="copy" data-copy="!출석보정 ">!출석보정 닉네임 횟수</code></td><td>시청자의 누적 출석 일수를 맞춥니다. 다른 봇의 기록을 이어받을 때 씁니다. 예: <code>!출석보정 별빛여우 152</code></td></tr>
       </table>
       </div>
 
@@ -318,6 +318,7 @@
   </div>
 </footer>
 <script src="/mail.js" defer></script>
+<script src="/guide/copy.js" defer></script>
 <script type="text/javascript" src="//wcs.pstatic.net/wcslog.js"></script>
 <script type="text/javascript">
 if(!wcs_add) var wcs_add = {};
