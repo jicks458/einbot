@@ -39,7 +39,7 @@
   "inLanguage": "ko-KR",
   "isPartOf": { "@id": "https://einbot.kr/#website" },
   "about": { "@id": "https://einbot.kr/#app" },
-  "dateModified": "2026-10-02",
+  "dateModified": "%ISO%",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -88,7 +88,21 @@
       <p class="lead">버전별로 무엇이 바뀌었는지 날짜와 함께 적습니다. 최신이 맨 위입니다.</p>
       <p class="how">2.2.3부터는 새 버전이 나오면 아인이 방송하지 않는 동안 스스로 설치하고 잠깐 뒤 다시 켜집니다. 켜져 있던 봇도 다시 켭니다. 2.1.1 이하는 Microsoft Store가 아인을 완전히 끈 뒤에 설치하니, 알림 영역에서 [앱 종료]한 다음 Microsoft Store 앱 → 라이브러리 → [업데이트 받기]를 누르세요. 고치고 싶은 점이나 필요한 기능은 <a href="/discord/">디스코드 문의 서버</a>나 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>으로 알려 주시면 됩니다.</p>
 
-      <section class="ver latest" id="v2-6-1">
+      <section class="ver latest" id="v2-6-2">
+        <h2>2.6.2 <span class="date">%게시일%</span></h2>
+        <p class="pkg">스토어 버전 2.6.2.0</p>
+        <ul>
+          <li><b>치지직 로그인이 풀리면 알려 줍니다.</b> 아인 창에 노란 띠가 뜨고 알림이 한 번 옵니다. 띠나 [시작]을 누르면 로그인 창이 열리고, 다시 로그인하면 켜져 있던 봇이 다시 켜집니다. 전에는 안내 없이 봇이 멈췄습니다. <a href="/guide/troubleshooting/#wizard">다시 로그인하는 법</a></li>
+          <li>로그인이 풀린 채 컴퓨터를 켜도 아인이 알림 영역에 남아 알려 줍니다. 전에는 아무것도 뜨지 않았습니다.</li>
+          <li>다시 로그인할 때 전과 다른 계정으로 로그인하면 바꾸지 않고 알려 줍니다. 봇을 켠 채 설정 창에서 다시 로그인하면 "봇을 껐다 켜야 적용됩니다" 띠가 뜹니다.</li>
+          <li><b>부계정 없이 쓸 때 봇 답이 나가는 이름 안내를 바로잡았습니다.</b> 키 없이 로그인하는 방식에서 부계정이 없으면, 봇 답은 방송 계정이 아니라 아인 공용 계정 이름으로 나갑니다. 직접 발급한 API 키로 쓰면 전처럼 방송 계정 이름입니다. 내 방송만의 이름을 쓰려면 부계정을 연결합니다. <a href="/guide/install/#step5">봇 이름 정하는 법</a></li>
+          <li>설정 → 봇 계정의 "봇 채널 소개" 두 칸은 부계정을 연결하기 전에는 꺼진 모양이고, 연결하면 둘 다 켜집니다. 전에는 연결하기 전에도 소개 한 줄 칸이 켜져 보였습니다.</li>
+          <li>출석 횟수 보정은 봇이 켜져 있어도 [적용]하면 바로 반영됩니다.</li>
+          <li>시청자가 채팅에 쓴 글 때문에 아인 창의 알림이 잘못 뜰 수 있던 것을 고쳤습니다. 후원 룰렛·알림 오버레이·디스코드 알림의 안내 문구도 실제 동작에 맞게 고쳤습니다.</li>
+        </ul>
+      </section>
+
+      <section class="ver" id="v2-6-1">
         <h2>2.6.1 <span class="date">2026년 10월 3일</span></h2>
         <p class="pkg">스토어 버전 2.6.1.0</p>
         <ul>
