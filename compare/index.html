@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="/guide/guide.css">
 <style>
   .tbl { overflow-x: auto; margin: 14px 0 6px; width: calc(100vw - 48px); max-width: 992px; }
+  /* (10/10) 1280px 이상에서 넓은 표는 본문(720) 가운데에 맞춘다(그보다 좁으면 본문이 왼쪽에 붙어 있어 지금처럼 왼쪽 맞춤) — 전에는 왼쪽 끝이 본문과 같아 오른쪽으로만 튀어나왔다. 표 너비의 반만큼 본문 가운데에서 왼쪽으로 */
+  @media (min-width: 1280px) { .wrap:not(.docs) .tbl { margin-left: calc(50% - min(496px, 50vw - 166px)); } }
   table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 900px; }
   th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
   thead th { color: var(--muted); font-weight: 700; font-size: 12.5px; letter-spacing: .04em; white-space: nowrap; }
