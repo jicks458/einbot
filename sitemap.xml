@@ -79,6 +79,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://einbot.kr/features/</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://einbot.kr/guide/overlay/</loc>
     <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
