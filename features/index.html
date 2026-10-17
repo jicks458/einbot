@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>아인이 하는 것 한눈에 — 치지직 채팅봇 아인 기능 목록</title>
-<meta name="description" content="치지직 채팅봇 아인의 기능 전체 목록. 출석 체크, 후원·구독·팔로우 인사, 명령어와 반복 공지, 투표·추첨·룰렛, OBS 오버레이, 알림 소리, TTS, TITS, 신청곡까지 한 줄씩 적고 설정 방법으로 바로 이어집니다. 아인에 없는 기능도 적었습니다.">
+<meta name="description" content="치지직 채팅봇 아인의 기능 전체 목록. 출석 체크와 출석부, 후원·구독·팔로우 인사, 명령어와 반복 공지, 투표·추첨·룰렛, OBS 오버레이, 알림 소리, TTS, TITS, 신청곡까지 한 줄씩 적고 설정 방법으로 바로 이어집니다. 아인에 없는 기능도 적었습니다.">
 <link rel="canonical" href="https://einbot.kr/features/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
@@ -48,7 +48,7 @@
   "isPartOf": { "@id": "https://einbot.kr/#website" },
   "about": { "@id": "https://einbot.kr/#app" },
   "datePublished": "2026-10-11",
-  "dateModified": "2026-10-15"
+  "dateModified": "2026-10-18"
 }
 </script>
 </head>
@@ -88,7 +88,7 @@
       <p class="eyebrow">기능</p>
       <h1>아인이 하는 것 한눈에</h1>
       <p class="lead">방송 중에 아인이 하는 일을 한 줄씩 적었습니다. 줄마다 설정 방법으로 이어집니다. 맨 아래에는 아인에 없는 것도 적었습니다.</p>
-      <p class="meta">아인 2.7.0 기준 (2026년 10월) · 저절로 반응하는 기능은 처음에 꺼져 있고, 켜는 곳을 각 가이드에 적었습니다.</p>
+      <p class="meta">아인 2.8.0 기준 (2026년 10월) · 저절로 반응하는 기능은 처음에 꺼져 있고, 켜는 곳을 각 가이드에 적었습니다.</p>
 
       <div class="toc"><b>차례</b>
         <a href="#name">봇 이름·로그인</a><a href="#attend">출석</a><a href="#greet">후원·구독·팔로우 인사</a><a href="#cmd">명령어·공지</a><a href="#join">시청자 참여</a><a href="#time">시간</a><a href="#screen">방송 화면</a><a href="#sound">소리·연동</a><a href="#app">앱</a><a href="#none">아인에 없는 것</a>
@@ -108,10 +108,12 @@
       <ul class="fl">
         <li><a href="/guide/attendance/#trigger">인사말만으로 자동 출석</a><span>"안녕하세요"처럼 정해 둔 인사말을 치면 출석</span></li>
         <li><a href="/guide/attendance/#trigger">!출첵·!출석 명령어 출석</a><span>명령어로도 출석. 둘 다 기본 제공</span></li>
-        <li><a href="/guide/attendance/#msgs">누적 출석 횟수 인사</a><span>"12번째 출석"처럼 횟수를 세어 반김</span></li>
+        <li><a href="/guide/attendance/#msgs">누적 출석 횟수 인사</a><span>"누적 12일 출석"처럼 횟수를 세어 반김</span></li>
         <li><a href="/guide/attendance/#msgs">상황별 출석 문구 4가지</a><span>처음 온 사람, 오랜만인 사람, 단골 등 문구를 따로</span></li>
         <li><a href="/guide/attendance/#day">하루 기준 시각</a><span>새벽 방송이면 하루의 시작을 내 시각으로</span></li>
         <li><a href="/guide/attendance/#carry">다른 봇 출석 기록 이어받기</a><span>쓰던 봇의 횟수를 넣어 두면 이어서 셈</span></li>
+        <li><a href="/guide/attendance/#attend">출석부</a><span>오늘 채팅한 시청자를 모아 첫 방문·오랜만인 분을 표시. 방송인 화면에만 보이고 채팅에는 보내지 않음</span></li>
+        <li><a href="/guide/attendance/#attend">출석부 OBS 독</a><span>OBS 안에 붙여 두고 방송 중에 보며 체크</span></li>
       </ul>
 
       <div class="fh"><h2 id="greet">후원·구독·팔로우 인사</h2><a href="/guide/donation/">감사 인사 가이드 →</a></div>
@@ -129,7 +131,7 @@
         <li><a href="/guide/commands/#admin">방장·매니저 전용 명령어</a><span>시청자는 못 쓰는 명령어</span></li>
         <li><a href="/guide/commands/#vars">치환자</a><span>{이름} {호칭} {금액} 같은 값을 문구에 넣음</span></li>
         <li><a href="/guide/commands/#notice">반복 공지</a><span>정한 간격으로 공지를 채팅에</span></li>
-        <li><a href="/guide/commands/#discord">방송 시작 디스코드 알림</a><span>웹훅 주소만 넣으면 방송을 켤 때 디스코드 채널에 알림</span></li>
+        <li><a href="/guide/commands/#discord">방송 시작 디스코드 알림</a><span>웹훅 주소를 넣고 켜 두면 방송을 켤 때 디스코드 채널에 알림. 테스트가 실패하면 까닭을 알려 줌</span></li>
         <li><a href="/guide/commands/#settings">문구와 명령어 기호 바꾸기</a><span>봇이 하는 말과 명령어 앞 기호를 내 방송에 맞게</span></li>
       </ul>
 
@@ -138,7 +140,7 @@
         <li><a href="/guide/participation/#vote">투표</a><span>시청자는 채팅에 번호만. 결과는 오버레이로</span></li>
         <li><a href="/guide/participation/#raffle">시청자 추첨</a><span>명단 모으기, 뽑기 연출, 당첨자 채팅 띄우기·TTS</span></li>
         <li><a href="/guide/participation/#raffle">구독자 뽑기</a><span>구독자만 골라 추첨</span></li>
-        <li><a href="/guide/participation/#wheel">돌림판</a><span>항목을 넣고 돌려서 고름</span></li>
+        <li><a href="/guide/participation/#wheel">돌림판</a><span>항목을 넣고 돌려서 고름. 멈추면 결과를 크게 보여 줌</span></li>
         <li><a href="/guide/participation/#roulette">후원 룰렛</a><span>후원 금액 배수만큼 걸쇠를 걸고 돌림. 처음엔 꺼져 있음</span></li>
       </ul>
 
@@ -156,15 +158,14 @@
         <li><a href="/guide/overlay/#alert">알림 소리</a><span>기본음 4종(종·차임·반짝·팝) 또는 내 소리 파일. 처음엔 꺼져 있음</span></li>
         <li><a href="/guide/participation/#obs">투표·추첨·룰렛 오버레이</a><span>기능 창에서 진행하면 OBS 화면에 바로</span></li>
         <li><a href="/guide/time/#obs">카운터·타이머·스톱워치 오버레이</a><span>브라우저 소스 하나로</span></li>
-        <li><a href="/guide/time/#style">오버레이 꾸미기</a><span>글꼴·색·크기를 내 화면에 맞게</span></li>
+        <li><a href="/guide/time/#style">오버레이 꾸미기</a><span>크기·글자색·배경·색 테마를 미리보며 정함. 오버레이마다 따로 꾸밀 수도</span></li>
         <li><a href="/guide/overlay/#songs">곡 제목 표시</a><span>지금 나오는 신청곡 제목을 화면에</span></li>
-        <li><a href="/guide/overlay/#dark">다크 모드</a><span>오버레이를 어두운 화면에 맞게</span></li>
       </ul>
 
       <div class="fh"><h2 id="sound">소리·연동</h2><a href="/guide/overlay/">오버레이 가이드 →</a></div>
       <ul class="fl">
         <li><a href="/guide/overlay/#tts">TTS 읽어주기</a><span>구독·선물·채팅을 소리로 읽음</span></li>
-        <li><a href="/guide/overlay/#tits">TITS 물건 던지기</a><span>후원·구독 때 VTube Studio 아바타에 물건을 던짐</span></li>
+        <li><a href="/guide/overlay/#tits">TITS 물건 던지기</a><span>후원·구독 때 VTube Studio 아바타에 물건을 던짐. 구독은 1·2티어를 나눌 수도</span></li>
         <li><a href="/guide/overlay/#songs">유튜브 신청곡</a><span>시청자가 !신청곡 링크로 신청, 순서대로 재생</span></li>
       </ul>
 
@@ -172,7 +173,8 @@
       <ul class="fl">
         <li><a href="/compare/#measure">내 PC에서 실행</a><span>시청자 기록·채팅·로그인 정보는 내 PC에만. 밖으로 나가는 정보는 따로 적어 둠</span></li>
         <li><a href="/guide/troubleshooting/#update">자동 업데이트</a><span>Microsoft Store가 새 버전을 알아서 설치</span></li>
-        <li><a href="/guide/troubleshooting/#autostart">컴퓨터 켤 때 자동 시작</a><span>끄고 켤 수 있음</span></li>
+        <li><a href="/guide/troubleshooting/#autostart">컴퓨터 켤 때 자동 시작</a><span>설정 → 문제 해결·앱 삭제에서 끄고 켬</span></li>
+        <li><a href="/guide/overlay/#dark">다크 모드</a><span>아인 창과 설정·기능 창을 어둡게. 방송 화면 오버레이는 그대로</span></li>
         <li><a href="/guide/troubleshooting/#settings">설정 저장 즉시 반영</a><span>봇을 껐다 켜지 않아도 됨 (로그인을 바꿨을 때만 껐다 켬)</span></li>
         <li><a href="/updates/">새 버전·연결 끊김·로그인 풀림 알림</a><span>아인 창의 띠와 알림으로</span></li>
         <li><a href="/privacy.html">진단 정보 끄기</a><span>버전·오류 종류·기능 사용 횟수만 보내고, 설정에서 끌 수 있음</span></li>

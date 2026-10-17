@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>치지직 출석 체크 봇 설정 방법 — 아인 출석 체크 가이드</title>
-<meta name="description" content="치지직 출석 체크 봇 설정 방법. 인사말만 쳐도 출석되는 기능, 하루가 바뀌는 시각, 첫 출석·오랜만·이미 출석 문구, 누적 횟수 표시, 다른 봇에서 시청자 출석 기록 이어받기까지 아인 기준으로 정리했습니다.">
+<meta name="description" content="치지직 출석 체크 봇 설정 방법. 인사말만 쳐도 출석되는 기능, 하루가 바뀌는 시각, 첫 출석·오랜만·이미 출석 문구, 누적 횟수 표시, 다른 봇에서 시청자 출석 기록 이어받기, 오늘 채팅한 시청자를 모아 보는 출석부까지 아인 기준으로 정리했습니다.">
 <link rel="canonical" href="https://einbot.kr/guide/attendance/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="아인">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="치지직 출석 체크 봇 설정 방법 — 아인">
-<meta property="og:description" content="인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기. 치지직 출석 체크 봇 설정을 한 페이지에.">
+<meta property="og:description" content="인사말 출석, 하루 기준 시각, 상황별 인사 문구, 다른 봇에서 출석 기록 이어받기, 출석부. 치지직 출석 체크 봇 설정을 한 페이지에.">
 <meta property="og:url" content="https://einbot.kr/guide/attendance/">
 <meta property="og:image" content="https://einbot.kr/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
@@ -31,6 +31,24 @@
   .chat .s { color: #F5C243; font-weight: 700; }
   .chat .b { color: #7DA3FF; font-weight: 700; }
   .chat .dim { color: #8B94A5; font-size: 13px; }
+  /* 출석부 예시(2.8.0) — 기능 창 출석부의 줄 모양을 글로 그린 예시. 화면 사진이 아님 */
+  .att { background: var(--card); border: 1px solid var(--card-line); border-radius: 12px; padding: 12px 16px 6px; margin: 12px 0 18px; font-size: 14.5px; }
+  .att .ah { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; margin: 0 0 6px; font-weight: 700; }
+  .att .ah span { font-weight: 500; font-size: 13.5px; color: var(--muted); }
+  .att ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+  .att li { display: flex; align-items: center; gap: 8px; margin: 0; padding: 7px 0; border-top: 1px solid var(--card-line); }
+  .att .o { flex: none; width: 15px; height: 15px; border: 1.5px solid #9AA3AF; border-radius: 50%; }
+  .att .ok .o { background: #0B7A57; border-color: #0B7A57; }
+  .att .ok .n { color: var(--muted); }
+  .att .n { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .att .t { flex: none; font-size: 13px; font-weight: 700; color: var(--text); }
+  .att .t.new { color: var(--green-ink); }
+  .att .tm { flex: none; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .att .grp { grid-column: 1 / -1; display: block; border-top: 0; padding: 10px 0 2px; font-size: 13px; color: var(--muted); }
+  .att .seg { display: inline-flex; gap: 2px; padding: 3px; margin: 0 0 8px; border-radius: 8px; background: #F1F3F6; box-shadow: inset 0 0 0 1px var(--card-line); font-size: 13px; }
+  .att .seg span { padding: 1px 9px; border-radius: 6px; color: var(--text-2); }
+  .att .seg .on { background: var(--surface); box-shadow: inset 0 0 0 1px #0B7A57; color: #0B7A57; font-weight: 700; }
+  @media (max-width: 560px) { .att ul { grid-template-columns: minmax(0, 1fr); } }
 </style>
 <script type="application/ld+json">
 {
@@ -48,10 +66,10 @@
       "@type": "TechArticle",
       "@id": "https://einbot.kr/guide/attendance/#article",
       "headline": "치지직 출석 체크 봇 설정 방법 — 아인 출석 체크 가이드",
-      "description": "인사말 출석, 하루 기준 시각, 첫 출석·오랜만·이미 출석 문구, 누적 횟수, 다른 봇에서 출석 기록 이어받기.",
+      "description": "인사말 출석, 하루 기준 시각, 첫 출석·오랜만·이미 출석 문구, 누적 횟수, 다른 봇에서 출석 기록 이어받기, 오늘 채팅한 시청자를 모아 보는 출석부.",
       "inLanguage": "ko-KR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-10-15",
+      "dateModified": "2026-10-18",
       "mainEntityOfPage": "https://einbot.kr/guide/attendance/",
       "image": "https://einbot.kr/og.png?v=2",
       "author": { "@id": "https://einbot.kr/#org" },
@@ -85,6 +103,16 @@
           "@type": "Question",
           "name": "스트리머 본인이 인사해도 출석되나요?",
           "acceptedAnswer": { "@type": "Answer", "text": "네, 똑같이 출석됩니다. 원치 않으면 방송 계정으로는 인사말을 다르게 쓰면 됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "출석부는 시청자에게도 보이나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "아니요. 출석부는 기능 창과 OBS 독에서 방송인만 봅니다. 채팅에는 아무것도 보내지 않고, 방송 화면(오버레이)에도 나오지 않습니다. 기록은 이 PC에만 저장합니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "출석부의 \"처음 봄\"은 무엇인가요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "출석부가 방문 기록을 모으는 처음 30일 동안, 기록에 없는 분을 \"첫 방문\" 대신 \"처음 봄\"으로 적습니다. 출석부를 쓰기 전부터 오던 단골일 수도 있다는 뜻입니다. 30일이 지나면 기록에 없는 분은 \"첫 방문\"으로 나옵니다." }
         }
       ]
     }
@@ -165,6 +193,8 @@
       <a href="/guide/overlay/#tts">🔊 TTS 읽어주기</a>
       <a href="/guide/overlay/#tits">🍌 TITS 던지기</a>
       <a href="/guide/overlay/#dark">🌙 다크 모드</a>
+      <div class="dn-grp">기능 창 · 시청자</div>
+      <a href="/guide/attendance/#attend">📋 출석부</a>
       <div class="dn-grp">안 될 때</div>
       <a href="/guide/troubleshooting/">🩹 증상별 확인</a>
       <a href="/updates/">🗂 업데이트 기록</a>
@@ -179,8 +209,8 @@
       <p class="crumbs"><a href="/">아인</a> › <a href="/guide/">가이드</a> › 출석 체크 봇 설정</p>
       <p class="eyebrow">출석 체크 가이드</p>
       <h1>치지직 출석 체크 봇 설정 방법</h1>
-      <p class="lead">처음부터 켜져 있어, 시청자가 <code>!출첵</code>이나 "안녕하세요"를 치면 출석 일수로 인사합니다.</p>
-      <p class="meta">2026년 10월 15일 고침</p>
+      <p class="lead">처음부터 켜져 있어, 시청자가 <code>!출첵</code>이나 "안녕하세요"를 치면 출석 일수로 인사합니다. 오늘 채팅한 시청자는 기능 창의 <a href="#attend">출석부</a>에서 한눈에 봅니다.</p>
+      <p class="meta">2026년 10월 18일 고침</p>
 
       <div class="toc">
         <b>차례</b>
@@ -191,6 +221,7 @@
           <li><a href="#msgs">상황별 인사 문구 4가지</a></li>
           <li><a href="#carry">다른 봇에서 출석 기록 이어받기</a></li>
           <li><a href="#settings">설정 항목 정리</a></li>
+          <li><a href="#attend">출석부 — 오늘 채팅한 시청자</a></li>
           <li><a href="#faq">자주 묻는 것</a></li>
         </ol>
       </div>
@@ -254,12 +285,59 @@
         <tr><td>출석 기능 사용</td><td>켜짐</td><td>끄면 명령어와 인사말 모두 출석으로 보지 않습니다.</td></tr>
         <tr><td>명령어 이름</td><td>출첵, 출석</td><td>쉼표로 여러 개. 앞에 기호(!)가 붙습니다.</td></tr>
         <tr><td>인사말로 출석 처리</td><td>안녕하세요, O하</td><td>이 말만 쳐도 출석. 쉼표로 여러 개.</td></tr>
-        <tr><td>하루가 바뀌는 시각</td><td>5시</td><td>밤샘 방송을 같은 날로 치는 기준.</td></tr>
-        <tr><td>"오랜만" 기준(일)</td><td>8일</td><td>며칠 안 보이면 오랜만 인사를 할지.</td></tr>
+        <tr><td>하루가 바뀌는 시각</td><td>오전 5시</td><td>밤샘 방송을 같은 날로 치는 기준.</td></tr>
+        <tr><td>"오랜만" 기준</td><td>8일</td><td>며칠 안 보이면 오랜만 인사를 할지.</td></tr>
         <tr><td>인사 문구 4가지</td><td>위 표 참고</td><td>기본 출석 / 첫 출석 / 오랜만 출석 / 당일 중복 출석.</td></tr>
         <tr><td>출석 횟수 보정</td><td>-</td><td>시청자별 누적 횟수를 직접 맞춤.</td></tr>
       </table>
       </div>
+
+      <h2 id="attend">출석부 — 오늘 채팅한 시청자 한눈에</h2>
+      <p>기능 창 왼쪽 목록 맨 아래 "시청자" 묶음의 <b>출석부</b>는 오늘 채팅한 시청자를 모아 보여 줍니다(2.8.0부터). 처음부터 켜져 있고, 출석 인사와 따로 돌아갑니다. <b>방송인 화면에만 보입니다.</b> 채팅에는 아무것도 보내지 않고 방송 화면(오버레이)에도 나오지 않습니다.</p>
+      <div class="att" role="img" aria-label="출석부 예시 — 오늘 7명, 첫 방문 2명, 오랜만 2명. 첫 방문 꼬리표가 붙은 줄 둘, 15일 만·9일 만 꼬리표가 붙은 줄 둘, 아래 체크 묶음에 체크한 줄 둘">
+        <div class="ah">오늘 채팅한 시청자 <span>7명 · 첫 방문 2 · 오랜만 2</span></div>
+        <div class="seg"><span class="on">전체</span><span>첫 방문·오랜만</span></div>
+        <ul>
+          <li><i class="o"></i><span class="n">별빛여우</span><span class="t new">첫 방문</span><span class="tm">20:59</span></li>
+          <li><i class="o"></i><span class="n">밤하늘별</span><span class="t">15일 만</span><span class="tm">20:57</span></li>
+          <li><i class="o"></i><span class="n">달빛토끼</span><span class="tm">20:53</span></li>
+          <li><i class="o"></i><span class="n">젤리곰</span><span class="t new">첫 방문</span><span class="tm">20:48</span></li>
+          <li><i class="o"></i><span class="n">새벽감자</span><span class="t">9일 만</span><span class="tm">20:35</span></li>
+          <li class="grp">체크 2</li>
+          <li class="ok"><i class="o"></i><span class="n">구름빵</span><span class="tm">20:46</span></li>
+          <li class="ok"><i class="o"></i><span class="n">초코우유</span><span class="tm">20:31</span></li>
+        </ul>
+      </div>
+      <ul>
+        <li><b>꼬리표</b>: "첫 방문"은 방문 기록과 출석 기록에 없던 분, "N일 만"은 마지막으로 채팅한 날부터 "오랜만" 기준(기본 8일) 이상 지나 다시 온 분입니다. 오른쪽 시각은 그날 처음 채팅한 때입니다.</li>
+        <li><b>거르기</b>: 위의 [첫 방문·오랜만]을 누르면 그분들만 봅니다. 머리 줄에 오늘 사람 수와 첫 방문·오랜만 수가 나옵니다.</li>
+        <li><b>자세히</b>: 줄에 마우스를 올리면 첫 채팅 시각과 채팅 수, 출석 누적 일수, 채팅한 날 수, 구독 개월, 매니저, 오늘 후원 여부 가운데 있는 것이 카드로 뜹니다.</li>
+        <li><b>체크</b>: 줄을 누르면 체크되어 아래 "체크" 묶음으로 내려갑니다. 인사했거나 확인한 분을 표시해 두는 데 씁니다. 다시 누르면 풉니다.</li>
+        <li><b>빼기</b>: 다른 봇이나 내 부계정처럼 목록에 둘 필요가 없는 계정은 줄에 마우스를 올려 [빼기]를 누릅니다. 오늘부터 목록에 나오지 않고, 아래 "목록에서 뺀 사람"에서 [되돌리기]로 돌려놓습니다.</li>
+        <li><b>[오늘 목록 비우기]</b>: 오늘 목록과 체크 표시를 지웁니다. 방문 기록("첫 방문"·"N일 만"을 정하는 기록)은 남습니다.</li>
+      </ul>
+      <h3>목록에 들어가는 사람</h3>
+      <ul>
+        <li>채팅한 분만 나옵니다. 들어와서 보기만 한 분은 치지직이 알려 주지 않아 나오지 않습니다.</li>
+        <li>방송 계정과 봇 계정(부계정·"아인 봇")의 채팅은 넣지 않습니다. 익명 후원도 넣지 않습니다.</li>
+        <li>하루가 바뀌는 시각(기본 오전 5시)과 "오랜만" 기준(기본 8일)은 출석 체크와 같습니다. 바꾸는 곳은 설정 → 출석 체크입니다(<a href="#settings">설정 항목</a>). 방송 중에 그 시각을 넘기면 그 방송이 끝날 때까지 같은 목록을 이어 씁니다.</li>
+        <li>하루 목록은 3,000명까지입니다. 넘으면 나머지 수만 셉니다.</li>
+      </ul>
+      <h3>처음 30일은 "처음 봄"</h3>
+      <p>출석부는 켠 날부터 방문 기록을 모읍니다. 그래서 처음 30일 동안은 기록에 없는 분을 "첫 방문" 대신 <b>"처음 봄"</b>으로 적습니다. 출석부를 쓰기 전부터 오던 단골일 수도 있다는 뜻입니다. 끝나는 날은 출석부 위에 나옵니다.</p>
+      <ul>
+        <li>오늘 전에 출석한 기록이 있는 분(다른 봇에서 <a href="#carry">이어받은 횟수</a> 포함)은 30일 안이어도 "처음 봄"이나 "첫 방문"으로 적지 않습니다.</li>
+        <li>출석부를 7일 넘게 꺼 두었다 켜면, 켠 날부터 30일을 다시 셉니다.</li>
+      </ul>
+      <h3>OBS 독으로 띄우기</h3>
+      <p>방송 중에 OBS 안에서 보려면 출석부를 OBS의 <b>브라우저 독</b>에 넣습니다. 기능 창 → 출석부 아래 "OBS 독으로 띄우기" 카드에서 [URL 복사]를 누르고, 카드에 적힌 순서대로 넣습니다. 권장 폭은 320입니다.</p>
+      <div class="warn"><p><b>브라우저 소스가 아니라 독에 넣습니다.</b> 브라우저 소스에 넣으면 방송 화면에 보입니다.</p></div>
+      <ul>
+        <li>주소는 <code>http://localhost:8391/dock/attend</code> 꼴이고, 아인이 켜진 PC의 OBS에서만 열립니다.</li>
+        <li>독에서는 줄을 눌러 체크하고 거르기를 바꿀 수 있습니다. [빼기]와 [오늘 목록 비우기]는 기능 창에서 합니다.</li>
+        <li>OBS를 봇보다 먼저 켰다면 독 안을 누르고 Ctrl+R로 새로고침합니다.</li>
+      </ul>
+      <p>기록(오늘 목록·방문 기록·뺀 사람)은 이 PC에만 저장하고 서버로 보내지 않습니다. 앱을 삭제하면 함께 지워집니다. 끄려면 출석부 아래 [출석부 사용]을 끕니다. 끈 동안에는 모으지 않습니다.</p>
 
       <h2 id="faq">자주 묻는 것</h2>
       <h3>시청자가 하루에 여러 번 인사하면 출석이 여러 번 되나요?</h3>
@@ -271,7 +349,11 @@
       <h3>출석 기록은 어디에 저장되나요? 앱을 지우면 사라지나요?</h3>
       <p>내 컴퓨터에만 저장되고 밖으로 나가지 않습니다. 봇을 껐다 켜거나 업데이트해도 남지만, 앱을 삭제하면 함께 지워집니다. 다른 컴퓨터로 옮기려면 삭제 전에 문의해 주세요.</p>
       <h3>스트리머 본인이 인사해도 출석되나요?</h3>
-      <p>네, 똑같이 출석됩니다. 원치 않으면 방송 계정으로는 인사말을 다르게 쓰면 됩니다.</p>
+      <p>네, 똑같이 출석됩니다. 원치 않으면 방송 계정으로는 인사말을 다르게 쓰면 됩니다. <a href="#attend">출석부</a>에는 방송 계정과 봇 계정의 채팅이 들어가지 않습니다.</p>
+      <h3>출석부는 시청자에게도 보이나요?</h3>
+      <p>아니요. 출석부는 기능 창과 OBS 독에서 방송인만 봅니다. 채팅에는 아무것도 보내지 않고, 방송 화면(오버레이)에도 나오지 않습니다. 기록은 이 PC에만 저장합니다.</p>
+      <h3>출석부의 "처음 봄"은 무엇인가요?</h3>
+      <p>출석부가 방문 기록을 모으는 처음 30일 동안, 기록에 없는 분을 "첫 방문" 대신 "처음 봄"으로 적습니다. 출석부를 쓰기 전부터 오던 단골일 수도 있다는 뜻입니다. 30일이 지나면 기록에 없는 분은 "첫 방문"으로 나옵니다. <a href="#attend">출석부</a></p>
 
       <div class="related">
         <h2>다음 읽을 글</h2>

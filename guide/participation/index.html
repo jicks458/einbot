@@ -41,7 +41,7 @@
       { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
       { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
       { "@type": "ListItem", "position": 3, "name": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "item": "https://einbot.kr/guide/participation/" } ] },
-    { "@type": "TechArticle", "headline": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "description": "치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 진행하면, 시청자는 채팅에 번호나 말 한마디만 칩니다. OBS 오버레이 주소와 권장 크기까지.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-10-15",
+    { "@type": "TechArticle", "headline": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "description": "치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 진행하면, 시청자는 채팅에 번호나 말 한마디만 칩니다. OBS 오버레이 주소와 권장 크기까지.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-10-18",
       "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
       "mainEntityOfPage": "https://einbot.kr/guide/participation/" }
   ]
@@ -121,6 +121,8 @@
       <a href="/guide/overlay/#tts">🔊 TTS 읽어주기</a>
       <a href="/guide/overlay/#tits">🍌 TITS 던지기</a>
       <a href="/guide/overlay/#dark">🌙 다크 모드</a>
+      <div class="dn-grp">기능 창 · 시청자</div>
+      <a href="/guide/attendance/#attend">📋 출석부</a>
       <div class="dn-grp">안 될 때</div>
       <a href="/guide/troubleshooting/">🩹 증상별 확인</a>
       <a href="/updates/">🗂 업데이트 기록</a>
@@ -136,7 +138,7 @@
       <p class="eyebrow">참여 기능 가이드</p>
       <h1>치지직 투표·추첨·돌림판·후원 룰렛 사용법</h1>
       <p class="lead">봇을 켠 뒤 아인 창의 [기능]&#8288;에서 고르고 버튼으로 진행합니다. 시청자는 채팅에 번호나 말 한마디만 칩니다.</p>
-      <p class="meta">2026년 10월 15일 고침</p>
+      <p class="meta">2026년 10월 18일 고침</p>
 
       <div class="toc">
         <b>차례</b>
@@ -171,7 +173,7 @@
         <li>표마다 봇이 답하지 않고, 집계는 기능 창과 방송 화면에 보입니다.</li>
         <li>"투표 가리기"를 켜면 종료 때까지 표 수가 "?"로 나옵니다.</li>
         <li>[종료] 뒤 [투표 재개]로 이어 받고, [초기화]로 새로 합니다.</li>
-        <li>"결과 채팅 알림"을 끄면 시작·결과 채팅이 나가지 않습니다.</li>
+        <li>"채팅 알림"을 끄면 시작·결과 채팅이 나가지 않습니다.</li>
       </ul>
 
       <h2 id="raffle">추첨</h2>
@@ -197,15 +199,17 @@
       <h2 id="wheel">돌림판</h2>
       <p>방장이 직접 돌리는 룰렛입니다. 항목과 확률을 적어 [돌림판 저장]을 누르고 [돌리기]를 누르면 기능 창과 방송 화면의 원판이 같이 돕니다.</p>
       <img class="shot" src="/img/shots/participation-wheel-card.png" width="875" height="460" alt="기능 창의 돌림판 — 항목·확률·색 표와 원판, 돌리기 버튼" loading="lazy">
+      <p>방송 화면의 원판은 바늘이 위에 있고, 멈추면 나머지 칸이 어두워지며 아래 결과 판에 결과를 크게 보여 줍니다. 후원 룰렛의 연차처럼 결과가 여럿이면 많이 나온 순서로 표에 모읍니다(2.8.0 새 디자인).</p>
       <ul>
         <li>확률 합이 100이 아니어도 비율대로 돕니다. 회전 시간은 2~30초입니다.</li>
         <li>돌림판은 여러 개 만들 수 있습니다(벌칙판, 선물판 등).</li>
         <li>"결과 채팅 알림"을 켜면 결과를 채팅에 올립니다. 기본 문구는 <code>🎰 {결과}!</code>이고 <code>{결과}</code> <code>{대상}</code> <code>{돌림판}</code>을 넣을 수 있습니다.</li>
         <li>결과는 [결과 기록 보기]에 날짜와 함께 남습니다.</li>
+        <li>방송 화면에서 원판이 도는 대신 테두리에 진행 막대가 차오르게 하려면 주소 끝에 <code>?motion=less</code>를 붙입니다.</li>
       </ul>
 
       <h2 id="roulette">후원 룰렛</h2>
-      <p>정해 둔 금액이 후원되면 고른 <a href="#wheel">돌림판</a>이 방송 화면에서 저절로 돌고, 결과가 채팅에 올라갑니다. 처음에는 꺼져 있습니다. "후원 룰렛 사용"을 켜고 [저장]을 누릅니다.</p>
+      <p>정해 둔 금액이 후원되면 고른 <a href="#wheel">돌림판</a>이 방송 화면에서 저절로 돌고, 결과가 채팅에 올라갑니다. 처음에는 꺼져 있습니다. 룰렛 표를 확인하고 "후원 룰렛 사용"을 켠 뒤 [저장]을 누릅니다. 룰렛은 [+ 룰렛 추가]로 더합니다.</p>
       <img class="shot" src="/img/shots/participation-roulette-overlay.png" width="320" height="373" alt="방송 화면의 후원 룰렛 — 원판과 결과(초코우유님 3,000원: 치킨·스쿼트 10개·애교 ×1)" loading="lazy">
       <div class="tbl"><table>
         <tr><th>항목</th><th>하는 일</th></tr>
@@ -218,7 +222,8 @@
         <li>오버레이를 OBS에 넣지 않아도 채팅 결과는 나갑니다.</li>
         <li>룰렛이 도는 후원에는 감사 인사 대신 룰렛 결과만 나갑니다.</li>
         <li>익명 후원도 돕니다. 이름 자리에는 "익명의 후원자"가 들어갑니다.</li>
-        <li>실제 후원 없이 보려면 [테스트]나 [연차 테스트 (20배)]를 누릅니다.</li>
+        <li>실제 후원 없이 보려면 [테스트]나 [연차 테스트 (20배)]를 누릅니다. 테스트도 방송 화면에서 돌고 결과가 채팅에 나갑니다. 테스트는 하루 최대에 세지 않습니다.</li>
+        <li>주소 끝에 <code>?hidden=0</code>을 붙여 늘 보이게 하면, 아직 돌지 않았을 때는 후원 룰렛에 건 돌림판이 보입니다.</li>
       </ul>
 
       <h2 id="obs">OBS에 띄우기</h2>

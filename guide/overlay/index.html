@@ -41,7 +41,7 @@
       { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
       { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
       { "@type": "ListItem", "position": 3, "name": "채팅 오버레이·신청곡·알림·TTS·TITS 설정 방법", "item": "https://einbot.kr/guide/overlay/" } ] },
-    { "@type": "TechArticle", "headline": "치지직 채팅 오버레이·신청곡·알림·TTS·TITS 설정 방법", "description": "치지직 방송 화면에 채팅 오버레이와 알림 카드(알림 소리 포함)를 띄우고, 채팅으로 유튜브 신청곡을 받아 OBS에서 틀고, 구독·채팅을 TTS로 읽어 주고, VTube Studio 아바타에 TITS로 물건을 던지게 하는 방법.", "inLanguage": "ko", "datePublished": "2026-09-20", "dateModified": "2026-10-15",
+    { "@type": "TechArticle", "headline": "치지직 채팅 오버레이·신청곡·알림·TTS·TITS 설정 방법", "description": "치지직 방송 화면에 채팅 오버레이와 알림 카드(알림 소리 포함)를 띄우고, 채팅으로 유튜브 신청곡을 받아 OBS에서 틀고, 구독·채팅을 TTS로 읽어 주고, VTube Studio 아바타에 TITS로 물건을 던지게 하는 방법.", "inLanguage": "ko", "datePublished": "2026-09-20", "dateModified": "2026-10-18",
       "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
       "mainEntityOfPage": "https://einbot.kr/guide/overlay/" }
   ]
@@ -121,6 +121,8 @@
       <a href="/guide/overlay/#tts">🔊 TTS 읽어주기</a>
       <a href="/guide/overlay/#tits">🍌 TITS 던지기</a>
       <a href="/guide/overlay/#dark">🌙 다크 모드</a>
+      <div class="dn-grp">기능 창 · 시청자</div>
+      <a href="/guide/attendance/#attend">📋 출석부</a>
       <div class="dn-grp">안 될 때</div>
       <a href="/guide/troubleshooting/">🩹 증상별 확인</a>
       <a href="/updates/">🗂 업데이트 기록</a>
@@ -136,7 +138,7 @@
       <p class="eyebrow">화면·소리 가이드</p>
       <h1>치지직 채팅 오버레이&#8288;·신청곡&#8288;·알림&#8288;·TTS&#8288;·TITS 설정 방법</h1>
       <p class="lead">봇을 켠 뒤 아인 창의 [기능]&#8288;에서 화면을 고르고 [URL&nbsp;복사]&#8288;를 누릅니다. 그 주소를 OBS 브라우저 소스에 붙여 넣습니다.</p>
-      <p class="meta">2026년 10월 15일 고침</p>
+      <p class="meta">2026년 10월 18일 고침</p>
 
       <div class="toc">
         <b>차례</b>
@@ -288,7 +290,7 @@
         <li>VTube Studio 설정에서 "Start API (allow plugins)"를 켭니다.</li>
         <li>TITS를 켜고, VTube Studio에 뜬 플러그인 허용 창에서 [Allow]를 누릅니다.</li>
         <li>TITS 설정(오른쪽 아래 톱니바퀴)의 API 칸에서 "Enabled"를 ON으로 둡니다. 포트는 기본 42069입니다.</li>
-        <li>아인 기능 창 → TITS 던지기에서 "TITS 연동 사용"을 켭니다. 배지가 "연결됨"이 되면 됩니다(최대 15초). "연결되지 않음. TITS를 실행하세요"가 계속 보이면 3번을 다시 봅니다.</li>
+        <li>아인 기능 창 → TITS 던지기에서 "TITS 연동 사용"을 켭니다. 배지가 "연결됨"이 되면 됩니다(최대 15초). "연결되지 않음. TITS를 켜고 설정에서 API를 켜세요"가 계속 보이면 3번을 다시 봅니다.</li>
         <li>[아이템 새로고침]을 누릅니다. TITS에 넣어 둔 아이템·트리거 목록이 오면 끝입니다.</li>
       </ol>
       <h3>규칙</h3>
@@ -296,15 +298,15 @@
       <div class="tbl"><table>
         <tr><th>조건</th><th>쓰는 칸</th><th>던지는 때</th></tr>
         <tr><td>후원</td><td>최소·최대 금액, 키워드, 개수, 비례</td><td>금액이 범위 안이고 키워드가 메시지에 있을 때. 최대 0은 제한 없음.</td></tr>
-        <tr><td>구독</td><td>개수</td><td>구독 메시지가 올라올 때.</td></tr>
-        <tr><td>구독권 선물</td><td>개수, 비례</td><td>선물이 올 때.</td></tr>
+        <tr><td>구독</td><td>개수 (티어 나누기를 켜면 2티어 따로)</td><td>구독 메시지가 올라올 때.</td></tr>
+        <tr><td>구독권 선물</td><td>개수, 비례 (티어 나누기를 켜면 2티어 따로)</td><td>선물이 올 때.</td></tr>
         <tr><td>채팅</td><td>키워드, 개수</td><td>채팅에 키워드가 있을 때. 같은 규칙은 10초에 한 번.</td></tr>
       </table></div>
       <ul>
         <li>비례를 켜면 후원은 최소 금액의 배수만큼, 선물은 장수만큼 개수를 곱합니다(200개까지).</li>
         <li>아이템을 여러 개 고르면(Ctrl+클릭) 그중 하나가 무작위로 날아갑니다. 트리거를 고르면 아이템 대신 그 트리거를 실행합니다.</li>
-        <li>구독·선물 규칙 아래 "└ 2티어" 줄에서 2티어 때 던질 것을 따로 정합니다. 체크를 끄면 위 줄과 같게 던집니다.</li>
-        <li>규칙을 고르고 [테스트 던지기]를 누르면 후원 없이 던져 봅니다.</li>
+        <li>구독·구독권 선물은 모든 티어에 같게 던집니다. 규칙의 "티어 나누기"를 켜면 아래에 2티어 줄이 생겨 2티어 때 던질 것을 따로 정합니다. 처음 켜면 위 줄의 값이 2티어 줄로 복사되고, 끄면 다시 모든 티어에 위 줄대로 던집니다. 정해 둔 2티어 값은 다시 켜면 돌아옵니다(2.8.0부터).</li>
+        <li>규칙을 고르고 [테스트 던지기]를 누르면 후원 없이 던져 봅니다. 티어 나누기를 켠 규칙은 목록에서 "이름 (2티어)"를 골라 2티어를 시험합니다.</li>
         <li>TITS를 껐다 켜면 15초 안에 다시 붙습니다.</li>
       </ul>
 
