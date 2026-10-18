@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>아인이 하는 것 한눈에 — 치지직 채팅봇 아인 기능 목록</title>
-<meta name="description" content="치지직 채팅봇 아인의 기능 전체 목록. 출석 체크와 출석부, 후원·구독·팔로우 인사, 명령어와 반복 공지, 투표·추첨·룰렛, OBS 오버레이, 알림 소리, TTS, TITS, 신청곡까지 한 줄씩 적고 설정 방법으로 바로 이어집니다. 아인에 없는 기능도 적었습니다.">
+<meta name="description" content="치지직 채팅봇 아인의 기능을 한 화면에. 출석체크와 출석부, 후원·구독·팔로우 인사, 채팅창 오버레이와 후원·팔로우 알림창, 효과음, 룰렛·투표·추첨, TTS·신청곡·TITS, 명령어·반복 공지·디스코드 알림. 이름마다 설정 방법으로 이어지고, 아인에 없는 것도 함께 적었습니다.">
 <link rel="canonical" href="https://einbot.kr/features/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="아인">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="아인이 하는 것 한눈에 — 치지직 채팅봇 아인 기능 목록">
-<meta property="og:description" content="출석, 후원·구독·팔로우 인사, 명령어, 투표·추첨·룰렛, OBS 오버레이, TTS·TITS·신청곡. 기능마다 설정 방법으로 바로. 아인에 없는 것도 적었습니다.">
+<meta property="og:description" content="출석, 후원·구독·팔로우 인사, 명령어, 투표·추첨·룰렛, OBS 오버레이, TTS·TITS·신청곡을 한 화면에. 이름을 누르면 설정 방법으로. 아인에 없는 것도 적었습니다.">
 <meta property="og:url" content="https://einbot.kr/features/">
 <meta property="og:image" content="https://einbot.kr/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,34 +20,59 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="/guide/guide.css">
 <style>
-  .meta { color: var(--muted); font-size: 13.5px; margin: -10px 0 26px; }
-  .toc { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 0 0 8px; font-size: 14.5px; }
-  .toc b { color: var(--muted); font-weight: 700; margin-right: 8px; }
-  .toc a { color: var(--text-2); margin-right: 12px; white-space: nowrap; }
-  /* 차례: 창마다 한 줄(설정 창 · 기능 창 · 그 밖) */
-  .toc .tg { display: block; padding: 2px 0; }
-  .toc .tg i { font-style: normal; color: var(--muted); font-size: 13px; font-weight: 700; margin-right: 10px; }
-  .toc .tg i a { color: inherit; margin: 0; }
-  .toc .tg i a:hover { color: var(--text); }
-  /* 창 덩어리: 머리(h2) → 창 사진 → 한 줄 설명 → 소제목(h3)별 줄 */
-  .wh { margin: 56px 0 14px; }
-  article img.win { width: 100%; height: auto; max-height: none; margin: 0; border-radius: 10px; background: var(--surface); }
-  .wcap { color: var(--text-2); font-size: 15px; line-height: 1.65; margin: 10px 0 0; }
-  .fh { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 34px 0 2px; }
-  .fh h2, .fh h3 { margin: 0; font-size: 21px; scroll-margin-top: 24px; }
-  .fh h3 { font-size: 19px; letter-spacing: -.3px; }
-  .fh.top { margin-top: 56px; }
-  .fh a { color: var(--muted); font-size: 14px; }
-  .fh a:hover { color: var(--text); }
-  .fl { list-style: none; padding: 0; margin: 8px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 26px; }
-  .fl li { margin: 0; padding: 9px 0 9px 20px; position: relative; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.55; word-break: keep-all; }
-  .fl li::before { content: ""; position: absolute; left: 3px; top: 17px; width: 8px; height: 8px; border-radius: 50%; background: #00C793; }
-  .fl li a { font-weight: 700; color: var(--text); }
-  .fl li span { display: block; color: var(--muted); font-size: 14px; line-height: 1.55; }
-  .fl.no li::before { background: #C9CED6; }
-  .fl.no li { color: var(--text-2); }
+  /* 한 장 지도(10/18): 하려는 일 다섯 칸 + '아인에 없는 것' 칸. 칸 안은 이름(굵게, 설정 방법 링크) + 짧은 회색 꼬리말.
+     켜는 창은 칸 머리 오른쪽 꼬리표('설정 창'/'기능 창')로, 창 사진은 맨 아래 '어디서 켜나'로 */
+  .meta { color: var(--muted); font-size: 13.5px; margin: -2px 0 18px; }
+  .map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 8px; }
+  .box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px 11px; min-width: 0; scroll-margin-top: 20px; }
+  .box h2 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 16.5px; line-height: 1.35; margin: 0 0 6px; letter-spacing: -.2px; }
+  .box h2 .where { flex: none; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
+  .box h2 .where a { color: var(--muted); }
+  .box ul { list-style: none; padding: 0; margin: 0; }
+  .box li { margin: 0; padding: 3px 0; font-size: 15px; line-height: 1.5; word-break: keep-all; scroll-margin-top: 20px; }
+  .box li > a, .box li > b > a { font-weight: 700; color: var(--text); }
+  .box li > b { font-weight: 700; }
+  .box li em { font-style: normal; color: var(--muted); font-size: 13.5px; margin-left: 5px; }
+  .box .sub { display: block; font-size: 13px; line-height: 1.5; color: var(--muted); padding-left: 1px; }
+  .box .sub a, .box .tail a { color: var(--muted); text-decoration: underline; text-decoration-color: #CBD3DF; text-underline-offset: 3px; }
+  .box .sub a:hover, .box .tail a:hover { color: var(--text); }
+  .box .tail { margin: 6px 0 0; padding-top: 6px; border-top: 1px dashed var(--line); font-size: 13px; line-height: 1.5; color: var(--muted); }
+  .box.app li { font-size: 14px; padding: 2px 0; }
+  .box.app li > a { font-weight: 600; color: var(--text-2); }
+  .box.no { background: var(--bg); }
+  .box.no li { font-size: 14px; color: var(--text-2); padding: 2px 0 2px 14px; position: relative; }
+  .box.no li::before { content: ""; position: absolute; left: 1px; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: #C9CED6; }
+  .box.no h2 a { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+  /* 어디서 켜나: 창 사진 두 장(2배 판 1768×1504·2048×1584)에서 왼쪽 목록만 잘라 0.85배(휴대폰 0.75배)로 나란히.
+     목록 글자 약 11px(휴대폰 약 10px). 너비는 CSS 픽셀(그림의 반 크기 기준 884·1024 → 751·870, 휴대폰 663·768) */
+  .where-h { font-size: 20px; margin: 40px 0 6px; }
+  .wins { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin: 8px 0 0; }
+  .wins figure { margin: 0; min-width: 0; scroll-margin-top: 20px; display: flex; gap: 14px; align-items: flex-start; }
+  .wins .crop { flex: none; width: 170px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: #F4F5F7; }
+  .wins .crop.s { height: 588px; }
+  .wins .crop.f { height: 634px; }
+  .wins .crop img { display: block; max-width: none; height: auto; max-height: none; margin: 0; border-radius: 0; background: none; }
+  .wins .crop.s img { width: 751px; }
+  .wins .crop.f img { width: 870px; }
+  .wins figcaption { margin-top: 2px; font-size: 13.5px; line-height: 1.6; color: var(--muted); text-align: left; }
+  .wins figcaption b { color: var(--text-2); }
+  .nw { white-space: nowrap; }
   .cta { margin-top: 30px; }
-  @media (max-width: 640px) { .fl { grid-template-columns: 1fr; } .toc a { display: inline-block; margin: 2px 12px 2px 0; } .toc .tg i { display: block; margin: 4px 0 0; } .wh { margin-top: 44px; } }
+  @media (min-width: 1280px) {
+    .map { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(992px, calc(100vw - 332px)); }
+  }
+  @media (max-width: 640px) {
+    .map { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .box { padding: 12px 14px 10px; }
+    .wins { gap: 10px 12px; }
+    .wins figure { display: block; }
+    .wins .crop { width: 150px; }
+    .wins .crop.s { height: 519px; }
+    .wins .crop.f { height: 559px; }
+    .wins .crop.s img { width: 663px; }
+    .wins .crop.f img { width: 768px; }
+    .wins figcaption { margin-top: 6px; font-size: 12.5px; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -98,131 +123,109 @@
       <p class="crumbs"><a href="/">아인</a> › 기능 한눈에</p>
       <p class="eyebrow">기능</p>
       <h1>아인이 하는 것 한눈에</h1>
-      <p class="lead">방송 중에 아인이 하는 일을 한 줄씩, 그 기능을 켜는 창에 따라 설정 창과 기능 창으로 나눠 적었습니다. 줄마다 설정 방법으로 이어집니다. 맨 아래에는 앱 전체에 걸친 것과 아인에 없는 것을 적었습니다.</p>
-      <p class="meta">아인 2.8.0 기준 (2026년 10월) · 저절로 반응하는 기능은 처음에 꺼져 있고, 켜는 곳을 각 가이드에 적었습니다.</p>
+      <p class="lead">하려는 일에 따라 모았습니다. 이름을 누르면 설정 방법으로 갑니다.</p>
+      <p class="meta">아인 2.8.0 기준 (2026년 10월) · 출석·후원·구독 인사와 기본 명령어는 처음부터 켜져 있습니다.</p>
 
-      <div class="toc"><b>차례</b>
-        <span class="tg"><i><a href="#settings-window">설정 창</a></i><a href="#name">봇 이름·로그인</a><a href="#attend">출석 체크</a><a href="#greet">후원·구독·팔로우 인사</a><a href="#cmd">명령어·공지</a></span>
-        <span class="tg"><i><a href="#features-window">기능 창</a></i><a href="#join">시청자 참여</a><a href="#time">시간</a><a href="#screen">방송 화면</a><a href="#sound">소리·연동</a><a href="#attendlist">출석부</a></span>
-        <span class="tg"><i>그 밖</i><a href="#app">앱</a><a href="#none">아인에 없는 것</a></span>
+      <div class="map">
+
+        <section class="box" id="greet">
+          <h2>채팅에서 반기기 <span class="where"><a href="#settings-window">설정 창</a></span></h2>
+          <ul>
+            <li id="name"><a href="/guide/install/#step5">우리 방송만의 봇 이름</a><em>부계정 닉네임으로 응답, <span class="nw">신청·승인 없음</span></em></li>
+            <li id="attend"><a href="/guide/attendance/#trigger">출석체크</a><em>인사말이나 !출첵·!출석</em>
+              <span class="sub"><a href="/guide/attendance/#msgs">누적 횟수·상황별 문구</a> · <a href="/guide/attendance/#day">하루 기준 시각</a> · <a href="/guide/attendance/#carry">다른 봇 기록 이어받기</a></span></li>
+            <li><a href="/guide/donation/#donation">후원 감사 인사</a><em>금액·메시지 넣기, 익명 후원도</em></li>
+            <li><a href="/guide/donation/#sub">구독 인사</a> · <b><a href="/guide/donation/#gift">구독권 선물 인사</a></b><em>티어별 문구, 랜덤 선물은 개수대로</em></li>
+            <li><a href="/guide/donation/#follow">팔로우 인사</a><em>봇 계정을 채널 관리자로</em></li>
+          </ul>
+        </section>
+
+        <section class="box" id="screen">
+          <h2>방송 화면·소리 (OBS) <span class="where"><a href="#features-window">기능 창</a></span></h2>
+          <ul>
+            <li><a href="/guide/overlay/#chat">채팅창 오버레이</a><em>닉네임 색·배지·공유 CSS 그대로</em></li>
+            <li><a href="/guide/overlay/#alert">후원·구독·팔로우 알림창</a><em>후원 알림·구독 알림·팔로우 알림 카드</em></li>
+            <li><a href="/guide/overlay/#alert">알림 효과음</a><em>기본음 4종·내 파일, 처음엔 꺼짐</em></li>
+            <li id="sound"><a href="/guide/overlay/#tts">TTS 읽어주기</a><em>구독·선물·채팅을 소리로</em></li>
+            <li><a href="/guide/overlay/#songs">유튜브 신청곡</a><em>!신청곡 링크로, 순서대로 재생</em>
+              <span class="sub"><a href="/guide/overlay/#songs">곡 제목 표시</a></span></li>
+            <li><a href="/guide/overlay/#tits">TITS 물건 던지기</a><em>VTube Studio 아바타에</em></li>
+            <li><a href="/guide/time/#style">오버레이 꾸미기</a><em>크기·색 테마, 오버레이마다 따로</em></li>
+          </ul>
+        </section>
+
+        <section class="box" id="join">
+          <h2>시청자 참여·진행 <span class="where"><a href="#features-window">기능 창</a></span></h2>
+          <ul>
+            <li><a href="/guide/participation/#wheel">돌림판 (룰렛)</a><em>항목을 넣고 돌려서 고르기</em></li>
+            <li><a href="/guide/participation/#roulette">후원 룰렛</a><em>후원 금액 배수만큼, 처음엔 꺼짐</em></li>
+            <li><a href="/guide/participation/#vote">투표</a><em>시청자는 채팅에 번호만</em></li>
+            <li><a href="/guide/participation/#raffle">시청자 추첨</a><em>뽑기 연출, 구독자만 뽑기도</em></li>
+            <li id="time"><a href="/guide/time/#counter">카운터</a> · <b><a href="/guide/time/#timer">타이머</a></b> · <b><a href="/guide/time/#stopwatch">스톱워치</a></b><em>데스 카운터, 라면 타이머</em></li>
+            <li id="attendlist"><a href="/guide/attendance/#attend">출석부</a><em>오늘 채팅한 시청자·첫 방문·오랜만</em>
+              <span class="sub">방송인만 봄 · OBS 독으로도</span></li>
+          </ul>
+          <p class="tail">투표·추첨·룰렛과 시간은 OBS 화면에 바로: <span class="nw"><a href="/guide/participation/#obs">참여 화면</a> · <a href="/guide/time/#obs">시간 화면</a></span></p>
+        </section>
+
+        <section class="box" id="cmd">
+          <h2>명령어·공지 <span class="where"><a href="#settings-window">설정 창</a></span></h2>
+          <ul>
+            <li><a href="/guide/commands/#custom">내 명령어</a><em>커스텀 명령어를 채팅에서 바로 <span class="nw">추가·삭제</span></em></li>
+            <li><a href="/guide/commands/#basic">기본 명령어</a><em>!출첵 !팔로우 !업타임 !시간 !봇</em></li>
+            <li><a href="/guide/commands/#discord">방송 시작 디스코드 알림</a><em>뱅온 알림, 웹훅 주소만</em></li>
+            <li><a href="/guide/commands/#notice">반복 공지</a><em>정한 간격으로 채팅에</em></li>
+            <li><a href="/guide/commands/#admin">방장·매니저 전용 명령어</a></li>
+          </ul>
+          <p class="tail"><a href="/guide/commands/#vars">치환자 {이름} {금액} (변수)</a> · <a href="/guide/commands/#settings">문구와 명령어 기호 바꾸기</a></p>
+        </section>
+
+        <section class="box app" id="app">
+          <h2>앱과 이용</h2>
+          <ul>
+            <li><a href="/#price">30일 무료 체험</a><em>카드 등록·자동 결제 없음</em></li>
+            <li><a href="/compare/#measure">내 PC에서 실행</a><em>시청자 기록·채팅은 내 PC에만</em></li>
+            <li><a href="/guide/install/#step4">키 없이 로그인</a><em>방송 계정으로 로그인만</em></li>
+            <li>봇 계정 <a href="/guide/install/#step5">로그인 창</a> · <a href="/guide/troubleshooting/#boticon">기본 그림</a></li>
+            <li>알림 <a href="/guide/troubleshooting/#wizard">로그인 풀림</a> · <a href="/guide/troubleshooting/#cookie">연결 끊김</a> · <a href="/updates/">새 버전</a></li>
+            <li><a href="/guide/troubleshooting/#update">자동 업데이트</a> · <a href="/guide/troubleshooting/#autostart">컴퓨터 켤 때 자동 시작</a></li>
+            <li><a href="/guide/overlay/#dark">다크 모드</a> · <a href="/guide/troubleshooting/#settings">설정 저장 즉시 반영</a> · <a href="/privacy.html">진단 정보 끄기</a></li>
+          </ul>
+        </section>
+
+        <section class="box no" id="none">
+          <h2>아인에 없는 것 <a href="/compare/">다른 봇과 견주기 →</a></h2>
+          <ul>
+            <li>채팅 관리 (금칙어·제재·공지 고정)</li>
+            <li>방송 제목·카테고리 변경 (방제)</li>
+            <li>마커 (구간 표시)</li>
+            <li>게임 전적·티어 조회</li>
+            <li>미니게임</li>
+            <li>이모티콘 뿌리기</li>
+            <li>후원 목표 막대 (후원바)</li>
+            <li>후원 메시지 읽어 주기 (TTS는 구독·선물·채팅만)</li>
+            <li>자동 자막</li>
+            <li>Windows 밖에서 실행 (Windows 10 이상 PC, 방송 중 켜 둠)</li>
+          </ul>
+        </section>
+
       </div>
 
-      <h2 class="wh" id="settings-window">설정 창에서 하는 것</h2>
-      <img class="win" src="/img/features-settings-window.png?v=280" width="884" height="752" alt="아인 설정 창 — 왼쪽 목록 계정(치지직 연결·봇 계정·이용권), 채팅(기본 설정·출석 체크·기본 명령어·내가 만든 명령어·후원 인사·구독·선물 인사·팔로우 인사·반복 공지), 기타(디스코드 알림·진단 정보·문제 해결·앱 삭제). 기본 설정을 고른 모습: 시청자를 부르는 방식 {이름} 치수, 미리보기 별빛 치수, 명령어 앞 기호 !, 전체 대기시간 5초, 1인 대기시간 15초 (예시 이름)" decoding="async">
-      <p class="wcap">아인 창의 [설정]을 누르면 열립니다. 봇이 채팅에 하는 말과 계정을 여기서 정합니다.</p>
-
-      <div class="fh"><h3 id="name">봇 이름·로그인</h3><a href="/guide/install/">설치 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/install/#step5">우리 방송만의 봇 이름</a><span>네이버 부계정을 연결하면 그 닉네임이 봇 이름. 신청도 승인도 없음</span></li>
-        <li><a href="/guide/install/#step4">키 없이 로그인</a><span>API 키 발급 없이 방송 계정으로 로그인만 하면 시작</span></li>
-        <li><a href="/guide/install/#step5">봇 계정 로그인 창</a><span>쿠키 복사 없음. [로그인 상태 유지]는 아인이 켜 둠</span></li>
-        <li><a href="/guide/troubleshooting/#wizard">로그인 풀림 알림</a><span>치지직 로그인이 풀리면 노란 띠와 알림, 다시 로그인하면 봇이 이어서 켜짐</span></li>
-        <li><a href="/guide/troubleshooting/#cookie">봇 계정 연결 끊김 알림</a><span>부계정 연결이 끊기면 아인 창이 알려 줌</span></li>
-        <li><a href="/guide/troubleshooting/#boticon">봇 계정 기본 그림</a><span>부계정을 처음 연결할 때 아인 그림을 넣어 줌 (끌 수 있음)</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="attend">출석 체크</h3><a href="/guide/attendance/">출석 체크 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/attendance/#trigger">인사말만으로 자동 출석</a><span>"안녕하세요"처럼 정해 둔 인사말을 치면 출석</span></li>
-        <li><a href="/guide/attendance/#trigger">!출첵·!출석 명령어 출석</a><span>명령어로도 출석. 둘 다 기본 제공</span></li>
-        <li><a href="/guide/attendance/#msgs">누적 출석 횟수 인사</a><span>"누적 12일 출석"처럼 횟수를 세어 반김</span></li>
-        <li><a href="/guide/attendance/#msgs">상황별 출석 문구 4가지</a><span>처음 온 사람, 오랜만인 사람, 단골 등 문구를 따로</span></li>
-        <li><a href="/guide/attendance/#day">하루 기준 시각</a><span>새벽 방송이면 하루의 시작을 내 시각으로</span></li>
-        <li><a href="/guide/attendance/#carry">다른 봇 출석 기록 이어받기</a><span>쓰던 봇의 횟수를 넣어 두면 이어서 셈</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="greet">후원·구독·팔로우 인사</h3><a href="/guide/donation/">감사 인사 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/donation/#donation">치즈 후원 감사 인사</a><span>금액·메시지를 문구에 넣음. 익명 후원도 처리</span></li>
-        <li><a href="/guide/donation/#sub">구독 감사 인사</a><span>티어별로 문구를 다르게</span></li>
-        <li><a href="/guide/donation/#gift">구독권 선물 감사 인사</a><span>랜덤 선물은 개수 그대로 한 번에 인사</span></li>
-        <li><a href="/guide/donation/#follow">팔로우 감사 인사</a><span>새로 팔로우한 분께 1~2초 안에 채팅으로. 봇 계정을 채널 관리자로 지정</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="cmd">명령어·공지</h3><a href="/guide/commands/">명령어 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/commands/#basic">기본 명령어</a><span>!출첵 !팔로우 !업타임 !시간 !봇</span></li>
-        <li><a href="/guide/commands/#custom">채팅에서 명령어 추가·삭제</a><span>설정 창을 열지 않고 채팅으로 바로</span></li>
-        <li><a href="/guide/commands/#admin">방장·매니저 전용 명령어</a><span>시청자는 못 쓰는 명령어</span></li>
-        <li><a href="/guide/commands/#vars">치환자</a><span>{이름} {호칭} {금액} 같은 값을 문구에 넣음</span></li>
-        <li><a href="/guide/commands/#notice">반복 공지</a><span>정한 간격으로 공지를 채팅에</span></li>
-        <li><a href="/guide/commands/#discord">방송 시작 디스코드 알림</a><span>웹훅 주소를 넣고 켜 두면 방송을 켤 때 디스코드 채널에 알림. 테스트가 실패하면 까닭을 알려 줌</span></li>
-        <li><a href="/guide/commands/#settings">문구와 명령어 기호 바꾸기</a><span>봇이 하는 말과 명령어 앞 기호를 내 방송에 맞게</span></li>
-      </ul>
-
-      <h2 class="wh" id="features-window">기능 창에서 하는 것</h2>
-      <img class="win" src="/img/features-features-window.png?v=280" width="1024" height="792" alt="아인 기능 창 — 왼쪽 목록 참여(투표·추첨·돌림판·후원 룰렛), 시간(카운터·타이머·스톱워치), 화면(채팅 오버레이·알림 오버레이·오버레이 꾸미기), 소리·연동(신청곡·TTS 읽어주기·TITS 던지기), 시청자(출석부). 추첨을 고른 모습: 맨 위 OBS 브라우저 소스 주소와 [URL 복사], 모집·뽑기·구독자 뽑기 칸, 참여자 15명 가운데 구독자 8명은 이름 앞 보라 점, 구독자 뽑기 당첨 감자튀김 (예시 이름)" loading="lazy" decoding="async">
-      <p class="wcap">봇을 켠 뒤 아인 창의 [기능]을 누르면 열립니다. 방송 중에 진행하고 보는 것과 OBS 화면을 여기서 다룹니다.</p>
-
-      <div class="fh"><h3 id="join">시청자 참여</h3><a href="/guide/participation/">참여 기능 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/participation/#vote">투표</a><span>시청자는 채팅에 번호만. 결과는 오버레이로</span></li>
-        <li><a href="/guide/participation/#raffle">시청자 추첨</a><span>명단 모으기, 뽑기 연출, 당첨자 채팅 띄우기·TTS</span></li>
-        <li><a href="/guide/participation/#raffle">구독자 뽑기</a><span>구독자만 골라 추첨</span></li>
-        <li><a href="/guide/participation/#wheel">돌림판</a><span>항목을 넣고 돌려서 고름. 멈추면 결과를 크게 보여 줌</span></li>
-        <li><a href="/guide/participation/#roulette">후원 룰렛</a><span>후원 금액 배수만큼 걸쇠를 걸고 돌림. 처음엔 꺼져 있음</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="time">시간</h3><a href="/guide/time/">시간 기능 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/time/#counter">카운터</a><span>데스 카운터처럼 숫자를 세어 화면에</span></li>
-        <li><a href="/guide/time/#timer">타이머</a><span>라면 타이머처럼 남은 시간을 화면에</span></li>
-        <li><a href="/guide/time/#stopwatch">스톱워치</a><span>흐른 시간을 화면에</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="screen">방송 화면 (OBS 오버레이)</h3><a href="/guide/overlay/">오버레이 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/overlay/#chat">채팅 오버레이</a><span>치지직 닉네임 색·배지 그대로. 공유되는 채팅 CSS도 그대로 씀</span></li>
-        <li><a href="/guide/overlay/#alert">알림 오버레이</a><span>후원·구독·선물·팔로우·룰렛·투표·추첨·타이머 카드</span></li>
-        <li><a href="/guide/overlay/#alert">알림 소리</a><span>기본음 4종(종·차임·반짝·팝) 또는 내 소리 파일. 처음엔 꺼져 있음</span></li>
-        <li><a href="/guide/participation/#obs">투표·추첨·룰렛 오버레이</a><span>기능 창에서 진행하면 OBS 화면에 바로</span></li>
-        <li><a href="/guide/time/#obs">카운터·타이머·스톱워치 오버레이</a><span>브라우저 소스 하나로</span></li>
-        <li><a href="/guide/time/#style">오버레이 꾸미기</a><span>크기·글자색·배경·색 테마를 미리보며 정함. 오버레이마다 따로 꾸밀 수도</span></li>
-        <li><a href="/guide/overlay/#songs">곡 제목 표시</a><span>지금 나오는 신청곡 제목을 화면에</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="sound">소리·연동</h3><a href="/guide/overlay/">오버레이 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/overlay/#tts">TTS 읽어주기</a><span>구독·선물·채팅을 소리로 읽음</span></li>
-        <li><a href="/guide/overlay/#tits">TITS 물건 던지기</a><span>후원·구독 때 VTube Studio 아바타에 물건을 던짐. 구독은 1·2티어를 나눌 수도</span></li>
-        <li><a href="/guide/overlay/#songs">유튜브 신청곡</a><span>시청자가 !신청곡 링크로 신청, 순서대로 재생</span></li>
-      </ul>
-
-      <div class="fh"><h3 id="attendlist">출석부</h3><a href="/guide/attendance/#attend">출석부 가이드 →</a></div>
-      <ul class="fl">
-        <li><a href="/guide/attendance/#attend">출석부</a><span>오늘 채팅한 시청자를 모아 첫 방문·오랜만인 분을 표시. 방송인 화면에만 보이고 채팅에는 보내지 않음</span></li>
-        <li><a href="/guide/attendance/#attend">출석부 OBS 독</a><span>OBS 안에 붙여 두고 방송 중에 보며 체크</span></li>
-      </ul>
-
-      <div class="fh top"><h2 id="app">앱</h2><a href="/guide/troubleshooting/">안 될 때 확인할 것 →</a></div>
-      <ul class="fl">
-        <li><a href="/compare/#measure">내 PC에서 실행</a><span>시청자 기록·채팅·로그인 정보는 내 PC에만. 밖으로 나가는 정보는 따로 적어 둠</span></li>
-        <li><a href="/guide/troubleshooting/#update">자동 업데이트</a><span>Microsoft Store가 새 버전을 알아서 설치</span></li>
-        <li><a href="/guide/troubleshooting/#autostart">컴퓨터 켤 때 자동 시작</a><span>설정 → 문제 해결·앱 삭제에서 끄고 켬</span></li>
-        <li><a href="/guide/overlay/#dark">다크 모드</a><span>아인 창과 설정·기능 창을 어둡게. 방송 화면 오버레이는 그대로</span></li>
-        <li><a href="/guide/troubleshooting/#settings">설정 저장 즉시 반영</a><span>봇을 껐다 켜지 않아도 됨 (로그인을 바꿨을 때만 껐다 켬)</span></li>
-        <li><a href="/updates/">새 버전·연결 끊김·로그인 풀림 알림</a><span>아인 창의 띠와 알림으로</span></li>
-        <li><a href="/privacy.html">진단 정보 끄기</a><span>버전·오류 종류·기능 사용 횟수만 보내고, 설정에서 끌 수 있음</span></li>
-        <li><a href="/#price">30일 무료 체험</a><span>카드 등록·자동 결제 없음. 끝나면 봇만 멈추고, 이용권(1개월 2,900원)을 등록하면 바로 이어서 씀</span></li>
-      </ul>
-
-      <div class="fh top"><h2 id="none">아인에 없는 것</h2><a href="/compare/">다른 봇과 견주기 →</a></div>
-      <ul class="fl no">
-        <li>채팅 관리 (금칙어·제재·공지 고정)</li>
-        <li>방송 제목·카테고리 변경</li>
-        <li>마커 (구간 표시)</li>
-        <li>게임 전적·티어 조회</li>
-        <li>미니게임</li>
-        <li>이모티콘 뿌리기</li>
-        <li>후원 목표 막대</li>
-        <li>후원 메시지 읽어 주기 (TTS는 구독·선물·채팅만)</li>
-        <li>자동 자막</li>
-        <li>Windows 밖에서 실행 (Windows 10 이상 PC가 필요하고, 방송 중에는 켜 둬야 함)</li>
-      </ul>
+      <h2 class="where-h">어디서 켜나</h2>
+      <div class="wins">
+        <figure id="settings-window">
+          <div class="crop s"><img src="/img/features-settings-window.png?v=280" width="884" height="752" alt="아인 설정 창의 왼쪽 목록 — 계정(치지직 연결·봇 계정·이용권), 채팅(기본 설정·출석 체크·기본 명령어·내가 만든 명령어·후원 인사·구독·선물 인사·팔로우 인사·반복 공지), 기타(디스코드 알림·진단 정보·문제 해결·앱 삭제)" loading="lazy" decoding="async"></div>
+          <figcaption><b>설정 창</b> — 아인 창의 [설정]. 반기기·명령어·공지처럼 봇이 채팅에 하는 말을 정합니다.</figcaption>
+        </figure>
+        <figure id="features-window">
+          <div class="crop f"><img src="/img/features-features-window.png?v=280" width="1024" height="792" alt="아인 기능 창의 왼쪽 목록 — 참여(투표·추첨·돌림판·후원 룰렛), 시간(카운터·타이머·스톱워치), 화면(채팅 오버레이·알림 오버레이·오버레이 꾸미기), 소리·연동(신청곡·TTS 읽어주기·TITS 던지기), 시청자(출석부)" loading="lazy" decoding="async"></div>
+          <figcaption><b>기능 창</b> — 봇을 켠 뒤 [기능]. 방송 화면·소리와 시청자 참여를 다룹니다.</figcaption>
+        </figure>
+      </div>
 
       <div class="cta">
         <a class="btn primary" href="https://apps.microsoft.com/detail/9nw8q03rgqlv?mode=direct">30일 무료로 시작하기</a>
-        <small>Microsoft Store에서 설치합니다. 30일 동안 모든 기능을 쓸 수 있고, 카드 등록과 자동 결제는 없습니다.</small>
+        <small>Microsoft Store에서 설치합니다. 30일 동안 모든 기능을 쓸 수 있습니다. 끝나면 봇만 멈추고, 이용권(1개월 2,900원)을 등록하면 바로 이어서 씁니다.</small>
       </div>
 
       <div class="related">
