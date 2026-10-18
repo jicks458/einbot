@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>아인이 하는 것 한눈에 — 치지직 채팅봇 아인 기능 목록</title>
-<meta name="description" content="치지직 채팅봇 아인의 기능을 한 화면에. 출석체크와 출석부, 후원·구독·팔로우 인사, 채팅창 오버레이와 후원·팔로우 알림창, 효과음, 룰렛·투표·추첨, TTS·신청곡·TITS, 명령어·반복 공지·디스코드 알림. 이름마다 설정 방법으로 이어지고, 아인에 없는 것도 함께 적었습니다.">
+<meta name="description" content="치지직 채팅봇 아인의 기능 전체. 출석체크와 출석부, 후원·구독·팔로우 인사, 채팅창 오버레이와 후원·팔로우 알림창, 효과음, 룰렛·투표·추첨, TTS·신청곡·TITS, 명령어·반복 공지·디스코드 알림. 이름마다 설정 방법으로 이어지고, 아인에 없는 것도 함께 적었습니다.">
 <link rel="canonical" href="https://einbot.kr/features/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/img/icon-256.png">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="아인">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="아인이 하는 것 한눈에 — 치지직 채팅봇 아인 기능 목록">
-<meta property="og:description" content="출석, 후원·구독·팔로우 인사, 명령어, 투표·추첨·룰렛, OBS 오버레이, TTS·TITS·신청곡을 한 화면에. 이름을 누르면 설정 방법으로. 아인에 없는 것도 적었습니다.">
+<meta property="og:description" content="출석, 후원·구독·팔로우 인사, 명령어, 투표·추첨·룰렛, OBS 오버레이, TTS·TITS·신청곡까지. 이름을 누르면 설정 방법으로. 아인에 없는 것도 적었습니다.">
 <meta property="og:url" content="https://einbot.kr/features/">
 <meta property="og:image" content="https://einbot.kr/og.png?v=2">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,6 +24,7 @@
      켜는 창은 칸 머리 오른쪽 꼬리표('설정 창'/'기능 창')로, 창 사진은 맨 아래 '어디서 켜나'로 */
   .meta { color: var(--muted); font-size: 13.5px; margin: -2px 0 18px; }
   .map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 8px; }
+  .offnote { color: var(--muted); font-size: 13.5px; margin: 12px 0 0; }
   .box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px 11px; min-width: 0; scroll-margin-top: 20px; }
   .box h2 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 16.5px; line-height: 1.35; margin: 0 0 6px; letter-spacing: -.2px; }
   .box h2 .where { flex: none; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
@@ -144,8 +145,8 @@
           <h2>방송 화면·소리 (OBS) <span class="where"><a href="#features-window">기능 창</a></span></h2>
           <ul>
             <li><a href="/guide/overlay/#chat">채팅창 오버레이</a><em>닉네임 색·배지·공유 CSS 그대로</em></li>
-            <li><a href="/guide/overlay/#alert">후원·구독·팔로우 알림창</a><em>후원 알림·구독 알림·팔로우 알림 카드</em></li>
-            <li><a href="/guide/overlay/#alert">알림 효과음</a><em>기본음 4종·내 파일, 처음엔 꺼짐</em></li>
+            <li><a href="/guide/overlay/#alert">후원·구독·팔로우 알림창</a><em>후원 알림, 구독 알림, 팔로우 알림 카드</em></li>
+            <li><a href="/guide/overlay/#alert">알림 효과음</a><em>기본음 4종·내 파일</em></li>
             <li id="sound"><a href="/guide/overlay/#tts">TTS 읽어주기</a><em>구독·선물·채팅을 소리로</em></li>
             <li><a href="/guide/overlay/#songs">유튜브 신청곡</a><em>!신청곡 링크로, 순서대로 재생</em>
               <span class="sub"><a href="/guide/overlay/#songs">곡 제목 표시</a></span></li>
@@ -158,10 +159,10 @@
           <h2>시청자 참여·진행 <span class="where"><a href="#features-window">기능 창</a></span></h2>
           <ul>
             <li><a href="/guide/participation/#wheel">돌림판 (룰렛)</a><em>항목을 넣고 돌려서 고르기</em></li>
-            <li><a href="/guide/participation/#roulette">후원 룰렛</a><em>후원 금액 배수만큼, 처음엔 꺼짐</em></li>
+            <li><a href="/guide/participation/#roulette">후원 룰렛</a><em>정한 금액 후원에 저절로</em></li>
             <li><a href="/guide/participation/#vote">투표</a><em>시청자는 채팅에 번호만</em></li>
             <li><a href="/guide/participation/#raffle">시청자 추첨</a><em>뽑기 연출, 구독자만 뽑기도</em></li>
-            <li id="time"><a href="/guide/time/#counter">카운터</a> · <b><a href="/guide/time/#timer">타이머</a></b> · <b><a href="/guide/time/#stopwatch">스톱워치</a></b><em>데스 카운터, 라면 타이머</em></li>
+            <li id="time"><a href="/guide/time/#counter">카운터</a> · <b><a href="/guide/time/#timer">타이머</a></b> · <b><a href="/guide/time/#stopwatch">스톱워치</a></b><em>데스 카운터, <span class="nw">라면 타이머</span></em></li>
             <li id="attendlist"><a href="/guide/attendance/#attend">출석부</a><em>오늘 채팅한 시청자·첫 방문·오랜만</em>
               <span class="sub">방송인만 봄 · OBS 독으로도</span></li>
           </ul>
@@ -172,7 +173,7 @@
           <h2>명령어·공지 <span class="where"><a href="#settings-window">설정 창</a></span></h2>
           <ul>
             <li><a href="/guide/commands/#custom">내 명령어</a><em>커스텀 명령어를 채팅에서 바로 <span class="nw">추가·삭제</span></em></li>
-            <li><a href="/guide/commands/#basic">기본 명령어</a><em>!출첵 !팔로우 !업타임 !시간 !봇</em></li>
+            <li><a href="/guide/commands/#basic">기본 명령어</a><em>!출첵 !팔로우 !업타임 <span class="nw">!명령어</span> 등</em></li>
             <li><a href="/guide/commands/#discord">방송 시작 디스코드 알림</a><em>뱅온 알림, 웹훅 주소만</em></li>
             <li><a href="/guide/commands/#notice">반복 공지</a><em>정한 간격으로 채팅에</em></li>
             <li><a href="/guide/commands/#admin">방장·매니저 전용 명령어</a></li>
@@ -203,13 +204,14 @@
             <li>미니게임</li>
             <li>이모티콘 뿌리기</li>
             <li>후원 목표 막대 (후원바)</li>
-            <li>후원 메시지 읽어 주기 (TTS는 구독·선물·채팅만)</li>
+            <li>후원 메시지 읽어 주기 (TTS는 <span class="nw">구독·선물·채팅만)</span></li>
             <li>자동 자막</li>
             <li>Windows 밖에서 실행 (Windows 10 이상 PC, 방송 중 켜 둠)</li>
           </ul>
         </section>
 
       </div>
+      <p class="offnote">처음엔 꺼져 있어 켜야 동작하는 것: 팔로우 인사, 팔로우 알림, 알림 효과음, 후원 룰렛, TTS, 신청곡, TITS, 디스코드 알림</p>
 
       <h2 class="where-h">어디서 켜나</h2>
       <div class="wins">
