@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://einbot.kr/sitemap.xml
+
+#DaumWebMasterTool:c4d8c297f10a08b22a902def018a92f9c92a31c550baf1fca299f67a65ff5176:6JNuku1jO8QFMMcL4HrRjQ==
