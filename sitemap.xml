@@ -68,13 +68,13 @@
   </url>
   <url>
     <loc>https://einbot.kr/terms.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>%ISO%</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://einbot.kr/compare/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>%ISO%</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
