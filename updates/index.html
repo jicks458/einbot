@@ -39,7 +39,7 @@
   "inLanguage": "ko-KR",
   "isPartOf": { "@id": "https://einbot.kr/#website" },
   "about": { "@id": "https://einbot.kr/#app" },
-  "dateModified": "2026-10-31",
+  "dateModified": "2026-11-05",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -88,7 +88,22 @@
       <p class="lead">버전별로 무엇이 바뀌었는지 날짜와 함께 적습니다. 최신이 맨 위입니다.</p>
       <p class="how">2.2.3부터는 새 버전이 나오면 아인이 방송하지 않는 동안 스스로 설치하고 잠깐 뒤 다시 켜집니다. 켜져 있던 봇도 다시 켭니다. 2.1.1 이하는 Microsoft Store가 아인을 완전히 끈 뒤에 설치하니, 알림 영역에서 [앱 종료]한 다음 Microsoft Store 앱 → 라이브러리 → [업데이트 받기]를 누르세요. 고치고 싶은 점이나 필요한 기능은 <a href="/discord/">디스코드 문의 서버</a>나 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>으로 알려 주시면 됩니다.</p>
 
-      <section class="ver latest" id="v2-10-0">
+      <section class="ver latest" id="v2-10-1">
+        <h2>2.10.1 <span class="date">2026년 11월 5일</span></h2>
+        <p class="pkg">스토어 버전 2.10.1.0</p>
+        <ul>
+          <li><b>처음 설정할 때 출석 인사말 "O하" 자리에 방송 계정 이름의 첫 글자를 넣어 둡니다(예: 풍하).</b> 흔한 말이 되는 글자나 한글로 시작하지 않는 이름이면 "O하" 그대로 둡니다. 이미 쓰는 분의 칸은 바뀌지 않고, 칸에 "O하"가 남아 있으면 설정의 출석 체크 안내 줄에 내 방송 예시가 함께 나옵니다(예: "풍하"). <a href="/guide/attendance/#trigger">출석 체크</a></li>
+          <li>방송에서 7일 이상 쓴 분께 아인 창에 Microsoft Store 별점 안내를 한 번 띄웁니다("아인이 도움이 됐다면 Microsoft Store에 별점을 남겨 주세요."). 누르면 스토어 별점 창이 열리고, 닫으면 다시 묻지 않습니다.</li>
+          <li><b>신청곡 화면의 "채팅 명령어" 카드를 없애고, 신청곡 사용 카드에 시청자가 쓰는 명령어 한 줄("시청자: !신청곡 링크 (같은 사람은 5초에 한 번) · !신청곡취소")과 저작권 안내 한 줄을 넣었습니다.</b> 자막 안내도 두 줄로 줄였습니다. <a href="/guide/overlay/#songs">신청곡</a></li>
+          <li>채팅 오버레이 디자인 칸의 "지우기" 묶음 이름을 "정리"로 바꿨습니다(안의 칸 이름 "지우기"·"줄 수"는 그대로). <a href="/guide/overlay/#chat">채팅 오버레이</a></li>
+          <li>초기 설정에서 내 키 값이 틀려 로그인에 실패하면, 결과 창이 "초기 설정 1단계에서 두 값을 다시 넣어 주세요."라고 알려 줍니다. [← 로그인만으로 진행]으로 돌아가면 앞의 실패 안내가 남지 않습니다.</li>
+          <li>로그인 결과 창의 한글 글이 낱말 가운데서 끊기지 않고, 영문 이름이나 주소처럼 띄어쓰기 없는 긴 글도 창 안에서 줄을 바꿉니다.</li>
+          <li>봇 계정 채팅이나 선물 감지 연결이 열리다 실패해도 봇이 꺼지지 않고 다시 연결을 시도합니다.</li>
+          <li>그 밖에 안내 글을 다듬고 작은 문제를 고쳤습니다.</li>
+        </ul>
+      </section>
+
+      <section class="ver" id="v2-10-0">
         <h2>2.10.0 <span class="date">2026년 10월 31일</span></h2>
         <p class="pkg">스토어 버전 2.10.0.0</p>
         <ul>
