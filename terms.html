@@ -29,6 +29,7 @@
   .muted { color:var(--muted); font-size:14px; }
   strong { color:var(--text); }
   footer { border-top:1px solid var(--line); margin-top:44px; padding-top:22px; color:var(--muted); font-size:13px; }
+  footer .biz { font-size:12.5px; line-height:1.7; color:var(--muted); word-break:keep-all; overflow-wrap:anywhere; } footer .biz [data-biz="phone"], footer .biz [data-biz="report-no"] { white-space:nowrap; } /* 사업자 정보 한 줄 (전자상거래법 13조 1항) — 값은 「사업자 정보 넣기」 도구가 data-biz 칸에 넣는다 */
 </style>
 </head>
 <body>
@@ -142,6 +143,7 @@
 
   <footer>
     <p><a href="/">← 아인 홈으로</a> · <a href="/privacy.html">개인정보처리방침</a></p>
+    <p class="biz">상호 아인 · 대표자 <span data-biz="owner">〈대표자〉</span> · 주소 <span data-biz="address">〈주소〉</span> · 전화 <span data-biz="phone">〈전화〉</span> · 메일 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a><span data-biz-group="report" hidden> · 통신판매업 신고 <span data-biz="report-no">〈신고번호〉</span><span data-biz-group="report-agency" hidden> (<span data-biz="report-agency">〈신고 기관〉</span>)</span></span></p>
     <p>아인은 개인이 개발한 프로그램으로, 네이버(주) 및 치지직의 공식 서비스가 아닙니다. "치지직"은 네이버(주)의 상표입니다.</p>
   </footer>
 </div>

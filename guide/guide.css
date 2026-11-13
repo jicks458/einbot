@@ -103,6 +103,7 @@ img { max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(
 footer { border-top: 1px solid var(--line); padding: 36px 0 52px; color: var(--muted); font-size: 13.5px; background: var(--surface); }
 footer p { margin: 6px 0; }
 footer a { color: var(--text-2); }
+footer .biz { font-size: 12.5px; line-height: 1.7; color: var(--muted); word-break: keep-all; overflow-wrap: anywhere; } footer .biz [data-biz="phone"], footer .biz [data-biz="report-no"] { white-space: nowrap; } /* 사업자 정보 한 줄 (전자상거래법 13조 1항) — 값은 「사업자 정보 넣기」 도구가 data-biz 칸에 넣는다 */
 :focus-visible { outline: 2px solid var(--green-ink); outline-offset: 2px; border-radius: 4px; }
 @media (max-width: 800px) {
   h1 { font-size: 30px; letter-spacing: -.6px; }
