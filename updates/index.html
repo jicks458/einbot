@@ -39,7 +39,7 @@
   "inLanguage": "ko-KR",
   "isPartOf": { "@id": "https://einbot.kr/#website" },
   "about": { "@id": "https://einbot.kr/#app" },
-  "dateModified": "2026-11-15",
+  "dateModified": "2026-11-21",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
@@ -96,7 +96,22 @@
         </ul>
       </section>
 
-      <section class="ver latest" id="v2-10-1">
+      <section class="ver latest" id="v2-11-0">
+        <h2>2.11.0 <span class="date">2026년 11월 16일</span></h2>
+        <p class="pkg">스토어 버전 2.11.0.0</p>
+        <ul>
+          <li><b>아인 서버나 치지직이 잠시 응답하지 않아도 봇이 종료되지 않습니다.</b> 아인 창에 "… 기다리는 중입니다" 안내 띠를 표시하고 15초, 30초, 1분, 이후 2분 간격으로 다시 연결을 시도하며, 연결되면 이어서 시작합니다. 봇 실행 중에 로그인 정보 갱신이 일시적으로 되지 않을 때도 같은 안내 띠를 표시하며, 로그인 정보는 그대로 유지됩니다. <a href="/guide/troubleshooting/#server">"기다리는 중입니다" 안내 띠</a></li>
+          <li><b>업데이트가 설치되었지만 적용되지 않으면 다시 시도합니다.</b> 적용되기 전까지는 아인 창에 "…을 받았지만 아직 적용되지 않았습니다" 안내 띠를 표시합니다. 새 버전이 나온 지 하루가 지나도 이 컴퓨터의 Microsoft Store에서 새 버전이 확인되지 않으면 "…이 자동으로 설치되지 않았습니다" 안내 띠를 표시합니다. 두 안내 띠 모두 누르면 Microsoft Store가 열리며, [업데이트 확인]을 누르면 됩니다. <a href="/guide/troubleshooting/#noupdate">새 버전으로 업데이트되지 않아요</a></li>
+          <li><b>방송 중 채팅 연결이 다시 이어지는 과정에서 봇이 종료되던 문제를 수정했습니다.</b> 봇 계정 연결이 잠시 끊겨도 봇의 응답이 누락되지 않도록 개선했습니다.</li>
+          <li><b>이용권 화면과 만료 안내 문구를 알기 쉽게 정리했습니다.</b> 봇 실행 중에도 이용 기간을 확인합니다. 실행 중 이용 기간이 만료되어도 진행 중인 방송에서는 봇이 중지되지 않으며, 방송이 끝난 뒤 중지됩니다. 설정의 [상점 열기]를 누르면 아인 사이트를 거쳐 스마트스토어로 이동합니다.</li>
+          <li>후원 룰렛 결과의 금액을 1,000원처럼 쉼표로 구분해 표시하고, 알림 카드 제목의 이름 뒤에 "님"을 붙입니다. 새로 설치한 경우 결과 문구 기본값에도 "님"이 포함되며, 이미 저장한 결과 문구는 바뀌지 않습니다. <a href="/guide/participation/#roulette">후원 룰렛</a></li>
+          <li>채팅 오버레이의 사용자 CSS에서 메시지 줄의 여백(<code>#log &gt; div</code>의 padding)을 변경할 수 있습니다. <a href="/guide/overlay/#css">공유되는 채팅 CSS 그대로 쓰기</a></li>
+          <li>초기 설정, 설정 창, 기능 창, 로그인 결과 창의 안내 문구를 다듬었습니다. 로그인 중 인터넷 연결이 끊기면 영어 오류 메시지 대신 한국어 안내를 표시합니다.</li>
+          <li>그 밖의 안내 문구를 개선하고 일부 문제를 수정했습니다.</li>
+        </ul>
+      </section>
+
+      <section class="ver" id="v2-10-1">
         <h2>2.10.1 <span class="date">2026년 11월 5일</span></h2>
         <p class="pkg">스토어 버전 2.10.1.0</p>
         <ul>
