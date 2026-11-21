@@ -38,6 +38,7 @@
   .box .sub a, .box .tail a { color: var(--muted); text-decoration: underline; text-decoration-color: #CBD3DF; text-underline-offset: 3px; }
   .box .sub a:hover, .box .tail a:hover { color: var(--text); }
   .box .tail { margin: 6px 0 0; padding-top: 6px; border-top: 1px dashed var(--line); font-size: 13px; line-height: 1.5; color: var(--muted); }
+  .box .tail + .tail { margin-top: 2px; padding-top: 0; border-top: 0; }
   .box.app li { font-size: 14px; padding: 2px 0; }
   .box.app li > a { font-weight: 600; color: var(--text-2); }
   .box.no { background: var(--bg); }
@@ -167,6 +168,7 @@
               <span class="sub">방송인만 봄 · OBS 독으로도</span></li>
           </ul>
           <p class="tail">투표·추첨·룰렛과 시간은 OBS 화면에 바로: <span class="nw"><a href="/guide/participation/#obs">참여 화면</a> · <a href="/guide/time/#obs">시간 화면</a></span></p>
+          <p class="tail">후원 결제는 치지직에서 이루어지며, 아인은 후원금을 다루지 않습니다.</p>
         </section>
 
         <section class="box" id="cmd">

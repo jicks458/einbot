@@ -41,7 +41,7 @@
       { "@type": "ListItem", "position": 1, "name": "아인", "item": "https://einbot.kr/" },
       { "@type": "ListItem", "position": 2, "name": "가이드", "item": "https://einbot.kr/guide/" },
       { "@type": "ListItem", "position": 3, "name": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "item": "https://einbot.kr/guide/participation/" } ] },
-    { "@type": "TechArticle", "headline": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "description": "치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 진행하면, 시청자는 채팅에 번호나 말 한마디만 칩니다. OBS 오버레이 주소와 권장 크기까지.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-11-15",
+    { "@type": "TechArticle", "headline": "치지직 투표·추첨·돌림판·후원 룰렛 사용법", "description": "치지직 방송에서 투표, 시청자 추첨, 돌림판, 후원 룰렛을 채팅봇으로 하는 방법. 봇을 켠 뒤 아인 창의 [기능]에서 고르고 버튼으로 진행하면, 시청자는 채팅에 번호나 말 한마디만 칩니다. OBS 오버레이 주소와 권장 크기까지.", "inLanguage": "ko", "datePublished": "2026-09-17", "dateModified": "2026-11-21",
       "author": { "@type": "Person", "name": "Jicks" }, "publisher": { "@type": "Organization", "name": "아인", "logo": { "@type": "ImageObject", "url": "https://einbot.kr/img/icon-256.png" } },
       "mainEntityOfPage": "https://einbot.kr/guide/participation/" }
   ]
@@ -138,7 +138,7 @@
       <p class="eyebrow">참여 기능 가이드</p>
       <h1>치지직 투표·추첨·돌림판·후원 룰렛 사용법</h1>
       <p class="lead">봇을 켠 뒤 아인 창의 [기능]&#8288;에서 기능을 선택하고 버튼으로 진행합니다. 시청자는 채팅에 번호나 짧은 키워드만 입력하면 됩니다.</p>
-      <p class="meta">2026년 10월 31일 수정</p>
+      <p class="meta">2026년 11월 21일 수정</p>
 
       <div class="toc">
         <b>차례</b>
@@ -180,6 +180,7 @@
 
       <h2 id="raffle">추첨</h2>
       <p class="watch">▶ <a href="https://youtu.be/35TiuoyQCq8" target="_blank" rel="noopener">영상으로 보기 (1분 35초)</a></p>
+      <p>추첨과 돌림판은 방송 진행을 돕는 화면 기능입니다. 아인은 경품이나 금전을 지급하지 않습니다.</p>
       <ol>
         <li>[모집 시작]을 누릅니다. 이때부터 채팅한 시청자가 참여자로 등록됩니다.</li>
         <li>[모집 마감]을 누릅니다.</li>
@@ -206,7 +207,7 @@
       <ul>
         <li>확률의 합이 100이 아니어도 입력한 비율대로 계산합니다. 회전 시간은 2~30초입니다.</li>
         <li>바늘은 결과 칸 안의 임의의 위치에서 멈춥니다(경계선에는 멈추지 않습니다). 회전 중에 항목을 변경해 저장해도 진행 중인 회전은 시작할 때의 칸 구성으로 끝까지 진행됩니다.</li>
-        <li>돌림판은 여러 개 만들 수 있습니다(벌칙판, 선물판 등).</li>
+        <li>돌림판은 여러 개 만들 수 있습니다(벌칙판, 미션판 등).</li>
         <li>"결과 채팅 알림"을 켜면 결과를 채팅으로 전송합니다. 기본 문구는 <code>🎰 {결과}!</code>이며 <code>{결과}</code> <code>{대상}</code> <code>{돌림판}</code>을 넣을 수 있습니다.</li>
         <li>결과는 [결과 기록 보기]에 날짜와 함께 저장됩니다.</li>
         <li>방송 화면에서 원판이 회전하는 대신 테두리의 진행 막대가 채워지도록 하려면 주소 끝에 <code>?motion=less</code>를 붙입니다.</li>
@@ -216,6 +217,7 @@
       <h2 id="roulette">후원 룰렛</h2>
       <p class="watch">▶ <a href="https://youtu.be/4OsfMj1_MRQ" target="_blank" rel="noopener">영상으로 보기 (1분 32초)</a></p>
       <p>설정한 금액이 후원되면 선택한 <a href="#wheel">돌림판</a>이 방송 화면에서 자동으로 회전하고, 결과가 채팅으로 전송됩니다. 이 기능은 기본으로 꺼져 있습니다. 룰렛 표를 확인하고 "후원 룰렛 사용"을 켠 뒤 [저장]을 누릅니다. 룰렛은 [+ 룰렛 추가]로 추가할 수 있습니다.</p>
+      <p>후원 결제는 치지직에서 이루어집니다. 아인은 후원금을 받거나 보관하지 않으며, 결과를 방송 화면에 표시합니다.</p>
       <img class="shot" src="/img/shots/participation-roulette-overlay.png?v=280" width="320" height="424" alt="방송 화면의 후원 룰렛 — 걸쇠 3개가 멈춘 원판(나오지 않은 칸은 어둡게)과 아래 결과 표(초코우유님 3,000원: 치킨 ×1, 스쿼트 10개 ×1, 애교 ×1)" loading="lazy">
       <div class="tbl"><table>
         <tr><th>항목</th><th>하는 일</th></tr>
