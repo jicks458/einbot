@@ -146,7 +146,12 @@
         {
           "@type": "Question",
           "name": "환불이 되나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "네, 환불할 수 있습니다. 이용 기간이 시작되기 전에는 전액 환불합니다. 이용 기간이 시작된 날부터 7일 이내에는 위약금 없이 이용하지 않은 기간만큼 환불합니다. 7일이 지난 후에도 남은 이용 기간이 있으면 언제든지 해지할 수 있으며, 이용한 기간의 이용료를 뺀 남은 금액에서 10%를 위약금으로 공제하고 환불합니다. 이미 시작된 날의 이용분은 청약철회가 제한되므로, 결제 전에 30일 무료 체험으로 먼저 이용해 보시기 바랍니다. 환불은 스마트스토어 주문 내역에서 취소·반품을 요청하거나, 네이버 톡톡(스마트스토어의 [톡톡문의]) 또는 einbot.help@gmail.com 으로 주문번호와 함께 신청할 수 있습니다. 자세한 기준과 계산 방법은 이용약관 4항에서 확인할 수 있습니다." }
+          "acceptedAnswer": { "@type": "Answer", "text": "네, 환불할 수 있습니다. 이용 기간이 시작되기 전에는 전액 환불합니다. 이용 기간이 시작된 날부터 7일 이내에는 위약금 없이 이용하지 않은 기간만큼 환불합니다. 7일이 지난 후에도 남은 이용 기간이 있으면 언제든지 해지할 수 있으며, 이용한 기간의 이용료를 뺀 남은 금액에서 10%를 위약금으로 공제하고 환불합니다. 네이버(주)의 조치로 서비스가 중단된 경우에는 위약금 없이 환불받으실 수 있습니다. 이미 시작된 날의 이용분은 청약철회가 제한되므로, 결제 전에 30일 무료 체험으로 먼저 이용해 보시기 바랍니다. 환불은 스마트스토어 주문 내역에서 취소·반품을 요청하거나, 네이버 톡톡(스마트스토어의 [톡톡문의]) 또는 einbot.help@gmail.com 으로 주문번호와 함께 신청할 수 있습니다. 자세한 기준과 계산 방법은 이용약관 4항과 9항에서 확인할 수 있습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "서비스가 중단될 수도 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "아인은 네이버(주)의 치지직 API를 이용합니다. 네이버(주)가 API 이용을 제한하면 이용 기간 중이라도 서비스가 예고 없이 중단될 수 있습니다. 이 경우 운영자는 그날 공식 사이트에 공지하고 이용권 판매를 중단합니다. 남은 기간의 이용료는 위약금 없이 환불받으실 수 있습니다. 자세한 기준은 이용약관 9항에서 확인할 수 있습니다." }
         }
       ]
     }
@@ -343,6 +348,9 @@
     margin-top: 28px; background: rgba(0,255,163,.12); border: 1px solid rgba(7,122,85,.22);
     border-radius: 14px; padding: 18px 22px; font-size: 15px; color: var(--text-2);
   }
+  /* 서비스 중단 가능성 안내 — trial-note 와 같은 크기 · 여백 · 본문색, 흐린 색 · 초록 배경 쓰지 않음. 글은 스마트스토어 상세 맨 위 상자와 같게 둔다 */
+  .stop-note { margin-top: 14px; background: #fff; border: 1px solid #D6DCE4; border-radius: 14px; padding: 18px 22px; font-size: 15px; color: var(--text-2); word-break: keep-all; }
+  .stop-note a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
   #price .cta { margin-top: 30px; }
 
   /* FAQ: 상자 대신 줄로 구분 */
@@ -355,7 +363,7 @@
   .faq details p { margin: -4px 0 18px; color: var(--text-2); font-size: 15.5px; line-height: 1.75; }
   .faq-more { max-width: 760px; margin: 22px 0 0; padding: 0 4px; color: var(--muted); font-size: 15px; line-height: 1.75; word-break: keep-all; scroll-margin-top: 45vh; }
   .faq-more a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
-  .terms-notice { max-width: 760px; margin: 10px 0 0; padding: 0 4px; color: var(--muted); font-size: 13px; line-height: 1.7; word-break: keep-all; } /* 약관 개정 공지 한 줄 (콘텐츠이용자보호지침 6조 1항 「서비스초기화면」) — 약관 공지 상자를 빼는 날(12/21 무렵) 같이 뺀다 */
+  .terms-notice { max-width: 760px; margin: 10px 0 0; padding: 0 4px; color: var(--muted); font-size: 13px; line-height: 1.7; word-break: keep-all; } /* 약관 개정 공지 줄 (콘텐츠이용자보호지침 6조 1항 「서비스초기화면」) — 공지 줄은 그 약관 공지 상자를 빼는 날 같이 빼고(11/15 줄은 12/21 무렵), 이 스타일은 이 클래스를 쓰는 줄이 모두 빠진 뒤에 뺀다 */
   .terms-notice a { color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
 
   /* 가이드 카드 */
@@ -590,6 +598,7 @@
     </div>
     <div class="trial-note reveal">🎁 <b>30일 무료 체험</b> — 설치 후 로그인하면 바로 시작됩니다. 결제 수단 등록과 자동 결제는 없습니다.
       체험 기간이 끝나면 봇만 중지되며, 기록과 설정은 그대로 유지됩니다. 이용권을 등록하면 바로 이어서 이용할 수 있습니다. 구매한 이용권은 다른 채널에 <b>선물</b>할 수 있습니다.</div>
+    <div class="stop-note reveal"><b>[서비스 중단 가능성 안내]</b><br>아인은 네이버(주)가 제공하는 치지직 API를 이용하는 프로그램입니다. 네이버(주)가 API 이용을 제한하면 이용 기간 중이라도 서비스가 예고 없이 중단될 수 있습니다. 이 경우 남은 기간의 이용료를 위약금 없이 환불받으실 수 있습니다. 이용 기간이 시작되지 않은 이용권은 결제 금액 전액을 환불받으실 수 있습니다. 구매 전에 이용약관을 확인해 주시기 바랍니다. 구매하시면 이용약관에 동의하신 것으로 봅니다.<br>이용약관: <a href="/terms.html">https://einbot.kr/terms.html</a></div>
     <div class="cta reveal">
       <a class="btn primary" href="https://apps.microsoft.com/detail/9nw8q03rgqlv?mode=direct">30일 무료로 시작하기</a>
       <a class="btn ghost" href="https://smartstore.naver.com/einbot" target="_blank" rel="noopener">스마트스토어에서 이용권 구매</a>
@@ -646,12 +655,17 @@
       <details class="reveal">
         <summary>환불이 되나요?</summary>
         <p>네, 환불할 수 있습니다. <b>이용 기간이 시작되기 전에는 전액</b> 환불합니다. 이용 기간이 시작된 날부터 7일 이내에는 위약금 없이 이용하지 않은 기간만큼 환불합니다.
-          7일이 지난 후에도 남은 이용 기간이 있으면 언제든지 해지할 수 있으며, 이용한 기간의 이용료를 뺀 남은 금액에서 10%를 위약금으로 공제하고 환불합니다.
+          7일이 지난 후에도 남은 이용 기간이 있으면 언제든지 해지할 수 있으며, 이용한 기간의 이용료를 뺀 남은 금액에서 10%를 위약금으로 공제하고 환불합니다. 네이버(주)의 조치로 서비스가 중단된 경우에는 위약금 없이 환불받으실 수 있습니다.
           이미 시작된 날의 이용분은 청약철회가 제한되므로, 결제 전에 30일 무료 체험으로 먼저 이용해 보시기 바랍니다. 환불은 스마트스토어 주문 내역에서 취소·반품을 요청하거나,
-          네이버 톡톡(스마트스토어의 [톡톡문의]) 또는 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 주문번호와 함께 신청할 수 있습니다. 자세한 기준과 계산 방법은 <a href="/terms.html#refund">이용약관 4항</a>에서 확인할 수 있습니다.</p>
+          네이버 톡톡(스마트스토어의 [톡톡문의]) 또는 <a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a> 으로 주문번호와 함께 신청할 수 있습니다. 자세한 기준과 계산 방법은 <a href="/terms.html#refund">이용약관 4항</a>과 <a href="/terms.html#service-stop">9항</a>에서 확인할 수 있습니다.</p>
+      </details>
+      <details class="reveal">
+        <summary>서비스가 중단될 수도 있나요?</summary>
+        <p>아인은 네이버(주)의 치지직 API를 이용합니다. 네이버(주)가 API 이용을 제한하면 이용 기간 중이라도 서비스가 예고 없이 중단될 수 있습니다. 이 경우 운영자는 그날 공식 사이트에 공지하고 이용권 판매를 중단합니다. 남은 기간의 이용료는 위약금 없이 환불받으실 수 있습니다. 자세한 기준은 <a href="/terms.html#service-stop">이용약관 9항</a>에서 확인할 수 있습니다.</p>
       </details>
     </div>
     <p class="faq-more" id="contact">찾으시는 답이 없으면 <a href="/discord/">디스코드 문의 서버</a>의 [질문] 방 또는 이메일(<a href="mailto:einbot.help@gmail.com">einbot.help@gmail.com</a>)로 문의해 주시기 바랍니다. 평일 기준 24시간 이내에 답변합니다.<br>결제·환불 관련 문의는 이메일 또는 네이버 톡톡(스마트스토어의 [톡톡문의])으로 보내 주시기 바랍니다. 개인정보 관련 문의는 이메일로 보내 주시기 바랍니다.</p>
+    <p class="terms-notice" id="terms-notice-stop">이용약관이 2026년 12월 26일부터 변경됩니다(11월 25일 공지). 서비스가 중단되는 경우의 안내와 환불 기준을 정했습니다. — <a href="/terms.html#notice-2026-11-25">공지 보기</a></p>
     <p class="terms-notice" id="terms-notice">이용약관의 환불 기준이 2026년 11월 22일부터 변경되었습니다(11월 15일 공지). 공지일 이후 접수된 환불 요청에도 변경된 기준을 적용합니다. — <a href="/terms.html#notice-2026-11-15">공지 보기</a></p>
   </div>
 </section>
