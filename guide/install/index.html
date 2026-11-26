@@ -38,7 +38,7 @@
       "description": "Microsoft Store 설치부터 방송 계정 로그인, 봇 이름 설정, 봇 시작까지 치지직 채팅봇 아인을 붙이는 순서.",
       "inLanguage": "ko-KR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-11-15",
+      "dateModified": "2026-11-27",
       "mainEntityOfPage": "https://einbot.kr/guide/install/",
       "image": "https://einbot.kr/og.png?v=2",
       "author": { "@id": "https://einbot.kr/#org" },
@@ -155,7 +155,7 @@
       <p class="eyebrow">설치 가이드</p>
       <h1>치지직 채팅봇 설치 방법 — 아인 5분 설치 가이드</h1>
       <p class="lead">Microsoft Store에서 설치하고 방송 계정으로 로그인한 뒤 [시작]&#8288;을 누릅니다. API 키를 발급받을 필요가 없습니다.</p>
-      <p class="meta">2026년 10월 23일 수정 · Windows 10·11</p>
+      <p class="meta">2026년 11월 27일 수정 · Windows 10·11</p>
       <p class="watch">▶ <a href="https://youtu.be/zUiRGK2pYPQ" target="_blank" rel="noopener">영상으로 보기 (1분 5초)</a></p>
 
       <div class="toc">
@@ -220,7 +220,7 @@
         </ol>
         <p>봇이 실행 중이었다면 봇을 다시 시작해야 새 이름으로 응답합니다.</p>
         <p>봇 계정에는 채널 소개 한 줄이 추가되고, 프로필 사진이 없으면 기본 그림 <img class="ico" src="/img/bot-icon.png" width="24" height="24" alt="아인 기본 그림">이 등록됩니다. <a href="/guide/troubleshooting/#boticon">끄는 방법</a></p>
-        <div class="warn"><p><b>봇 계정은 봇 전용으로 사용하시기 바랍니다.</b> 다른 기기에서 이 계정을 사용하거나 "새로운 기기 로그인" 알림에서 [로그아웃]을 누르면 연결이 끊어집니다.</p></div>
+        <div class="warn"><p><b>봇 계정은 봇 전용으로 사용해 주세요.</b> 다른 기기에서 이 계정을 사용하거나 "새로운 기기 로그인" 알림에서 [로그아웃]을 누르면 연결이 끊어집니다.</p></div>
       </section>
 
       <section class="step" id="step6">
@@ -237,7 +237,7 @@
       </section>
 
       <h2 id="old">예전 방식(압축 파일)으로 설치했던 분</h2>
-      <p>위 1단계와 같이 Microsoft Store에서 설치하면 설정, 출석 기록, 이용권이 그대로 옮겨집니다. 이전 버전은 아인이 확인을 요청한 뒤 정리합니다. 이전 버전을 먼저 삭제하면 기록이 사라지므로, 새 버전을 설치하기 전에 이전 버전을 삭제하지 마시기 바랍니다.</p>
+      <p>위 1단계와 같이 Microsoft Store에서 설치하면 설정, 출석 기록, 이용권이 그대로 옮겨집니다. 이전 버전은 아인이 확인을 요청한 뒤 정리합니다. 이전 버전을 먼저 삭제하면 기록이 사라지므로, 새 버전을 설치하기 전에 이전 버전을 삭제하지 마세요.</p>
 
       <h2 id="trouble">막힐 때</h2>
       <ul>
@@ -248,7 +248,7 @@
 
       <section class="step" id="step3">
         <h2>내 키로 연결하기 (고급)</h2>
-        <p>대부분의 경우 이 설정은 필요하지 않습니다. 방송 계정 로그인은 <a href="#step4">3단계</a>를, 다시 로그인하는 방법은 <a href="/guide/troubleshooting/#relogin">문제 해결</a>을 참고하시기 바랍니다. 이미 키를 입력해 사용 중이라면 그대로 사용할 수 있습니다.</p>
+        <p>대부분의 경우 이 설정은 필요하지 않습니다. 방송 계정 로그인은 <a href="#step4">3단계</a>를, 다시 로그인하는 방법은 <a href="/guide/troubleshooting/#relogin">문제 해결</a>을 참고해 주세요. 이미 키를 입력해 사용 중이라면 그대로 사용할 수 있습니다.</p>
         <p>직접 발급한 키로 연결하면, 봇 계정이 없을 때 봇의 응답이 방송 계정 이름으로 표시됩니다.</p>
         <p>키는 설정 → 치지직 연결의 "연결 방식"을 펼친 뒤 Client ID와 Client Secret 칸에 입력합니다.</p>
         <ol>
@@ -267,7 +267,7 @@
             <img class="shot" src="/img/shots/install-devcenter-appinfo.png" width="514" height="98" alt="등록 뒤 애플리케이션 정보 화면의 클라이언트 ID와 Secret(예시 값)" loading="lazy">
           </li>
         </ol>
-        <div class="warn"><p><b>권한 4개는 처음 등록할 때 모두 선택하시기 바랍니다.</b> 나중에 변경하면 치지직의 검수를 거친 뒤 적용됩니다.</p></div>
+        <div class="warn"><p><b>권한 4개는 처음 등록할 때 모두 선택해 주세요.</b> 나중에 변경하면 치지직의 검수를 거친 뒤 적용됩니다.</p></div>
         <p>권한이 빠졌다는 안내가 표시되면 해당 권한을 선택해 저장합니다. 그다음 [방송 계정 변경 (다시 로그인)]을 누르고 봇을 다시 시작합니다.</p>
       </section>
 
